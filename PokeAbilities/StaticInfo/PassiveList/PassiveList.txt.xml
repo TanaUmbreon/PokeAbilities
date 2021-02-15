@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PassiveXmlRoot>
+  <!--シンクロ-->
+  <Passive ID="2270000">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>2</Cost>
+  </Passive>
+
+  <!--マジックミラー-->
+  <Passive ID="2270001">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>8</Cost>
+  </Passive>
+
+  <!--せいしんりょく-->
+  <Passive ID="2270002">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>5</Cost>
+  </Passive>
+
+  <!--にげあし-->
+  <Passive ID="2270003">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>1</Cost>
+  </Passive>
+
+  <!--てきおうりょく-->
+  <Passive ID="2270004">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>4</Cost>
+  </Passive>
+
+  <!--きけんよち-->
+  <Passive ID="2270005">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>2</Cost>
+  </Passive>
+</PassiveXmlRoot>

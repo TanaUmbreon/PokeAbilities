@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PassiveDescRoot>
+  <PassiveDesc ID="2270000">
+    <Name>シンクロ</Name>
+    <Desc>敵からバトルページで出血・麻痺・火傷が付与されたとき、相手にも同じ状態を付与。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270001">
+    <Name>マジックミラー</Name>
+    <Desc>敵からバトルページで付与される状態異常を無効化し、相手に跳ね返す。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270002">
+    <Name>せいしんりょく</Name>
+    <Desc>行動不能・虚弱状態に対して免疫。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270003">
+    <Name>にげあし</Name>
+    <Desc>自分の体力が50%以下なら、幕の開始時にクイック2を得て、25%の確率で行動不能。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270004">
+    <Name>てきおうりょく</Name>
+    <Desc>反撃を除く、全てのダイスが同じ種類のページを使用したとき、全てのダイス威力を+1。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270005">
+    <Name>きけんよち</Name>
+    <Desc>弱点や脆弱属性の攻撃を受けるとき、その相手のダイス威力を-1。</Desc>
+  </PassiveDesc>
+</PassiveDescRoot>

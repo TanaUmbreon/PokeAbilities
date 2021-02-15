@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BookXmlRoot>
+  <!--イーブイ-->
+  <Book ID="2279133">
+    <Name>Eevee</Name>
+    <TextId>2279133</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270003</Passive>
+      <Passive Level="1">2270004</Passive>
+      <Passive Level="1">2270005</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Distortion</BookIcon>
+    <Chapter>1</Chapter>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
+  <!--エーフィ-->
+  <Book ID="2279196">
+    <Name>Espeon</Name>
+    <TextId>2279196</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270000</Passive>
+      <Passive Level="1">2270001</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Distortion</BookIcon>
+    <Chapter>1</Chapter>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
+  <!--ブラッキー-->
+  <Book ID="2279197">
+    <Name>Umbreon</Name>
+    <TextId>2279197</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270000</Passive>
+      <Passive Level="1">2270002</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Distortion</BookIcon>
+    <Chapter>1</Chapter>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+</BookXmlRoot>

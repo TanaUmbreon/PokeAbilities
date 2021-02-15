@@ -1,0 +1,6 @@
+このフォルダに以下のMOD開発用DLLファイルを配置することで、各プロジェクトでの参照が有効となります。
+
+0Harmony.dll
+Assembly-CSharp.dll
+BaseMod.dll
+UnityEngine.CoreModule.dll
