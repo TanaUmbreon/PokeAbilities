@@ -2,6 +2,10 @@
 
 「Library of Ruina」のMODです。ポ○モンの特性をモチーフにしたパッシブを追加します。
 
+![画面サンプル1](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image1.png)
+
+![画面サンプル2](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image2.png)
+
 ## 免責事項
 
 **このMODの使用により発生した問題等は、いかなる理由があっても一切責任を負いません。**
@@ -27,7 +31,7 @@ Library of Ruinaのセーブデータ保存場所は以下の通りです。
 
 このコアページは、そのポ○モンが持つ特性(かくれ特性も含む)をモチーフにしたパッシブを保有しています。他のコアページに帰属させて使用してください。
 
-コアページやパッシブの詳細については [「Wiki」ページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
+コアページやパッシブの詳細については [Wikiページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
 
 ## ダウンロード方法
 
