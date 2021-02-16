@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BookUseXmlRoot>
+  <!--9級フィクサーの本-->
   <BookUse ID="200002">
     <TextId>dropbook_9fixer</TextId>
     <BookIcon>YunsOffice</BookIcon>
@@ -11,14 +12,14 @@
     <DropItem Type="Equip">2279196</DropItem>
     <DropItem Type="Equip">2279197</DropItem>
   </BookUse>
-  <BookUse ID="200003">
-    <TextId>dropbook_novicefixer</TextId>
+  <!--フィンの本-->
+  <BookUse ID="200004">
+    <TextId>dropbook_finn</TextId>
     <BookIcon>YunsOffice</BookIcon>
     <Chapter>1</Chapter>
-    <Exp>3</Exp>
-    <EquipProb>0.4</EquipProb>
+    <Exp>5</Exp>
+    <EquipProb>0.3</EquipProb>
     <DropItem Type="Equip">200004</DropItem>
-    <DropItem Type="Equip">201001</DropItem>
     <DropItem Type="Equip">2279136</DropItem>
   </BookUse>
 </BookUseXmlRoot>
