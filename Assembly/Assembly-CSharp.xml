@@ -400,8 +400,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleDiceBehavior.IsParrying">
-      <summary>マッチ状態であることを示します。</summary>
-      <returns>マッチ状態の場合は true、そうでない場合は false。</returns>
+      <summary>マッチ状態である事を示します。</summary>
+      <returns>マッチ状態の場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleDiceBehavior.OnEventDiceAbility(DiceCardAbilityBase.DiceCardPassiveType,BattleUnitModel)">
       <summary></summary>
@@ -437,7 +437,7 @@
       <summary></summary>
     </member>
     <member name="P:BattleDiceBehavior.Detail">
-      <summary></summary>
+      <summary>バトル ダイスの振る舞いの詳細を取得します。</summary>
     </member>
     <member name="P:BattleDiceBehavior.DiceDestroyed">
       <summary></summary>
@@ -1289,9 +1289,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.IsAttackDice(LOR_DiceSystem.BehaviourDetail)">
-      <summary></summary>
-      <param name="diceDetail"></param>
-      <returns></returns>
+      <summary>指定したバトル ダイスが攻撃ダイスである事を判定します。</summary>
+      <param name="diceDetail">判定するバトル ダイスの振る舞いの詳細。</param>
+      <returns>指定したバトル ダイスが攻撃ダイスである場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBuf.IsDefenseDice(LOR_DiceSystem.BehaviourDetail)">
       <summary></summary>
@@ -1311,14 +1311,14 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(KeywordBuf)">
-      <summary>指定されたバフに対して耐性を持っていることを表す値を取得します。</summary>
+      <summary>指定したバフに対して耐性を持っている事を判定します。このメソッドは各バフの実装で呼び出します。</summary>
       <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定されたバフに対して耐性である場合は true、そうでない場合は false。</returns>
+      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(BattleUnitBuf)">
-      <summary></summary>
-      <param name="buf"></param>
-      <returns></returns>
+      <summary>指定したバフに対して耐性を持っていて、キャラクターに付与できない事を判定します。このメソッドはバフを付与する時に呼び出されます。</summary>
+      <param name="buf">耐性情報を取得するバフ。</param>
+      <returns>指定したバフに対してキャラクターに付与できない場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -1426,8 +1426,8 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBuf.OnRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>バトル ダイスを振る前に呼び出されます。</summary>
+      <param name="behavior">振ろうとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitBuf.OnRollDiceInRecounter">
       <summary></summary>
@@ -1638,9 +1638,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetActivatedBuf(KeywordBuf)">
-      <summary></summary>
-      <param name="bufType"></param>
-      <returns></returns>
+      <summary>指定したバフに一致する、この幕に適用されているバフを取得します。</summary>
+      <param name="bufType">取得するバフの種類。</param>
+      <returns>指定したバフが存在する場合はそのバフ、存在しない場合は null を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetActivatedBufList">
       <summary>この幕に適用されているバフのリストを取得します。</summary>
@@ -1714,9 +1714,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetReadyBuf(KeywordBuf)">
-      <summary></summary>
-      <param name="bufType"></param>
-      <returns></returns>
+      <summary>指定したバフに一致する、次の幕から適用するバフを取得します。</summary>
+      <param name="bufType">取得するバフの種類。</param>
+      <returns>指定したバフが存在する場合はそのバフ、存在しない場合は null を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetReadyBufList">
       <summary>次の幕から適用するバフのリストを取得します。</summary>
@@ -2255,7 +2255,7 @@
     </member>
     <member name="M:BattleUnitModel.IsBreakLifeZero">
       <summary>混乱耐性がゼロである事を示します。</summary>
-      <returns>混乱耐性がゼロの場合は true、そうでない場合は false。</returns>
+      <returns>混乱耐性がゼロの場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitModel.IsControlable">
       <summary></summary>
@@ -3345,9 +3345,9 @@
       <returns></returns>
     </member>
     <member name="M:DiceCardAbilityBase.IsAttackDice(LOR_DiceSystem.BehaviourDetail)">
-      <summary></summary>
-      <param name="diceDetail"></param>
-      <returns></returns>
+      <summary>指定したバトル ダイスが攻撃ダイスである事を判定します。</summary>
+      <param name="diceDetail">判定するバトル ダイスの振る舞いの詳細。</param>
+      <returns>指定したバトル ダイスが攻撃ダイスである場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:DiceCardAbilityBase.IsDefenseDice(LOR_DiceSystem.BehaviourDetail)">
       <summary></summary>
@@ -3365,7 +3365,7 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardAbilityBase.OnRollDice">
-      <summary></summary>
+      <summary>バトル ダイスを振る前に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardAbilityBase.OnSucceedAreaAttack(BattleUnitModel)">
       <summary></summary>
@@ -3439,9 +3439,9 @@
       <returns></returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsAttackDice(LOR_DiceSystem.BehaviourDetail)">
-      <summary></summary>
-      <param name="diceDetail"></param>
-      <returns></returns>
+      <summary>指定したバトル ダイスが攻撃ダイスである事を判定します。</summary>
+      <param name="diceDetail">判定するバトル ダイスの振る舞いの詳細。</param>
+      <returns>指定したバトル ダイスが攻撃ダイスである場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsFixedCost">
       <summary></summary>
@@ -3979,7 +3979,7 @@
       <summary></summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Detail">
-      <summary></summary>
+      <summary>振る舞いの詳細</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Dice">
       <summary></summary>
@@ -4174,9 +4174,9 @@
       <param name="self"></param>
     </member>
     <member name="M:PassiveAbilityBase.IsAttackDice(LOR_DiceSystem.BehaviourDetail)">
-      <summary></summary>
-      <param name="diceDetail"></param>
-      <returns></returns>
+      <summary>指定したバトル ダイスが攻撃ダイスである事を判定します。</summary>
+      <param name="diceDetail">判定するバトル ダイスの振る舞いの詳細。</param>
+      <returns>指定したバトル ダイスが攻撃ダイスである場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:PassiveAbilityBase.IsDefenseDice(LOR_DiceSystem.BehaviourDetail)">
       <summary></summary>
@@ -4184,9 +4184,9 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.IsImmune(KeywordBuf)">
-      <summary>指定されたバフに対して耐性を持っていることを表す値を取得します。</summary>
+      <summary>指定したバフに対して耐性を持っている事を判定します。このメソッドは各バフの実装で呼び出します。</summary>
       <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定されたバフに対して耐性である場合は true、そうでない場合は false。</returns>
+      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:PassiveAbilityBase.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -4199,9 +4199,9 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.IsNearOrFar(BattleDiceCardModel)">
-      <summary></summary>
-      <param name="card"></param>
-      <returns></returns>
+      <summary>指定したバトル ページが近距離または遠距離バトル ページである事を判定します。</summary>
+      <param name="card">判定対象のバトル ページ。</param>
+      <returns>指定したバトル ページが近距離または遠距離バトル ページである場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:PassiveAbilityBase.IsTargetable(BattleUnitModel)">
       <summary></summary>
@@ -4338,8 +4338,8 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>バトル ダイスを振る前に呼び出されます。</summary>
+      <param name="behavior">振ろうとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnRollDiceInRencounter">
       <summary></summary>
@@ -4580,7 +4580,7 @@
       <summary></summary>
     </member>
     <member name="P:PassiveModel.IsReceivedSuccessionPassive">
-      <summary>継承されたパッシブであることを示す値を取得します。</summary>
+      <summary>継承されたパッシブである事を示す値を取得します。</summary>
     </member>
     <member name="T:RandomUtil">
       <summary>乱数操作を行うユーティリティ クラスです。</summary>
