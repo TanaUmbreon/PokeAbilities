@@ -2,6 +2,8 @@
 
 「Library of Ruina」のMODです。ポ○モンの特性をモチーフにしたパッシブを追加します。
 
+当MODで追加されるコアページやパッシブの詳細については [Wikiページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
+
 ![画面サンプル1](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image1.png)
 
 ![画面サンプル2](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image2.png)
@@ -20,22 +22,9 @@ Library of Ruinaのセーブデータ保存場所は以下の通りです。
 
 エクスプローラーのアドレスバーにコピペするなどして保存場所を開いてください。
 
-## 詳細
-
-以下の本を燃やすことで入手できる、**帰属専用のコアページ**を複数追加します。
-
-- `9級フィクサーの本`
-  - `イ○ブイのページ`
-  - `エ○フィのページ`
-  - `ブ○ッキーのページ`
-
-このコアページは、そのポ○モンが持つ特性(かくれ特性も含む)をモチーフにしたパッシブを保有しています。他のコアページに帰属させて使用してください。
-
-コアページやパッシブの詳細については [Wikiページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
-
 ## ダウンロード方法
 
-1. [「Releases」ページ](https://github.com/TanaUmbreon/PokeAbilities/releases) を開きます。
+1. [Releasesページ](https://github.com/TanaUmbreon/PokeAbilities/releases) を開きます。
 2. 最新バージョンの「Assets」から「PokeAbilities-bin-*x*.*x*.*x*.zip」をクリックしてダウンロードしてください。
 
 ## リリースノート
