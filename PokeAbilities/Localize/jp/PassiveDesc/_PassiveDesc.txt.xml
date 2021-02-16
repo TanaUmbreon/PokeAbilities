@@ -24,4 +24,12 @@
     <Name>きけんよち</Name>
     <Desc>弱点や脆弱属性の攻撃を受けるとき、その相手のダイス威力を-1。</Desc>
   </PassiveDesc>
+  <PassiveDesc ID="2270006">
+    <Name>もらいび</Name>
+    <Desc>火傷ダメージを受けず、火傷を受けている間は50%の確率で攻撃ダイスの威力+1。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270007">
+    <Name>こんじょう</Name>
+    <Desc>状態異常のとき、50%の確率で攻撃ダイスの威力+1。</Desc>
+  </PassiveDesc>
 </PassiveDescRoot>

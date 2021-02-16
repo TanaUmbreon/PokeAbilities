@@ -26,6 +26,31 @@
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
 
+  <!--ブースター-->
+  <Book ID="2279136">
+    <Name>Flareon</Name>
+    <TextId>2279136</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270006</Passive>
+      <Passive Level="1">2270007</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Distortion</BookIcon>
+    <Chapter>1</Chapter>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
   <!--エーフィ-->
   <Book ID="2279196">
     <Name>Espeon</Name>
