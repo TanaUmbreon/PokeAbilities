@@ -8,6 +8,24 @@ namespace PokeAbilities
     internal static class BattleUnitBufListDetailExtension
     {
         /// <summary>
+        /// 指定したポジティブ タイプが、この幕に適用されているバフに有効な状態で存在している事を判定します。
+        /// </summary>
+        /// <param name="target">判定する対象キャラクターのバフ一覧。</param>
+        /// <param name="type">判定するポジティブ タイプ。</param>
+        /// <returns>指定したポジティブ タイプが有効な状態で存在している場合は true、存在していない場合は false を返します。</returns>
+        public static bool ExistsPositiveType(this BattleUnitBufListDetail target, BufPositiveType type)
+            => target.GetActivatedBufList().Any(b => b.positiveType == type && b.stack > 0 && !b.IsDestroyed());
+
+        /// <summary>
+        /// 指定したバフの種類が、この幕に適用されているバフに有効な状態で存在している事を判定します。
+        /// </summary>
+        /// <param name="target">判定する対象キャラクターのバフ一覧。</param>
+        /// <param name="type">判定するバフの種類。</param>
+        /// <returns>指定したバフの種類が有効な状態で存在している場合は true、存在していない場合は false を返します。</returns>
+        public static bool ExistsKeywordBuf(this BattleUnitBufListDetail target, KeywordBuf buf)
+            => target.GetActivatedBufList().Any(b => b.bufType == buf && b.stack > 0 && !b.IsDestroyed());
+
+        /// <summary>
         /// 指定した型のバフをこの幕から付与します。
         /// </summary>
         /// <typeparam name="T">付与するバフの型。</typeparam>
