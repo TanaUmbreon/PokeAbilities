@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleUnitBufListDetailExtension.cs" />
+    <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
+    <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\LogExtensionForPassive.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
@@ -73,7 +75,13 @@
       <Link>README%28ja%29.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ArtWork\FlashFireBuf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Localize\jp\Books\_Books.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\EffectTexts\_EffectTexts.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc.txt.xml">

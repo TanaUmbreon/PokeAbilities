@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleEffectTextRoot>
+  <effectTextList>
+    <BattleEffectText ID="FlashFire">
+      <Name>もらいび</Name>
+      <Desc>火傷ダメージを受けず、50%の確率で攻撃ダイスの威力+1。</Desc>
+    </BattleEffectText>
+  </effectTextList>
+</BattleEffectTextRoot>
