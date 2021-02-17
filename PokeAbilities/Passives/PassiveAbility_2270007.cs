@@ -10,7 +10,7 @@ namespace PokeAbilities.Passives
     /// </summary>
     public class PassiveAbility_2270007 : PassiveAbilityBase
     {
-        public override void OnRollDice(BattleDiceBehavior behavior)
+        public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
             try
             {

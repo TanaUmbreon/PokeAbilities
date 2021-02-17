@@ -13,7 +13,7 @@ namespace PokeAbilities.Passives
         public override bool IsImmune(KeywordBuf buf) 
             => buf == KeywordBuf.Burn || base.IsImmune(buf);
 
-        public override void OnRollDice(BattleDiceBehavior behavior)
+        public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
             try
             {
