@@ -1,32 +1,29 @@
 ﻿#pragma warning disable CA1031 // Do not catch general exception types
 
 using System;
+using PokeAbilities.Bufs;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「もらいび」。
-    /// 火傷ダメージを受けず、火傷を受けている間は50%の確率で攻撃ダイスの威力+1。
+    /// 幕の終了時に火傷状態なら、火傷ダメージを受けず、50%の確率で攻撃ダイスの威力が1増加する「もらいび」状態になる。
     /// </summary>
     public class PassiveAbility_2270006 : PassiveAbilityBase
     {
-        public override bool IsImmune(KeywordBuf buf) 
-            => buf == KeywordBuf.Burn || base.IsImmune(buf);
 
-        public override void BeforeRollDice(BattleDiceBehavior behavior)
+        public override void OnRoundEnd()
         {
             try
             {
-                if (!IsAttackDice(behavior.Detail)) { return; }
                 if (!owner.bufListDetail.ExistsKeywordBuf(KeywordBuf.Burn)) { return; }
-                if (RandomUtil.valueForProb >= 0.5f) { return; }
+                if (owner.bufListDetail.ExistsBuf<BattleUnitBuf_FlashFire>()) { return; }
 
-                owner.battleCardResultLog?.SetPassiveAbility(this);
-                behavior.ApplyDiceStatBonus(new DiceStatBonus() { power = 1 });
+                owner.bufListDetail.AddBuf<BattleUnitBuf_FlashFire>(1);
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(OnRollDice), "Exception thrown.");
+                Log.Instance.AppendLine(this, nameof(OnRoundEnd), "Exception thrown.");
                 Log.Instance.AppendLine(ex);
             }
         }

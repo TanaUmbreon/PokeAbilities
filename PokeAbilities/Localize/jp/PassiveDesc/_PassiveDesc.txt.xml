@@ -26,7 +26,7 @@
   </PassiveDesc>
   <PassiveDesc ID="2270006">
     <Name>もらいび</Name>
-    <Desc>火傷ダメージを受けず、火傷を受けている間は50%の確率で攻撃ダイスの威力+1。</Desc>
+    <Desc>幕の終了時に火傷状態なら、火傷ダメージを受けず、50%の確率で攻撃ダイスの威力が1増加する「もらいび」状態になる。</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270007">
     <Name>こんじょう</Name>
