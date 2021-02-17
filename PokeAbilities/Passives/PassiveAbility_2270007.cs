@@ -6,10 +6,13 @@ namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「こんじょう」。
-    /// 状態異常のとき、50%の確率で攻撃ダイスの威力+1。
+    /// 状態異常のとき、虚弱状態の影響を受けず、50%の確率で攻撃ダイスの威力+1。
     /// </summary>
     public class PassiveAbility_2270007 : PassiveAbilityBase
     {
+        public override bool IsImmune(KeywordBuf buf)
+            => buf == KeywordBuf.Weak || base.IsImmune(buf);
+
         public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
             try

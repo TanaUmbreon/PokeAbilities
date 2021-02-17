@@ -30,6 +30,6 @@
   </PassiveDesc>
   <PassiveDesc ID="2270007">
     <Name>こんじょう</Name>
-    <Desc>状態異常のとき、50%の確率で攻撃ダイスの威力+1。</Desc>
+    <Desc>状態異常のとき、虚弱状態の影響を受けず、50%の確率で攻撃ダイスの威力+1。</Desc>
   </PassiveDesc>
 </PassiveDescRoot>
