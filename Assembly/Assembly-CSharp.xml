@@ -1164,8 +1164,8 @@
       <param name="dmg"></param>
     </member>
     <member name="M:BattleUnitBuf.BeforeRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダイス ロールの直前に呼び出されます。バトル ダイスに対するボーナス値の指定などはこのメソッドで行います。</summary>
+      <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitBuf.BeforeTakeDamage(BattleUnitModel,System.Int32)">
       <summary></summary>
@@ -1426,8 +1426,8 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBuf.OnRollDice(BattleDiceBehavior)">
-      <summary>バトル ダイスを振る前に呼び出されます。</summary>
-      <param name="behavior">振ろうとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <summary>バトル ダイスを振る時に呼び出されます。</summary>
+      <param name="behavior">振るバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitBuf.OnRollDiceInRecounter">
       <summary></summary>
@@ -3365,7 +3365,7 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardAbilityBase.OnRollDice">
-      <summary>バトル ダイスを振る前に呼び出されます。</summary>
+      <summary>バトル ダイスを振る時に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardAbilityBase.OnSucceedAreaAttack(BattleUnitModel)">
       <summary></summary>
@@ -3422,8 +3422,8 @@
       <returns></returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.BeforeRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダイス ロールの直前に呼び出されます。バトル ダイスに対するボーナス値の指定などはこのメソッドで行います。</summary>
+      <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.GetCostAdder(BattleUnitModel,BattleDiceCardModel)">
       <summary></summary>
@@ -3715,7 +3715,7 @@
       <summary>朦朧 (朦朧ではない他の対象がいる場合、このキャラクターを相手に選べない。幕の終了時に解除される)</summary>
     </member>
     <member name="F:KeywordBuf.BreakProtection">
-      <summary></summary>
+      <summary>混乱保護 (1幕の間、攻撃で受ける混乱ダメージ量を X 減少)</summary>
     </member>
     <member name="F:KeywordBuf.Burn">
       <summary>火傷 (幕の終了時、X ダメージを受け、火傷の数値が 2/3 に減少する。(小数点切り捨て))</summary>
@@ -3724,16 +3724,16 @@
       <summary></summary>
     </member>
     <member name="F:KeywordBuf.BurnSpread">
-      <summary></summary>
+      <summary>燎原之火 (このキャラクターが X 幕以内に混乱状態になった場合、他の味方にこのキャラクターの持つ火傷の数値の半分だけ火傷を付与する)</summary>
     </member>
     <member name="F:KeywordBuf.CB_BigBadWolf_Stealth">
       <summary>影 (狼が使用するバトル ページの対象でない司書は行動不能)</summary>
     </member>
     <member name="F:KeywordBuf.CB_BlackSwanDeadBro">
-      <summary></summary>
+      <summary>消えた家族 (幕の開始時、この値が4以上なら特殊バトルページを使用)</summary>
     </member>
     <member name="F:KeywordBuf.CB_CopiousBleeding">
-      <summary></summary>
+      <summary>深い傷 (数値が5以上になれば25%のダメージを受ける)</summary>
     </member>
     <member name="F:KeywordBuf.CB_NothingMimic">
       <summary></summary>
@@ -3754,7 +3754,7 @@
       <summary>速度固定1 (今回の幕の間、速度ダイスの値を1に固定)</summary>
     </member>
     <member name="F:KeywordBuf.DefensePowerUp">
-      <summary></summary>
+      <summary>守備威力増加 (今回の幕の間、守備威力 +X)</summary>
     </member>
     <member name="F:KeywordBuf.Disarm">
       <summary>武装解除 (今回の幕の間、守備ダイスの威力 -X)</summary>
@@ -3766,7 +3766,7 @@
       <summary>忍耐 (今回の幕の間、守備ダイスの威力 +X)</summary>
     </member>
     <member name="F:KeywordBuf.Fairy">
-      <summary></summary>
+      <summary>妖精 (ダイスを振るたびにXダメージを受ける。幕の終了時にXダメージを受け、妖精の数値が半分に減少する。(小数点以下切り捨て))</summary>
     </member>
     <member name="F:KeywordBuf.FairyCare">
       <summary></summary>
@@ -3790,10 +3790,10 @@
       <summary></summary>
     </member>
     <member name="F:KeywordBuf.MyoBerserk">
-      <summary></summary>
+      <summary>凶暴化 (全ダイスの威力 +1)</summary>
     </member>
     <member name="F:KeywordBuf.NicolaiTarget">
-      <summary></summary>
+      <summary>標的 (攻撃で受けるダメージ・混乱ダメージ量が 50% 増加)</summary>
     </member>
     <member name="F:KeywordBuf.None">
       <summary>キーワード指定なしのバフ (カスタム バフ)</summary>
@@ -3814,16 +3814,16 @@
       <summary></summary>
     </member>
     <member name="F:KeywordBuf.PurpleDefense">
-      <summary></summary>
+      <summary>防御体勢 (守備威力 +2。全ての状態異常を解除)</summary>
     </member>
     <member name="F:KeywordBuf.PurpleHit">
-      <summary></summary>
+      <summary>打撃体勢 (打撃威力 +2。攻撃で与える混乱ダメージ量が 50% 増加)</summary>
     </member>
     <member name="F:KeywordBuf.PurplePenetrate">
-      <summary></summary>
+      <summary>貫通体勢 (貫通威力 +2。バトルページで付与する状態異常の数値が 2 倍になる)</summary>
     </member>
     <member name="F:KeywordBuf.PurpleSlash">
-      <summary></summary>
+      <summary>斬撃体勢 (斬撃威力 +2。攻撃で与えるダメージ量が 50% 増加)</summary>
     </member>
     <member name="F:KeywordBuf.QueenOfHatredHatred">
       <summary></summary>
@@ -3850,7 +3850,7 @@
       <summary></summary>
     </member>
     <member name="F:KeywordBuf.Seal">
-      <summary></summary>
+      <summary>封印 (速度ダイス X つが使用不可に。前方の速度ダイスから判定)</summary>
     </member>
     <member name="F:KeywordBuf.SealKeyword">
       <summary></summary>
@@ -3886,7 +3886,7 @@
       <summary></summary>
     </member>
     <member name="F:KeywordBuf.TakeBpDmg">
-      <summary></summary>
+      <summary>混乱耐性減少 (今回の幕の間、全ての混乱耐性が脆弱に変更)</summary>
     </member>
     <member name="F:KeywordBuf.TeddyLove">
       <summary>愛情 (この対象を攻撃するとき、現在の値だけ攻撃者の威力を増加)</summary>
@@ -4062,7 +4062,7 @@
       <param name="behavior"></param>
     </member>
     <member name="M:PassiveAbilityBase.BeforeRollDice(BattleDiceBehavior)">
-      <summary>ダイス ロールの直前に呼び出されます。</summary>
+      <summary>ダイス ロールの直前に呼び出されます。バトル ダイスに対するボーナス値の指定などはこのメソッドで行います。</summary>
       <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:PassiveAbilityBase.BeforeTakeDamage(BattleUnitModel,System.Int32)">
@@ -4338,8 +4338,8 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnRollDice(BattleDiceBehavior)">
-      <summary>バトル ダイスを振る前に呼び出されます。</summary>
-      <param name="behavior">振ろうとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <summary>バトル ダイスを振る時に呼び出されます。</summary>
+      <param name="behavior">振るバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnRollDiceInRencounter">
       <summary></summary>
