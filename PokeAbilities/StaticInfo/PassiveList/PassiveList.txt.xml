@@ -32,7 +32,7 @@
   <Passive ID="2270004">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>4</Cost>
+    <Cost>3</Cost>
   </Passive>
 
   <!--きけんよち-->
@@ -46,13 +46,13 @@
   <Passive ID="2270006">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>3</Cost>
+    <Cost>2</Cost>
   </Passive>
 
   <!--こんじょう-->
   <Passive ID="2270007">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>2</Cost>
+    <Cost>3</Cost>
   </Passive>
 </PassiveXmlRoot>
