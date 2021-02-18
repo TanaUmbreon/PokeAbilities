@@ -10,7 +10,6 @@ namespace PokeAbilities.Bufs
     /// </summary>
     public class BattleUnitBuf_FlashFire : BattleUnitBufCustomBase
     {
-        /// <summary>バフの最大スタック数</summary>
         protected override string keywordId => "FlashFire";
 
         protected override string keywordIconId => "FlashFireBuf";

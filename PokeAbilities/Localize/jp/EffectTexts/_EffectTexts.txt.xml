@@ -3,7 +3,7 @@
   <effectTextList>
     <BattleEffectText ID="FlashFire">
       <Name>もらいび</Name>
-      <Desc>火傷ダメージを受けず、50%の確率で攻撃ダイスの威力+1</Desc>
+      <Desc>今回の舞台の間、火傷ダメージを受けず、50%の確率で攻撃ダイスの威力+1</Desc>
     </BattleEffectText>
   </effectTextList>
 </BattleEffectTextRoot>
