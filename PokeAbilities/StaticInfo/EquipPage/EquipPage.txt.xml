@@ -20,7 +20,7 @@
       <Passive Level="1">2270005</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
-    <BookIcon>Distortion</BookIcon>
+    <BookIcon>Pokemon</BookIcon>
     <Chapter>1</Chapter>
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
@@ -45,7 +45,7 @@
       <Passive Level="1">2270007</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
-    <BookIcon>Distortion</BookIcon>
+    <BookIcon>Pokemon</BookIcon>
     <Chapter>1</Chapter>
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
@@ -70,7 +70,7 @@
       <Passive Level="1">2270001</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
-    <BookIcon>Distortion</BookIcon>
+    <BookIcon>Pokemon</BookIcon>
     <Chapter>1</Chapter>
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
@@ -95,7 +95,7 @@
       <Passive Level="1">2270002</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
-    <BookIcon>Distortion</BookIcon>
+    <BookIcon>Pokemon</BookIcon>
     <Chapter>1</Chapter>
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
