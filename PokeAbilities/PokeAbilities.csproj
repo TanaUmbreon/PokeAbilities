@@ -61,6 +61,8 @@
     <Compile Include="Log.cs" />
     <Compile Include="Passives\LogExtensionForPassive.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
+    <Compile Include="Passives\PassiveAbility_2270009.cs" />
+    <Compile Include="Passives\PassiveAbility_2270008.cs" />
     <Compile Include="Passives\PassiveAbility_2270007.cs" />
     <Compile Include="Passives\PassiveAbility_2270006.cs" />
     <Compile Include="Passives\PassiveAbility_2270005.cs" />

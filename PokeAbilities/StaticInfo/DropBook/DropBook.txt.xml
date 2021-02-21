@@ -20,6 +20,7 @@
     <Exp>5</Exp>
     <EquipProb>0.3</EquipProb>
     <DropItem Type="Equip">200004</DropItem>
+    <DropItem Type="Equip">2279135</DropItem>
     <DropItem Type="Equip">2279136</DropItem>
   </BookUse>
 </BookUseXmlRoot>

@@ -55,4 +55,18 @@
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
+
+  <!--ちくでん-->
+  <Passive ID="2270008">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>2</Cost>
+  </Passive>
+
+  <!--はやあし-->
+  <Passive ID="2270009">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>2</Cost>
+  </Passive>
 </PassiveXmlRoot>
