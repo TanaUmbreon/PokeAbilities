@@ -4,9 +4,9 @@
 
 当MODで追加されるコアページやパッシブの詳細については [Wikiページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
 
-![画面サンプル1](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image1.png)
+![画面サンプル1](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image1-r2.jpg)
 
-![画面サンプル2](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image2.png)
+![画面サンプル2](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image2-r2.jpg)
 
 ## 免責事項
 
