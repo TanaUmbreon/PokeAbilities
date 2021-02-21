@@ -67,6 +67,6 @@
   <Passive ID="2270009">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>2</Cost>
+    <Cost>1</Cost>
   </Passive>
 </PassiveXmlRoot>
