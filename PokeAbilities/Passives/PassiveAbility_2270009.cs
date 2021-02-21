@@ -1,13 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿#pragma warning disable CA1031 // Do not catch general exception types
+
+using System;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// 
+    /// パッシブ「はやあし」
+    /// 束縛状態の影響を受けない。幕の終了時に状態異常なら、次の幕にクイック1を得る。
     /// </summary>
     public class PassiveAbility_2270009 : PassiveAbilityBase
     {
+        public override bool IsImmune(KeywordBuf buf)
+            => buf == KeywordBuf.Binding || base.IsImmune(buf);
+
+        public override void OnRoundEnd()
+        {
+            try
+            {
+                if (!owner.bufListDetail.ExistsPositiveType(BufPositiveType.Negative)) { return; }
+                owner.bufListDetail.AddKeywordBufByEtc(KeywordBuf.Quickness, 1, owner);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.AppendLine(this, nameof(OnRoundStart), "Exception thrown.");
+                Log.Instance.AppendLine(ex);
+            }
+        }
     }
 }
