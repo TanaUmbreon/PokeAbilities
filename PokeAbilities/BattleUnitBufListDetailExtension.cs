@@ -64,7 +64,7 @@ namespace PokeAbilities
             if (buf == null)
             {
                 buf = new T() { stack = 0 };
-                target.AddBuf(buf);
+                target.AddReadyBuf(buf);
             }
             buf.stack += stack;
             buf.OnAddBuf();
