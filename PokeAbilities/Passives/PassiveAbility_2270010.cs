@@ -25,7 +25,7 @@ namespace PokeAbilities.Passives
             {
                 dmgReduction = 0;
 
-                BattleDiceCardModel card = attacker.currentDiceAction?.card;
+                BattleDiceCardModel card = attacker?.currentDiceAction?.card;
                 if (card == null || !card.HasBuf<BattleDiceCardBuf_WaterType>())
                 {
                     return base.BeforeTakeDamage(attacker, dmg);
@@ -44,6 +44,7 @@ namespace PokeAbilities.Passives
 
         public override int GetDamageReductionAll() => dmgReduction;
 
-        public override int GetBreakDamageReductionAll() => dmgReduction;
+        public override int GetBreakDamageReductionAll(int dmg, DamageType dmgType, BattleUnitModel attacker)
+            => dmgReduction;
     }
 }
