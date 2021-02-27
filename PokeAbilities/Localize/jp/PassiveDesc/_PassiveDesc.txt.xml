@@ -40,4 +40,12 @@
     <Name>はやあし</Name>
     <Desc>束縛状態の影響を受けない。幕の終了時に状態異常なら、次の幕にクイック1を得る。</Desc>
   </PassiveDesc>
+  <PassiveDesc ID="2270010">
+    <Name>ちょすい</Name>
+    <Desc>「みずタイプ」が付与されたバトルページでダメージを受けず、体力を2回復する。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270011">
+    <Name>うるおいボディ</Name>
+    <Desc>あめ状態のとき、幕の終了時に全ての状態異常を解除する。</Desc>
+  </PassiveDesc>
 </PassiveDescRoot>

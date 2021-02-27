@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleCardDescRoot>
+  <cardDescList>
+    <BattleCardDesc ID="2278000">
+      <LocalizedName>あまごい</LocalizedName>
+      <Ability />
+    </BattleCardDesc>
+  </cardDescList>
+</BattleCardDescRoot>

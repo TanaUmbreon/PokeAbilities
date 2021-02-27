@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleCardAbilityDescRoot>
+  <BattleCardAbility ID="rain5all">
+    <Desc>[使用時] 全てのキャラクターにあめ5を付与</Desc>
+  </BattleCardAbility>
+</BattleCardAbilityDescRoot>
