@@ -27,16 +27,6 @@ namespace PokeAbilities
             => target.GetActivatedBufList().Any(b => b.bufType == buf && !b.IsDestroyed());
 
         /// <summary>
-        /// 指定したバフの型が、この幕に適用されているバフに有効な状態で存在している事を判定します。
-        /// </summary>
-        /// <typeparam name="T">判定するバフの型。</typeparam>
-        /// <param name="target">判定する対象キャラクターのバフ一覧。</param>
-        /// <returns>指定したバフの型が有効な状態で存在している場合は true、存在していない場合は false を返します。</returns>
-        [Obsolete("BattleUnitBufListDetail.HasBuf<T>() メソッドを使用してください。")]
-        public static bool ExistsBuf<T>(this BattleUnitBufListDetail target) where T : BattleUnitBuf
-            => target.GetActivatedBufList().Any(b => b is T && !b.IsDestroyed());
-
-        /// <summary>
         /// 指定した型のバフをこの幕から付与します。
         /// </summary>
         /// <typeparam name="T">付与するバフの型。</typeparam>
