@@ -28,6 +28,192 @@
     <member name="F:AtkResist.Weak">
       <summary>弱点 (1.5倍)</summary>
     </member>
+    <member name="T:BattleAllyCardDetail">
+      <summary>味方のバトル ページの詳細を表します。</summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.#ctor(BattleUnitModel)">
+      <summary></summary>
+      <param name="self"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddCardToDeck(System.Collections.Generic.List{BattleDiceCardModel})">
+      <summary></summary>
+      <param name="cards"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddNewCard(System.Int32)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddNewCardToDeck(System.Int32)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddSoulCard(System.Int32)">
+      <summary></summary>
+      <param name="emotionLevel"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddTempCard(System.Int32)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ChangeAppliedCard(BattleDiceCardModel,BattleDiceCardModel)">
+      <summary></summary>
+      <param name="appliedCard"></param>
+      <param name="newCard"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.DiscardACardByAbility(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.DiscardACardByAbility(System.Collections.Generic.List{BattleDiceCardModel})">
+      <summary></summary>
+      <param name="cardList"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.DiscardACardLowest">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.DiscardACardRandomlyByAbility(System.Int32)">
+      <summary></summary>
+      <param name="num"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.DiscardCardsInUse">
+      <summary></summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.DiscardInHand(System.Int32)">
+      <summary></summary>
+      <param name="num"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.DrawCards(System.Int32)">
+      <summary></summary>
+      <param name="count"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.DrawCardsAllSpecific(System.Int32,BattleDiceCardModel)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <param name="exclude"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExceptHighlanderID(System.Int32)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustACard(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustACardAnywhere(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustAllCards">
+      <summary></summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustAllCardsInHand">
+      <summary></summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustCard(System.Int32)">
+      <summary></summary>
+      <param name="id"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustCardInDeck(System.Int32)">
+      <summary></summary>
+      <param name="id"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustCardInHand(System.Int32)">
+      <summary></summary>
+      <param name="id"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustCardInHand(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustRandomCardInDeck">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustRandomCardInHand">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.GetAllDeck">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.GetDeck">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.GetDiscarded">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.GetHand">
+      <summary>自身の手札を全て取得します。</summary>
+      <returns>手札として所有しているバトル ページのリスト。</returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.GetRandomCardInHand(System.Predicate{BattleDiceCardModel})">
+      <summary></summary>
+      <param name="condition"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.GetUse">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.Init(System.Collections.Generic.List{LOR_DiceSystem.DiceCardXmlInfo})">
+      <summary></summary>
+      <param name="deck"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.IsHighlander">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.OnRoundEnd">
+      <summary>幕の終了時に呼び出されます。</summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.OnRoundStart">
+      <summary>幕の開始時に呼び出されます。</summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.PlayTurnAuto(System.Int32)">
+      <summary></summary>
+      <param name="currentDiceSlotIdx"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.PlayTurnAutoForPlayer(System.Int32)">
+      <summary></summary>
+      <param name="idx"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.ReturnAllToDeck">
+      <summary></summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.SetMaxDrawHand(System.Int32)">
+      <summary></summary>
+      <param name="handCount"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.SetMaxHand(System.Int32)">
+      <summary></summary>
+      <param name="handCount"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.Shuffle">
+      <summary></summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.SpendCard(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.UseCard(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="P:BattleAllyCardDetail.maxHandCount">
+      <summary></summary>
+    </member>
     <member name="T:BattleCardTotalResult">
       <summary>バトル ページによって適用された効果の結果を格納します。</summary>
     </member>
@@ -481,6 +667,85 @@
     <member name="P:BattleDiceBehavior.Type">
       <summary></summary>
     </member>
+    <member name="T:BattleDiceCardBuf">
+      <summary>バトル ページに付与するバフを表します。</summary>
+    </member>
+    <member name="F:BattleDiceCardBuf._card">
+      <summary></summary>
+    </member>
+    <member name="F:BattleDiceCardBuf._priority">
+      <summary></summary>
+    </member>
+    <member name="F:BattleDiceCardBuf._stack">
+      <summary></summary>
+    </member>
+    <member name="M:BattleDiceCardBuf.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:BattleDiceCardBuf.Destroy">
+      <summary>次の幕からこのバフを破棄します。</summary>
+    </member>
+    <member name="M:BattleDiceCardBuf.GetBufIcon">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleDiceCardBuf.GetCost(System.Int32)">
+      <summary></summary>
+      <param name="oldCost"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleDiceCardBuf.Init(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleDiceCardBuf.IsDestroyed">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleDiceCardBuf.OnAddKeywordBufByCard(BattleUnitBuf,System.Int32)">
+      <summary></summary>
+      <param name="cardBuf"></param>
+      <param name="stack"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleDiceCardBuf.OnGiveKeywordBufByCard(BattleUnitBuf,System.Int32,BattleUnitModel)">
+      <summary></summary>
+      <param name="cardBuf"></param>
+      <param name="stack"></param>
+      <param name="target"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleDiceCardBuf.OnRoundEnd">
+      <summary>幕の終了時に呼び出されます。</summary>
+    </member>
+    <member name="M:BattleDiceCardBuf.OnRoundStart">
+      <summary>幕の開始時に呼び出されます。</summary>
+    </member>
+    <member name="M:BattleDiceCardBuf.OnUseCard(BattleUnitModel)">
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="owner">使用されるバトル ページの所有キャラクター。</param>
+    </member>
+    <member name="P:BattleDiceCardBuf.bufActivatedText">
+      <summary></summary>
+    </member>
+    <member name="P:BattleDiceCardBuf.bufType">
+      <summary></summary>
+    </member>
+    <member name="P:BattleDiceCardBuf.keywordIconId">
+      <summary>アイコン表示用のキーワードを取得します。</summary>
+    </member>
+    <member name="P:BattleDiceCardBuf.keywordId">
+      <summary>ヘルプ メッセージ用のキーワードを取得します。_EffectTexts.txt の ID では「"CardBuf_" + キーワード名」とする必要があります。</summary>
+    </member>
+    <member name="P:BattleDiceCardBuf.paramInBufDesc">
+      <summary>ヘルプ メッセージに含まれる書式指定文字列 ({0}) に渡す数値を取得します。</summary>
+    </member>
+    <member name="P:BattleDiceCardBuf.Priority">
+      <summary></summary>
+    </member>
+    <member name="P:BattleDiceCardBuf.Stack">
+      <summary></summary>
+    </member>
     <member name="T:BattleDiceCardModel">
       <summary>バトル ページを表します。</summary>
     </member>
@@ -650,8 +915,8 @@
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleDiceCardModel.OnUseCard(BattleUnitModel)">
-      <summary></summary>
-      <param name="owner"></param>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="owner">使用されるバトル ページの所有キャラクター。</param>
     </member>
     <member name="M:BattleDiceCardModel.RemoveAddedIcon(System.String,System.Int32)">
       <summary></summary>
@@ -1104,7 +1369,7 @@
       <summary></summary>
     </member>
     <member name="M:BattlePlayingCardDataInUnitModel.OnUseCard">
-      <summary></summary>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
     </member>
     <member name="M:BattlePlayingCardDataInUnitModel.OnWinParryingAttack">
       <summary></summary>
@@ -1445,7 +1710,7 @@
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBuf.OnRoundStartAfter">
-      <summary></summary>
+      <summary>幕の開始時、 <see cref="OnRoundStart" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBuf.OnStartParrying(BattlePlayingCardDataInUnitModel)">
       <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
@@ -1461,8 +1726,8 @@
       <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:BattleUnitBuf.OnUseCard(BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="card"></param>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="card">使用されるバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBuf.OnWinParrying(BattleDiceBehavior)">
       <summary></summary>
@@ -1514,13 +1779,13 @@
       <summary>ヘルプ メッセージ用のキーワードを取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.paramInBufDesc">
-      <summary></summary>
+      <summary>ヘルプ メッセージに含まれる書式指定文字列 ({0}) に渡す数値を取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.positiveType">
       <summary>ポジティブ タイプを取得します。</summary>
     </member>
     <member name="T:BattleUnitBufListDetail">
-      <summary>キャラクターに付与されたバフのリストを表します。</summary>
+      <summary>キャラクターに付与されたバフのリストの詳細を表します。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.#ctor(BattleUnitModel)">
       <summary></summary>
@@ -1887,16 +2152,16 @@
       <summary></summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundEnd">
-      <summary></summary>
+      <summary>幕の終了時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundEndTheLast">
-      <summary></summary>
+      <summary>幕の終了時、 <see cref="OnRoundEnd" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundStart">
-      <summary></summary>
+      <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundStartAfter">
-      <summary></summary>
+      <summary>幕の開始時、 <see cref="OnRoundStart" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnStartParrying(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -1912,8 +2177,8 @@
       <param name="dmg">受けるダメージ量。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnUseCard(BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="card"></param>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="card">使用されるバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnWinParrying(BattleDiceBehavior)">
       <summary></summary>
@@ -1957,16 +2222,16 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.allyCardDetail">
-      <summary></summary>
+      <summary>味方のバトル ページの詳細。</summary>
     </member>
     <member name="F:BattleUnitModel.battleCardResultLog">
-      <summary>バトル ページによって適用された効果の結果ログを取得します。</summary>
+      <summary>バトル ページによって適用された効果の結果ログ。</summary>
     </member>
     <member name="F:BattleUnitModel.breakDetail">
-      <summary>混乱耐性</summary>
+      <summary>混乱耐性の詳細</summary>
     </member>
     <member name="F:BattleUnitModel.bufListDetail">
-      <summary>付与されたバフのリスト</summary>
+      <summary>付与されたバフのリストの詳細</summary>
     </member>
     <member name="F:BattleUnitModel.cardHistory">
       <summary></summary>
@@ -2471,19 +2736,19 @@
       <summary></summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundEnd">
-      <summary></summary>
+      <summary>幕の終了時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundEnd_after">
       <summary></summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundEndTheLast">
-      <summary></summary>
+      <summary>幕の終了時、 <see cref="OnRoundEnd" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundEndTheLast_ignoreDead">
       <summary></summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundStart">
-      <summary></summary>
+      <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundStart_before">
       <summary></summary>
@@ -2532,8 +2797,8 @@
       <param name="dmg"></param>
     </member>
     <member name="M:BattleUnitModel.OnUseCard(BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="card"></param>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="card">使用されるバトル ページ。</param>
     </member>
     <member name="M:BattleUnitModel.OnUseChargeStack">
       <summary></summary>
@@ -2817,6 +3082,9 @@
       <returns></returns>
     </member>
     <member name="M:BookModel.CheckExistPassiveBook">
+      <summary></summary>
+    </member>
+    <member name="M:BookModel.CheckOverlapPassive">
       <summary></summary>
     </member>
     <member name="M:BookModel.CheckOverPassiveCost(System.Boolean)">
@@ -3527,7 +3795,7 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnUseCard">
-      <summary>バトル ページが使用された時に呼び出されます。</summary>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnUseCardEvent">
       <summary></summary>
@@ -4360,7 +4628,7 @@
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnRoundStartAfter">
-      <summary></summary>
+      <summary>幕の開始時、 <see cref="OnRoundStart" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnSelectCardAuto(BattleDiceCardModel,System.Int32)">
       <summary></summary>
@@ -4409,8 +4677,8 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnUseCard(BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="curCard"></param>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="curCard">使用されるバトル ページ。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnUseChargeStack">
       <summary></summary>
