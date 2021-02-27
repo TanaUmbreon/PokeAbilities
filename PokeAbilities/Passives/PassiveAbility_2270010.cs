@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿#pragma warning disable CA1031 // Do not catch general exception types
+
+using System;
 using PokeAbilities.Bufs;
 
 namespace PokeAbilities.Passives
@@ -11,7 +11,7 @@ namespace PokeAbilities.Passives
     /// </summary>
     public class PassiveAbility_2270010 : PassiveAbilityBase
     {
-        /// <summary>被ダメージ減衰量</summary>
+        /// <summary>被ダメージ軽減量</summary>
         private int dmgReduction;
 
         public override void OnCreated()
@@ -42,7 +42,8 @@ namespace PokeAbilities.Passives
             return base.BeforeTakeDamage(attacker, dmg);
         }
 
-        public override int GetDamageReductionAll() => dmgReduction;
+        public override int GetDamageReductionAll()
+            => dmgReduction;
 
         public override int GetBreakDamageReductionAll(int dmg, DamageType dmgType, BattleUnitModel attacker)
             => dmgReduction;
