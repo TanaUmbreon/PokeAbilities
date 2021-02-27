@@ -69,4 +69,18 @@
     <NeedLevel>1</NeedLevel>
     <Cost>1</Cost>
   </Passive>
+
+  <!--ちょすい-->
+  <Passive ID="2270010">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>8</Cost>
+  </Passive>
+
+  <!--うるおいボディ-->
+  <Passive ID="2270011">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>4</Cost>
+  </Passive>
 </PassiveXmlRoot>

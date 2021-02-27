@@ -12,6 +12,7 @@
     <DropItem Type="Equip">2279196</DropItem>
     <DropItem Type="Equip">2279197</DropItem>
   </BookUse>
+
   <!--フィンの本-->
   <BookUse ID="200004">
     <TextId>dropbook_finn</TextId>
@@ -20,6 +21,7 @@
     <Exp>5</Exp>
     <EquipProb>0.3</EquipProb>
     <DropItem Type="Equip">200004</DropItem>
+    <DropItem Type="Equip">2279134</DropItem>
     <DropItem Type="Equip">2279135</DropItem>
     <DropItem Type="Equip">2279136</DropItem>
   </BookUse>

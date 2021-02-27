@@ -56,11 +56,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleUnitBufListDetailExtension.cs" />
+    <Compile Include="Bufs\BattleDiceCardBufCustomBase.cs" />
+    <Compile Include="Bufs\BattleDiceCardBuf_WaterType.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
+    <Compile Include="Bufs\BattleUnitBuf_Rain.cs" />
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
+    <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\LogExtensionForPassive.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
+    <Compile Include="Passives\PassiveAbility_2270011.cs" />
+    <Compile Include="Passives\PassiveAbility_2270010.cs" />
     <Compile Include="Passives\PassiveAbility_2270009.cs" />
     <Compile Include="Passives\PassiveAbility_2270008.cs" />
     <Compile Include="Passives\PassiveAbility_2270007.cs" />
@@ -83,6 +89,21 @@
     <Content Include="ArtWork\Pokemon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ArtWork\RainBuf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtWork\RainDance.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtWork\WaterTypeBuf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\BattleCardAbilities\_BattleCardAbilities.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\BattlesCards\_BattleCards.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Localize\jp\Books\_Books.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -90,6 +111,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\Card\Card.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\CardDropTable\CardDropTable.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticInfo\DropBook\DropBook.txt.xml">

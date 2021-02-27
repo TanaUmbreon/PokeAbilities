@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CardDropTableXmlRoot>
+  <!--フィンの本-->
+  <DropTable ID="200004">
+    <Card>100001</Card>
+    <Card>100002</Card>
+    <Card>100003</Card>
+    <Card>100004</Card>
+    <Card>100005</Card>
+    <Card>102003</Card>
+    <Card>102006</Card>
+    <Card>2278000</Card>
+  </DropTable>
+</CardDropTableXmlRoot>

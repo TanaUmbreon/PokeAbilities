@@ -26,6 +26,31 @@
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
 
+  <!--シャワーズ-->
+  <Book ID="2279134">
+    <Name>Vaporeon</Name>
+    <TextId>2279134</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270010</Passive>
+      <Passive Level="1">2270011</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Pokemon</BookIcon>
+    <Chapter>1</Chapter>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
   <!--サンダース-->
   <Book ID="2279135">
     <Name>Jolteon</Name>
