@@ -19,7 +19,7 @@ namespace PokeAbilities.Passives
                 if (!owner.bufListDetail.ExistsKeywordBuf(KeywordBuf.Burn)) { return; }
                 if (owner.bufListDetail.HasBuf<BattleUnitBuf_FlashFire>()) { return; }
 
-                owner.bufListDetail.AddBuf<BattleUnitBuf_FlashFire>(1);
+                owner.bufListDetail.AddBuf<BattleUnitBuf_FlashFire>();
             }
             catch (Exception ex)
             {

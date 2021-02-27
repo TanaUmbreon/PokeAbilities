@@ -32,7 +32,7 @@ namespace PokeAbilities
         /// <typeparam name="T">付与するバフの型。</typeparam>
         /// <param name="target">バフを付与する対象キャラクターのバフ一覧。</param>
         /// <param name="stack">付与するバフのスタック数。</param>
-        public static void AddBuf<T>(this BattleUnitBufListDetail target, int stack) where T : BattleUnitBuf, new()
+        public static void AddBuf<T>(this BattleUnitBufListDetail target, int stack = 0) where T : BattleUnitBuf, new()
         {
             BattleUnitBuf buf = target.GetActivatedBufList().FirstOrDefault(b => b is T);
             if (buf == null)

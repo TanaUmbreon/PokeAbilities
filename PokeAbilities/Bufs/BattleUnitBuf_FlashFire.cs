@@ -14,7 +14,7 @@ namespace PokeAbilities.Bufs
 
         protected override string keywordIconId => "FlashFireBuf";
 
-        protected override int MaxStack => 1;
+        protected override int MaxStack => 0;
 
         /// <summary>
         /// <see cref="BattleUnitBuf_FlashFire"/> の新しいインスタンスを生成します。
