@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace PokeAbilities
 {
@@ -31,6 +32,7 @@ namespace PokeAbilities
         /// <typeparam name="T">判定するバフの型。</typeparam>
         /// <param name="target">判定する対象キャラクターのバフ一覧。</param>
         /// <returns>指定したバフの型が有効な状態で存在している場合は true、存在していない場合は false を返します。</returns>
+        [Obsolete("BattleUnitBufListDetail.HasBuf<T>() メソッドを使用してください。")]
         public static bool ExistsBuf<T>(this BattleUnitBufListDetail target) where T : BattleUnitBuf
             => target.GetActivatedBufList().Any(b => b is T && !b.IsDestroyed());
 
