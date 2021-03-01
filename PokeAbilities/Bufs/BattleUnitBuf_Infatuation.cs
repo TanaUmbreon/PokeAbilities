@@ -30,7 +30,7 @@
 
         public override void OnRoundStart()
         {
-            if (RandomUtil.valueForProb >= 0.25f) { return; }
+            if (RandomUtil.valueForProb >= 0.5f) { return; }
 
             _owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Stun, 1);
         }

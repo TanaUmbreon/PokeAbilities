@@ -7,7 +7,7 @@ namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「フェアリースキン」
-    /// 効果を持たない攻撃ダイスでの攻撃的中時、80%の確率で妖精を1付与。
+    /// 効果を持たない攻撃ダイスでの攻撃的中時、妖精1を付与。
     /// </summary>
     public class PassiveAbility_2270013 : PassiveAbilityBase
     {
@@ -15,7 +15,7 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                if (behavior.abilityList.Any() || RandomUtil.valueForProb >= 0.8f) { return; }
+                if (behavior.abilityList.Any()) { return; }
 
                 BattleUnitModel target = behavior.card.target;
                 if (target == null) { return; }

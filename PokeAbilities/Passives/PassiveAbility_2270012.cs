@@ -8,7 +8,7 @@ namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「メロメロボディ」
-    /// 近接バトルページの攻撃を受けたとき、30%の確率で相手にメロメロ状態を付与。
+    /// 近接バトルページの攻撃を受けたとき、10%の確率で相手にメロメロ状態を付与。
     /// </summary>
     public class PassiveAbility_2270012 : PassiveAbilityBase
     {
@@ -17,7 +17,7 @@ namespace PokeAbilities.Passives
             try
             {
                 CardRange range = atkDice.card.card.GetSpec().Ranged;
-                if (range != CardRange.Near || RandomUtil.valueForProb >= 0.3f) { return; }
+                if (range != CardRange.Near || RandomUtil.valueForProb >= 0.1f) { return; }
 
                 BattleUnitModel target = atkDice.owner;
                 if (target.bufListDetail.HasBuf<BattleUnitBuf_Infatuation>()) { return; }

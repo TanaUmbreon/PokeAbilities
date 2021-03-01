@@ -50,10 +50,10 @@
   </PassiveDesc>
   <PassiveDesc ID="2270012">
     <Name>メロメロボディ</Name>
-    <Desc>近接バトルページの攻撃を受けたとき、30%の確率で相手にメロメロを付与。</Desc>
+    <Desc>近接バトルページの攻撃を受けたとき、10%の確率で相手にメロメロを付与。</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270013">
     <Name>フェアリースキン</Name>
-    <Desc>効果を持たない攻撃ダイスでの攻撃的中時、80%の確率で妖精を1付与。</Desc>
+    <Desc>効果を持たない攻撃ダイスでの攻撃的中時、妖精1を付与。</Desc>
   </PassiveDesc>
 </PassiveDescRoot>
