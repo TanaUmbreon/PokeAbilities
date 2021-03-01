@@ -25,4 +25,16 @@
     <DropItem Type="Equip">2279135</DropItem>
     <DropItem Type="Equip">2279136</DropItem>
   </BookUse>
+
+  <!--エリーの本-->
+  <BookUse ID="200006">
+    <TextId>dropbook_eri</TextId>
+    <BookIcon>YunsOffice</BookIcon>
+    <Chapter>1</Chapter>
+    <Exp>6</Exp>
+    <EquipProb>0.3</EquipProb>
+    <DropItem Type="Equip">200005</DropItem>
+    <DropItem Type="Equip">201001</DropItem>
+    <DropItem Type="Equip">2279700</DropItem>
+  </BookUse>
 </BookUseXmlRoot>

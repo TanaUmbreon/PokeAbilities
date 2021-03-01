@@ -83,4 +83,18 @@
     <NeedLevel>1</NeedLevel>
     <Cost>4</Cost>
   </Passive>
+
+  <!--メロメロボディ-->
+  <Passive ID="2270012">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+
+  <!--フェアリースキン-->
+  <Passive ID="2270013">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
 </PassiveXmlRoot>

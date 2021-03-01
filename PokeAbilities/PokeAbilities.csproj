@@ -59,12 +59,15 @@
     <Compile Include="Bufs\BattleDiceCardBufCustomBase.cs" />
     <Compile Include="Bufs\BattleDiceCardBuf_WaterType.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
+    <Compile Include="Bufs\BattleUnitBuf_Infatuation.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Rain.cs" />
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\LogExtensionForPassive.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
+    <Compile Include="Passives\PassiveAbility_2270013.cs" />
+    <Compile Include="Passives\PassiveAbility_2270012.cs" />
     <Compile Include="Passives\PassiveAbility_2270011.cs" />
     <Compile Include="Passives\PassiveAbility_2270010.cs" />
     <Compile Include="Passives\PassiveAbility_2270009.cs" />
@@ -84,6 +87,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ArtWork\FlashFireBuf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtWork\InfatuationBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ArtWork\Pokemon.png">

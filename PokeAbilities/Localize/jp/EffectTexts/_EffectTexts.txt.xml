@@ -14,6 +14,11 @@
       <Name>あめ</Name>
       <Desc>幕の開始時、手札2枚に「みずタイプ」をランダム付与。幕の終了時、数値が1減少</Desc>
     </BattleEffectText>
+    <BattleEffectText ID="Infatuation">
+      <Name>メロメロ</Name>
+      <Desc>幕の開始時、50%の確率で行動不能状態になる。
+この状態を付与したキャラクターが死亡した時、メロメロ状態が解除される</Desc>
+    </BattleEffectText>
     <BattleEffectText ID="CardBuf_WaterType">
       <Name>みずタイプ</Name>
       <Desc>あめ状態のとき、このページで与えるダメージ量+1</Desc>

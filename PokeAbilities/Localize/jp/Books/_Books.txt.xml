@@ -37,5 +37,11 @@
       </TextList>
       <PassiveList />
     </BookDesc>
+    <BookDesc BookID="2279700">
+      <BookName>ニンフィアのページ</BookName>
+      <TextList>
+      </TextList>
+      <PassiveList />
+    </BookDesc>
   </bookDescList>
 </BookDescRoot>
