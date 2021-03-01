@@ -8,7 +8,7 @@
     <BattleEffectText ID="Rain">
       <Name>あめ</Name>
       <Desc>幕の開始時、手元のバトルページ2枚に「みずタイプ」をランダムに付与。
-幕の終了時、数値が1減少する。(最大5)</Desc>
+幕の終了時、数値が1減少する(最大5)</Desc>
     </BattleEffectText>
     <BattleEffectText ID="Rain_Simple">
       <Name>あめ</Name>

@@ -8,8 +8,7 @@ namespace PokeAbilities.Bufs
     /// <summary>
     /// 状態「あめ」。
     /// 幕の開始時、手元のバトルページ2枚に「みずタイプ」をランダムに付与。
-    /// 幕の終了時、数値が1減少する。(最大5)
-    /// 「みずタイプ」が付与されたページは「このページで与えるダメージ量+1」の効果を持つ
+    /// 幕の終了時、数値が1減少する(最大5)
     /// </summary>
     public class BattleUnitBuf_Rain : BattleUnitBufCustomBase
     {

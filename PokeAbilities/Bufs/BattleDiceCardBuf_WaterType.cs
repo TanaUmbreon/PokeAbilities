@@ -2,6 +2,7 @@
 {
     /// <summary>
     /// バトル ページ状態「みずタイプ」
+    /// あめ状態のとき、このページで与えるダメージ量+1
     /// </summary>
     public class BattleDiceCardBuf_WaterType : BattleDiceCardBufCustomBase
     {

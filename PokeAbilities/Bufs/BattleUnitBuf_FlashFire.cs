@@ -6,7 +6,7 @@ namespace PokeAbilities.Bufs
 {
     /// <summary>
     /// 状態「もらいび」。
-    /// 火傷ダメージを受けず、50%の確率で攻撃ダイスの威力+1。
+    /// 今回の舞台の間、火傷ダメージを受けず、50%の確率で攻撃ダイスの威力+1
     /// </summary>
     public class BattleUnitBuf_FlashFire : BattleUnitBufCustomBase
     {
