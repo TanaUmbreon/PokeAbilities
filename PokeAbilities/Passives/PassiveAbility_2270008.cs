@@ -24,8 +24,8 @@ namespace PokeAbilities.Passives
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(OnRoundEnd), "Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
         }
     }

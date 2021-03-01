@@ -41,8 +41,8 @@ namespace PokeAbilities.Bufs
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine("[BattleUnitBuf_Rain.OnRoundStart] Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
         }
 

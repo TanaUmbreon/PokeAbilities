@@ -24,7 +24,7 @@ namespace PokeAbilities.Bufs
             Harmony_Patch.ArtWorks.TryGetValue(artWorksName, out Sprite sprite);
             if (sprite == null)
             {
-                Log.Instance.AppendLine("[BattleDiceCardBufCustomBase.LoadIcon] ArtWorks not found. (artWorksName: " + artWorksName + ")");
+                Log.Instance.ErrorWithCaller($"ArtWorks not found. (artWorksName: {artWorksName})");
                 return;
             }
 

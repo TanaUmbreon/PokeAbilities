@@ -1,7 +1,6 @@
 ﻿#pragma warning disable CA1031 // Do not catch general exception types
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PokeAbilities.Passives
@@ -16,20 +15,18 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                Log.Instance.AppendLine(this, nameof(OnSucceedAttack), "Called.");
-                Log.Instance.AppendLine($"- BattleDiceAbilityList.Count: {behavior.abilityList.Count} (CardName: '{behavior.card.card.GetName()}', DiceIndex: {behavior.Index})");
+                if (behavior.abilityList.Any() || RandomUtil.valueForProb >= 0.8f) { return; }
 
-                if (behavior.abilityList.Any()) { return; }
-                if (RandomUtil.valueForProb >= 0.8f) { return; }
+                BattleUnitModel target = behavior.card.target;
+                if (target == null) { return; }
 
                 owner.battleCardResultLog?.SetPassiveAbility(this);
-                behavior.card.target?.bufListDetail.AddKeywordBufThisRoundByCard(KeywordBuf.Fairy, 1, owner);
-                Log.Instance.AppendLine($"- Add fairy 1");
+                target.bufListDetail.AddKeywordBufThisRoundByCard(KeywordBuf.Fairy, 1, owner);
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(OnSucceedAttack), "Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
         }
     }

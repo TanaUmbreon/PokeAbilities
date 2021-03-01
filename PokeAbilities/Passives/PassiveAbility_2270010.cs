@@ -36,8 +36,8 @@ namespace PokeAbilities.Passives
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(BeforeTakeDamage), "Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
             return base.BeforeTakeDamage(attacker, dmg);
         }

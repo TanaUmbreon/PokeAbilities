@@ -64,7 +64,6 @@
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Passives\LogExtensionForPassive.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
     <Compile Include="Passives\PassiveAbility_2270013.cs" />
     <Compile Include="Passives\PassiveAbility_2270012.cs" />

@@ -18,7 +18,7 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                Log.Instance.AppendLine(this, nameof(OnTakeDamageByAttack), "Called.");
+                Log.Instance.InfomationWithCaller("Called.");
 
                 CardRange range = atkDice.card.card.GetSpec().Ranged;
                 if (range != CardRange.Near) { return; }
@@ -31,8 +31,8 @@ namespace PokeAbilities.Passives
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(OnTakeDamageByAttack), "Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
         }
     }

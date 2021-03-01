@@ -20,8 +20,8 @@ namespace PokeAbilities.Passives
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(OnStartTargetedOneSide), "Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
         }
 
@@ -35,8 +35,8 @@ namespace PokeAbilities.Passives
             }
             catch (Exception ex)
             {
-                Log.Instance.AppendLine(this, nameof(OnStartParrying), "Exception thrown.");
-                Log.Instance.AppendLine(ex);
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
             }
         }
 
