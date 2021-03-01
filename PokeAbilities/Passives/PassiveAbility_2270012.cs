@@ -1,8 +1,6 @@
 ﻿#pragma warning disable CA1031 // Do not catch general exception types
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using LOR_DiceSystem;
 using PokeAbilities.Bufs;
 
@@ -18,16 +16,15 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                Log.Instance.InfomationWithCaller("Called.");
-
                 CardRange range = atkDice.card.card.GetSpec().Ranged;
-                if (range != CardRange.Near) { return; }
-                if (RandomUtil.valueForProb >= 0.3f) { return; }
+                if (range != CardRange.Near || RandomUtil.valueForProb >= 0.3f) { return; }
 
-                BattleUnitModel target = atkDice.card.target;
-                if (target == null || target.bufListDetail.HasBuf<BattleUnitBuf_Infatuation>()) { return; }
+                BattleUnitModel target = atkDice.owner;
+                if (target.bufListDetail.HasBuf<BattleUnitBuf_Infatuation>()) { return; }
 
-                target.bufListDetail.AddBuf(new BattleUnitBuf_Infatuation(owner));
+                var buf = new BattleUnitBuf_Infatuation(owner);
+                target.bufListDetail.AddBuf(buf);
+                buf.OnAddBuf();
             }
             catch (Exception ex)
             {

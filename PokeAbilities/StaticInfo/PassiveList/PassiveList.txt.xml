@@ -88,13 +88,13 @@
   <Passive ID="2270012">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>0</Cost>
+    <Cost>8</Cost>
   </Passive>
 
   <!--フェアリースキン-->
   <Passive ID="2270013">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>0</Cost>
+    <Cost>4</Cost>
   </Passive>
 </PassiveXmlRoot>

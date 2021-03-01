@@ -16,7 +16,7 @@
     </BattleEffectText>
     <BattleEffectText ID="Infatuation">
       <Name>メロメロ</Name>
-      <Desc>幕の開始時、50%の確率で行動不能状態になる。
+      <Desc>幕の開始時、25%の確率で行動不能状態になる。
 この状態を付与したキャラクターが死亡した時、メロメロ状態が解除される</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_WaterType">

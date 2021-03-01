@@ -7,6 +7,8 @@
     /// </summary>
     public class BattleUnitBuf_Infatuation : BattleUnitBufCustomBase
     {
+        public override BufPositiveType positiveType => BufPositiveType.Negative;
+
         protected override string keywordId => "Infatuation";
 
         protected override string keywordIconId => "InfatuationBuf";
@@ -28,9 +30,9 @@
 
         public override void OnRoundStart()
         {
-            if (RandomUtil.valueForProb >= 0.5f) { return; }
+            if (RandomUtil.valueForProb >= 0.25f) { return; }
 
-            _owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Stun, 0);
+            _owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Stun, 1);
         }
 
         public override void OnRoundEndTheLast()
