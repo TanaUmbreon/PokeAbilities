@@ -497,7 +497,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleDiceBehavior.abilityList">
-      <summary></summary>
+      <summary>このバトル ダイスに付与された効果のリスト</summary>
     </member>
     <member name="F:BattleDiceBehavior.behaviourInCard">
       <summary></summary>
@@ -669,7 +669,7 @@
       <summary></summary>
     </member>
     <member name="P:BattleDiceBehavior.owner">
-      <summary></summary>
+      <summary>バトル ダイスの振る舞いの所有キャラクターを取得します。</summary>
     </member>
     <member name="P:BattleDiceBehavior.PowerAdder">
       <summary></summary>
@@ -772,7 +772,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleDiceCardModel.owner">
-      <summary></summary>
+      <summary>バトル ページの所有キャラクター</summary>
     </member>
     <member name="F:BattleDiceCardModel.temporary">
       <summary></summary>
@@ -781,8 +781,8 @@
       <summary></summary>
     </member>
     <member name="M:BattleDiceCardModel.AddBuf(BattleDiceCardBuf)">
-      <summary></summary>
-      <param name="buf"></param>
+      <summary>指定したバトル ページ バフをバトル ページに追加します。</summary>
+      <param name="buf">追加するバトル ページ バフ。</param>
     </member>
     <member name="M:BattleDiceCardModel.AddBufWithoutDuplication(BattleDiceCardBuf)">
       <summary></summary>
@@ -893,13 +893,13 @@
       <returns></returns>
     </member>
     <member name="M:BattleDiceCardModel.GetSpec">
-      <summary></summary>
+      <summary>バトル ページのスペックを取得します。</summary>
       <returns></returns>
     </member>
     <member name="M:BattleDiceCardModel.HasBuf``1">
-      <summary></summary>
-      <typeparam name="T"></typeparam>
-      <returns></returns>
+      <summary>指定した型のバトル ページ バフがバトル ページに付与されている事を判定します。</summary>
+      <typeparam name="T">付与されている事を判定するバトル ページ バフの型。</typeparam>
+      <returns>指定した型のバトル ページ バフが付与されている場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleDiceCardModel.IsOnlyAllyUnit">
       <summary></summary>
@@ -1542,8 +1542,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.GetDamageReductionAll">
-      <summary></summary>
-      <returns></returns>
+      <summary>被ダメージの総軽減量を取得します。</summary>
+      <returns>被ダメージの総軽減量。</returns>
     </member>
     <member name="M:BattleUnitBuf.GetDamageReductionRate">
       <summary></summary>
@@ -1782,8 +1782,8 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBuf.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary>攻撃によるダメージを受けた時に呼び出されます。</summary>
-      <param name="atkDice">攻撃に使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <summary>攻撃によりダメージを受け、このバフ所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
       <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:BattleUnitBuf.OnUseCard(BattlePlayingCardDataInUnitModel)">
@@ -2024,8 +2024,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetDamageReductionAll">
-      <summary></summary>
-      <returns></returns>
+      <summary>被ダメージの総軽減量を取得します。</summary>
+      <returns>被ダメージの総軽減量。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetFixedTargets">
       <summary></summary>
@@ -2094,9 +2094,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.HasBuf``1">
-      <summary></summary>
-      <typeparam name="T"></typeparam>
-      <returns></returns>
+      <summary>指定した型のバフがバフ リストの所有キャラクターに付与されている事を判定します。</summary>
+      <typeparam name="T">付与されている事を判定するバフの型。</typeparam>
+      <returns>指定した型のバフが付与されている場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.HasStun">
       <summary></summary>
@@ -2267,9 +2267,9 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary>攻撃によりダメージを受ける直前に呼び出されます。</summary>
-      <param name="atkDice">攻撃に使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
-      <param name="dmg">受けるダメージ量。</param>
+      <summary>攻撃によりダメージを受け、このバフ リスト所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnUseCard(BattlePlayingCardDataInUnitModel)">
       <summary>バトル ページが使用される時に呼び出されます。</summary>
@@ -2280,20 +2280,20 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBuf(BattleUnitBuf)">
-      <summary>指定したバフがこのキャラクターに付与されている場合、最初に出現したものを削除します。</summary>
+      <summary>指定したバフがこのバフ リスト所有キャラクターに付与されている場合、最初に出現したものを削除します。</summary>
       <param name="buf">削除するバフ オブジェクト。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll(System.Type)">
-      <summary>指定した型に一致するバフをこのキャラクターから全て削除します。</summary>
+      <summary>指定した型に一致するバフをこのバフ リスト所有キャラクターから全て削除します。</summary>
       <param name="buf">削除するバフの型。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll(KeywordBuf)">
-      <summary>指定したキーワードに一致するバフをこのキャラクターから全て削除します。</summary>
+      <summary>指定したキーワードに一致するバフをこのバフ リスト所有キャラクターから全て削除します。</summary>
       <param name="bufType">削除するバフのキーワード。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll(BufPositiveType)">
-      <summary></summary>
-      <param name="bufPositiveType"></param>
+      <summary>指定したポジティブ タイプに一致するバフをこのバフ リスト所有キャラクターから全て削除します。</summary>
+      <param name="bufPositiveType">削除するバフのポジティブ タイプ。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll">
       <summary></summary>
@@ -2549,11 +2549,11 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.GetBreakDamageReductionAll(System.Int32,DamageType,BattleUnitModel)">
-      <summary></summary>
-      <param name="dmg"></param>
-      <param name="dmgType"></param>
-      <param name="attacker"></param>
-      <returns></returns>
+      <summary>被混乱ダメージの総軽減量を取得します。</summary>
+      <param name="dmg">軽減前の被混乱ダメージ量。</param>
+      <param name="dmgType">ダメージ元の種類。</param>
+      <param name="attacker">攻撃キャラクター。</param>
+      <returns>被混乱ダメージの総軽減量。</returns>
     </member>
     <member name="M:BattleUnitModel.GetCurrentSpeed">
       <summary></summary>
@@ -2573,8 +2573,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.GetDamageReductionAll">
-      <summary></summary>
-      <returns></returns>
+      <summary>被ダメージの総軽減量を取得します。</summary>
+      <returns>被ダメージの総軽減量。</returns>
     </member>
     <member name="M:BattleUnitModel.GetFixedTargets">
       <summary></summary>
@@ -2915,14 +2915,14 @@
       <param name="target"></param>
     </member>
     <member name="M:BattleUnitModel.OnTakeBreakDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary></summary>
-      <param name="atkDice"></param>
-      <param name="breakdmg"></param>
+      <summary>攻撃により混乱ダメージを受け、このキャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <param name="breakdmg">被混乱ダメージ量。</param>
     </member>
     <member name="M:BattleUnitModel.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary></summary>
-      <param name="atkDice"></param>
-      <param name="dmg"></param>
+      <summary>攻撃によりダメージを受け、このキャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:BattleUnitModel.OnUseCard(BattlePlayingCardDataInUnitModel)">
       <summary>バトル ページが使用される時に呼び出されます。</summary>
@@ -3822,7 +3822,7 @@
       <summary>ヘルプ メッセージ用のキーワードを取得します。</summary>
     </member>
     <member name="P:DiceCardAbilityBase.owner">
-      <summary></summary>
+      <summary>バトル ダイス効果の所有キャラクターを取得します。</summary>
     </member>
     <member name="T:DiceCardSelfAbilityBase">
       <summary>バトル ページそのものに付与された効果を表す基底クラスです。全てのバトル ページ効果はこのクラスを派生して実装されます。</summary>
@@ -3984,19 +3984,19 @@
       <summary>ヘルプ メッセージ用のキーワードを取得します。</summary>
     </member>
     <member name="P:DiceCardSelfAbilityBase.owner">
-      <summary>このバトル ページ効果を持つバトル ページの所有キャラクターを取得します。</summary>
+      <summary>バトル ページ効果の所有キャラクターを取得します。</summary>
     </member>
     <member name="T:DiceStatBonus">
       <summary>バトル ダイスに付与するボーナス値を表します。</summary>
     </member>
     <member name="F:DiceStatBonus.breakDmg">
-      <summary>混乱ダメージ</summary>
+      <summary>混乱ダメージの増減量</summary>
     </member>
     <member name="F:DiceStatBonus.breakRate">
       <summary></summary>
     </member>
     <member name="F:DiceStatBonus.dmg">
-      <summary>ダメージ</summary>
+      <summary>ダメージの増減量</summary>
     </member>
     <member name="F:DiceStatBonus.dmgRate">
       <summary></summary>
@@ -4014,13 +4014,13 @@
       <summary></summary>
     </member>
     <member name="F:DiceStatBonus.max">
-      <summary></summary>
+      <summary>ダイス最大値の増減量</summary>
     </member>
     <member name="F:DiceStatBonus.min">
-      <summary></summary>
+      <summary>ダイス最小値の増減量</summary>
     </member>
     <member name="F:DiceStatBonus.power">
-      <summary>ダイス威力</summary>
+      <summary>ダイス威力の増減量</summary>
     </member>
     <member name="M:DiceStatBonus.#ctor">
       <summary>
@@ -4418,7 +4418,7 @@
       <summary></summary>
     </member>
     <member name="F:LOR_DiceSystem.CardRange.Near">
-      <summary>接近攻撃</summary>
+      <summary>近接攻撃</summary>
     </member>
     <member name="F:LOR_DiceSystem.CardRange.Special">
       <summary>特殊攻撃</summary>
@@ -4590,11 +4590,11 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.GetBreakDamageReductionAll(System.Int32,DamageType,BattleUnitModel)">
-      <summary></summary>
-      <param name="dmg"></param>
-      <param name="dmgType"></param>
-      <param name="attacker"></param>
-      <returns></returns>
+      <summary>被混乱ダメージの総軽減量を取得します。</summary>
+      <param name="dmg">軽減前の被混乱ダメージ量。</param>
+      <param name="dmgType">ダメージ元の種類。</param>
+      <param name="attacker">攻撃キャラクター。</param>
+      <returns>被混乱ダメージの総軽減量。</returns>
     </member>
     <member name="M:PassiveAbilityBase.GetDamageReduction(BattleDiceBehavior)">
       <summary></summary>
@@ -4602,8 +4602,8 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.GetDamageReductionAll">
-      <summary></summary>
-      <returns></returns>
+      <summary>被ダメージの総軽減量を取得します。</summary>
+      <returns>被ダメージの総軽減量。</returns>
     </member>
     <member name="M:PassiveAbilityBase.GetMaxBpBonus">
       <summary></summary>
@@ -4888,14 +4888,14 @@
       <param name="behavior"></param>
     </member>
     <member name="M:PassiveAbilityBase.OnTakeBreakDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary></summary>
-      <param name="atkDice"></param>
-      <param name="breakdmg"></param>
+      <summary>攻撃により混乱ダメージを受け、このパッシブ所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <param name="breakdmg">被混乱ダメージ量。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary></summary>
-      <param name="atkDice"></param>
-      <param name="dmg"></param>
+      <summary>攻撃によりダメージを受け、このパッシブ所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+      <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnUnitCreated">
       <summary></summary>
