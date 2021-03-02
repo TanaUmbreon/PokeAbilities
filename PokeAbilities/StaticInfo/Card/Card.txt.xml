@@ -9,8 +9,8 @@
     <Script>rain5all</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="2" Dice="4" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="" Desc="" />
-      <Behaviour Min="2" Dice="5" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="" Desc="" />
+      <Behaviour Min="4" Dice="6" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="" Desc="" />
+      <Behaviour Min="3" Dice="7" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="" Desc="" />
     </BehaviourList>
     <Chapter>1</Chapter>
     <Priority>0</Priority>

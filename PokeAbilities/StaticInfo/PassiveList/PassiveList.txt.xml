@@ -46,14 +46,14 @@
   <Passive ID="2270006">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>2</Cost>
+    <Cost>3</Cost>
   </Passive>
 
   <!--こんじょう-->
   <Passive ID="2270007">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>3</Cost>
+    <Cost>2</Cost>
   </Passive>
 
   <!--ちくでん-->
@@ -81,7 +81,7 @@
   <Passive ID="2270011">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>4</Cost>
+    <Cost>5</Cost>
   </Passive>
 
   <!--メロメロボディ-->
