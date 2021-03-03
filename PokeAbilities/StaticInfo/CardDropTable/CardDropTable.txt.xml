@@ -11,4 +11,17 @@
     <Card>102006</Card>
     <Card>2278000</Card>
   </DropTable>
+
+  <!--エリーの本-->
+  <DropTable ID="200006">
+    <Card>100001</Card>
+    <Card>100002</Card>
+    <Card>100003</Card>
+    <Card>100004</Card>
+    <Card>100005</Card>
+    <Card>102004</Card>
+    <Card>102005</Card>
+    <Card>102006</Card>
+    <Card>2278001</Card>
+  </DropTable>
 </CardDropTableXmlRoot>

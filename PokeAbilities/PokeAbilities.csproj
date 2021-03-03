@@ -57,11 +57,14 @@
   <ItemGroup>
     <Compile Include="BattleUnitBufListDetailExtension.cs" />
     <Compile Include="Bufs\BattleDiceCardBufCustomBase.cs" />
+    <Compile Include="Bufs\BattleDiceCardBuf_FireType.cs" />
     <Compile Include="Bufs\BattleDiceCardBuf_WaterType.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Infatuation.cs" />
+    <Compile Include="Bufs\BattleUnitBuf_SunnyDay.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Rain.cs" />
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
+    <Compile Include="CardAbilities\DiceCardSelfAbility_sunny5all.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
@@ -85,6 +88,9 @@
       <Link>README%28ja%29.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ArtWork\FireTypeBuf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="ArtWork\FlashFireBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -98,6 +104,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ArtWork\RainDance.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtWork\SunnyDayBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ArtWork\WaterTypeBuf.png">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using PokeAbilities.Bufs;
 
 namespace PokeAbilities
 {
@@ -60,6 +61,16 @@ namespace PokeAbilities
             }
             buf.stack += stack;
             buf.OnAddBuf();
+        }
+
+        /// <summary>
+        /// 付与されている天気状態を全て削除します。
+        /// </summary>
+        /// <param name="target">バフを付与する対象キャラクターのバフ一覧。</param>
+        public static void RemoveAllWeather(this BattleUnitBufListDetail target)
+        {
+            target.RemoveBufAll(typeof(BattleUnitBuf_Rain));
+            target.RemoveBufAll(typeof(BattleUnitBuf_SunnyDay));
         }
     }
 }

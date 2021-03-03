@@ -5,5 +5,9 @@
       <LocalizedName>あまごい</LocalizedName>
       <Ability />
     </BattleCardDesc>
+    <BattleCardDesc ID="2278001">
+      <LocalizedName>にほんばれ</LocalizedName>
+      <Ability />
+    </BattleCardDesc>
   </cardDescList>
 </BattleCardDescRoot>
