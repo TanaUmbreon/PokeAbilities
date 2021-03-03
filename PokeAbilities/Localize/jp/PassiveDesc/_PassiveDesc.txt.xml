@@ -56,4 +56,12 @@
     <Name>フェアリースキン</Name>
     <Desc>効果を持たない攻撃ダイスでの攻撃的中時、妖精1を付与。</Desc>
   </PassiveDesc>
+  <PassiveDesc ID="2270014">
+    <Name>リーフガード</Name>
+    <Desc>にほんばれ状態のとき、状態異常に対して免疫。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270015">
+    <Name>ようりょくそ</Name>
+    <Desc>にほんばれ状態のとき、幕の開始時にクイック2を得る。</Desc>
+  </PassiveDesc>
 </PassiveDescRoot>

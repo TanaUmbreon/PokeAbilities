@@ -97,4 +97,18 @@
     <NeedLevel>1</NeedLevel>
     <Cost>5</Cost>
   </Passive>
+
+  <!--リーフガード-->
+  <Passive ID="2270014">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+
+  <!--ようりょくそ-->
+  <Passive ID="2270015">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
 </PassiveXmlRoot>

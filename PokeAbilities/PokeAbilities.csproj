@@ -68,6 +68,8 @@
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
+    <Compile Include="Passives\PassiveAbility_2270015.cs" />
+    <Compile Include="Passives\PassiveAbility_2270014.cs" />
     <Compile Include="Passives\PassiveAbility_2270013.cs" />
     <Compile Include="Passives\PassiveAbility_2270012.cs" />
     <Compile Include="Passives\PassiveAbility_2270011.cs" />
