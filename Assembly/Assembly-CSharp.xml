@@ -1428,6 +1428,83 @@
     <member name="P:BattlePlayingCardDataInUnitModel.isDestroyed">
       <summary></summary>
     </member>
+    <member name="T:BattleUnitBreakDetail">
+      <summary>混乱抵抗値の詳細を表します。</summary>
+    </member>
+    <member name="F:BattleUnitBreakDetail.blockRecoverBreakByEvaision">
+      <summary></summary>
+    </member>
+    <member name="F:BattleUnitBreakDetail.breakGauge">
+      <summary></summary>
+    </member>
+    <member name="F:BattleUnitBreakDetail.breakLife">
+      <summary></summary>
+    </member>
+    <member name="F:BattleUnitBreakDetail.nextTurnBreak">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.#ctor(BattleUnitModel)">
+      <summary></summary>
+      <param name="self"></param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.DestroyBreakPoint">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.GetDefaultBreakGauge">
+      <summary>現在の最大混乱抵抗値を取得します。</summary>
+      <returns>キャラクターのパッシブやバフ等によるボーナス値や補正率が加味された最大混乱抵抗値。</returns>
+    </member>
+    <member name="M:BattleUnitBreakDetail.IsBreakLifeZero">
+      <summary>現在の混乱抵抗値が 0 であることを判定します。</summary>
+      <returns>現在の混乱抵抗値が 0 の場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="M:BattleUnitBreakDetail.LoseBreakGauge(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.LoseBreakLife">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.OnRecoverBreakByEvaision(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.OnRoundEnd">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.OnRoundStart">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.RecoverBreak(System.Int32)">
+      <summary>指定した値だけキャラクターの混乱抵抗値を回復します。</summary>
+      <param name="value">回復する混乱抵抗値の数値。</param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.RecoverBreakLife(System.Int32,System.Boolean)">
+      <summary></summary>
+      <param name="v"></param>
+      <param name="ignore"></param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.RecoverBreakWithoutEffect(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.ResetBreakDefault">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.ResetGauge">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBreakDetail.TakeBreakDamage(System.Int32,DamageType,BattleUnitModel,AtkResist,KeywordBuf)">
+      <summary>指定した値だけ混乱ダメージを受けます。</summary>
+      <param name="damage">受ける混乱ダメージ量。</param>
+      <param name="type">ダメージ元の種類。</param>
+      <param name="attacker">攻撃キャラクター。</param>
+      <param name="atkResist">混乱ダメージに対する属性耐性。</param>
+      <param name="keyword">混乱ダメージ倍率に起因するバフ。</param>
+    </member>
+    <member name="M:BattleUnitBreakDetail.UpdateBreakMax">
+      <summary></summary>
+    </member>
     <member name="T:BattleUnitBuf">
       <summary>キャラクターに付与するバフを表します。</summary>
     </member>
@@ -1589,8 +1666,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.Init(BattleUnitModel)">
-      <summary></summary>
-      <param name="owner"></param>
+      <summary>このバフを初期化します。このメソッドはバフ リストに追加された時に呼び出されます。</summary>
+      <param name="owner">バフの所有キャラクター。</param>
     </member>
     <member name="M:BattleUnitBuf.IsActionable">
       <summary></summary>
@@ -1624,7 +1701,7 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(KeywordBuf)">
-      <summary>指定したバフに対して耐性を持っている事を判定します。このメソッドは各バフの実装で呼び出します。</summary>
+      <summary>指定したバフに対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各バフの実装で呼び出されます。</summary>
       <param name="buf">耐性情報を取得するバフ。</param>
       <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
@@ -1932,9 +2009,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.CanAddBuf(BattleUnitBuf)">
-      <summary></summary>
-      <param name="buf"></param>
-      <returns></returns>
+      <summary>指定したバフを付与できる事を判定します。</summary>
+      <param name="buf">付与できることを判定する対象のバフ。</param>
+      <returns>付与できる場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.ChangeAttackTarget(BattleDiceCardModel,System.Int32)">
       <summary></summary>
@@ -2124,9 +2201,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.IsImmune(KeywordBuf)">
-      <summary></summary>
-      <param name="buf"></param>
-      <returns></returns>
+      <summary>指定したバフに対して耐性を持っていて、バフ リストの所有キャラクターに付与されていても効果を発揮しない事を判定します。</summary>
+      <param name="buf">耐性情報を取得するバフ。</param>
+      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -2662,9 +2739,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.IsImmune(KeywordBuf)">
-      <summary></summary>
-      <param name="buf"></param>
-      <returns></returns>
+      <summary>指定したバフに対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各バフの実装で呼び出されます。</summary>
+      <param name="buf">耐性情報を取得するバフ。</param>
+      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitModel.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -4533,9 +4610,9 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.CanAddBuf(BattleUnitBuf)">
-      <summary></summary>
-      <param name="buf"></param>
-      <returns></returns>
+      <summary>指定したバフを付与できる事を判定します。</summary>
+      <param name="buf">付与できることを判定する対象のバフ。</param>
+      <returns>付与できる場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:PassiveAbilityBase.CanTakeTargeting">
       <summary></summary>
