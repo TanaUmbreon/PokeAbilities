@@ -43,7 +43,7 @@ namespace PokeAbilities
                 if (stack <= 0) { return; }
 
                 bool mustAddBuf = false;
-                BattleUnitBuf buf = target.GetReadyBufList().FirstOrDefault(b => b is T);
+                BattleUnitBuf buf = target.GetActivatedBufList().FirstOrDefault(b => b is T);
                 if (buf == null)
                 {
                     buf = new T() { stack = 0 };
