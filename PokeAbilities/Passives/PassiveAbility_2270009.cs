@@ -17,7 +17,7 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                if (!owner.bufListDetail.ExistsPositiveType(BufPositiveType.Negative)) { return; }
+                if (!owner.bufListDetail.HasBuf(BufPositiveType.Negative)) { return; }
                 owner.bufListDetail.AddKeywordBufByEtc(KeywordBuf.Quickness, 1, owner);
             }
             catch (Exception ex)

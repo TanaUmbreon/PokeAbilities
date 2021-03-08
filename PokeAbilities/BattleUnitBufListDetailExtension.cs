@@ -18,7 +18,7 @@ namespace PokeAbilities
         /// <param name="target">判定する対象キャラクターのバフ リスト。</param>
         /// <param name="type">判定するポジティブ タイプ。</param>
         /// <returns>指定したポジティブ タイプが有効な状態で存在している場合は true、存在していない場合は false を返します。</returns>
-        public static bool ExistsPositiveType(this BattleUnitBufListDetail target, BufPositiveType type)
+        public static bool HasBuf(this BattleUnitBufListDetail target, BufPositiveType type)
             => target.GetActivatedBufList().Any(b => b.positiveType == type && !b.IsDestroyed());
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace PokeAbilities
         /// <param name="target">判定する対象キャラクターのバフ リスト。</param>
         /// <param name="type">判定するバフの種類。</param>
         /// <returns>指定したバフの種類が有効な状態で存在している場合は true、存在していない場合は false を返します。</returns>
-        public static bool ExistsKeywordBuf(this BattleUnitBufListDetail target, KeywordBuf buf)
+        public static bool HasBuf(this BattleUnitBufListDetail target, KeywordBuf buf)
             => target.GetActivatedBufList().Any(b => b.bufType == buf && !b.IsDestroyed());
 
         /// <summary>

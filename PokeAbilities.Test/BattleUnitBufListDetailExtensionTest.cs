@@ -21,36 +21,36 @@ namespace PokeAbilities.Test
         [Test(Description = "初期状態では全てfalseが返る")]
         public void TestHasBuf_BufPositiveType1()
         {
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.False);
         }
 
         [Test(Description = "この幕にPositiveなバフが適用されていると、それのみtrueが返る")]
         public void TestHasBuf_BufPositiveType2()
         {
             bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Strength, 1);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.False);
         }
 
         [Test(Description = "この幕にNegativeなバフが適用されていると、それのみtrueが返る")]
         public void TestHasBuf_BufPositiveType3()
         {
             bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Weak, 1);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.True);
         }
 
         [Test(Description = "この幕にNoneなバフが適用されていると、それのみtrueが返る")]
         public void TestHasBuf_BufPositiveType4()
         {
             bufListDetail.AddBuf(new BattleUnitBuf_smoke() { stack = 1 });
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.False);
         }
 
         [Test(Description = "この幕に全BufPositiveTypeが適用されていると、全てtrueが返る")]
@@ -59,9 +59,9 @@ namespace PokeAbilities.Test
             bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Strength, 1);
             bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Weak, 1);
             bufListDetail.AddBuf(new BattleUnitBuf_smoke() { stack = 1 });
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.True);
         }
 
         [Test(Description = "次の幕に全BufPositiveTypeが適用されていても、falseのまま")]
@@ -70,9 +70,9 @@ namespace PokeAbilities.Test
             bufListDetail.AddKeywordBufByEtc(KeywordBuf.Strength, 1);
             bufListDetail.AddKeywordBufByEtc(KeywordBuf.Weak, 1);
             bufListDetail.AddReadyBuf(new BattleUnitBuf_smoke() { stack = 1 });
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.False);
         }
 
         [Test(Description = "この幕に全BufPositiveTypeが適用されているが、Noneのみ破棄状態だとそれだけfalseが返る")]
@@ -83,15 +83,15 @@ namespace PokeAbilities.Test
             var noneBuf = new BattleUnitBuf_smoke() { stack = 1 };
             bufListDetail.AddBuf(noneBuf);
 
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.True);
 
             noneBuf.Destroy();
 
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.None), Is.False);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Positive), Is.True);
-            Assert.That(bufListDetail.ExistsPositiveType(BufPositiveType.Negative), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Positive), Is.True);
+            Assert.That(bufListDetail.HasBuf(BufPositiveType.Negative), Is.True);
         }
     }
 
@@ -111,28 +111,28 @@ namespace PokeAbilities.Test
         [Test(Description = "初期状態ではfalseが返る")]
         public void TestHasBuf_KeywordBuf1()
         {
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.False);
         }
 
         [Test(Description = "この幕に特定のKeywordBufが適用されていると、それに対してtrueが返る")]
         public void TestHasBuf_KeywordBuf2()
         {
             bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 1);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.False);
 
             bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Weak, 1);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.True);
 
             bufListDetail.AddBuf(new BattleUnitBuf_theCryingWeak());
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.True);
         }
 
         [Test(Description = "次の幕に特定のKeywordBufが適用されていても、falseのまま")]
@@ -141,9 +141,9 @@ namespace PokeAbilities.Test
             bufListDetail.AddKeywordBufByEtc(KeywordBuf.Quickness, 1);
             bufListDetail.AddKeywordBufByEtc(KeywordBuf.Weak, 1);
             bufListDetail.AddReadyBuf(new BattleUnitBuf_theCryingWeak());
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.False);
         }
 
         [Test(Description = "この幕に特定のKeywordBufが適用されているが、破棄状態だとそれだけfalseが返る")]
@@ -154,15 +154,15 @@ namespace PokeAbilities.Test
             var noneBuf = new BattleUnitBuf_theCryingWeak() { stack = 1 };
             bufListDetail.AddBuf(noneBuf);
 
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.True);
 
             noneBuf.Destroy();
 
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.None), Is.False);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Quickness), Is.True);
-            Assert.That(bufListDetail.ExistsKeywordBuf(KeywordBuf.Weak), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.None), Is.False);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Quickness), Is.True);
+            Assert.That(bufListDetail.HasBuf(KeywordBuf.Weak), Is.True);
         }
     }
 
