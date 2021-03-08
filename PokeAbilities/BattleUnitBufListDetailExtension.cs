@@ -10,7 +10,7 @@ namespace PokeAbilities
     /// <summary>
     /// <see cref="BattleUnitBufListDetail"/> の拡張メソッドを提供します。
     /// </summary>
-    internal static class BattleUnitBufListDetailExtension
+    public static class BattleUnitBufListDetailExtension
     {
         /// <summary>
         /// 指定したポジティブ タイプが、この幕に適用されているバフに有効な状態で存在している事を判定します。
