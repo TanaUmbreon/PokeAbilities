@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using UnityEngine;
 
 namespace PokeAbilities
@@ -56,7 +57,7 @@ namespace PokeAbilities
         /// <summary>タイムスタンプの書式指定文字列</summary>
         private const string TimestampFormat = "yyyy-MM-dd HH:mm:ss.fff";
         /// <summary>ログ ファイルの出力先パス</summary>
-        private readonly string FilePath = Path.Combine(Application.dataPath, "BaseMods/PokeAbilitiesLog.txt");
+        private readonly string FilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "PokeAbilities.log");
 
         /// <summary>
         /// <see cref="Log"/> の新しいインスタンスを生成します。
