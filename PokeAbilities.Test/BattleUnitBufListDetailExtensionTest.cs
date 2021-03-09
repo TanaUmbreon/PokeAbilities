@@ -1,10 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using BaseMod;
 using NUnit.Framework;
+using PokeAbilities.Bufs;
+using UnityEngine;
 
 namespace PokeAbilities.Test
 {
+    [TestFixture]
+    public class BattleUnitBufListDetailExtensionTest
+    {
+        private BattleUnitModel owner;
+        private BattleUnitBufListDetail bufListDetail;
+
+        [SetUp]
+        public void InitializeFields()
+        {
+            Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
+            owner = new BattleUnitModel(0);
+            bufListDetail = owner.bufListDetail;
+        }
+
+        [Test]
+        public void TestRemoveAllWeather()
+        {
+            bufListDetail.AddBuf(new BattleUnitBuf_Rain() { stack = 1 });
+            bufListDetail.AddBuf(new BattleUnitBuf_SunnyDay() { stack = 1 });
+            bufListDetail.AddBuf(new BattleUnitBuf_strength() { stack = 1 });
+            bufListDetail.AddReadyBuf(new BattleUnitBuf_Rain() { stack = 1 });
+            bufListDetail.AddReadyBuf(new BattleUnitBuf_SunnyDay() { stack = 1 });
+            bufListDetail.AddReadyBuf(new BattleUnitBuf_strength() { stack = 1 });
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.True);
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.True);
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
+            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(3));
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.True);
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.True);
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
+            Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(3));
+
+            bufListDetail.RemoveAllWeather();
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.False);
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.False);
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
+            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(1));
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.False);
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.False);
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
+            Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(1));
+        }
+    }
+
     [TestFixture]
     public class BattleUnitBufListDetailExtensionTest_HasBuf1
     {

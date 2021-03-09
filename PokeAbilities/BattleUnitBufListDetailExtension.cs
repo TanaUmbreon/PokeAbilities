@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using System.Linq;
 using PokeAbilities.Bufs;
 using System.Reflection;
@@ -115,8 +113,12 @@ namespace PokeAbilities
         /// <param name="target">バフを付与する対象キャラクターのバフ リスト。</param>
         public static void RemoveAllWeather(this BattleUnitBufListDetail target)
         {
-            target.RemoveBufAll(typeof(BattleUnitBuf_Rain));
-            target.RemoveBufAll(typeof(BattleUnitBuf_SunnyDay));
+            var activated = target.GetActivatedBufList();
+            activated.RemoveAll(b => b is BattleUnitBuf_Rain);
+            activated.RemoveAll(b => b is BattleUnitBuf_SunnyDay);
+            var ready = target.GetReadyBufList();
+            ready.RemoveAll(b => b is BattleUnitBuf_Rain);
+            ready.RemoveAll(b => b is BattleUnitBuf_SunnyDay);
         }
 
         #region private メンバ メソッド呼び出し
