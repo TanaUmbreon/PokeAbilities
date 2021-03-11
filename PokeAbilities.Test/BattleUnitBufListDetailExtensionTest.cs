@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BaseMod;
 using NUnit.Framework;
 using PokeAbilities.Bufs;
 using UnityEngine;
@@ -16,7 +15,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
+            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
             owner = new BattleUnitModel(0);
             bufListDetail = owner.bufListDetail;
         }
