@@ -66,6 +66,7 @@
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_sunny5all.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
+    <Compile Include="Harmony_Patch.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
     <Compile Include="Passives\PassiveAbility_2270015.cs" />
@@ -117,6 +118,9 @@
     <Content Include="Localize\jp\BattleCardAbilities\_BattleCardAbilities.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Localize\jp\StageName\_StageName.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Localize\jp\BattlesCards\_BattleCards.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -127,6 +131,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\StageInfo\StageInfo.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticInfo\Card\Card.txt.xml">

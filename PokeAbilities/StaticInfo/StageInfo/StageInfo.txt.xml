@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StageXmlRoot>
+  <Stage id="2278000">
+    <Name>Poke Abilities</Name>
+    <Chapter>1</Chapter>
+    <StoryType>PokeAbilities</StoryType>
+  </Stage>
+</StageXmlRoot>
