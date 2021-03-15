@@ -59,10 +59,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\BattleDiceCardModelBuilder.cs" />
     <Compile Include="BattleUnitBufListDetailExtensionTest.cs" />
     <Compile Include="Bufs\BattleUnitBuf_SunnyDayTest.cs" />
+    <Compile Include="Helpers\BattleUnitModelBuilder.cs" />
+    <Compile Include="Helpers\PrivateAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemRandomizer.cs" />
+    <Compile Include="Helpers\SystemRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

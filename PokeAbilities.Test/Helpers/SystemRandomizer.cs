@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PokeAbilities.Test
+namespace PokeAbilities.Test.Helpers
 {
     /// <summary>
     /// <see cref="Random"/> を使用した疑似乱数ジェネレーターです。

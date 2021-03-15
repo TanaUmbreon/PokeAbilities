@@ -10,6 +10,9 @@ namespace PokeAbilities.Bufs
     /// </summary>
     public class BattleUnitBuf_SunnyDay : BattleUnitBufCustomBase
     {
+        /// <summary>疑似乱数ジェネレーター</summary>
+        private readonly IRandomizer randomizer;
+
         protected override string keywordId => "SunnyDay";
 
         protected override string keywordIconId => "SunnyDayBuf";
@@ -20,7 +23,18 @@ namespace PokeAbilities.Bufs
         /// <see cref="BattleUnitBuf_SunnyDay"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattleUnitBuf_SunnyDay()
-            => LoadIcon();
+            : this(DefaultRandomizer.Instance) { }
+
+        /// <summary>
+        /// 指定した疑似乱数ジェネレーターを使用する
+        /// <see cref="BattleUnitBuf_SunnyDay"/> の新しいインスタンスを生成します。
+        /// </summary>
+        /// <param name="randomizer">このオブジェクトで使用する疑似乱数ジェネレーター。</param>
+        public BattleUnitBuf_SunnyDay(IRandomizer randomizer)
+        {
+            this.randomizer = randomizer;
+            LoadIcon();
+        }
 
         public override void OnRoundStartAfter()
         {
@@ -30,7 +44,7 @@ namespace PokeAbilities.Bufs
                 int num = 0;
                 while (num < 2 && hand.Count > 0)
                 {
-                    BattleDiceCardModel card = RandomUtil.SelectOne(hand);
+                    BattleDiceCardModel card = randomizer.SelectOne(hand);
                     card.AddBuf(new BattleDiceCardBuf_FireType());
                     hand.Remove(card);
                     num++;
