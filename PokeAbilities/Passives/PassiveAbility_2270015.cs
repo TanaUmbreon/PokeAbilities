@@ -1,8 +1,4 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using PokeAbilities.Bufs;
 
 namespace PokeAbilities.Passives
@@ -17,13 +13,8 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                if (!owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>())
-                {
-                    Log.Instance.InfomationWithCaller($"Has not sunny day buf. (owner: '{owner.UnitData.unitData.name}')");
-                    return;
-                }
+                if (!owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>()) { return; }
 
-                Log.Instance.InfomationWithCaller($"Has sunny day buf. Added quickness2 buf. (owner: '{owner.UnitData.unitData.name}')");
                 owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 2, owner);
             }
             catch (Exception ex)
