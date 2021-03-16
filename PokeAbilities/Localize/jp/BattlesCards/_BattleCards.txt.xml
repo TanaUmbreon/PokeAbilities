@@ -9,5 +9,9 @@
       <LocalizedName>にほんばれ</LocalizedName>
       <Ability />
     </BattleCardDesc>
+    <BattleCardDesc ID="2278002">
+      <LocalizedName>あられ</LocalizedName>
+      <Ability />
+    </BattleCardDesc>
   </cardDescList>
 </BattleCardDescRoot>

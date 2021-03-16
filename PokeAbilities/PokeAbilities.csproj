@@ -64,6 +64,7 @@
     <Compile Include="Bufs\BattleUnitBuf_SunnyDay.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Rain.cs" />
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />
+    <Compile Include="CardAbilities\DiceCardSelfAbility_hail5all.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_sunny5all.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
     <Compile Include="DefaultRandomizer.cs" />

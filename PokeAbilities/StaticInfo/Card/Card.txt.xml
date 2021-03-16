@@ -31,4 +31,20 @@
     <Chapter>1</Chapter>
     <Priority>0</Priority>
   </Card>
+
+  <!--あられ-->
+  <Card ID="2278002">
+    <Name>Hail</Name>
+    <Artwork>TheSnowQueen_Sord</Artwork><!--それっぽいので仮-->
+    <Rarity>Unique</Rarity>
+    <Spec Range="Near" Cost="3" />
+    <Script>hail5all</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="4" Dice="7" Type="Def" Detail="Evasion" Motion="G" EffectRes="" Script="damage2pw" Desc="" />
+      <Behaviour Min="3" Dice="4" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="damage2pw" Desc="" />
+    </BehaviourList>
+    <Chapter>1</Chapter>
+    <Priority>0</Priority>
+  </Card>
 </DiceCardXmlRoot>
