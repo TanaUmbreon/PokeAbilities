@@ -61,6 +61,7 @@
     <Compile Include="Bufs\BattleDiceCardBuf_WaterType.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Infatuation.cs" />
+    <Compile Include="Bufs\BattleUnitBuf_Hail.cs" />
     <Compile Include="Bufs\BattleUnitBuf_SunnyDay.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Rain.cs" />
     <Compile Include="Bufs\BattleUnitBuf_FlashFire.cs" />

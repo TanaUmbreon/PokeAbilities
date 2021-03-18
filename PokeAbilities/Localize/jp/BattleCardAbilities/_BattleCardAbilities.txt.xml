@@ -6,4 +6,7 @@
   <BattleCardAbility ID="sunny5all">
     <Desc>[使用時] 全てのキャラクターににほんばれ5を付与</Desc>
   </BattleCardAbility>
+  <BattleCardAbility ID="hail5all">
+    <Desc>[使用時] 全てのキャラクターにあられ5を付与</Desc>
+  </BattleCardAbility>
 </BattleCardAbilityDescRoot>
