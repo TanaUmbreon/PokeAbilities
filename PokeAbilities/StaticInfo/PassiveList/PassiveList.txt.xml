@@ -11,7 +11,7 @@
   <Passive ID="2270001">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>5</Cost>
+    <Cost>4</Cost>
   </Passive>
 
   <!--せいしんりょく-->
@@ -110,5 +110,19 @@
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
+  </Passive>
+
+  <!--ゆきがくれ-->
+  <Passive ID="2270016">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>3</Cost>
+  </Passive>
+
+  <!--アイスボディ-->
+  <Passive ID="2270017">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>3</Cost>
   </Passive>
 </PassiveXmlRoot>

@@ -36,6 +36,7 @@
     <DropItem Type="Equip">200005</DropItem>
     <DropItem Type="Equip">201001</DropItem>
     <DropItem Type="Equip">2279470</DropItem>
+    <DropItem Type="Equip">2279471</DropItem>
     <DropItem Type="Equip">2279700</DropItem>
   </BookUse>
 </BookUseXmlRoot>

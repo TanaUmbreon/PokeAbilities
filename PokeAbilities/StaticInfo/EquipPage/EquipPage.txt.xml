@@ -183,6 +183,32 @@
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
 
+  <!--グレイシア-->
+  <Book ID="2279471">
+    <Name>Glaceon</Name>
+    <TextId>2279471</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270016</Passive>
+      <Passive Level="1">2270017</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Pokemon</BookIcon>
+    <Chapter>1</Chapter>
+    <Episode>2278000</Episode>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
   <!--ニンフィア-->
   <Book ID="2279700">
     <Name>Sylveon</Name>

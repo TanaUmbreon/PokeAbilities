@@ -64,4 +64,12 @@
     <Name>ようりょくそ</Name>
     <Desc>にほんばれ状態のとき、幕の開始時にクイック2を得る。</Desc>
   </PassiveDesc>
+  <PassiveDesc ID="2270016">
+    <Name>ゆきがくれ</Name>
+    <Desc>あられ状態のとき、20%の確率でバトルページによるダメージを受けない。あられダメージを受けない。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270017">
+    <Name>アイスボディ</Name>
+    <Desc>あられ状態のとき、幕の終了時にあられダメージを受けず、最大体力の1/16だけ体力が回復する。(最大5)</Desc>
+  </PassiveDesc>
 </PassiveDescRoot>
