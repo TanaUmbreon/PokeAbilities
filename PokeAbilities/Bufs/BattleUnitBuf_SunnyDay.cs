@@ -20,6 +20,7 @@ namespace PokeAbilities.Bufs
         protected override int MaxStack => 5;
 
         /// <summary>
+        /// 既定の疑似乱数ジェネレーターを使用する、
         /// <see cref="BattleUnitBuf_SunnyDay"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattleUnitBuf_SunnyDay()

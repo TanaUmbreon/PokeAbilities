@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using PokeAbilities.Bufs;
 
 namespace PokeAbilities.Passives

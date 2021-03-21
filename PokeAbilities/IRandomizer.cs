@@ -4,6 +4,7 @@ namespace PokeAbilities
 {
     /// <summary>
     /// 疑似乱数ジェネレーターを実装します。
+    /// このインタフェースはユニット テストをサポートする為に用いられます。
     /// </summary>
     public interface IRandomizer
     {
