@@ -19,8 +19,6 @@ namespace PokeAbilities.Test.Bufs
         [SetUp]
         public void SetUp()
         {
-            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
-
             var builder = new BattleUnitModelBuilder();
             owner = builder.ToBattleUnitModel();
 

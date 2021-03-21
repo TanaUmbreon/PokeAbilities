@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 using PokeAbilities.Bufs;
-using UnityEngine;
+using PokeAbilities.Test.Helpers;
 
 namespace PokeAbilities.Test
 {
@@ -13,10 +12,9 @@ namespace PokeAbilities.Test
         private BattleUnitBufListDetail bufListDetail;
 
         [SetUp]
-        public void InitializeFields()
+        public void SetUp()
         {
-            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
-            owner = new BattleUnitModel(0);
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -25,26 +23,32 @@ namespace PokeAbilities.Test
         {
             bufListDetail.AddBuf(new BattleUnitBuf_Rain() { stack = 1 });
             bufListDetail.AddBuf(new BattleUnitBuf_SunnyDay() { stack = 1 });
+            bufListDetail.AddBuf(new BattleUnitBuf_Hail() { stack = 1 });
             bufListDetail.AddBuf(new BattleUnitBuf_strength() { stack = 1 });
             bufListDetail.AddReadyBuf(new BattleUnitBuf_Rain() { stack = 1 });
             bufListDetail.AddReadyBuf(new BattleUnitBuf_SunnyDay() { stack = 1 });
+            bufListDetail.AddReadyBuf(new BattleUnitBuf_Hail() { stack = 1 });
             bufListDetail.AddReadyBuf(new BattleUnitBuf_strength() { stack = 1 });
             Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.True);
             Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.True);
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.True);
             Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
-            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(3));
+            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(4));
             Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.True);
             Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.True);
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.True);
             Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
-            Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(3));
+            Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(4));
 
             bufListDetail.RemoveAllWeather();
             Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.False);
             Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.False);
+            Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.False);
             Assert.That(bufListDetail.GetActivatedBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
             Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(1));
             Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.False);
             Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.False);
+            Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.False);
             Assert.That(bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_strength>().Any(), Is.True);
             Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(1));
         }
@@ -59,7 +63,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModel(0);
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -149,7 +153,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModel(0);
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -220,7 +224,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModel(0);
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -408,7 +412,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModel(0);
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
             bufListDetail = owner.bufListDetail;
         }
 

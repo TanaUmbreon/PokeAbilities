@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PokeAbilities.Bufs;
 using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
-using UnityEngine;
 
 namespace PokeAbilities.Test.Passives
 {
@@ -15,10 +13,7 @@ namespace PokeAbilities.Test.Passives
         [SetUp]
         public void SetUp()
         {
-            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
-
-            var builder = new BattleUnitModelBuilder();
-            owner = builder.ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
         }
 
         [Test(Description = "にほんばれ状態でない時、何も付与されない。")]
