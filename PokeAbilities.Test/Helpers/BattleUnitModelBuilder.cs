@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Moq;
 
 namespace PokeAbilities.Test.Helpers
 {
@@ -11,6 +13,16 @@ namespace PokeAbilities.Test.Helpers
         /// キャラクター ID を取得または設定します。
         /// </summary>
         public int Id { get; set; } = 0;
+
+        /// <summary>
+        /// キャラクターの派閥を取得または設定します。
+        /// </summary>
+        public Faction Faction { get; set; } = Faction.Enemy;
+
+        /// <summary>
+        /// キャラクターが死亡している事を表す値を取得または設定します。
+        /// </summary>
+        public bool IsDie { get; set; } = false;
 
         /// <summary>
         /// デッキの 1 枚目のバトル ページを取得または設定します。
@@ -78,8 +90,16 @@ namespace PokeAbilities.Test.Helpers
         /// <returns></returns>
         public BattleUnitModel ToBattleUnitModel()
         {
-            var model = new BattleUnitModel(Id);
+            var model = new BattleUnitModel(Id)
+            {
+                faction = Faction,
+            };
             model.allyCardDetail = CreateBattleAllyCardDetail(model);
+            model.equipment.book = CreateBookModel();
+            if (IsDie)
+            {
+                model.DieFake();
+            }
 
             return model;
         }
@@ -116,16 +136,17 @@ namespace PokeAbilities.Test.Helpers
             var list = new List<BattleDiceCardModel>();
             foreach (BattleDiceCardModel card in deck)
             {
-                if (card == null)
-                {
-                    list.Add(defaultCard.ToBattleDiceCardModel());
-                }
-                else
-                {
-                    list.Add(card);
-                }
+                list.Add(card ?? defaultCard.ToBattleDiceCardModel());
             }
             return list;
+        }
+
+        private BookModel CreateBookModel()
+        {
+            var bookXml = new BookXmlInfo();
+            var book = new BookModel();
+            PrivateAccess.SetField(book, "_classInfo", bookXml);
+            return book;
         }
     }
 }
