@@ -81,6 +81,7 @@
     <Compile Include="Helpers\BattleObjectManagerAccess.cs" />
     <Compile Include="Helpers\BattleUnitModelBuilder.cs" />
     <Compile Include="Helpers\PrivateAccess.cs" />
+    <Compile Include="Helpers\FixedRandomizer.cs" />
     <Compile Include="Passives\PassiveAbility_2270014Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270016Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270017Test.cs" />
