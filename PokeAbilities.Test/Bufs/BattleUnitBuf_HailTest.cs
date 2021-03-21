@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using PokeAbilities.Bufs;
+using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
 
 namespace PokeAbilities.Test.Bufs
@@ -9,14 +10,17 @@ namespace PokeAbilities.Test.Bufs
     {
         private BattleUnitModel owner;
         private BattleUnitBufListDetail bufListDetail;
-        private BattleAllyCardDetail allyCardDetail;
+        private BattleUnitPassiveDetail passiveDetail;
 
         [SetUp]
         public void SetUp()
         {
             owner = new BattleUnitModelBuilder().ToBattleUnitModel();
             bufListDetail = owner.bufListDetail;
-            allyCardDetail = owner.allyCardDetail;
+
+            // ToDo: BattleUnitModelBuilderにパッシブ登録の機能を追加する。
+            // ToDo: BattleUnitModelBuilderに現在体力を指定する機能を追加する。
+            owner.SetHp(100);
         }
 
         #region stack
@@ -56,6 +60,93 @@ namespace PokeAbilities.Test.Bufs
 
         #endregion
 
-        // Note: OnRoundEndでは間接的にUnitData (UnitBattleDataModel) を参照するのでテスト不化
+        #region OnRoundEnd
+
+        // Note: OnRoundEndでスリップダメージを受けるパターンはテスト不可能。
+        //   内部でUnitBattleDataModelを使用し、UnityEngineの参照を回避できないため。
+
+        [Test(Description = "幕の終了時、数値が1減る。")]
+        public void TestOnRoundEnd1()
+        {
+            // スリップダメージの回避
+            passiveDetail = owner.passiveDetail;
+            passiveDetail.AddPassive(new PassiveAbility_2270016());
+            passiveDetail.OnCreated();
+
+            var buf = new BattleUnitBuf_Hail() { stack = 5 };
+            bufListDetail.AddBuf(buf);
+            Assert.That(buf.stack, Is.EqualTo(5));
+            Assert.That(buf.IsDestroyed, Is.False);
+
+            buf.OnRoundEnd();
+            Assert.That(buf.stack, Is.EqualTo(4));
+            Assert.That(buf.IsDestroyed, Is.False);
+        }
+
+        [Test(Description = "数値が0になると破棄される。")]
+        public void TestOnRoundEnd2()
+        {
+            // スリップダメージの回避
+            passiveDetail = owner.passiveDetail;
+            passiveDetail.AddPassive(new PassiveAbility_2270016());
+            passiveDetail.OnCreated();
+
+            var buf = new BattleUnitBuf_Hail() { stack = 3 };
+            bufListDetail.AddBuf(buf);
+            Assert.That(buf.stack, Is.EqualTo(3));
+            Assert.That(buf.IsDestroyed, Is.False);
+
+            buf.OnRoundEnd();
+            buf.OnRoundEnd();
+            Assert.That(buf.stack, Is.EqualTo(1));
+            Assert.That(buf.IsDestroyed, Is.False);
+
+            buf.OnRoundEnd();
+            Assert.That(buf.stack, Is.EqualTo(0));
+            Assert.That(buf.IsDestroyed, Is.True);
+        }
+
+        [Test(Description = "パッシブ「ゆきがくれ」を所有している場合はスリップダメージを受けない。")]
+        public void TestOnRoundEnd3()
+        {
+            passiveDetail = owner.passiveDetail;
+            passiveDetail.AddPassive(new PassiveAbility_2270016());
+            passiveDetail.OnCreated();
+
+            var buf = new BattleUnitBuf_Hail() { stack = 5 };
+            bufListDetail.AddBuf(buf);
+            Assert.That(owner.hp, Is.EqualTo(100f));
+
+            buf.OnRoundEnd();
+            Assert.That(owner.hp, Is.EqualTo(100f));
+        }
+
+        [Test(Description = "パッシブ「アイスボディ」を所有している場合はスリップダメージを受けない。")]
+        public void TestOnRoundEnd4()
+        {
+            passiveDetail = owner.passiveDetail;
+            passiveDetail.AddPassive(new PassiveAbility_2270017());
+            passiveDetail.OnCreated();
+
+            var buf = new BattleUnitBuf_Hail() { stack = 5 };
+            bufListDetail.AddBuf(buf);
+            Assert.That(owner.hp, Is.EqualTo(100f));
+
+            buf.OnRoundEnd();
+            Assert.That(owner.hp, Is.EqualTo(100f));
+        }
+
+        [Test(Description = "スリップダメージのテストはできない。")]
+        public void TestOnRoundEndXXX()
+        {
+            var buf = new BattleUnitBuf_Hail() { stack = 5 };
+            bufListDetail.AddBuf(buf);
+            Assert.That(owner.hp, Is.EqualTo(100f));
+
+            Assert.That(() => { buf.OnRoundEnd(); }, Throws.Exception);
+            Assert.That(owner.hp, Is.EqualTo(100f));
+        }
+
+        #endregion
     }
 }

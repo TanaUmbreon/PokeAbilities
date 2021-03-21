@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PokeAbilities.Passives;
+using UnityEngine;
 
 namespace PokeAbilities.Bufs
 {
@@ -36,6 +37,10 @@ namespace PokeAbilities.Bufs
         /// </summary>
         private void TakeDamage()
         {
+            // 特定のパッシブを保有している場合はダメージを受けない
+            if (_owner.passiveDetail.HasPassive<PassiveAbility_2270016>()) { return; }
+            if (_owner.passiveDetail.HasPassive<PassiveAbility_2270017>()) { return; }
+
             const int MinDamage = 1;
             const int MaxDamage = 5;
 
