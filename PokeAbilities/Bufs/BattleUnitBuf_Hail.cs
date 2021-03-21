@@ -1,4 +1,6 @@
-﻿namespace PokeAbilities.Bufs
+﻿using UnityEngine;
+
+namespace PokeAbilities.Bufs
 {
     /// <summary>
     /// 状態「あられ」。
@@ -17,5 +19,29 @@
         /// </summary>
         public BattleUnitBuf_Hail()
             => LoadIcon();
+
+        public override void OnRoundEnd()
+        {
+            TakeDamage();
+
+            stack--;
+            if (stack <= 0)
+            {
+                Destroy();
+            }
+        }
+
+        /// <summary>
+        /// スリップ ダメージを受けます。
+        /// </summary>
+        private void TakeDamage()
+        {
+            const int MinDamage = 1;
+            const int MaxDamage = 5;
+
+            int num = _owner.MaxHp / 16;
+            num = Mathf.Clamp(num, MinDamage, MaxDamage);
+            _owner.TakeDamage(num, DamageType.Buf, _owner, KeywordBuf.None);
+        }
     }
 }
