@@ -29,7 +29,7 @@
       <summary>弱点 (1.5倍)</summary>
     </member>
     <member name="T:BattleAllyCardDetail">
-      <summary>味方のバトル ページの詳細を表します。</summary>
+      <summary>デッキおよび手札の詳細を表します。</summary>
     </member>
     <member name="M:BattleAllyCardDetail.#ctor(BattleUnitModel)">
       <summary></summary>
@@ -39,13 +39,15 @@
       <summary></summary>
       <param name="cards"></param>
     </member>
-    <member name="M:BattleAllyCardDetail.AddCardToHand(BattleDiceCardModel)">
+    <member name="M:BattleAllyCardDetail.AddCardToHand(BattleDiceCardModel,System.Boolean)">
       <summary></summary>
       <param name="card"></param>
+      <param name="front"></param>
     </member>
-    <member name="M:BattleAllyCardDetail.AddNewCard(System.Int32)">
+    <member name="M:BattleAllyCardDetail.AddNewCard(System.Int32,System.Boolean)">
       <summary></summary>
       <param name="cardId"></param>
+      <param name="front"></param>
       <returns></returns>
     </member>
     <member name="M:BattleAllyCardDetail.AddNewCardToDeck(System.Int32)">
@@ -61,11 +63,6 @@
       <summary></summary>
       <param name="cardId"></param>
       <returns></returns>
-    </member>
-    <member name="M:BattleAllyCardDetail.ChangeAppliedCard(BattleDiceCardModel,BattleDiceCardModel)">
-      <summary></summary>
-      <param name="appliedCard"></param>
-      <param name="newCard"></param>
     </member>
     <member name="M:BattleAllyCardDetail.DiscardACardByAbility(BattleDiceCardModel)">
       <summary></summary>
@@ -171,8 +168,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleAllyCardDetail.Init(System.Collections.Generic.List{LOR_DiceSystem.DiceCardXmlInfo})">
-      <summary></summary>
-      <param name="deck"></param>
+      <summary>指定したデッキ情報でインスタンスを初期化します。デッキはシャッフルされた状態になります。</summary>
+      <param name="deck">バトル ページのリストで表される、使用するデッキ情報。</param>
     </member>
     <member name="M:BattleAllyCardDetail.IsHighlander">
       <summary></summary>
@@ -184,8 +181,19 @@
     <member name="M:BattleAllyCardDetail.OnRoundEnd">
       <summary>幕の終了時に呼び出されます。</summary>
     </member>
+    <member name="M:BattleAllyCardDetail.OnRoundEnd_before">
+      <summary></summary>
+    </member>
     <member name="M:BattleAllyCardDetail.OnRoundStart">
       <summary>幕の開始時に呼び出されます。</summary>
+    </member>
+    <member name="M:BattleAllyCardDetail.OnUseCard(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="curCard"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.OnWinParrying(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
     </member>
     <member name="M:BattleAllyCardDetail.PlayTurnAutoForEnemy(System.Int32,System.Int32)">
       <summary></summary>
@@ -199,6 +207,10 @@
     <member name="M:BattleAllyCardDetail.ReturnAllToDeck">
       <summary></summary>
     </member>
+    <member name="M:BattleAllyCardDetail.ReturnCardToHand(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="appliedCard"></param>
+    </member>
     <member name="M:BattleAllyCardDetail.SetMaxDrawHand(System.Int32)">
       <summary></summary>
       <param name="handCount"></param>
@@ -208,7 +220,7 @@
       <param name="handCount"></param>
     </member>
     <member name="M:BattleAllyCardDetail.Shuffle">
-      <summary></summary>
+      <summary>デッキをシャッフルします。</summary>
     </member>
     <member name="M:BattleAllyCardDetail.SpendCard(BattleDiceCardModel)">
       <summary></summary>
@@ -741,6 +753,11 @@
       <summary>バトル ページが使用される時に呼び出されます。</summary>
       <param name="owner">使用されるバトル ページの所有キャラクター。</param>
     </member>
+    <member name="M:BattleDiceCardBuf.OnUseCard(BattleUnitModel,BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="owner"></param>
+      <param name="playingCard"></param>
+    </member>
     <member name="P:BattleDiceCardBuf.bufActivatedText">
       <summary></summary>
     </member>
@@ -935,12 +952,27 @@
     <member name="M:BattleDiceCardModel.OnRoundEnd">
       <summary>幕の終了時に呼び出されます。</summary>
     </member>
+    <member name="M:BattleDiceCardModel.OnRoundEnd_inHand(BattleUnitModel)">
+      <summary></summary>
+      <param name="unit"></param>
+    </member>
     <member name="M:BattleDiceCardModel.OnRoundStart">
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
-    <member name="M:BattleDiceCardModel.OnUseCard(BattleUnitModel)">
-      <summary>バトル ページが使用される時に呼び出されます。</summary>
-      <param name="owner">使用されるバトル ページの所有キャラクター。</param>
+    <member name="M:BattleDiceCardModel.OnUseCard(BattleUnitModel,BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="owner"></param>
+      <param name="playingCard"></param>
+    </member>
+    <member name="M:BattleDiceCardModel.OnUseOtherCard_inHand(BattleUnitModel,BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="unit"></param>
+      <param name="curCard"></param>
+    </member>
+    <member name="M:BattleDiceCardModel.OnWinParrying_inHand(BattleUnitModel,BattleDiceBehavior)">
+      <summary></summary>
+      <param name="unit"></param>
+      <param name="behavior"></param>
     </member>
     <member name="M:BattleDiceCardModel.RemoveAddedIcon(System.String,System.Int32)">
       <summary></summary>
@@ -1351,6 +1383,9 @@
       <returns></returns>
     </member>
     <member name="M:BattlePlayingCardDataInUnitModel.NextDice">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardDataInUnitModel.OnActivateResonance">
       <summary></summary>
     </member>
     <member name="M:BattlePlayingCardDataInUnitModel.OnDefenseWithoutParryingWin">
@@ -2171,9 +2206,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.HasBuf``1">
-      <summary>指定した型のバフがバフ リストの所有キャラクターに付与されている事を判定します。</summary>
+      <summary>指定した型のバフがこの幕のバフ リストの所有キャラクターに付与されている事を判定します。</summary>
       <typeparam name="T">付与されている事を判定するバフの型。</typeparam>
-      <returns>指定した型のバフが付与されている場合は true、そうでない場合は false を返します。</returns>
+      <returns>指定した型のバフがこの幕に付与されている場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.HasStun">
       <summary></summary>
@@ -2394,10 +2429,10 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.allyCardDetail">
-      <summary>味方のバトル ページの詳細。</summary>
+      <summary>デッキおよび手札の詳細</summary>
     </member>
     <member name="F:BattleUnitModel.battleCardResultLog">
-      <summary>バトル ページによって適用された効果の結果ログ。</summary>
+      <summary>バトル ページによって適用された効果の結果ログ</summary>
     </member>
     <member name="F:BattleUnitModel.breakDetail">
       <summary>混乱耐性の詳細</summary>
@@ -2421,7 +2456,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.direction">
-      <summary></summary>
+      <summary>向いている方向</summary>
     </member>
     <member name="F:BattleUnitModel.disposed">
       <summary></summary>
@@ -2430,7 +2465,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.faction">
-      <summary>敵または味方の派閥。</summary>
+      <summary>敵または味方の派閥</summary>
     </member>
     <member name="F:BattleUnitModel.forceRetreat">
       <summary></summary>
@@ -2547,9 +2582,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.ChangeBaseDeck(System.Collections.Generic.List{LOR_DiceSystem.DiceCardXmlInfo},System.Int32)">
-      <summary></summary>
-      <param name="cardList"></param>
-      <param name="drawNum"></param>
+      <summary>指定されたデッキ情報で構成され、指定した枚数だけ手札を引いた状態のデッキに切り替えます。</summary>
+      <param name="cardList">バトルページのリストで表される、使用するデッキの情報。</param>
+      <param name="drawNum">デッキから手札を引く枚数。</param>
     </member>
     <member name="M:BattleUnitModel.ChangeDamage(BattleUnitModel,System.Double)">
       <summary></summary>
@@ -2558,8 +2593,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.ChangeDeck(System.Int32)">
-      <summary></summary>
-      <param name="index"></param>
+      <summary>指定したインデックスに対応するデッキに切り替えます。</summary>
+      <param name="index">切り替えるデッキのインデックス。</param>
     </member>
     <member name="M:BattleUnitModel.ChangeTargetSlot(BattleDiceCardModel,BattleUnitModel,System.Int32,System.Int32,System.Boolean)">
       <summary></summary>
@@ -2571,9 +2606,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.ChangeTemporaryDeck(System.Collections.Generic.List{System.Int32},System.Int32)">
-      <summary></summary>
-      <param name="cardIdList"></param>
-      <param name="drawNum"></param>
+      <summary>指定したデッキ情報で構成され、指定した枚数だけ手札を引いた状態の一時デッキに切り替えます。</summary>
+      <param name="cardIdList">バトル ページの ID のリストで表される、使用する一時デッキの情報。</param>
+      <param name="drawNum">一時デッキから手札を引く枚数。</param>
     </member>
     <member name="M:BattleUnitModel.CheckCardAvailable(BattleDiceCardModel)">
       <summary></summary>
@@ -2775,6 +2810,13 @@
     <member name="M:BattleUnitModel.IsTargetable(BattleUnitModel)">
       <summary></summary>
       <param name="attacker"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitModel.IsTargetableUnit(BattleDiceCardModel,BattleUnitModel,BattleUnitModel)">
+      <summary></summary>
+      <param name="card"></param>
+      <param name="actor"></param>
+      <param name="target"></param>
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.LoseHp(System.Int32)">
@@ -3291,6 +3333,9 @@
     <member name="M:BookModel.CheckCustomCoreBook">
       <summary></summary>
       <returns></returns>
+    </member>
+    <member name="M:BookModel.CheckDeletePassiveOtherBook">
+      <summary></summary>
     </member>
     <member name="M:BookModel.CheckExistPassiveBook">
       <summary></summary>
@@ -3945,6 +3990,11 @@
       <param name="diceDetail">判定するバトル ダイスの振る舞いの詳細。</param>
       <returns>指定したバトル ダイスが攻撃ダイスである場合は true、そうでない場合は false を返します。</returns>
     </member>
+    <member name="M:DiceCardSelfAbilityBase.IsDefenseDice(LOR_DiceSystem.BehaviourDetail)">
+      <summary></summary>
+      <param name="diceDetail"></param>
+      <returns></returns>
+    </member>
     <member name="M:DiceCardSelfAbilityBase.IsFixedCost">
       <summary></summary>
       <returns></returns>
@@ -3972,6 +4022,9 @@
       <param name="self"></param>
       <param name="targetUnit"></param>
       <returns></returns>
+    </member>
+    <member name="M:DiceCardSelfAbilityBase.OnActivateResonance">
+      <summary></summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnAddToHand(BattleUnitModel)">
       <summary></summary>
@@ -4009,6 +4062,11 @@
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnRollAreaAttack">
       <summary></summary>
+    </member>
+    <member name="M:DiceCardSelfAbilityBase.OnRoundEnd_inHand(BattleUnitModel,BattleDiceCardModel)">
+      <summary></summary>
+      <param name="unit"></param>
+      <param name="self"></param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartBattle">
       <summary></summary>
@@ -4050,6 +4108,18 @@
       <param name="unit"></param>
       <param name="self"></param>
       <param name="targetUnit"></param>
+    </member>
+    <member name="M:DiceCardSelfAbilityBase.OnUseOtherCard_inHand(BattleUnitModel,BattleDiceCardModel,BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="unit"></param>
+      <param name="self"></param>
+      <param name="curCard"></param>
+    </member>
+    <member name="M:DiceCardSelfAbilityBase.OnWinParrying_inHand(BattleUnitModel,BattleDiceCardModel,BattleDiceBehavior)">
+      <summary></summary>
+      <param name="unit"></param>
+      <param name="self"></param>
+      <param name="behavior"></param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnWinParryingAtk">
       <summary></summary>
@@ -4106,6 +4176,15 @@
     <member name="M:DiceStatBonus.Copy">
       <summary>このインスタンスのディープ コピーを作成して返します。</summary>
       <returns></returns>
+    </member>
+    <member name="T:Direction">
+      <summary>キャラクターが向いている方向を表します。</summary>
+    </member>
+    <member name="F:Direction.LEFT">
+      <summary>左向き</summary>
+    </member>
+    <member name="F:Direction.RIGHT">
+      <summary>右向き</summary>
     </member>
     <member name="T:Faction">
       <summary>敵または味方の派閥を表します。</summary>
