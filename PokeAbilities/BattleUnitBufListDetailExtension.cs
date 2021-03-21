@@ -116,9 +116,11 @@ namespace PokeAbilities
             var activated = target.GetActivatedBufList();
             activated.RemoveAll(b => b is BattleUnitBuf_Rain);
             activated.RemoveAll(b => b is BattleUnitBuf_SunnyDay);
+            activated.RemoveAll(b => b is BattleUnitBuf_Hail);
             var ready = target.GetReadyBufList();
             ready.RemoveAll(b => b is BattleUnitBuf_Rain);
             ready.RemoveAll(b => b is BattleUnitBuf_SunnyDay);
+            ready.RemoveAll(b => b is BattleUnitBuf_Hail);
         }
 
         #region private メンバ メソッド呼び出し
