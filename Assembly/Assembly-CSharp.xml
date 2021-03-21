@@ -960,8 +960,8 @@
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleDiceCardModel.OnUseCard(BattleUnitModel,BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="owner"></param>
+      <summary>バトル ページが使用される時に呼び出されます。</summary>
+      <param name="owner">使用されるバトル ページの所有キャラクター。</param>
       <param name="playingCard"></param>
     </member>
     <member name="M:BattleDiceCardModel.OnUseOtherCard_inHand(BattleUnitModel,BattlePlayingCardDataInUnitModel)">
@@ -2438,7 +2438,7 @@
       <summary>混乱耐性の詳細</summary>
     </member>
     <member name="F:BattleUnitModel.bufListDetail">
-      <summary>付与されたバフのリストの詳細</summary>
+      <summary>付与されたバフ一覧の詳細</summary>
     </member>
     <member name="F:BattleUnitModel.cardHistory">
       <summary></summary>
@@ -2495,7 +2495,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.passiveDetail">
-      <summary></summary>
+      <summary>パッシブの詳細</summary>
     </member>
     <member name="F:BattleUnitModel.personalEgoDetail">
       <summary></summary>
@@ -3198,6 +3198,478 @@
       <summary></summary>
     </member>
     <member name="P:BattleUnitModel.UnitData">
+      <summary></summary>
+    </member>
+    <member name="T:BattleUnitPassiveDetail">
+      <summary>バトル キャラクターが所有するパッシブの詳細を表します。</summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.#ctor(BattleUnitModel)">
+      <summary></summary>
+      <param name="self"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.AddPassive(PassiveAbilityBase)">
+      <summary>指定したパッシブを待機状態で追加し、 <see cref="PassiveAbilityBase.Init(BattleUnitModel)"/> を呼び出します。</summary>
+      <param name="passive">追加するパッシブ。</param>
+      <returns>追加したパッシブ。</returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.AfterGiveDamage(System.Int32)">
+      <summary></summary>
+      <param name="dmg"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.AfterTakeDamage(BattleUnitModel,System.Int32)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <param name="dmg"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.BeforeGiveDamage(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.BeforeRollDice(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.BeforeTakeDamage(BattleUnitModel,System.Int32)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <param name="dmg"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.BreakDmgFactor(System.Int32,DamageType,KeywordBuf)">
+      <summary></summary>
+      <param name="dmg"></param>
+      <param name="type"></param>
+      <param name="keyword"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.CanAddBuf(BattleUnitBuf)">
+      <summary></summary>
+      <param name="buf"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.ChangeAttackTarget(BattleDiceCardModel,System.Int32)">
+      <summary></summary>
+      <param name="card"></param>
+      <param name="idx"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.ChangeDamage(BattleUnitModel,System.Double)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <param name="dmg"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.ChangeDiceResult(BattleDiceBehavior,System.Int32@)">
+      <summary></summary>
+      <param name="behavior"></param>
+      <param name="diceResult"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.ChangeSubTargets(BattleDiceCardModel,BattleUnitModel)">
+      <summary></summary>
+      <param name="card"></param>
+      <param name="mainTarget"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.ChangeTargetSlot(BattleDiceCardModel,BattleUnitModel,System.Int32,System.Int32,System.Boolean)">
+      <summary></summary>
+      <param name="card"></param>
+      <param name="target"></param>
+      <param name="currentSlot"></param>
+      <param name="targetSlot"></param>
+      <param name="teamkill"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.DestroyPassive(PassiveAbilityBase)">
+      <summary></summary>
+      <param name="passive"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.DestroyPassiveAll">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.DmgFactor(System.Int32,DamageType,KeywordBuf)">
+      <summary></summary>
+      <param name="dmg"></param>
+      <param name="type"></param>
+      <param name="keyword"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.DontChangeResistByBreak">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetBreakDamageReduction(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetBreakDamageReductionAll(System.Int32,DamageType,BattleUnitModel)">
+      <summary></summary>
+      <param name="dmg"></param>
+      <param name="dmgType"></param>
+      <param name="attacker"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetDamageReduction(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetDamageReductionAll">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetMaxBpBonus">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetMaxHpBonus">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetMinHp">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetMultiplierOnGiveKeywordBufByCard(BattleUnitBuf,BattleUnitModel)">
+      <summary></summary>
+      <param name="buf"></param>
+      <param name="target"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetPriorityAdder(BattleDiceCardModel,System.Int32)">
+      <summary></summary>
+      <param name="card"></param>
+      <param name="speed"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetResistBP(AtkResist,LOR_DiceSystem.BehaviourDetail)">
+      <summary></summary>
+      <param name="origin"></param>
+      <param name="detail"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetResistHP(AtkResist,LOR_DiceSystem.BehaviourDetail)">
+      <summary></summary>
+      <param name="origin"></param>
+      <param name="detail"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetSpeedDiceAdder(System.Int32)">
+      <summary></summary>
+      <param name="speedDiceResult"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetStartHp(System.Single)">
+      <summary></summary>
+      <param name="hp"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.GetTakenGuardBreakDamageAdder(System.Int32)">
+      <summary></summary>
+      <param name="dmg"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.HasPassive``1">
+      <summary>指定した型のパッシブがアクティブ状態で保有している事を判断します。</summary>
+      <typeparam name="T">保有している事を確認するパッシブの型。</typeparam>
+      <returns>指定した型のパッシブがアクティブ状態で保有している場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.HasPassiveInReady``1">
+      <summary>指定した型のパッシブが待機状態で保有している事を判断します。</summary>
+      <typeparam name="T">保有している事を確認するパッシブの型。</typeparam>
+      <returns>指定した型のパッシブが待機状態で保有している場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.Init">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsActionable">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsImmortal">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsImmune(KeywordBuf)">
+      <summary></summary>
+      <param name="buf"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsImmuneBreakDmg(DamageType)">
+      <summary></summary>
+      <param name="type"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsImmuneByFarAtk">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsImmuneDmg(DamageType,KeywordBuf)">
+      <summary></summary>
+      <param name="type"></param>
+      <param name="keyword"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsImmuneDmg">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsInvincible">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsInvincibleBp">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsInvincibleHp">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsNegativeHalfExceptBurn">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsStraighten">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsTargetable">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.IsTargetable(BattleUnitModel)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.MaxPlayPointAdder">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnAddKeywordBufByCard(BattleUnitBuf,System.Int32)">
+      <summary></summary>
+      <param name="buf"></param>
+      <param name="stack"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnAddKeywordBufByCardForEvent(KeywordBuf,System.Int32,BufReadyType)">
+      <summary></summary>
+      <param name="keywordBuf"></param>
+      <param name="stack"></param>
+      <param name="readyType"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnAfterRollSpeedDice">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnBattleEnd">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnBattleEnd_alive">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnBreakGageZero">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnBreakState">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnCreated">
+      <summary>待機状態のパッシブ全てに対して、アクティブ状態に変更し、 <see cref="PassiveAbilityBase.OnCreated()"/> を呼び出します。</summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDestroyCard(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDestroyed">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDie">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDieOtherUnit(BattleUnitModel)">
+      <summary></summary>
+      <param name="unit"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDiscardByAbility(System.Collections.Generic.List{BattleDiceCardModel})">
+      <summary></summary>
+      <param name="cards"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDrawCard">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnDrawParrying(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnEndBattle(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="curCard"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnEndOneSide">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnEndOneSideVictim(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="attackerCard"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnEndParrying(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="curCard"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnExhaustBullet">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnFixedUpdateInWaitPhase(System.Single)">
+      <summary></summary>
+      <param name="deltaTime"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnGainChargeStack">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnGiveKeywordBufByCard(BattleUnitBuf,System.Int32,BattleUnitModel)">
+      <summary></summary>
+      <param name="buf"></param>
+      <param name="stack"></param>
+      <param name="target"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnKill(BattleUnitModel)">
+      <summary></summary>
+      <param name="target"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnLevelUpEmotion">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnLoseHp(System.Int32)">
+      <summary></summary>
+      <param name="dmg"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnLoseParrying(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnMakeBreakState(BattleUnitModel)">
+      <summary></summary>
+      <param name="target"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnOtherUnitReservedCostChanged(BattleUnitModel,System.Int32)">
+      <summary></summary>
+      <param name="unit"></param>
+      <param name="cur"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRecoverHp(System.Int32)">
+      <summary></summary>
+      <param name="amount"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnReleaseBreak">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRollDice(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRollDiceInRencounter">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRollSpeedDice">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRoundEnd">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRoundEndTheLast">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRoundEndTheLast_ignoreDead">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRoundStart">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnRoundStartAfter">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnSelectCardAuto(BattleDiceCardModel,System.Int32)">
+      <summary></summary>
+      <param name="origin"></param>
+      <param name="currentDiceSlotIdx"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnStartBattle">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnStartOneSideAction(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnStartParrying(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="card"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnStartTargetedByAreaAtk(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="attackerCard"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnStartTargetedOneSide(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="attackerCard"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnSucceedAttack(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnSucceedAttackEvent(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnTakeBreakDamageByAttack(BattleDiceBehavior,System.Int32)">
+      <summary></summary>
+      <param name="atkDice"></param>
+      <param name="breakdmg"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
+      <summary></summary>
+      <param name="atkDice"></param>
+      <param name="dmg"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnUnitCreated">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnUseCard(BattlePlayingCardDataInUnitModel)">
+      <summary></summary>
+      <param name="curCard"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnUseChargeStack">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnWaveStart">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.OnWinParrying(BattleDiceBehavior)">
+      <summary></summary>
+      <param name="behavior"></param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.RemovePassive">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.SpeedDiceBreakAdder">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.SpeedDiceNumAdder">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.TeamKill">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="P:BattleUnitPassiveDetail.PassiveList">
+      <summary></summary>
+    </member>
+    <member name="P:BattleUnitPassiveDetail.ReadyPassiveList">
       <summary></summary>
     </member>
     <member name="T:BookModel">
@@ -4889,7 +5361,7 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnCreated">
-      <summary></summary>
+      <summary>このパッシブが待機状態からアクティブ状態に変更された場合に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnDestroyCard(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
