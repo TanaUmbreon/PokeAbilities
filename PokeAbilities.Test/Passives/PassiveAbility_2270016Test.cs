@@ -18,6 +18,8 @@ namespace PokeAbilities.Test.Passives
             }.ToBattleUnitModel();
         }
 
+        #region OnCreated
+
         [Test]
         public void TestOnCreated()
         {
@@ -26,6 +28,10 @@ namespace PokeAbilities.Test.Passives
             Assert.That(passive.GetDamageReductionAll, Is.EqualTo(0));
             Assert.That(passive.GetBreakDamageReductionAll(0, DamageType.Attack, null), Is.EqualTo(0));
         }
+
+        #endregion
+
+        #region BeforeTakeDamage
 
         [Test(Description = "バトルページ以外の被ダメージはダメージ軽減数0。")]
         public void TestBeforeTakeDamage1()
@@ -99,5 +105,7 @@ namespace PokeAbilities.Test.Passives
             Assert.That(passive.GetDamageReductionAll, Is.EqualTo(9999));
             Assert.That(passive.GetBreakDamageReductionAll(0, DamageType.Attack, null), Is.EqualTo(9999));
         }
+
+        #endregion
     }
 }
