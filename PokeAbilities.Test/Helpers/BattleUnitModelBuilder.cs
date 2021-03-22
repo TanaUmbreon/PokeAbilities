@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Moq;
+﻿using System.Collections.Generic;
 
 namespace PokeAbilities.Test.Helpers
 {
@@ -23,6 +21,16 @@ namespace PokeAbilities.Test.Helpers
         /// キャラクターが死亡している事を表す値を取得または設定します。
         /// </summary>
         public bool IsDie { get; set; } = false;
+
+        /// <summary>
+        /// キャラクターの現在体力を取得または設定します。
+        /// </summary>
+        public int Hp { get; set; } = 20;
+
+        /// <summary>
+        /// 現在使用しているバトル ページのダイス アクションを取得または設定します。
+        /// </summary>
+        public BattlePlayingCardDataInUnitModel CurrentDiceAction { get; set; } = null;
 
         /// <summary>
         /// デッキの 1 枚目のバトル ページを取得または設定します。
@@ -93,9 +101,11 @@ namespace PokeAbilities.Test.Helpers
             var model = new BattleUnitModel(Id)
             {
                 faction = Faction,
+                currentDiceAction = CurrentDiceAction,
             };
             model.allyCardDetail = CreateBattleAllyCardDetail(model);
             model.equipment.book = CreateBookModel();
+            model.SetHp(Hp);
             if (IsDie)
             {
                 model.DieFake();
