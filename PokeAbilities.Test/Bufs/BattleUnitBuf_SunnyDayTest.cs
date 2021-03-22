@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 using PokeAbilities.Bufs;
 using PokeAbilities.Test.Helpers;
-using UnityEngine;
 
 namespace PokeAbilities.Test.Bufs
 {
@@ -11,19 +9,13 @@ namespace PokeAbilities.Test.Bufs
     public class BattleUnitBuf_SunnyDayTest
     {
         private BattleUnitModel owner;
-        private BattleUnitBufListDetail bufListDetail;
-        private BattleAllyCardDetail allyCardDetail;
 
         #region SetUp
 
         [SetUp]
         public void SetUp()
         {
-            var builder = new BattleUnitModelBuilder();
-            owner = builder.ToBattleUnitModel();
-
-            bufListDetail = owner.bufListDetail;
-            allyCardDetail = owner.allyCardDetail;
+            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
         }
 
         #endregion
@@ -34,33 +26,33 @@ namespace PokeAbilities.Test.Bufs
         public void TestStack1()
         {
             var buf = new BattleUnitBuf_SunnyDay();
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnAddBuf();
 
             Assert.That(buf.stack, Is.EqualTo(1));
-            Assert.That(bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
+            Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
         }
 
         [Test(Description = "AddBufメソッドでは付与数0でも付与可能")]
         public void TestStack2()
         {
             var buf = new BattleUnitBuf_SunnyDay() { stack = 0 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnAddBuf();
 
             Assert.That(buf.stack, Is.EqualTo(0));
-            Assert.That(bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
+            Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
         }
 
         [Test(Description = "付与数の上限は5")]
         public void TestStack3()
         {
             var buf = new BattleUnitBuf_SunnyDay() { stack = 6 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnAddBuf();
 
             Assert.That(buf.stack, Is.EqualTo(5));
-            Assert.That(bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
+            Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
         }
 
         #endregion
@@ -70,45 +62,45 @@ namespace PokeAbilities.Test.Bufs
         [Test(Description = "幕の開始時、手札からランダムで2枚ほのおタイプが付与される。")]
         public void TestOnRoundStartAfter1()
         {
-            allyCardDetail.DrawCards(4);
-            Assert.That(allyCardDetail.GetHand().Count, Is.EqualTo(4));
-            Assert.That(allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            owner.allyCardDetail.DrawCards(4);
+            Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(4));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnRoundStartAfter();
 
-            Assert.That(allyCardDetail.GetHand().Count, Is.EqualTo(4));
-            Assert.That(allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(2));
+            Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(4));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(2));
         }
 
         [Test(Description = "手札が1枚の場合、その手札のみにほのおタイプが付与される。")]
         public void TestOnRoundStartAfter2()
         {
-            allyCardDetail.DrawCards(1);
-            Assert.That(allyCardDetail.GetHand().Count, Is.EqualTo(1));
-            Assert.That(allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            owner.allyCardDetail.DrawCards(1);
+            Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnRoundStartAfter();
 
-            Assert.That(allyCardDetail.GetHand().Count, Is.EqualTo(1));
-            Assert.That(allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(1));
         }
 
         [Test(Description = "手札が無い場合、ほのおタイプは付与されない。")]
         public void TestOnRoundStartAfter3()
         {
-            Assert.That(allyCardDetail.GetHand().Count, Is.EqualTo(0));
-            Assert.That(allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnRoundStartAfter();
 
-            Assert.That(allyCardDetail.GetHand().Count, Is.EqualTo(0));
-            Assert.That(allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
         }
 
         #endregion
@@ -118,8 +110,8 @@ namespace PokeAbilities.Test.Bufs
         [Test(Description = "ほのおタイプが付与されていないバトルページはダメージ量が増加しない。")]
         public void TestBeforeGiveDamage1()
         {
-            allyCardDetail.DrawCards(1);
-            BattleDiceCardModel cardModel = allyCardDetail.GetHand().FirstOrDefault();
+            owner.allyCardDetail.DrawCards(1);
+            BattleDiceCardModel cardModel = owner.allyCardDetail.GetHand().FirstOrDefault();
             var cardData = new BattlePlayingCardDataInUnitModel()
             {
                 card = cardModel,
@@ -141,7 +133,7 @@ namespace PokeAbilities.Test.Bufs
             Assert.That(behavior.GuardBreakMultiplier, Is.EqualTo(1));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnAddBuf();
             buf.BeforeGiveDamage(behavior);
 
@@ -158,8 +150,8 @@ namespace PokeAbilities.Test.Bufs
         [Test(Description = "ほのおタイプが付与されているバトルページはダメージ量+1。")]
         public void TestBeforeGiveDamage2()
         {
-            allyCardDetail.DrawCards(1);
-            BattleDiceCardModel cardModel = allyCardDetail.GetHand().FirstOrDefault();
+            owner.allyCardDetail.DrawCards(1);
+            BattleDiceCardModel cardModel = owner.allyCardDetail.GetHand().FirstOrDefault();
             cardModel.AddBuf(new BattleDiceCardBuf_FireType());
             var cardData = new BattlePlayingCardDataInUnitModel()
             {
@@ -182,7 +174,7 @@ namespace PokeAbilities.Test.Bufs
             Assert.That(behavior.GuardBreakMultiplier, Is.EqualTo(1));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             buf.OnAddBuf();
             buf.BeforeGiveDamage(behavior);
 
@@ -204,7 +196,7 @@ namespace PokeAbilities.Test.Bufs
         public void TestOnRoundEnd1()
         {
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             Assert.That(buf.stack, Is.EqualTo(5));
             Assert.That(buf.IsDestroyed, Is.False);
 
@@ -217,7 +209,7 @@ namespace PokeAbilities.Test.Bufs
         public void TestOnRoundEnd2()
         {
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 3 };
-            bufListDetail.AddBuf(buf);
+            owner.bufListDetail.AddBuf(buf);
             Assert.That(buf.stack, Is.EqualTo(3));
             Assert.That(buf.IsDestroyed, Is.False);
 

@@ -8,21 +8,20 @@ namespace PokeAbilities.Test.Passives
     public class PassiveAbility_2270016Test
     {
         private BattleUnitModel owner;
-        private BattleUnitPassiveDetail passiveDetail;
 
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
-            owner.SetHp(100);
-            passiveDetail = owner.passiveDetail;
+            owner = new BattleUnitModelBuilder()
+            {
+                Hp = 100,
+            }.ToBattleUnitModel();
         }
 
         [Test]
         public void TestOnCreated()
         {
             var passive = new PassiveAbility_2270016();
-            passiveDetail.AddPassive(passive);
             passive.OnCreated();
             Assert.That(passive.GetDamageReductionAll, Is.EqualTo(0));
             Assert.That(passive.GetBreakDamageReductionAll(0, DamageType.Attack, null), Is.EqualTo(0));
@@ -37,8 +36,8 @@ namespace PokeAbilities.Test.Passives
             }.ToBattleUnitModel();
 
             var passive = new PassiveAbility_2270016();
-            passiveDetail.AddPassive(passive);
-            passiveDetail.OnCreated();
+            owner.passiveDetail.AddPassive(passive);
+            owner.passiveDetail.OnCreated();
             Assert.That(passive.GetDamageReductionAll, Is.EqualTo(0));
             Assert.That(passive.GetBreakDamageReductionAll(0, DamageType.Attack, null), Is.EqualTo(0));
 
@@ -63,8 +62,8 @@ namespace PokeAbilities.Test.Passives
 
             var randomizer = new FixedRandomizer();
             var passive = new PassiveAbility_2270016(randomizer);
-            passiveDetail.AddPassive(passive);
-            passiveDetail.OnCreated();
+            owner.passiveDetail.AddPassive(passive);
+            owner.passiveDetail.OnCreated();
             Assert.That(passive.GetDamageReductionAll, Is.EqualTo(0));
             Assert.That(passive.GetBreakDamageReductionAll(0, DamageType.Attack, null), Is.EqualTo(0));
 
@@ -90,8 +89,8 @@ namespace PokeAbilities.Test.Passives
 
             var randomizer = new FixedRandomizer();
             var passive = new PassiveAbility_2270016(randomizer);
-            passiveDetail.AddPassive(passive);
-            passiveDetail.OnCreated();
+            owner.passiveDetail.AddPassive(passive);
+            owner.passiveDetail.OnCreated();
             Assert.That(passive.GetDamageReductionAll, Is.EqualTo(0));
             Assert.That(passive.GetBreakDamageReductionAll(0, DamageType.Attack, null), Is.EqualTo(0));
 
