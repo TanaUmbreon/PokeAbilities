@@ -32,6 +32,13 @@
         {
             dmgReduction = 0;
 
+            BattleDiceCardModel card = attacker?.currentDiceAction?.card;
+            if (card == null) { return base.BeforeTakeDamage(attacker, dmg); }
+
+            if (randomizer.ValueForProb < 0.2f)
+            {
+                dmgReduction = 9999;
+            }
             return base.BeforeTakeDamage(attacker, dmg);
         }
 
