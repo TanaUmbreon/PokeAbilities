@@ -1,12 +1,12 @@
 # Poke Abilities
 
-「Library of Ruina」のMODです。ポ○モンの特性をモチーフにしたパッシブを追加します。
+「[Library of Ruina](https://store.steampowered.com/app/1256670/Library_Of_Ruina/)」のMODです。ポ○モンの特性をモチーフにしたパッシブを追加します。
 
 当MODで追加されるコアページやパッシブの詳細については [Wikiページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
 
-![画面サンプル1](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image1-r2.jpg)
+<img src="https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image1-r2.jpg" alt="画面サンプル1" width="430px">
 
-![画面サンプル2](https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image2-r2.jpg)
+<img src="https://raw.githubusercontent.com/TanaUmbreon/PokeAbilities/images/image2-r2.jpg" alt="画面サンプル2" width="540px">
 
 ## 免責事項
 
@@ -26,60 +26,3 @@ Library of Ruinaのセーブデータ保存場所は以下の通りです。
 
 1. [Releasesページ](https://github.com/TanaUmbreon/PokeAbilities/releases) を開きます。
 2. 最新バージョンの「Assets」から「PokeAbilities-bin-*x*.*x*.*x*.zip」をクリックしてダウンロードしてください。
-
-## リリースノート
-
-### Version 1.4.0 (2021/3/2)
-
-- コアページを追加。
-  - `ニ○フィアのページ`
-- パッシブを追加。
-  - `メ○メロボディ`, `フ○アリースキン`
-- 状態を追加。
-  - `メ○メロ`状態
-- パッシブを仕様変更。
-  - `こ○じょう`: 装着コストを下方修正。(3→2)
-  - `ち○すい`: 装着コストを下方修正。(8→7)
-  - `う○おいボディ`: 装着コストを下方修正。(4→3)
-  - `も○いび`: 装着コストを上方修正。(2→3)
-- バトルページを仕様変更。
-  - `あ○ごい`: ダイス威力を上方修正。(&lt;防御&gt;2-4, &lt;回避&gt;2-5 → &lt;防御&gt;4-6, &lt;回避&gt;3-7)
-
-### Version 1.3.0 (2021/2/28)
-
-- バトルページを追加。
-  - `あ○ごい`
-- コアページを追加。
-  - `シ○ワーズのページ`
-- パッシブを追加。
-  - `う○おいボディ`, `は○あし`
-- 状態を追加。
-  - `あ○`状態
-- 状態を仕様変更。
-  - `も○いび`状態の数値を表示しないように変更。(内部での数値は0)
-- 状態(バトルページ付与)を追加。
-  -  `み○タイプ`状態
-
-### Version 1.2.0 (2021/2/21)
-
-- コアページを追加。
-  - `サ○ダースのページ`
-- パッシブを追加。
-  - `ち○でん`, `は○あし`
-- コアページのアイコンを専用のものに変更。
-
-### Version 1.1.0 (2021/2/18)
-
-- コアページを追加。
-  - `ブ○スターのページ`
-- パッシブを追加。
-  - `も○いび`, `こ○じょう`
-- 状態を追加。
-  - `も○いび`状態
-- パッシブを仕様変更。
-  - `て○おうりょく`: 装着コストを下方修正。(4→3)
-
-### Version 1.0.0 (2021/2/16)
-
-- 初回バージョン。
-- `イ○ブイのページ`, `エ○フィのページ`, `ブ○ッキーのページ`とそのパッシブを追加。
