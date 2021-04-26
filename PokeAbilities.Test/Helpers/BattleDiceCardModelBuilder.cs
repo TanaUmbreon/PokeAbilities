@@ -36,7 +36,10 @@ namespace PokeAbilities.Test.Helpers
             {
                 DiceBehaviourList = diceBehaviourList,
             };
-            return BattleDiceCardModel.CreatePlayingCard(cardInfo);
+            var model = new BattleDiceCardModel();
+            PrivateAccess.SetField(model, "_xmlData", cardInfo.Copy(false));
+            PrivateAccess.SetField(model, "_curCost", cardInfo.Spec.Cost);
+            return model;
         }
     }
 }
