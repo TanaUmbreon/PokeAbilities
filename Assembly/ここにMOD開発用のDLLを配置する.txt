@@ -2,6 +2,5 @@
 
 0Harmony.dll
 Assembly-CSharp.dll
-BaseMod.dll
 UnityEngine.AudioModule.dll
 UnityEngine.CoreModule.dll

@@ -40,10 +40,6 @@
       <HintPath>..\Assembly\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="BaseMod">
-      <HintPath>..\Assembly\BaseMod.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
