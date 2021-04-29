@@ -39,4 +39,17 @@
     <DropItem Type="Equip">2279471</DropItem>
     <DropItem Type="Equip">2279700</DropItem>
   </BookUse>
+
+  <!--ユンの本-->
+  <BookUse ID="200007">
+    <TextId>dropbook_yun</TextId>
+    <BookIcon>YunsOffice</BookIcon>
+    <Chapter>1</Chapter>
+    <Exp>8</Exp>
+    <EquipProb>0.15</EquipProb>
+    <DropItem Type="Equip">200006</DropItem>
+    <DropItem Type="Equip">201001</DropItem>
+    <DropItem Type="Equip">2279278</DropItem>
+    <DropItem Type="Equip">2279278</DropItem>
+  </BookUse>
 </BookUseXmlRoot>

@@ -72,4 +72,16 @@
     <Name>アイスボディ</Name>
     <Desc>あられ状態のとき、幕の終了時にあられダメージを受けず、最大体力の1/16だけ体力が回復する。(最大5)</Desc>
   </PassiveDesc>
+  <PassiveDesc ID="2270018">
+    <Name>するどいめ</Name>
+    <Desc>マッチ相手の回避ダイスは威力の影響を受けない。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270019">
+    <Name>あめうけざら</Name>
+    <Desc>あめ状態のとき、最大体力の1/16だけ体力が回復する。(最大5)</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270020">
+    <Name>あめふらし</Name>
+    <Desc>舞台の開始時、全てのキャラクターにあめ5を付与。</Desc>
+  </PassiveDesc>
 </PassiveDescRoot>
