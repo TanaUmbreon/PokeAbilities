@@ -28,7 +28,7 @@ namespace PokeAbilities.Test.Helpers
         public int Hp { get; set; } = 20;
 
         /// <summary>
-        /// 現在使用しているバトル ページのダイス アクションを取得または設定します。
+        /// 現在使用しているバトル ページのデータを取得または設定します。
         /// </summary>
         public BattlePlayingCardDataInUnitModel CurrentDiceAction { get; set; } = null;
 
