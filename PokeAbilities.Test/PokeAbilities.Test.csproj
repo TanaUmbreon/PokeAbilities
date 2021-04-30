@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -81,6 +83,7 @@
     <Compile Include="Helpers\FixedRandomizer.cs" />
     <Compile Include="Helpers\BattlePlayingCardDataInUnitModelBuilder.cs" />
     <Compile Include="Helpers\BattleDiceBehaviorBuilder.cs" />
+    <Compile Include="Helpers\BookXmlInfoBuilder.cs" />
     <Compile Include="Passives\PassiveAbility_2270014Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270016Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270017Test.cs" />
