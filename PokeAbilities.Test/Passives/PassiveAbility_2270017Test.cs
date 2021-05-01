@@ -36,7 +36,6 @@ namespace PokeAbilities.Test.Passives
             Assert.That(owner.hp, Is.EqualTo(100));
         }
 
-        // Note: OnRoundEndであられ状態によるHP回復のパターンはテスト不可能。
-        //   内部でUnitBattleDataModelを使用し、UnityEngineの参照を回避できないため。
+        // ToDo: OnRoundEndであられ状態によるHP回復のテストを実装する。
     }
 }
