@@ -128,16 +128,13 @@ namespace PokeAbilities.Test.Helpers
 
             if (EquipBook != null)
             {
-                // ロードされたコアページの一覧に存在しない場合は追加する
-                // (UnitDataModelのインスタンス生成時に参照があり、そこでnull参照を回避する為)
+                // ロードされたコアページの一覧を初期化して追加する
+                // (UnitDataModelのコンストラクタで参照してそこからコアページの設定をしている為。
+                //  都度の初期化はテストケース毎に同じIDで異なる性能のコアページを使用できるようにする為)
                 BookXmlList bookInfo = Singleton<BookXmlList>.Instance;
-                var dictionary = PrivateAccess.GetField<Dictionary<int, BookXmlInfo>>(bookInfo, "_dictionary")
-                    ?? new Dictionary<int, BookXmlInfo>();
-                if (!dictionary.ContainsKey(EquipBook.id))
-                {
-                    dictionary.Add(EquipBook.id, EquipBook);
-                    PrivateAccess.SetField(bookInfo, "_dictionary", dictionary);
-                }
+                var dictionary = new Dictionary<int, BookXmlInfo>();
+                dictionary.Add(EquipBook.id, EquipBook);
+                PrivateAccess.SetField(bookInfo, "_dictionary", dictionary);
 
                 var stage = new StageModel();
                 var data = new UnitDataModel(EquipBook.id);
