@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using PokeAbilities.Bufs;
@@ -11,6 +10,8 @@ namespace PokeAbilities.Test.CardAbilities
     [TestFixture]
     public class DiceCardSelfAbility_hail5allTest
     {
+        private DiceCardSelfAbility_hail5all card;
+
         private BattleUnitModel owner;
         private BattleUnitModel alivingAlly;
         private BattleUnitModel deadAlly;
@@ -20,42 +21,36 @@ namespace PokeAbilities.Test.CardAbilities
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder()
-            {
-                Id = 0,
-                Faction = Faction.Player,
-            }.ToBattleUnitModel();
-            BattleObjectManagerAccess.RegisterUnit(owner);
+            // BattleObjectManagerの操作や参照を行う為に必須
+            BattleObjectManager.instance.Init_only();
 
-            alivingAlly = new BattleUnitModelBuilder()
-            {
-                Id = 1,
-                Faction = Faction.Player,
-            }.ToBattleUnitModel();
-            BattleObjectManagerAccess.RegisterUnit(alivingAlly);
+            card = new DiceCardSelfAbility_hail5all();
 
-            deadAlly = new BattleUnitModelBuilder()
-            {
-                Id = 2,
-                Faction = Faction.Player,
-                IsDie = true,
-            }.ToBattleUnitModel();
-            BattleObjectManagerAccess.RegisterUnit(deadAlly);
+            owner = CreateBattleUnitModel(id: 0, faction: Faction.Player);
+            alivingAlly = CreateBattleUnitModel(id: 0, faction: Faction.Player);
+            deadAlly = CreateBattleUnitModel(id: 0, faction: Faction.Player, isDie: true);
+            alivingOpponent = CreateBattleUnitModel(id: 0, faction: Faction.Enemy);
+            deadOpponent = CreateBattleUnitModel(id: 0, faction: Faction.Enemy, isDie: true);
 
-            alivingOpponent = new BattleUnitModelBuilder()
-            {
-                Id = 3,
-                Faction = Faction.Enemy,
-            }.ToBattleUnitModel();
-            BattleObjectManagerAccess.RegisterUnit(alivingOpponent);
+        }
 
-            deadOpponent = new BattleUnitModelBuilder()
+        /// <summary>
+        /// 指定したパラメータでバトル キャラクターを生成します。
+        /// </summary>
+        /// <param name="id">キャラクターの ID。</param>
+        /// <param name="faction">キャラクターの派閥。</param>
+        /// <param name="isDie">キャラクターが死亡していることを示す値。</param>
+        /// <returns></returns>
+        private BattleUnitModel CreateBattleUnitModel(int id, Faction faction, bool isDie = false)
+        {
+            BattleUnitModel unit = new BattleUnitModelBuilder()
             {
-                Id = 4,
-                Faction = Faction.Enemy,
-                IsDie = true,
+                Id = id,
+                Faction = faction,
+                IsDie = isDie,
             }.ToBattleUnitModel();
-            BattleObjectManagerAccess.RegisterUnit(deadOpponent);
+            BattleObjectManagerAccess.RegisterUnit(unit);
+            return unit;
         }
 
         [Test(Description = "生存している敵味方全てのキャラクターにあられ5が付与される")]
@@ -78,13 +73,6 @@ namespace PokeAbilities.Test.CardAbilities
             Assert.That(deadOpponent.bufListDetail.GetActivatedBufList().Any(), Is.False);
             Assert.That(deadOpponent.bufListDetail.GetReadyBufList().Any(), Is.False);
 
-            var card = new DiceCardSelfAbility_hail5all()
-            {
-                card = new BattlePlayingCardDataInUnitModel()
-                {
-                    owner = owner,
-                },
-            };
             card.OnUseCard();
 
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);
@@ -116,13 +104,6 @@ namespace PokeAbilities.Test.CardAbilities
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.False);
             Assert.That(owner.bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.False);
 
-            var card = new DiceCardSelfAbility_hail5all()
-            {
-                card = new BattlePlayingCardDataInUnitModel()
-                {
-                    owner = owner,
-                },
-            };
             card.OnUseCard();
 
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Rain>(), Is.False);

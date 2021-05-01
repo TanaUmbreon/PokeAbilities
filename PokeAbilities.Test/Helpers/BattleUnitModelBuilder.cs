@@ -13,6 +13,18 @@ namespace PokeAbilities.Test.Helpers
         public int Id { get; set; } = 0;
 
         /// <summary>
+        /// キャラクターが装着しているコア ページを取得または設定します。
+        /// null の場合、既定のコア ページを構築します。
+        /// </summary>
+        public BookXmlInfo EquipBook { get; set; } = null;
+
+        /// <summary>
+        /// キャラクターが保有するパッシブのコレクションを取得または設定します。
+        /// nullの場合、パッシブを保有しません。
+        /// </summary>
+        public IEnumerable<PassiveAbilityBase> Passives { get; set; } = null;
+
+        /// <summary>
         /// キャラクターの派閥を取得または設定します。
         /// </summary>
         public Faction Faction { get; set; } = Faction.Enemy;
@@ -21,12 +33,6 @@ namespace PokeAbilities.Test.Helpers
         /// キャラクターが死亡している事を表す値を取得または設定します。
         /// </summary>
         public bool IsDie { get; set; } = false;
-
-        /// <summary>
-        /// キャラクターが装着しているコア ページを取得または設定します。
-        /// 既定値は null で、コア ページの情報が取得できません。
-        /// </summary>
-        public BookXmlInfo EquipBook { get; set; } = null;
 
         /// <summary>
         /// 現在使用しているバトル ページのデータを取得または設定します。
@@ -88,12 +94,6 @@ namespace PokeAbilities.Test.Helpers
         public BattleDiceCardModel DeckCard9 { get; set; } = null;
 
         /// <summary>
-        /// キャラクターが保有するパッシブのコレクションを取得または設定します。
-        /// nullの場合、パッシブを保有しません。
-        /// </summary>
-        public IEnumerable<PassiveAbilityBase> Passives { get; set; } = null;
-
-        /// <summary>
         /// <see cref="BattleUnitModelBuilder"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattleUnitModelBuilder() { }
@@ -110,8 +110,10 @@ namespace PokeAbilities.Test.Helpers
                 faction = Faction,
                 currentDiceAction = CurrentDiceAction,
             };
+
+            InitEquipBook(model);
             model.allyCardDetail = CreateBattleAllyCardDetail(model);
-            model.equipment.book = CreateBookModel();
+
             if (IsDie)
             {
                 model.DieFake();
@@ -126,28 +128,34 @@ namespace PokeAbilities.Test.Helpers
                 }
             }
 
-            if (EquipBook != null)
+            return model;
+        }
+
+        private void InitEquipBook(BattleUnitModel model)
+        {
+            if (EquipBook == null)
             {
-                // ロードされたコアページの一覧を初期化して追加する
-                // (UnitDataModelのコンストラクタで参照してそこからコアページの設定をしている為。
-                //  都度の初期化はテストケース毎に同じIDで異なる性能のコアページを使用できるようにする為)
-                BookXmlList bookInfo = Singleton<BookXmlList>.Instance;
-                var dictionary = new Dictionary<int, BookXmlInfo>();
-                dictionary.Add(EquipBook.id, EquipBook);
-                PrivateAccess.SetField(bookInfo, "_dictionary", dictionary);
-
-                var stage = new StageModel();
-                var data = new UnitDataModel(EquipBook.id);
-                var unitData = new UnitBattleDataModel(stage, data);
-                PrivateAccess.SetField(model, "_unitData", unitData);
-
-                // BattleUnitModel.OnDispose() で行う処理の一部
-                model.SetHp((int)model.UnitData.hp);
-                model.ResetBreakGauge();
-                model.RecoverBreakLife(model.MaxBreakLife, true);
+                EquipBook = new BookXmlInfoBuilder().ToBookXmlInfo();
             }
 
-            return model;
+            // ロードされたコアページの一覧を初期化して追加する
+            // (UnitDataModelのコンストラクタで参照してそこからコアページの設定をしている為。
+            //  都度の初期化はテストケース毎に同じIDで異なる性能のコアページを使用できるようにする為)
+            BookXmlList bookInfo = Singleton<BookXmlList>.Instance;
+            var dictionary = new Dictionary<int, BookXmlInfo>();
+            dictionary.Add(EquipBook.id, EquipBook);
+            PrivateAccess.SetField(bookInfo, "_dictionary", dictionary);
+
+            var stage = new StageModel();
+            var data = new UnitDataModel(EquipBook.id);
+            var unitData = new UnitBattleDataModel(stage, data);
+            PrivateAccess.SetField(model, "_unitData", unitData);
+            model.equipment.SetUnitData(data);
+
+            // BattleUnitModel.OnDispose() で行う処理の一部
+            model.SetHp((int)model.UnitData.hp);
+            model.ResetBreakGauge();
+            model.RecoverBreakLife(model.MaxBreakLife, true);
         }
 
         private BattleAllyCardDetail CreateBattleAllyCardDetail(BattleUnitModel target)

@@ -10,18 +10,22 @@ namespace PokeAbilities.Test.Passives
     [TestFixture]
     public class PassiveAbility_2270020Test
     {
+        private PassiveAbility_2270020 passive;
+
         private BattleUnitModel owner;
         private BattleUnitModel alivingAlly;
         private BattleUnitModel deadAlly;
         private BattleUnitModel alivingOpponent;
         private BattleUnitModel deadOpponent;
 
-        private PassiveAbility_2270020 passive;
-
         [SetUp]
         public void SetUp()
         {
+            // BattleObjectManagerの操作や参照を行う為に必須
+            BattleObjectManager.instance.Init_only();
+
             passive = new PassiveAbility_2270020();
+
             owner = CreateBattleUnitModel(id: 0, faction: Faction.Player, passives: new[] { passive });
             alivingAlly = CreateBattleUnitModel(id: 0, faction: Faction.Player);
             deadAlly = CreateBattleUnitModel(id: 0, faction: Faction.Player, isDie: true);
