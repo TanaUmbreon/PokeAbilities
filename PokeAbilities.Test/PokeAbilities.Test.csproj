@@ -89,6 +89,7 @@
     <Compile Include="Passives\PassiveAbility_2270017Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270015Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270018Test.cs" />
+    <Compile Include="Passives\PassiveAbility_2270020Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270019Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\SystemRandomizer.cs" />
