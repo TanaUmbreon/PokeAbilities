@@ -185,9 +185,9 @@
   </Book>
 
   <!--ペリッパー-->
-  <Book ID="2279278">
+  <Book ID="2279279">
     <Name>Pelipper</Name>
-    <TextId>2279278</TextId>
+    <TextId>2279279</TextId>
     <EquipEffect>
       <HP>1</HP>
       <Break>1</Break>
