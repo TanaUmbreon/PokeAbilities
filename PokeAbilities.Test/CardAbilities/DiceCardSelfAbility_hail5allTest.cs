@@ -20,8 +20,6 @@ namespace PokeAbilities.Test.CardAbilities
         [SetUp]
         public void SetUp()
         {
-            BattleObjectManager.instance.Init_only();
-
             owner = new BattleUnitModelBuilder()
             {
                 Id = 0,

@@ -21,6 +21,9 @@ namespace PokeAbilities.Test
             // BattleUnitModelBuilder.EquipBook を指定している状態でBattleUnitModelを生成する時に必須
             Singleton<DeckXmlList>.Instance.Init(new List<DeckXmlInfo>());
 
+            // BattleObjectManagerの操作や参照を行う為に必須
+            BattleObjectManager.instance.Init_only();
+
             const BindingFlags PublicStaticBinding = BindingFlags.Public | BindingFlags.Static;
             const BindingFlags PublicBinding = BindingFlags.Public | BindingFlags.Instance;
 
