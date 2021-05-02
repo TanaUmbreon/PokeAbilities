@@ -8,13 +8,14 @@ namespace PokeAbilities.Passives
     /// </summary>
     public class PassiveAbility_2270018 : PassiveAbilityBase
     {
-        public override void OnStartParrying(BattlePlayingCardDataInUnitModel card)
+        public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
-            BattleDiceBehavior targetDice = card.target?.currentDiceAction?.currentBehavior;
+            BattlePlayingCardDataInUnitModel targetCard = behavior.card.target?.currentDiceAction;
+            BattleDiceBehavior targetDice = targetCard?.currentBehavior;
             if (targetDice == null || targetDice.Detail != BehaviourDetail.Evasion) { return; }
 
             owner.battleCardResultLog?.SetPassiveAbility(this);
-            card.target.currentDiceAction.ignorePower = true;
+            targetCard.ignorePower = true;
         }
     }
 }
