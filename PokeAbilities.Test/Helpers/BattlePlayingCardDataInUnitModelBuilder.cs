@@ -8,7 +8,12 @@ namespace PokeAbilities.Test.Helpers
     public class BattlePlayingCardDataInUnitModelBuilder
     {
         /// <summary>
-        /// バトル ページの対象を取得または設定します。
+        /// バトル ページの所有キャラクターを取得または設定します。
+        /// </summary>
+        public BattleUnitModel Owner { get; set; }
+
+        /// <summary>
+        /// バトル ページの対象キャラクターを取得または設定します。
         /// </summary>
         public BattleUnitModel Target { get; set; }
 
@@ -31,10 +36,15 @@ namespace PokeAbilities.Test.Helpers
         {
             var result = new BattlePlayingCardDataInUnitModel()
             {
+                owner = Owner,
                 target = Target,
                 currentBehavior = CurrentBehavior,
             };
 
+            if (Owner != null)
+            {
+                Owner.currentDiceAction = result;
+            }
             if (CurrentBehavior != null)
             {
                 CurrentBehavior.card = result;
