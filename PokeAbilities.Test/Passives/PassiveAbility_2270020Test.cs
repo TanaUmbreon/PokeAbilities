@@ -59,7 +59,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "生存している敵味方全てのキャラクターにあめ5が付与される。")]
-        public void TestOnStartBattle1()
+        public void TestOnRoundStart1()
         {
             Assert.That(BattleObjectManager.instance.GetAliveList().Count, Is.EqualTo(3));
 
@@ -78,7 +78,7 @@ namespace PokeAbilities.Test.Passives
             Assert.That(deadOpponent.bufListDetail.GetActivatedBufList().Any(), Is.False);
             Assert.That(deadOpponent.bufListDetail.GetReadyBufList().Any(), Is.False);
 
-            passive.OnStartBattle();
+            passive.OnRoundStart();
 
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Rain>(), Is.True);
             Assert.That(owner.bufListDetail.GetActivatedBufList().FirstOrDefault(b => b is BattleUnitBuf_Rain).stack, Is.EqualTo(5));
@@ -100,7 +100,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "すでに他の天気バフが付与されている場合は、そのバフが削除されて新しくあめ5が付与される。")]
-        public void TestOnStartBattle2()
+        public void TestOnRoundStart2()
         {
             var bufList = PrivateAccess.GetField<List<BattleUnitBuf>>(owner.bufListDetail, "_bufList");
             bufList.Add(new BattleUnitBuf_SunnyDay() { stack = 5 });
@@ -111,7 +111,7 @@ namespace PokeAbilities.Test.Passives
             Assert.That(owner.bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.False);
             Assert.That(owner.bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.False);
 
-            passive.OnStartBattle();
+            passive.OnRoundStart();
 
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Rain>(), Is.True);
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.False);
@@ -120,6 +120,31 @@ namespace PokeAbilities.Test.Passives
             Assert.That(owner.bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Rain>().Any(), Is.False);
             Assert.That(owner.bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_SunnyDay>().Any(), Is.False);
             Assert.That(owner.bufListDetail.GetReadyBufList().OfType<BattleUnitBuf_Hail>().Any(), Is.False);
+        }
+
+        [Test(Description = "2幕目からは効果を発揮しない。")]
+        public void TestOnRoundStart3()
+        {
+            // 1幕目(舞台の開始時)
+            passive.OnRoundStart();
+            Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Rain>(), Is.True);
+            Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.False);
+            Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.False);
+            Assert.That(owner.bufListDetail.GetReadyBufList().Any(), Is.False);
+            owner.bufListDetail.GetActivatedBufList().Clear();
+            owner.bufListDetail.GetReadyBufList().Clear();
+            Assert.That(owner.bufListDetail.GetActivatedBufList().Any(), Is.False);
+            Assert.That(owner.bufListDetail.GetReadyBufList().Any(), Is.False);
+
+            // 2幕目
+            passive.OnRoundStart();
+            Assert.That(owner.bufListDetail.GetActivatedBufList().Any(), Is.False);
+            Assert.That(owner.bufListDetail.GetReadyBufList().Any(), Is.False);
+
+            // 3幕目
+            passive.OnRoundStart();
+            Assert.That(owner.bufListDetail.GetActivatedBufList().Any(), Is.False);
+            Assert.That(owner.bufListDetail.GetReadyBufList().Any(), Is.False);
         }
     }
 }
