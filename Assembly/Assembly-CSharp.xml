@@ -1211,7 +1211,7 @@
       <summary>このクラスの既定のインスタンスを取得します。</summary>
     </member>
     <member name="T:BattlePlayingCardDataInUnitModel">
-      <summary>キャラクター モデルに含まれる、バトルで使用しているバトル ページのデータを表します。</summary>
+      <summary>キャラクターが戦闘で使用するバトル ページのデータを表します。</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.card">
       <summary></summary>
@@ -1886,7 +1886,7 @@
       <param name="card"></param>
     </member>
     <member name="M:BattleUnitBuf.OnStartParrying(BattlePlayingCardDataInUnitModel)">
-      <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
       <param name="card">このバフ所有キャラクターがマッチに使用するバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBuf.OnSuccessAttack(BattleDiceBehavior)">
@@ -2371,8 +2371,8 @@
       <param name="card"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnStartParrying(BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="card"></param>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
+      <param name="card">マッチに使用するバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnSuccessAttack(BattleDiceBehavior)">
       <summary></summary>
@@ -4547,7 +4547,7 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartParrying">
-      <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnSucceedAreaAttack(BattleUnitModel)">
       <summary></summary>
@@ -5496,7 +5496,7 @@
       <param name="card"></param>
     </member>
     <member name="M:PassiveAbilityBase.OnStartParrying(BattlePlayingCardDataInUnitModel)">
-      <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
       <param name="card">このパッシブ所有キャラクターがマッチに使用するバトル ページ。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnStartTargetedByAreaAtk(BattlePlayingCardDataInUnitModel)">
