@@ -19,7 +19,7 @@
   <!--にほんばれ-->
   <Card ID="2278001">
     <Name>Sunny Day</Name>
-    <Artwork>WhiteNight_White</Artwork><!--それっぽいので仮-->
+    <Artwork>SunnyDay</Artwork>
     <Rarity>Unique</Rarity>
     <Spec Range="Near" Cost="3" />
     <Script>sunny5all</Script>
