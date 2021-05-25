@@ -27,7 +27,7 @@ namespace PokeAbilities.Test.Bufs
         {
             var buf = new BattleUnitBuf_SunnyDay();
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
 
             Assert.That(buf.stack, Is.EqualTo(1));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
@@ -38,7 +38,7 @@ namespace PokeAbilities.Test.Bufs
         {
             var buf = new BattleUnitBuf_SunnyDay() { stack = 0 };
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
 
             Assert.That(buf.stack, Is.EqualTo(0));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
@@ -49,7 +49,7 @@ namespace PokeAbilities.Test.Bufs
         {
             var buf = new BattleUnitBuf_SunnyDay() { stack = 6 };
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
 
             Assert.That(buf.stack, Is.EqualTo(5));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_SunnyDay>(), Is.True);
@@ -134,7 +134,7 @@ namespace PokeAbilities.Test.Bufs
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
             buf.BeforeGiveDamage(behavior);
 
             Assert.That(behavior.DamageAdder, Is.EqualTo(0));
@@ -175,7 +175,7 @@ namespace PokeAbilities.Test.Bufs
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
             buf.BeforeGiveDamage(behavior);
 
             Assert.That(behavior.DamageAdder, Is.EqualTo(1));

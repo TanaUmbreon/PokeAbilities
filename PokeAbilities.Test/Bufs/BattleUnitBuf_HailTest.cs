@@ -26,7 +26,7 @@ namespace PokeAbilities.Test.Bufs
         {
             var buf = new BattleUnitBuf_Hail();
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
 
             Assert.That(buf.stack, Is.EqualTo(1));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);
@@ -37,7 +37,7 @@ namespace PokeAbilities.Test.Bufs
         {
             var buf = new BattleUnitBuf_Hail() { stack = 0 };
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
 
             Assert.That(buf.stack, Is.EqualTo(0));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);
@@ -48,7 +48,7 @@ namespace PokeAbilities.Test.Bufs
         {
             var buf = new BattleUnitBuf_Hail() { stack = 6 };
             owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf();
+            buf.OnAddBuf(buf.stack);
 
             Assert.That(buf.stack, Is.EqualTo(5));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);

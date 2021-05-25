@@ -645,7 +645,7 @@ namespace PokeAbilities.Test
 
     internal class BattleUnitBuf_MaxStack0 : BattleUnitBuf
     {
-        public override void OnAddBuf()
+        public override void OnAddBuf(int addedStack)
         {
             if (stack > 0)
             {
@@ -659,7 +659,7 @@ namespace PokeAbilities.Test
     /// </summary>
     internal class BattleUnitBuf_MaxStack5 : BattleUnitBuf
     {
-        public override void OnAddBuf()
+        public override void OnAddBuf(int addedStack)
         {
             if (stack > 5)
             {

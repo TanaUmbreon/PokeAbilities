@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using LOR_DiceSystem;
 using PokeAbilities.Bufs;
 
@@ -24,7 +22,7 @@ namespace PokeAbilities.Passives
 
                 var buf = new BattleUnitBuf_Infatuation(owner);
                 target.bufListDetail.AddBuf(buf);
-                buf.OnAddBuf();
+                buf.OnAddBuf(buf.stack);
             }
             catch (Exception ex)
             {

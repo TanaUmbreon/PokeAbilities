@@ -55,7 +55,7 @@ namespace PokeAbilities
                 {
                     target.AddBuf(buf);
                 }
-                buf.OnAddBuf();
+                buf.OnAddBuf(modifiedStack);
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace PokeAbilities
                 {
                     target.AddReadyBuf(buf);
                 }
-                buf.OnAddBuf();
+                buf.OnAddBuf(modifiedStack);
             }
             catch (Exception ex)
             {

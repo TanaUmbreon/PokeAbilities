@@ -14,7 +14,7 @@ namespace PokeAbilities.Bufs
         /// </summary>
         protected virtual int MaxStack { get; } = int.MaxValue;
 
-        public override void OnAddBuf()
+        public override void OnAddBuf(int addedStack)
             => stack = (stack > MaxStack) ? MaxStack : stack;
 
         /// <summary>
