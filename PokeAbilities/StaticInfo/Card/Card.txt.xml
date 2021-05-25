@@ -35,7 +35,7 @@
   <!--あられ-->
   <Card ID="2278002">
     <Name>Hail</Name>
-    <Artwork>TheSnowQueen_Sord</Artwork><!--それっぽいので仮-->
+    <Artwork>Hail</Artwork>
     <Rarity>Unique</Rarity>
     <Spec Range="Near" Cost="3" />
     <Script>hail5all</Script>
