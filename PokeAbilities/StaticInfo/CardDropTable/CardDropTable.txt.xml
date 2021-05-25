@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CardDropTableXmlRoot>
-  <!--フィンの本-->
-  <DropTable ID="200004">
-    <Card>100001</Card>
-    <Card>100002</Card>
-    <Card>100003</Card>
-    <Card>100004</Card>
-    <Card>100005</Card>
-    <Card>102003</Card>
-    <Card>102006</Card>
+  <!--謝肉祭の本-->
+  <DropTable ID="230001">
+    <Card>401001</Card>
+    <Card>401002</Card>
+    <Card>401003</Card>
+    <Card>401004</Card>
+    <Card>401005</Card>
+    <Card>401006</Card>
+    <!--あまごい-->
     <Card>2278000</Card>
   </DropTable>
 
-  <!--エリーの本-->
-  <DropTable ID="200006">
-    <Card>100001</Card>
-    <Card>100002</Card>
-    <Card>100003</Card>
-    <Card>100004</Card>
-    <Card>100005</Card>
-    <Card>102004</Card>
-    <Card>102005</Card>
-    <Card>102006</Card>
+  <!--視線事務所の本-->
+  <DropTable ID="230009">
+    <Card>404001</Card>
+    <Card>404002</Card>
+    <Card>404003</Card>
+    <Card>404004</Card>
+    <Card>404005</Card>
+    <Card>404006</Card>
+    <Card>404007</Card>
+    <Card>404008</Card>
+    <!--にほんばれ-->
     <Card>2278001</Card>
+    <!--あられ-->
     <Card>2278002</Card>
+  </DropTable>
+
+  <!--黒雲会の本-->
+  <DropTable ID="230014">
+    <Card>406001</Card>
+    <Card>406002</Card>
+    <Card>406003</Card>
+    <Card>406004</Card>
+    <Card>406005</Card>
+    <Card>406006</Card>
+    <Card>406007</Card>
+    <Card>406008</Card>
+    <Card>406009</Card>
+    <!--あまごい-->
+    <Card>2278000</Card>
   </DropTable>
 </CardDropTableXmlRoot>

@@ -9,10 +9,10 @@
     <Script>rain5all</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="4" Dice="6" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="" Desc="" />
-      <Behaviour Min="5" Dice="7" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="" Desc="" />
+      <Behaviour Min="6" Dice="8" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="" Desc="" />
+      <Behaviour Min="7" Dice="9" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>4</Chapter>
     <Priority>0</Priority>
   </Card>
 
@@ -25,10 +25,10 @@
     <Script>sunny5all</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="5" Dice="7" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="energy1pw" Desc="" />
-      <Behaviour Min="3" Dice="4" Type="Def" Detail="Guard" Motion="E" EffectRes="" Script="" Desc="" />
+      <Behaviour Min="7" Dice="9" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="energy1pw" Desc="" />
+      <Behaviour Min="5" Dice="6" Type="Def" Detail="Guard" Motion="E" EffectRes="" Script="" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>4</Chapter>
     <Priority>0</Priority>
   </Card>
 
@@ -41,10 +41,10 @@
     <Script>hail5all</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="4" Dice="7" Type="Def" Detail="Evasion" Motion="G" EffectRes="" Script="damage2pw" Desc="" />
-      <Behaviour Min="3" Dice="4" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="damage2pw" Desc="" />
+      <Behaviour Min="6" Dice="9" Type="Def" Detail="Evasion" Motion="G" EffectRes="" Script="damage2pw" Desc="" />
+      <Behaviour Min="5" Dice="6" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="damage2pw" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>4</Chapter>
     <Priority>0</Priority>
   </Card>
 </DiceCardXmlRoot>

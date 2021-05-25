@@ -1,55 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BookUseXmlRoot>
-  <!--9級フィクサーの本-->
-  <BookUse ID="200002">
-    <TextId>dropbook_9fixer</TextId>
-    <BookIcon>YunsOffice</BookIcon>
-    <Chapter>1</Chapter>
-    <Exp>3</Exp>
-    <EquipProb>0.5</EquipProb>
-    <DropItem Type="Equip">201001</DropItem>
-    <DropItem Type="Equip">2279133</DropItem>
-    <DropItem Type="Equip">2279196</DropItem>
-    <DropItem Type="Equip">2279197</DropItem>
-  </BookUse>
-
-  <!--フィンの本-->
-  <BookUse ID="200004">
-    <TextId>dropbook_finn</TextId>
-    <BookIcon>YunsOffice</BookIcon>
-    <Chapter>1</Chapter>
-    <Exp>5</Exp>
+  <!--謝肉祭の本-->
+  <BookUse ID="230001">
+    <TextId>dropbook_carnival</TextId>
+    <BookIcon>TheCarnival</BookIcon>
+    <Chapter>4</Chapter>
     <EquipProb>0.3</EquipProb>
-    <DropItem Type="Equip">200004</DropItem>
+    <DropItem Type="Equip">230001</DropItem>
+    <!--イーブイのページ-->
+    <DropItem Type="Equip">2279133</DropItem>
+    <!--シャワーズのページ-->
     <DropItem Type="Equip">2279134</DropItem>
+    <!--サンダースのページ-->
     <DropItem Type="Equip">2279135</DropItem>
+    <!--ブースターのページ-->
     <DropItem Type="Equip">2279136</DropItem>
   </BookUse>
 
-  <!--エリーの本-->
-  <BookUse ID="200006">
-    <TextId>dropbook_eri</TextId>
-    <BookIcon>YunsOffice</BookIcon>
-    <Chapter>1</Chapter>
-    <Exp>6</Exp>
-    <EquipProb>0.3</EquipProb>
-    <DropItem Type="Equip">200005</DropItem>
-    <DropItem Type="Equip">201001</DropItem>
+  <!--終止符事務所の本-->
+  <BookUse ID="230002">
+    <TextId>dropbook_fullstop</TextId>
+    <BookIcon>FullStopOffice</BookIcon>
+    <Chapter>4</Chapter>
+    <DropItem Type="Equip">230005</DropItem>
+    <DropItem Type="Equip">230006</DropItem>
+    <!--エーフィのページ-->
+    <DropItem Type="Equip">2279196</DropItem>
+    <!--ブラッキーのページ-->
+    <DropItem Type="Equip">2279197</DropItem>
+  </BookUse>
+
+  <!--視線事務所の本-->
+  <BookUse ID="230009">
+    <TextId>dropbook_gaze</TextId>
+    <BookIcon>GazeOffice</BookIcon>
+    <Chapter>4</Chapter>
+    <DropItem Type="Equip">230011</DropItem>
+    <DropItem Type="Equip">230012</DropItem>
+    <!--リーフィアのページ-->
     <DropItem Type="Equip">2279470</DropItem>
+    <!--グレイシアのページ-->
     <DropItem Type="Equip">2279471</DropItem>
+    <!--ニンフィアのページ-->
     <DropItem Type="Equip">2279700</DropItem>
   </BookUse>
 
-  <!--ユンの本-->
-  <BookUse ID="200007">
-    <TextId>dropbook_yun</TextId>
-    <BookIcon>YunsOffice</BookIcon>
-    <Chapter>1</Chapter>
-    <Exp>8</Exp>
-    <EquipProb>0.15</EquipProb>
-    <DropItem Type="Equip">200006</DropItem>
-    <DropItem Type="Equip">201001</DropItem>
+  <!--黒雲会の本-->
+  <BookUse ID="230014">
+    <TextId>dropbook_kurokumo</TextId>
+    <BookIcon>KurokumoClan</BookIcon>
+    <Chapter>4</Chapter>
+    <DropItem Type="Equip">231001</DropItem>
+    <DropItem Type="Equip">230019</DropItem>
+    <DropItem Type="Equip">230020</DropItem>
+    <!--キャモメのページ-->
     <DropItem Type="Equip">2279278</DropItem>
+    <!--ペリッパーのページ-->
     <DropItem Type="Equip">2279279</DropItem>
   </BookUse>
 </BookUseXmlRoot>
