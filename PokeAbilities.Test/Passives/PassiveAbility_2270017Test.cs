@@ -8,30 +8,34 @@ namespace PokeAbilities.Test.Passives
     [TestFixture]
     public class PassiveAbility_2270017Test
     {
-        private BattleUnitModel owner;
+        private PassiveAbility_2270017 passive;
 
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder()
-            {
-                Hp = 100,
-            }.ToBattleUnitModel();
+            passive = new PassiveAbility_2270017();
+
         }
 
         [Test(Description = "あられ状態でない時、HPは変化しない。")]
         public void TestOnRoundEnd1()
         {
-            var passive = new PassiveAbility_2270017();
-            owner.passiveDetail.AddPassive(passive);
-            owner.passiveDetail.OnCreated();
+            BookXmlInfo equipBook = new BookXmlInfoBuilder()
+            {
+                Hp = 100,
+            }.ToBookXmlInfo();
+
+            BattleUnitModel owner = new BattleUnitModelBuilder()
+            {
+                EquipBook = equipBook,
+                Passives = new[] { passive },
+            }.ToBattleUnitModel();
             Assert.That(owner.hp, Is.EqualTo(100));
 
             passive.OnRoundEnd();
             Assert.That(owner.hp, Is.EqualTo(100));
         }
 
-        // Note: OnRoundEndであられ状態によるHP回復のパターンはテスト不可能。
-        //   内部でUnitBattleDataModelを使用し、UnityEngineの参照を回避できないため。
+        // ToDo: OnRoundEndであられ状態によるHP回復のテストを実装する。
     }
 }

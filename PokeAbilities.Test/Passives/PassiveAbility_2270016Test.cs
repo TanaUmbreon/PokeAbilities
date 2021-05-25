@@ -12,9 +12,14 @@ namespace PokeAbilities.Test.Passives
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder()
+            BookXmlInfo equipBook = new BookXmlInfoBuilder()
             {
                 Hp = 100,
+            }.ToBookXmlInfo();
+
+            owner = new BattleUnitModelBuilder()
+            {
+                EquipBook = equipBook,
             }.ToBattleUnitModel();
         }
 

@@ -157,6 +157,60 @@
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
 
+  <!--キャモメ-->
+  <Book ID="2279278">
+    <Name>Wingull</Name>
+    <TextId>2279278</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270018</Passive>
+      <Passive Level="1">2270011</Passive>
+      <Passive Level="1">2270019</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Pokemon</BookIcon>
+    <Chapter>1</Chapter>
+    <Episode>2278000</Episode>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
+  <!--ペリッパー-->
+  <Book ID="2279279">
+    <Name>Pelipper</Name>
+    <TextId>2279279</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <Passive Level="1">2270018</Passive>
+      <Passive Level="1">2270020</Passive>
+      <Passive Level="1">2270019</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Pokemon</BookIcon>
+    <Chapter>1</Chapter>
+    <Episode>2278000</Episode>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+
   <!--リーフィア-->
   <Book ID="2279470">
     <Name>Leafeon</Name>

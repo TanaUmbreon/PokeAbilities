@@ -40,15 +40,15 @@
       <param name="cards"></param>
     </member>
     <member name="M:BattleAllyCardDetail.AddCardToHand(BattleDiceCardModel,System.Boolean)">
-      <summary></summary>
-      <param name="card"></param>
-      <param name="front"></param>
+      <summary>指定したバトル ページを手札に追加します。</summary>
+      <param name="card">追加するバトル ページ。</param>
+      <param name="front">手札の先頭に追加することを示す値。既定は false (手札の末尾) です。</param>
     </member>
     <member name="M:BattleAllyCardDetail.AddNewCard(System.Int32,System.Boolean)">
-      <summary></summary>
-      <param name="cardId"></param>
-      <param name="front"></param>
-      <returns></returns>
+      <summary>指定したバトル ページ ID に一致するバトル ページを新規作成し、手札に追加します。</summary>
+      <param name="cardId">追加するバトル ページのバトル ページ ID。</param>
+      <param name="front">手札の先頭に追加することを示す値。既定は false (手札の末尾) です。</param>
+      <returns>追加したバトル ページ。</returns>
     </member>
     <member name="M:BattleAllyCardDetail.AddNewCardToDeck(System.Int32)">
       <summary></summary>
@@ -660,13 +660,13 @@
       <summary></summary>
     </member>
     <member name="P:BattleDiceBehavior.DiceResultValue">
-      <summary></summary>
+      <summary>威力のボーナス値が適用された後のダイス値を取得します。</summary>
     </member>
     <member name="P:BattleDiceBehavior.DiceTypeBonus">
       <summary></summary>
     </member>
     <member name="P:BattleDiceBehavior.DiceVanillaValue">
-      <summary></summary>
+      <summary>威力のボーナス値が適用される前のダイス値を取得します。</summary>
     </member>
     <member name="P:BattleDiceBehavior.EffectType">
       <summary></summary>
@@ -1211,7 +1211,7 @@
       <summary>このクラスの既定のインスタンスを取得します。</summary>
     </member>
     <member name="T:BattlePlayingCardDataInUnitModel">
-      <summary>キャラクター モデルに含まれる、バトルで使用しているバトル ページのデータを表します。</summary>
+      <summary>キャラクターが戦闘で使用するバトル ページのデータを表します。</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.card">
       <summary></summary>
@@ -1223,7 +1223,7 @@
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.currentBehavior">
-      <summary></summary>
+      <summary>現在のバトル ダイスの振る舞い</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.currentBehaviorUI">
       <summary></summary>
@@ -1235,7 +1235,7 @@
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.ignorePower">
-      <summary></summary>
+      <summary>威力の影響を受けないことを示す値</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.isFirstAction">
       <summary></summary>
@@ -1244,7 +1244,7 @@
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.owner">
-      <summary></summary>
+      <summary>バトル ページの所有キャラクター</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.slotOrder">
       <summary></summary>
@@ -1256,7 +1256,7 @@
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.target">
-      <summary></summary>
+      <summary>バトル ページの対象キャラクター</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.targetSlotOrder">
       <summary></summary>
@@ -1886,7 +1886,7 @@
       <param name="card"></param>
     </member>
     <member name="M:BattleUnitBuf.OnStartParrying(BattlePlayingCardDataInUnitModel)">
-      <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
       <param name="card">このバフ所有キャラクターがマッチに使用するバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBuf.OnSuccessAttack(BattleDiceBehavior)">
@@ -2371,8 +2371,8 @@
       <param name="card"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnStartParrying(BattlePlayingCardDataInUnitModel)">
-      <summary></summary>
-      <param name="card"></param>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
+      <param name="card">マッチに使用するバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnSuccessAttack(BattleDiceBehavior)">
       <summary></summary>
@@ -2450,7 +2450,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.currentDiceAction">
-      <summary></summary>
+      <summary>現在使用しているバトル ページのデータ</summary>
     </member>
     <member name="F:BattleUnitModel.currentSpeedDiceIdx">
       <summary></summary>
@@ -2583,7 +2583,7 @@
     </member>
     <member name="M:BattleUnitModel.ChangeBaseDeck(System.Collections.Generic.List{LOR_DiceSystem.DiceCardXmlInfo},System.Int32)">
       <summary>指定されたデッキ情報で構成され、指定した枚数だけ手札を引いた状態のデッキに切り替えます。</summary>
-      <param name="cardList">バトルページのリストで表される、使用するデッキの情報。</param>
+      <param name="cardList">バトル ページのリストで表される、使用するデッキの情報。</param>
       <param name="drawNum">デッキから手札を引く枚数。</param>
     </member>
     <member name="M:BattleUnitModel.ChangeDamage(BattleUnitModel,System.Double)">
@@ -4547,7 +4547,7 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartParrying">
-      <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnSucceedAreaAttack(BattleUnitModel)">
       <summary></summary>
@@ -4800,7 +4800,7 @@
       <summary>影 (狼が使用するバトル ページの対象でない司書は行動不能)</summary>
     </member>
     <member name="F:KeywordBuf.CB_BlackSwanDeadBro">
-      <summary>消えた家族 (幕の開始時、この値が4以上なら特殊バトルページを使用)</summary>
+      <summary>消えた家族 (幕の開始時、この値が4以上なら特殊バトル ページを使用)</summary>
     </member>
     <member name="F:KeywordBuf.CB_CopiousBleeding">
       <summary>深い傷 (数値が5以上になれば25%のダメージを受ける)</summary>
@@ -4899,7 +4899,7 @@
       <summary>打撃体勢 (打撃威力 +2。攻撃で与える混乱ダメージ量が 50% 増加)</summary>
     </member>
     <member name="F:KeywordBuf.PurplePenetrate">
-      <summary>貫通体勢 (貫通威力 +2。バトルページで付与する状態異常の数値が 2 倍になる)</summary>
+      <summary>貫通体勢 (貫通威力 +2。バトル ページで付与する状態異常の数値が 2 倍になる)</summary>
     </member>
     <member name="F:KeywordBuf.PurpleSlash">
       <summary>斬撃体勢 (斬撃威力 +2。攻撃で与えるダメージ量が 50% 増加)</summary>
@@ -5496,7 +5496,7 @@
       <param name="card"></param>
     </member>
     <member name="M:PassiveAbilityBase.OnStartParrying(BattlePlayingCardDataInUnitModel)">
-      <summary>バトル ページによるマッチが開始される時に呼び出されます。</summary>
+      <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
       <param name="card">このパッシブ所有キャラクターがマッチに使用するバトル ページ。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnStartTargetedByAreaAtk(BattlePlayingCardDataInUnitModel)">

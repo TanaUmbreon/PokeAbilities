@@ -1,5 +1,4 @@
-﻿using BaseMod;
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 
 namespace PokeAbilities.Bufs

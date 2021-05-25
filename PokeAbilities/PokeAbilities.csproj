@@ -69,6 +69,9 @@
     <Compile Include="IRandomizer.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Passives\PassiveAbility_2270004.cs" />
+    <Compile Include="Passives\PassiveAbility_2270019.cs" />
+    <Compile Include="Passives\PassiveAbility_2270020.cs" />
+    <Compile Include="Passives\PassiveAbility_2270018.cs" />
     <Compile Include="Passives\PassiveAbility_2270017.cs" />
     <Compile Include="Passives\PassiveAbility_2270016.cs" />
     <Compile Include="Passives\PassiveAbility_2270015.cs" />

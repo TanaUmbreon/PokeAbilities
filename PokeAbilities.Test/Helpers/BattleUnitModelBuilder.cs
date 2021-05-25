@@ -13,6 +13,18 @@ namespace PokeAbilities.Test.Helpers
         public int Id { get; set; } = 0;
 
         /// <summary>
+        /// キャラクターが装着しているコア ページを取得または設定します。
+        /// null の場合、既定のコア ページを構築します。
+        /// </summary>
+        public BookXmlInfo EquipBook { get; set; } = null;
+
+        /// <summary>
+        /// キャラクターが保有するパッシブのコレクションを取得または設定します。
+        /// nullの場合、パッシブを保有しません。
+        /// </summary>
+        public IEnumerable<PassiveAbilityBase> Passives { get; set; } = null;
+
+        /// <summary>
         /// キャラクターの派閥を取得または設定します。
         /// </summary>
         public Faction Faction { get; set; } = Faction.Enemy;
@@ -23,12 +35,7 @@ namespace PokeAbilities.Test.Helpers
         public bool IsDie { get; set; } = false;
 
         /// <summary>
-        /// キャラクターの現在体力を取得または設定します。
-        /// </summary>
-        public int Hp { get; set; } = 20;
-
-        /// <summary>
-        /// 現在使用しているバトル ページのダイス アクションを取得または設定します。
+        /// 現在使用しているバトル ページのデータを取得または設定します。
         /// </summary>
         public BattlePlayingCardDataInUnitModel CurrentDiceAction { get; set; } = null;
 
@@ -103,15 +110,52 @@ namespace PokeAbilities.Test.Helpers
                 faction = Faction,
                 currentDiceAction = CurrentDiceAction,
             };
+
+            InitEquipBook(model);
             model.allyCardDetail = CreateBattleAllyCardDetail(model);
-            model.equipment.book = CreateBookModel();
-            model.SetHp(Hp);
+
             if (IsDie)
             {
                 model.DieFake();
             }
+            if (Passives != null)
+            {
+                foreach (var passive in Passives)
+                {
+                    passive.Init(model);
+                    model.passiveDetail.AddPassive(passive);
+                    model.passiveDetail.OnCreated();
+                }
+            }
 
             return model;
+        }
+
+        private void InitEquipBook(BattleUnitModel model)
+        {
+            if (EquipBook == null)
+            {
+                EquipBook = new BookXmlInfoBuilder().ToBookXmlInfo();
+            }
+
+            // ロードされたコアページの一覧を初期化して追加する
+            // (UnitDataModelのコンストラクタで参照してそこからコアページの設定をしている為。
+            //  都度の初期化はテストケース毎に同じIDで異なる性能のコアページを使用できるようにする為)
+            BookXmlList bookInfo = Singleton<BookXmlList>.Instance;
+            var dictionary = new Dictionary<int, BookXmlInfo>();
+            dictionary.Add(EquipBook.id, EquipBook);
+            PrivateAccess.SetField(bookInfo, "_dictionary", dictionary);
+
+            var stage = new StageModel();
+            var data = new UnitDataModel(EquipBook.id);
+            var unitData = new UnitBattleDataModel(stage, data);
+            PrivateAccess.SetField(model, "_unitData", unitData);
+            model.equipment.SetUnitData(data);
+
+            // BattleUnitModel.OnDispose() で行う処理の一部
+            model.SetHp((int)model.UnitData.hp);
+            model.ResetBreakGauge();
+            model.RecoverBreakLife(model.MaxBreakLife, true);
         }
 
         private BattleAllyCardDetail CreateBattleAllyCardDetail(BattleUnitModel target)

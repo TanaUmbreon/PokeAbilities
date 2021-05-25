@@ -13,9 +13,14 @@ namespace PokeAbilities.Test.Bufs
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder()
+            BookXmlInfo equipBook = new BookXmlInfoBuilder()
             {
                 Hp = 100,
+            }.ToBookXmlInfo();
+
+            owner = new BattleUnitModelBuilder()
+            {
+                EquipBook = equipBook,
             }.ToBattleUnitModel();
         }
 
@@ -57,9 +62,6 @@ namespace PokeAbilities.Test.Bufs
         #endregion
 
         #region OnRoundEnd
-
-        // Note: OnRoundEndでスリップダメージを受けるパターンはテスト不可能。
-        //   内部でUnitBattleDataModelを使用し、UnityEngineの参照を回避できないため。
 
         [Test(Description = "幕の終了時、数値が1減る。")]
         public void TestOnRoundEnd1()
@@ -128,16 +130,7 @@ namespace PokeAbilities.Test.Bufs
             Assert.That(owner.hp, Is.EqualTo(100f));
         }
 
-        [Test(Description = "スリップダメージのテストはできない。")]
-        public void TestOnRoundEndXXX()
-        {
-            var buf = new BattleUnitBuf_Hail() { stack = 5 };
-            owner.bufListDetail.AddBuf(buf);
-            Assert.That(owner.hp, Is.EqualTo(100f));
-
-            Assert.That(() => { buf.OnRoundEnd(); }, Throws.Exception);
-            Assert.That(owner.hp, Is.EqualTo(100f));
-        }
+        // ToDo: スリップダメージのテストを実装する。
 
         #endregion
     }

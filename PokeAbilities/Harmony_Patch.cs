@@ -22,7 +22,7 @@ namespace PokeAbilities
 		{
             if (story != "PokeAbilities") { return true; }
 
-            BaseMod.Harmony_Patch.ArtWorks.TryGetValue("Pokemon", out var sprite);
+            ArtWorks.TryGetValue("Pokemon", out var sprite);
             if (sprite == null) { return true; }
 
             __result = new UIIconManager.IconSet
