@@ -93,6 +93,7 @@
     <Compile Include="Passives\PassiveAbility_2270019Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\SystemRandomizer.cs" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
