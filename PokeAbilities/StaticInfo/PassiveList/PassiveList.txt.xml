@@ -6,144 +6,142 @@
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
   </Passive>
-
   <!--マジックミラー-->
   <Passive ID="2270001">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>4</Cost>
   </Passive>
-
   <!--せいしんりょく-->
   <Passive ID="2270002">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>5</Cost>
   </Passive>
-
   <!--にげあし-->
   <Passive ID="2270003">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>1</Cost>
   </Passive>
-
   <!--てきおうりょく-->
   <Passive ID="2270004">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--きけんよち-->
   <Passive ID="2270005">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
   </Passive>
-
   <!--もらいび-->
   <Passive ID="2270006">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--こんじょう-->
   <Passive ID="2270007">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
   </Passive>
-
   <!--ちくでん-->
   <Passive ID="2270008">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
   </Passive>
-
   <!--はやあし-->
   <Passive ID="2270009">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>1</Cost>
   </Passive>
-
   <!--ちょすい-->
   <Passive ID="2270010">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>7</Cost>
   </Passive>
-
   <!--うるおいボディ-->
   <Passive ID="2270011">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--メロメロボディ-->
   <Passive ID="2270012">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--フェアリースキン-->
   <Passive ID="2270013">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>5</Cost>
   </Passive>
-
   <!--リーフガード-->
   <Passive ID="2270014">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--ようりょくそ-->
   <Passive ID="2270015">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
   </Passive>
-
   <!--ゆきがくれ-->
   <Passive ID="2270016">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--アイスボディ-->
   <Passive ID="2270017">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
   </Passive>
-
   <!--するどいめ-->
   <Passive ID="2270018">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>1</Cost>
   </Passive>
-
   <!--あめうけざら-->
   <Passive ID="2270019">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>2</Cost>
   </Passive>
-
   <!--あめふらし-->
   <Passive ID="2270020">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
     <Cost>3</Cost>
+  </Passive>
+  <!--ゆきかき-->
+  <Passive ID="2270021">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+  <!--びびり-->
+  <Passive ID="2270022">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+  <!--すいすい-->
+  <Passive ID="2270023">
+    <Rarity>Rare</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
   </Passive>
 </PassiveXmlRoot>

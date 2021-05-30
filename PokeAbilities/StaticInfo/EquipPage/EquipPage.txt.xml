@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BookXmlRoot>
-  <!--イーブイ-->
+  <!--イーブイのページ-->
   <Book ID="2279133">
     <Name>Eevee</Name>
     <TextId>2279133</TextId>
@@ -15,8 +15,11 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--にげあし-->
       <Passive Level="1">2270003</Passive>
+      <!--てきおうりょく-->
       <Passive Level="1">2270004</Passive>
+      <!--きけんよち-->
       <Passive Level="1">2270005</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -26,8 +29,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--シャワーズ-->
+  <!--シャワーズのページ-->
   <Book ID="2279134">
     <Name>Vaporeon</Name>
     <TextId>2279134</TextId>
@@ -42,7 +44,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--ちょすい-->
       <Passive Level="1">2270010</Passive>
+      <!--うるおいボディ-->
       <Passive Level="1">2270011</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -52,8 +56,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--サンダース-->
+  <!--サンダースのページ-->
   <Book ID="2279135">
     <Name>Jolteon</Name>
     <TextId>2279135</TextId>
@@ -68,7 +71,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--ちくでん-->
       <Passive Level="1">2270008</Passive>
+      <!--はやあし-->
       <Passive Level="1">2270009</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -78,8 +83,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--ブースター-->
+  <!--ブースターのページ-->
   <Book ID="2279136">
     <Name>Flareon</Name>
     <TextId>2279136</TextId>
@@ -94,7 +98,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--もらいび-->
       <Passive Level="1">2270006</Passive>
+      <!--こんじょう-->
       <Passive Level="1">2270007</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -104,8 +110,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--エーフィ-->
+  <!--エーフィのページ-->
   <Book ID="2279196">
     <Name>Espeon</Name>
     <TextId>2279196</TextId>
@@ -120,7 +125,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--シンクロ-->
       <Passive Level="1">2270000</Passive>
+      <!--マジックミラー-->
       <Passive Level="1">2270001</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -130,8 +137,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--ブラッキー-->
+  <!--ブラッキーのページ-->
   <Book ID="2279197">
     <Name>Umbreon</Name>
     <TextId>2279197</TextId>
@@ -146,7 +152,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--シンクロ-->
       <Passive Level="1">2270000</Passive>
+      <!--せいしんりょく-->
       <Passive Level="1">2270002</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -156,8 +164,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--キャモメ-->
+  <!--キャモメのページ-->
   <Book ID="2279278">
     <Name>Wingull</Name>
     <TextId>2279278</TextId>
@@ -172,8 +179,11 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--するどいめ-->
       <Passive Level="1">2270018</Passive>
+      <!--うるおいボディ-->
       <Passive Level="1">2270011</Passive>
+      <!--あめうけざら-->
       <Passive Level="1">2270019</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -183,8 +193,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--ペリッパー-->
+  <!--ペリッパーのページ-->
   <Book ID="2279279">
     <Name>Pelipper</Name>
     <TextId>2279279</TextId>
@@ -199,8 +208,11 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--するどいめ-->
       <Passive Level="1">2270018</Passive>
+      <!--あめふらし-->
       <Passive Level="1">2270020</Passive>
+      <!--あめうけざら-->
       <Passive Level="1">2270019</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -210,8 +222,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--リーフィア-->
+  <!--リーフィアのページ-->
   <Book ID="2279470">
     <Name>Leafeon</Name>
     <TextId>2279470</TextId>
@@ -226,7 +237,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--リーフガード-->
       <Passive Level="1">2270014</Passive>
+      <!--ようりょくそ-->
       <Passive Level="1">2270015</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -236,8 +249,7 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--グレイシア-->
+  <!--グレイシアのページ-->
   <Book ID="2279471">
     <Name>Glaceon</Name>
     <TextId>2279471</TextId>
@@ -252,7 +264,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--ゆきがくれ-->
       <Passive Level="1">2270016</Passive>
+      <!--アイスボディ-->
       <Passive Level="1">2270017</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>
@@ -262,8 +276,65 @@
     <Rarity>Unique</Rarity>
     <CharacterSkin>KetherLibrarian</CharacterSkin>
   </Book>
-
-  <!--ニンフィア-->
+  <!--クマシュンのページ-->
+  <Book ID="2279613">
+    <Name>Cubchoo</Name>
+    <TextId>2279613</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <!--ゆきがくれ-->
+      <Passive Level="1">2270016</Passive>
+      <!--ゆきかき-->
+      <Passive Level="1">2270021</Passive>
+      <!--びびり-->
+      <Passive Level="1">2270022</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Pokemon</BookIcon>
+    <Chapter>4</Chapter>
+    <Episode>2278000</Episode>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+  <!--ツンベアーのページ-->
+  <Book ID="2279614">
+    <Name>Beartic</Name>
+    <TextId>2279614</TextId>
+    <EquipEffect>
+      <HP>1</HP>
+      <Break>1</Break>
+      <SpeedMin>1</SpeedMin>
+      <Speed>5</Speed>
+      <SResist>Normal</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Normal</HResist>
+      <SBResist>Normal</SBResist>
+      <PBResist>Normal</PBResist>
+      <HBResist>Normal</HBResist>
+      <!--ゆきがくれ-->
+      <Passive Level="1">2270016</Passive>
+      <!--ゆきかき-->
+      <Passive Level="1">2270021</Passive>
+      <!--すいすい-->
+      <Passive Level="1">2270023</Passive>
+    </EquipEffect>
+    <NotEquip>true</NotEquip>
+    <BookIcon>Pokemon</BookIcon>
+    <Chapter>4</Chapter>
+    <Episode>2278000</Episode>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>KetherLibrarian</CharacterSkin>
+  </Book>
+  <!--ニンフィアのページ-->
   <Book ID="2279700">
     <Name>Sylveon</Name>
     <TextId>2279700</TextId>
@@ -278,7 +349,9 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--メロメロボディ-->
       <Passive Level="1">2270012</Passive>
+      <!--フェアリースキン-->
       <Passive Level="1">2270013</Passive>
     </EquipEffect>
     <NotEquip>true</NotEquip>

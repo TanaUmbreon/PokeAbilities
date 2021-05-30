@@ -84,4 +84,16 @@
     <Name>あめふらし</Name>
     <Desc>舞台の開始時、全てのキャラクターにあめ5を付与。</Desc>
   </PassiveDesc>
+  <PassiveDesc ID="2270021">
+    <Name>ゆきかき</Name>
+    <Desc>あられ状態のとき、幕の開始時にクイック2を得る。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270022">
+    <Name>びびり</Name>
+    <Desc>幕の終了時に虚弱状態なら、次の幕にクイック1を得る。</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2270023">
+    <Name>すいすい</Name>
+    <Desc>あめ状態のとき、幕の開始時にクイック2を得る。</Desc>
+  </PassiveDesc>
 </PassiveDescRoot>

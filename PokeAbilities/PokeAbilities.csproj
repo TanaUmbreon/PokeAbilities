@@ -68,27 +68,30 @@
     <Compile Include="Harmony_Patch.cs" />
     <Compile Include="IRandomizer.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Passives\PassiveAbility_2270004.cs" />
-    <Compile Include="Passives\PassiveAbility_2270019.cs" />
-    <Compile Include="Passives\PassiveAbility_2270020.cs" />
-    <Compile Include="Passives\PassiveAbility_2270018.cs" />
-    <Compile Include="Passives\PassiveAbility_2270017.cs" />
-    <Compile Include="Passives\PassiveAbility_2270016.cs" />
-    <Compile Include="Passives\PassiveAbility_2270015.cs" />
-    <Compile Include="Passives\PassiveAbility_2270014.cs" />
-    <Compile Include="Passives\PassiveAbility_2270013.cs" />
-    <Compile Include="Passives\PassiveAbility_2270012.cs" />
-    <Compile Include="Passives\PassiveAbility_2270011.cs" />
-    <Compile Include="Passives\PassiveAbility_2270010.cs" />
-    <Compile Include="Passives\PassiveAbility_2270009.cs" />
-    <Compile Include="Passives\PassiveAbility_2270008.cs" />
-    <Compile Include="Passives\PassiveAbility_2270007.cs" />
-    <Compile Include="Passives\PassiveAbility_2270006.cs" />
-    <Compile Include="Passives\PassiveAbility_2270005.cs" />
-    <Compile Include="Passives\PassiveAbility_2270003.cs" />
     <Compile Include="Passives\PassiveAbility_2270000.cs" />
     <Compile Include="Passives\PassiveAbility_2270001.cs" />
     <Compile Include="Passives\PassiveAbility_2270002.cs" />
+    <Compile Include="Passives\PassiveAbility_2270003.cs" />
+    <Compile Include="Passives\PassiveAbility_2270004.cs" />
+    <Compile Include="Passives\PassiveAbility_2270005.cs" />
+    <Compile Include="Passives\PassiveAbility_2270006.cs" />
+    <Compile Include="Passives\PassiveAbility_2270007.cs" />
+    <Compile Include="Passives\PassiveAbility_2270008.cs" />
+    <Compile Include="Passives\PassiveAbility_2270009.cs" />
+    <Compile Include="Passives\PassiveAbility_2270010.cs" />
+    <Compile Include="Passives\PassiveAbility_2270011.cs" />
+    <Compile Include="Passives\PassiveAbility_2270012.cs" />
+    <Compile Include="Passives\PassiveAbility_2270013.cs" />
+    <Compile Include="Passives\PassiveAbility_2270014.cs" />
+    <Compile Include="Passives\PassiveAbility_2270015.cs" />
+    <Compile Include="Passives\PassiveAbility_2270016.cs" />
+    <Compile Include="Passives\PassiveAbility_2270017.cs" />
+    <Compile Include="Passives\PassiveAbility_2270018.cs" />
+    <Compile Include="Passives\PassiveAbility_2270019.cs" />
+    <Compile Include="Passives\PassiveAbility_2270020.cs" />
+    <Compile Include="Passives\PassiveAbility_2270021.cs" />
+    <Compile Include="Passives\PassiveAbility_2270022.cs" />
+    <Compile Include="Passives\PassiveAbility_2270023.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +172,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>:: LocalizeとStaticInfoは、C#プロジェクト上で関連付けや シンタックスハイライトが
