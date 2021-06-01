@@ -85,6 +85,9 @@
     <Compile Include="Helpers\BattleDiceBehaviorBuilder.cs" />
     <Compile Include="Helpers\BookXmlInfoBuilder.cs" />
     <Compile Include="Passives\PassiveAbility_2270014Test.cs" />
+    <Compile Include="Passives\PassiveAbility_2270022Test.cs" />
+    <Compile Include="Passives\PassiveAbility_2270023Test.cs" />
+    <Compile Include="Passives\PassiveAbility_2270021Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270016Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270017Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270015Test.cs" />
