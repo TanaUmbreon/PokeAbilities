@@ -3115,7 +3115,7 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.OnBattleEnd">
-      <summary>舞台の終了時に呼び出されます。</summary>
+      <summary>接待の終了時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitModel.OnBattleEnd_alive">
       <summary></summary>
@@ -3335,7 +3335,7 @@
       <summary></summary>
     </member>
     <member name="M:BattleUnitModel.OnWaveStart">
-      <summary></summary>
+      <summary>舞台の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitModel.OnWinParrying(BattleDiceBehavior)">
       <summary></summary>
@@ -3978,7 +3978,7 @@
       <summary></summary>
     </member>
     <member name="M:BattleUnitPassiveDetail.OnWaveStart">
-      <summary></summary>
+      <summary>舞台の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitPassiveDetail.OnWinParrying(BattleDiceBehavior)">
       <summary></summary>
@@ -5773,7 +5773,7 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnBattleEnd">
-      <summary>舞台の終了時に呼び出されます。</summary>
+      <summary>接待の終了時に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnBattleEnd_alive">
       <summary></summary>
@@ -5978,7 +5978,7 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnWaveStart">
-      <summary></summary>
+      <summary>舞台の開始時に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnWinParrying(BattleDiceBehavior)">
       <summary></summary>
