@@ -1,4 +1,7 @@
-﻿namespace PokeAbilities.Passives
+﻿using System;
+using PokeAbilities.Bufs;
+
+namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「ゆきかき」
@@ -6,5 +9,19 @@
     /// </summary>
     public class PassiveAbility_2270021 : PassiveAbilityBase
     {
+        public override void OnRoundStart()
+        {
+            try
+            {
+                if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>()) { return; }
+                
+                owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 2, owner);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
+            }
+        }
     }
 }
