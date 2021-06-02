@@ -58,4 +58,17 @@
     <!--ペリッパーのページ-->
     <DropItem Type="Equip">2279279</DropItem>
   </BookUse>
+
+  <!--楔事務所の本-->
+  <BookUse ID="230022">
+    <TextId>dropbook_wedge</TextId>
+    <BookIcon>WedgeOffice</BookIcon>
+    <Chapter>4</Chapter>
+    <DropItem Type="Equip">230025</DropItem>
+    <DropItem Type="Equip">230026</DropItem>
+    <!--クマシュンのページ-->
+    <DropItem Type="Equip">2279613</DropItem>
+    <!--ツンベアーのページ-->
+    <DropItem Type="Equip">2279614</DropItem>
+  </BookUse>
 </BookUseXmlRoot>
