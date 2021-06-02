@@ -16,7 +16,7 @@
   <Passive ID="2270002">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>5</Cost>
+    <Cost>6</Cost>
   </Passive>
   <!--にげあし-->
   <Passive ID="2270003">
@@ -70,7 +70,7 @@
   <Passive ID="2270011">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>3</Cost>
+    <Cost>4</Cost>
   </Passive>
   <!--メロメロボディ-->
   <Passive ID="2270012">
@@ -88,13 +88,13 @@
   <Passive ID="2270014">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>3</Cost>
+    <Cost>4</Cost>
   </Passive>
   <!--ようりょくそ-->
   <Passive ID="2270015">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>2</Cost>
+    <Cost>3</Cost>
   </Passive>
   <!--ゆきがくれ-->
   <Passive ID="2270016">
@@ -130,18 +130,18 @@
   <Passive ID="2270021">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>0</Cost>
+    <Cost>3</Cost>
   </Passive>
   <!--びびり-->
   <Passive ID="2270022">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>0</Cost>
+    <Cost>4</Cost>
   </Passive>
   <!--すいすい-->
   <Passive ID="2270023">
     <Rarity>Rare</Rarity>
     <NeedLevel>1</NeedLevel>
-    <Cost>0</Cost>
+    <Cost>3</Cost>
   </Passive>
 </PassiveXmlRoot>
