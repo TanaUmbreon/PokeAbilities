@@ -92,6 +92,9 @@
     <Compile Include="Passives\PassiveAbility_2270021.cs" />
     <Compile Include="Passives\PassiveAbility_2270022.cs" />
     <Compile Include="Passives\PassiveAbility_2270023.cs" />
+    <Compile Include="Passives\PassiveAbilityTypeBase.cs" />
+    <Compile Include="Passives\PassiveAbilityTypes.cs" />
+    <Compile Include="PokeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +141,9 @@
     <Content Include="Localize\jp\BattleCardAbilities\_BattleCardAbilities.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Localize\jp\PassiveDesc\_PassiveDesc_Types.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Localize\jp\StageName\_StageName.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -151,6 +157,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\PassiveList\PassiveList_Types.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticInfo\StageInfo\StageInfo.txt.xml">

@@ -15,6 +15,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--ノーマルタイプ-->
+      <Passive Level="1">22700100</Passive>
       <!--にげあし-->
       <Passive Level="1">2270003</Passive>
       <!--てきおうりょく-->
@@ -44,6 +46,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--みずタイプ-->
+      <Passive Level="1">22700300</Passive>
       <!--ちょすい-->
       <Passive Level="1">2270010</Passive>
       <!--うるおいボディ-->
@@ -71,6 +75,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--でんきタイプ-->
+      <Passive Level="1">22700400</Passive>
       <!--ちくでん-->
       <Passive Level="1">2270008</Passive>
       <!--はやあし-->
@@ -98,6 +104,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--ほのおタイプ-->
+      <Passive Level="1">22700200</Passive>
       <!--もらいび-->
       <Passive Level="1">2270006</Passive>
       <!--こんじょう-->
@@ -125,6 +133,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--エスパータイプ-->
+      <Passive Level="1">22701100</Passive>
       <!--シンクロ-->
       <Passive Level="1">2270000</Passive>
       <!--マジックミラー-->
@@ -152,6 +162,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--あくタイプ-->
+      <Passive Level="1">22701600</Passive>
       <!--シンクロ-->
       <Passive Level="1">2270000</Passive>
       <!--せいしんりょく-->
@@ -179,6 +191,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--みず/ひこうタイプ-->
+      <Passive Level="1">22700310</Passive>
       <!--するどいめ-->
       <Passive Level="1">2270018</Passive>
       <!--うるおいボディ-->
@@ -208,6 +222,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--みず/ひこうタイプ-->
+      <Passive Level="1">22700310</Passive>
       <!--するどいめ-->
       <Passive Level="1">2270018</Passive>
       <!--あめふらし-->
@@ -237,6 +253,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--くさタイプ-->
+      <Passive Level="1">22700500</Passive>
       <!--リーフガード-->
       <Passive Level="1">2270014</Passive>
       <!--ようりょくそ-->
@@ -264,6 +282,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--こおりタイプ-->
+      <Passive Level="1">22700600</Passive>
       <!--ゆきがくれ-->
       <Passive Level="1">2270016</Passive>
       <!--アイスボディ-->
@@ -291,6 +311,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--こおりタイプ-->
+      <Passive Level="1">22700600</Passive>
       <!--ゆきがくれ-->
       <Passive Level="1">2270016</Passive>
       <!--ゆきかき-->
@@ -320,6 +342,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--こおりタイプ-->
+      <Passive Level="1">22700600</Passive>
       <!--ゆきがくれ-->
       <Passive Level="1">2270016</Passive>
       <!--ゆきかき-->
@@ -349,6 +373,8 @@
       <SBResist>Normal</SBResist>
       <PBResist>Normal</PBResist>
       <HBResist>Normal</HBResist>
+      <!--フェアリータイプ-->
+      <Passive Level="1">22701800</Passive>
       <!--メロメロボディ-->
       <Passive Level="1">2270012</Passive>
       <!--フェアリースキン-->

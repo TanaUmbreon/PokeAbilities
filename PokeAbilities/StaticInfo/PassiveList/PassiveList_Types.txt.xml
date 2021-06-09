@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PassiveXmlRoot>
+  <!--ノーマルタイプ-->
+  <Passive ID="22700100">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--ほのおタイプ-->
+  <Passive ID="22700200">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--みずタイプ-->
+  <Passive ID="22700300">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--みずタイプ/ひこうタイプ-->
+  <Passive ID="22700310">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--でんきタイプ-->
+  <Passive ID="22700400">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--くさタイプ-->
+  <Passive ID="22700500">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--こおりタイプ-->
+  <Passive ID="22700600">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--エスパータイプ-->
+  <Passive ID="22701100">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--あくタイプ-->
+  <Passive ID="22701600">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+  <!--フェアリータイプ-->
+  <Passive ID="22701800">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+    <InnerType>22700100</InnerType>
+  </Passive>
+</PassiveXmlRoot>
