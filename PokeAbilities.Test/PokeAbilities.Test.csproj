@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bufs\BattleDiceCardBuf_TypeTest.cs" />
     <Compile Include="Bufs\BattleUnitBuf_HailTest.cs" />
     <Compile Include="CommonSetUp.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_hail5allTest.cs" />
