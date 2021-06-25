@@ -31,7 +31,7 @@ namespace PokeAbilities.Bufs
                 while (num < 2 && hand.Count > 0)
                 {
                     BattleDiceCardModel card = RandomUtil.SelectOne(hand);
-                    card.AddBuf(new BattleDiceCardBuf_WaterType());
+                    card.AddBuf(new BattleDiceCardBuf_Type(PokeType.Water));
                     hand.Remove(card);
                     num++;
                 }
@@ -45,7 +45,7 @@ namespace PokeAbilities.Bufs
 
         public override void BeforeGiveDamage(BattleDiceBehavior behavior)
         {
-            if (!behavior.card.card.HasBuf<BattleDiceCardBuf_WaterType>()) { return; }
+            if (!behavior.card.card.HasType(PokeType.Water)) { return; }
 
             behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1 });
         }

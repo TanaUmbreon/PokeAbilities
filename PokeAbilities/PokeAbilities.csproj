@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,10 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleDiceCardModelExtension.cs" />
     <Compile Include="BattleUnitBufListDetailExtension.cs" />
     <Compile Include="Bufs\BattleDiceCardBufCustomBase.cs" />
-    <Compile Include="Bufs\BattleDiceCardBuf_FireType.cs" />
-    <Compile Include="Bufs\BattleDiceCardBuf_WaterType.cs" />
     <Compile Include="Bufs\BattleDiceCardBuf_Type.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
     <Compile Include="Bufs\BattleUnitBuf_Infatuation.cs" />

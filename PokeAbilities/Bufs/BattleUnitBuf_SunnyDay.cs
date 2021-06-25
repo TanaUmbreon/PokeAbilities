@@ -46,7 +46,7 @@ namespace PokeAbilities.Bufs
                 while (num < 2 && hand.Count > 0)
                 {
                     BattleDiceCardModel card = randomizer.SelectOne(hand);
-                    card.AddBuf(new BattleDiceCardBuf_FireType());
+                    card.AddBuf(new BattleDiceCardBuf_Type(PokeType.Fire));
                     hand.Remove(card);
                     num++;
                 }
@@ -60,7 +60,7 @@ namespace PokeAbilities.Bufs
 
         public override void BeforeGiveDamage(BattleDiceBehavior behavior)
         {
-            if (!behavior.card.card.HasBuf<BattleDiceCardBuf_FireType>()) { return; }
+            if (!behavior.card.card.HasType(PokeType.Fire)) { return; }
 
             behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1 });
         }

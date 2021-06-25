@@ -64,14 +64,14 @@ namespace PokeAbilities.Test.Bufs
         {
             owner.allyCardDetail.DrawCards(4);
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(4));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(PokeType.Fire)), Is.EqualTo(0));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
             owner.bufListDetail.AddBuf(buf);
             buf.OnRoundStartAfter();
 
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(4));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(2));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(PokeType.Fire)), Is.EqualTo(2));
         }
 
         [Test(Description = "手札が1枚の場合、その手札のみにほのおタイプが付与される。")]
@@ -79,28 +79,28 @@ namespace PokeAbilities.Test.Bufs
         {
             owner.allyCardDetail.DrawCards(1);
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(1));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(PokeType.Fire)), Is.EqualTo(0));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
             owner.bufListDetail.AddBuf(buf);
             buf.OnRoundStartAfter();
 
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(1));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(PokeType.Fire)), Is.EqualTo(1));
         }
 
         [Test(Description = "手札が無い場合、ほのおタイプは付与されない。")]
         public void TestOnRoundStartAfter3()
         {
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(0));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(PokeType.Fire)), Is.EqualTo(0));
 
             var buf = new BattleUnitBuf_SunnyDay(new SystemRandomizer()) { stack = 5 };
             owner.bufListDetail.AddBuf(buf);
             buf.OnRoundStartAfter();
 
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(0));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasBuf<BattleDiceCardBuf_FireType>()), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(PokeType.Fire)), Is.EqualTo(0));
         }
 
         #endregion
@@ -152,7 +152,7 @@ namespace PokeAbilities.Test.Bufs
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel cardModel = owner.allyCardDetail.GetHand().FirstOrDefault();
-            cardModel.AddBuf(new BattleDiceCardBuf_FireType());
+            cardModel.AddBuf(new BattleDiceCardBuf_Type(PokeType.Fire));
             var cardData = new BattlePlayingCardDataInUnitModel()
             {
                 card = cardModel,

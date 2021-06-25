@@ -24,7 +24,7 @@ namespace PokeAbilities.Passives
                 dmgReduction = 0;
 
                 BattleDiceCardModel card = attacker?.currentDiceAction?.card;
-                if (card == null || !card.HasBuf<BattleDiceCardBuf_WaterType>())
+                if (card == null || !card.HasType(PokeType.Water))
                 {
                     return base.BeforeTakeDamage(attacker, dmg);
                 }
