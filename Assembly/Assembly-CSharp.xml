@@ -732,7 +732,7 @@
       <summary></summary>
     </member>
     <member name="T:BattleDiceCardBuf">
-      <summary>バトル ページに付与するバフを表します。</summary>
+      <summary>バトル ページに付与する状態を表します。</summary>
     </member>
     <member name="F:BattleDiceCardBuf._card">
       <summary></summary>
@@ -747,7 +747,7 @@
       <summary></summary>
     </member>
     <member name="M:BattleDiceCardBuf.Destroy">
-      <summary>次の幕からこのバフを破棄します。</summary>
+      <summary>次の幕からこのバトル ページ状態を破棄します。</summary>
     </member>
     <member name="M:BattleDiceCardBuf.GetBufIcon">
       <summary></summary>
@@ -845,8 +845,8 @@
       <summary></summary>
     </member>
     <member name="M:BattleDiceCardModel.AddBuf(BattleDiceCardBuf)">
-      <summary>指定したバトル ページ バフをバトル ページに追加します。</summary>
-      <param name="buf">追加するバトル ページ バフ。</param>
+      <summary>指定したバトル ページ状態をバトル ページに追加します。</summary>
+      <param name="buf">追加するバトル ページ状態。</param>
     </member>
     <member name="M:BattleDiceCardModel.AddBufWithoutDuplication(BattleDiceCardBuf)">
       <summary></summary>
@@ -969,9 +969,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleDiceCardModel.HasBuf``1">
-      <summary>指定した型のバトル ページ バフがバトル ページに付与されている事を判定します。</summary>
-      <typeparam name="T">付与されている事を判定するバトル ページ バフの型。</typeparam>
-      <returns>指定した型のバトル ページ バフが付与されている場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した型のバトル ページ状態がバトル ページに付与されている事を判定します。</summary>
+      <typeparam name="T">付与されている事を判定するバトル ページ状態の型。</typeparam>
+      <returns>指定した型のバトル ページ状態が付与されている場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleDiceCardModel.IsExhaustOnUse">
       <summary></summary>
@@ -1302,10 +1302,10 @@
       <summary>このクラスの既定のインスタンスを取得します。</summary>
     </member>
     <member name="T:BattlePlayingCardDataInUnitModel">
-      <summary>キャラクターが戦闘で使用するバトル ページのデータを表します。</summary>
+      <summary>キャラクターが戦闘で使用する時のバトル ページのデータを表します。</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.card">
-      <summary></summary>
+      <summary>バトル ページ</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.cardAbility">
       <summary></summary>
@@ -1596,7 +1596,7 @@
     </member>
     <member name="M:BattleUnitBreakDetail.GetDefaultBreakGauge">
       <summary>現在の最大混乱抵抗値を取得します。</summary>
-      <returns>キャラクターのパッシブやバフ等によるボーナス値や補正率が加味された最大混乱抵抗値。</returns>
+      <returns>キャラクターのパッシブや状態等によるボーナス値や補正率が加味された最大混乱抵抗値。</returns>
     </member>
     <member name="M:BattleUnitBreakDetail.IsBreakLifeZero">
       <summary>現在の混乱抵抗値が 0 であることを判定します。</summary>
@@ -1644,25 +1644,25 @@
       <param name="type">ダメージ元の種類。</param>
       <param name="attacker">攻撃キャラクター。</param>
       <param name="atkResist">混乱ダメージに対する属性耐性。</param>
-      <param name="keyword">混乱ダメージ倍率に起因するバフ。</param>
+      <param name="keyword">混乱ダメージ倍率に起因する状態。</param>
     </member>
     <member name="M:BattleUnitBreakDetail.UpdateBreakMax">
       <summary></summary>
     </member>
     <member name="T:BattleUnitBuf">
-      <summary>キャラクターに付与するバフを表します。</summary>
+      <summary>キャラクターに付与する状態を表します。</summary>
     </member>
     <member name="F:BattleUnitBuf._bufIconDictionary">
       <summary></summary>
     </member>
     <member name="F:BattleUnitBuf._owner">
-      <summary>バフの所有キャラクター</summary>
+      <summary>状態の所有キャラクター</summary>
     </member>
     <member name="F:BattleUnitBuf.hide">
-      <summary>バフのアイコンを非表示にする事を示す値</summary>
+      <summary>状態アイコンを非表示にする事を示す値</summary>
     </member>
     <member name="F:BattleUnitBuf.stack">
-      <summary>バフのスタック数</summary>
+      <summary>状態のスタック数</summary>
     </member>
     <member name="M:BattleUnitBuf.#ctor">
       <summary></summary>
@@ -1672,8 +1672,8 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBuf.BeforeGiveDamage(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダメージを与える直前に呼び出されます。</summary>
+      <param name="behavior">ダメージを与えようとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitBuf.BeforeLoseHPNotDmg(System.Int32)">
       <summary></summary>
@@ -1732,7 +1732,7 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.Destroy">
-      <summary>次の幕からこのバフを破棄します。</summary>
+      <summary>次の幕からこの状態を破棄します。</summary>
     </member>
     <member name="M:BattleUnitBuf.DirectAttack">
       <summary></summary>
@@ -1833,8 +1833,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.Init(BattleUnitModel)">
-      <summary>このバフを初期化します。このメソッドはバフ リストに追加された時に呼び出されます。</summary>
-      <param name="owner">バフの所有キャラクター。</param>
+      <summary>この状態を初期化します。このメソッドは状態リストに追加された時に呼び出されます。</summary>
+      <param name="owner">状態の所有キャラクター。</param>
     </member>
     <member name="M:BattleUnitBuf.IsActionable">
       <summary></summary>
@@ -1868,9 +1868,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(KeywordBuf)">
-      <summary>指定したバフに対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各バフの実装で呼び出されます。</summary>
-      <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各状態の実装で呼び出されます。</summary>
+      <param name="buf">耐性情報を取得する状態。</param>
+      <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(BufPositiveType)">
       <summary></summary>
@@ -1878,9 +1878,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(BattleUnitBuf)">
-      <summary>指定したバフに対して耐性を持っていて、キャラクターに付与できない事を判定します。このメソッドはバフを付与する時に呼び出されます。</summary>
-      <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定したバフに対してキャラクターに付与できない場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与できない事を判定します。このメソッドは状態を付与する時に呼び出されます。</summary>
+      <param name="buf">耐性情報を取得する状態。</param>
+      <returns>指定した状態に対してキャラクターに付与できない場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -1937,8 +1937,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.OnAddBuf(System.Int32)">
-      <summary>このバフが付与された時に呼び出されます。</summary>
-      <param name="addedStack">付与されたバフのスタック数。</param>
+      <summary>この状態が付与された時に呼び出されます。</summary>
+      <param name="addedStack">付与された状態のスタック数。</param>
     </member>
     <member name="M:BattleUnitBuf.OnAfterRollSpeedDice">
       <summary></summary>
@@ -2041,7 +2041,7 @@
     </member>
     <member name="M:BattleUnitBuf.OnStartParrying(BattlePlayingCardDataInUnitModel)">
       <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
-      <param name="card">このバフ所有キャラクターがマッチに使用するバトル ページ。</param>
+      <param name="card">この状態の所有キャラクターがマッチに使用するバトル ページ。</param>
     </member>
     <member name="M:BattleUnitBuf.OnStartTargetedOneSide(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -2052,7 +2052,7 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBuf.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary>攻撃によりダメージを受け、このバフ所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <summary>攻撃によりダメージを受け、この状態の所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
       <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
       <param name="dmg">被ダメージ量。</param>
     </member>
@@ -2092,7 +2092,7 @@
       <summary></summary>
     </member>
     <member name="P:BattleUnitBuf.Hide">
-      <summary>バフのアイコンを非表示にする事を示す値を取得します。</summary>
+      <summary>状態アイコンを非表示にする事を示す値を取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.independentBufIcon">
       <summary></summary>
@@ -2116,15 +2116,15 @@
       <summary>ポジティブ タイプを取得します。</summary>
     </member>
     <member name="T:BattleUnitBufListDetail">
-      <summary>キャラクターに付与されたバフのリストの詳細を表します。</summary>
+      <summary>キャラクターに付与された状態リストの詳細を表します。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.#ctor(BattleUnitModel)">
       <summary></summary>
       <param name="model"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddBuf(BattleUnitBuf)">
-      <summary>指定したバフをこの幕から付与します。</summary>
-      <param name="buf">付与するバフ。</param>
+      <summary>指定した状態をこの幕から付与します。</summary>
+      <param name="buf">付与する状態。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddBufWithConnection(BattleUnitBuf,BattleUnitModel)">
       <summary></summary>
@@ -2136,16 +2136,16 @@
       <param name="buf"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddKeywordBufByCard(KeywordBuf,System.Int32,BattleUnitModel)">
-      <summary>指定したバフを次の幕から付与します。このメソッドはバトル ページの効果により付与する場合に呼び出します。火傷が指定された場合はこの幕に付与します。</summary>
-      <param name="bufType">付与するバフのキーワード。</param>
-      <param name="stack">付与するバフの数値。</param>
-      <param name="actor">バフを付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
+      <summary>指定した状態を次の幕から付与します。このメソッドはバトル ページの効果により付与する場合に呼び出します。火傷が指定された場合はこの幕に付与します。</summary>
+      <param name="bufType">付与する状態のキーワード。</param>
+      <param name="stack">付与する状態の数値。</param>
+      <param name="actor">状態を付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddKeywordBufByEtc(KeywordBuf,System.Int32,BattleUnitModel)">
-      <summary>指定したバフを次の幕から付与します。このメソッドはバトル ページ以外の効果により付与する場合に呼び出します。火傷が指定された場合はこの幕に付与します。</summary>
-      <param name="bufType">付与するバフのキーワード。</param>
-      <param name="stack">付与するバフの数値。</param>
-      <param name="actor">バフを付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
+      <summary>指定した状態を次の幕から付与します。このメソッドはバトル ページ以外の効果により付与する場合に呼び出します。火傷が指定された場合はこの幕に付与します。</summary>
+      <param name="bufType">付与する状態のキーワード。</param>
+      <param name="stack">付与する状態の数値。</param>
+      <param name="actor">状態を付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddKeywordBufNextNextByCard(KeywordBuf,System.Int32,BattleUnitModel)">
       <summary></summary>
@@ -2154,20 +2154,20 @@
       <param name="actor"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddKeywordBufThisRoundByCard(KeywordBuf,System.Int32,BattleUnitModel)">
-      <summary>指定したバフをこの幕から付与します。このメソッドはバトル ページの効果により付与する場合に呼び出します。</summary>
-      <param name="bufType">付与するバフのキーワード。</param>
-      <param name="stack">付与するバフの数値。</param>
-      <param name="actor">バフを付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
+      <summary>指定した状態をこの幕から付与します。このメソッドはバトル ページの効果により付与する場合に呼び出します。</summary>
+      <param name="bufType">付与する状態のキーワード。</param>
+      <param name="stack">付与する状態の数値。</param>
+      <param name="actor">状態を付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf,System.Int32,BattleUnitModel)">
-      <summary>指定したバフをこの幕から付与します。このメソッドはバトル ページ以外の効果により付与する場合に呼び出します。</summary>
-      <param name="bufType">付与するバフのキーワード。</param>
-      <param name="stack">付与するバフの数値。</param>
-      <param name="actor">バフを付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
+      <summary>指定した状態をこの幕から付与します。このメソッドはバトル ページ以外の効果により付与する場合に呼び出します。</summary>
+      <param name="bufType">付与する状態のキーワード。</param>
+      <param name="stack">付与する状態の数値。</param>
+      <param name="actor">状態を付与したキャラクター。キャラクター以外による付与、または規定値は null。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddReadyBuf(BattleUnitBuf)">
-      <summary>指定したバフを次の幕から付与します。</summary>
-      <param name="buf">付与するバフ。</param>
+      <summary>指定した状態を次の幕から付与します。</summary>
+      <param name="buf">付与する状態。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.AddReadyReadyBuf(BattleUnitBuf)">
       <summary></summary>
@@ -2202,8 +2202,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.CanAddBuf(BattleUnitBuf)">
-      <summary>指定したバフを付与できる事を判定します。</summary>
-      <param name="buf">付与できることを判定する対象のバフ。</param>
+      <summary>指定した状態を付与できる事を判定します。</summary>
+      <param name="buf">付与できることを判定する対象の状態。</param>
       <returns>付与できる場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.CanRecoverBreak(System.Int32)">
@@ -2270,13 +2270,13 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetActivatedBuf(KeywordBuf)">
-      <summary>指定したバフに一致する、この幕に適用されているバフを取得します。</summary>
-      <param name="bufType">取得するバフの種類。</param>
-      <returns>指定したバフが存在する場合はそのバフ、存在しない場合は null を返します。</returns>
+      <summary>指定した状態に一致する、この幕に適用されている状態を取得します。</summary>
+      <param name="bufType">取得する状態の種類。</param>
+      <returns>指定した状態が存在する場合はその状態、存在しない場合は null を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetActivatedBufList">
-      <summary>この幕に適用されているバフのリストを取得します。</summary>
-      <returns>この幕に適用されているバフのリスト。</returns>
+      <summary>この幕に適用されている状態リストを取得します。</summary>
+      <returns>この幕に適用されている状態リスト。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetBreakDamageIncreaseRate">
       <summary></summary>
@@ -2351,13 +2351,13 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetReadyBuf(KeywordBuf)">
-      <summary>指定したバフに一致する、次の幕から適用するバフを取得します。</summary>
-      <param name="bufType">取得するバフの種類。</param>
-      <returns>指定したバフが存在する場合はそのバフ、存在しない場合は null を返します。</returns>
+      <summary>指定した状態に一致する、次の幕から適用する状態を取得します。</summary>
+      <param name="bufType">取得する状態の種類。</param>
+      <returns>指定した状態が存在する場合はその状態、存在しない場合は null を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetReadyBufList">
-      <summary>次の幕から適用するバフのリストを取得します。</summary>
-      <returns>次の幕から適用するバフのリスト。</returns>
+      <summary>次の幕から適用する状態リストを取得します。</summary>
+      <returns>次の幕から適用する状態リスト。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.GetReadyReadyBufList">
       <summary></summary>
@@ -2389,9 +2389,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.HasBuf``1">
-      <summary>指定した型のバフがこの幕のバフ リストの所有キャラクターに付与されている事を判定します。</summary>
-      <typeparam name="T">付与されている事を判定するバフの型。</typeparam>
-      <returns>指定した型のバフがこの幕に付与されている場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した型の状態が、この幕の状態リストの所有キャラクターに付与されている事を判定します。</summary>
+      <typeparam name="T">付与されている事を判定する状態の型。</typeparam>
+      <returns>指定した型の状態がこの幕に付与されている場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.HasStun">
       <summary></summary>
@@ -2419,9 +2419,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.IsImmune(KeywordBuf)">
-      <summary>指定したバフに対して耐性を持っていて、バフ リストの所有キャラクターに付与されていても効果を発揮しない事を判定します。</summary>
-      <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した状態に対して耐性を持っていて、状態リストの所有キャラクターに付与されていても効果を発揮しない事を判定します。</summary>
+      <param name="buf">耐性情報を取得する状態。</param>
+      <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.IsImmune(BufPositiveType)">
       <summary></summary>
@@ -2587,7 +2587,7 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary>攻撃によりダメージを受け、このバフ リスト所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <summary>攻撃によりダメージを受け、この状態リストの所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
       <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
       <param name="dmg">被ダメージ量。</param>
     </member>
@@ -2600,20 +2600,20 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBuf(BattleUnitBuf)">
-      <summary>指定したバフがこのバフ リスト所有キャラクターに付与されている場合、最初に出現したものを削除します。</summary>
-      <param name="buf">削除するバフ オブジェクト。</param>
+      <summary>指定した状態がこの状態リストの所有キャラクターに付与されている場合、最初に出現したものを削除します。</summary>
+      <param name="buf">削除する状態オブジェクト。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll(System.Type)">
-      <summary>指定した型に一致するバフをこのバフ リスト所有キャラクターから全て削除します。</summary>
-      <param name="buf">削除するバフの型。</param>
+      <summary>指定した型に一致する状態をこの状態リストの所有キャラクターから全て削除します。</summary>
+      <param name="buf">削除する状態の型。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll(KeywordBuf)">
-      <summary>指定したキーワードに一致するバフをこのバフ リスト所有キャラクターから全て削除します。</summary>
-      <param name="bufType">削除するバフのキーワード。</param>
+      <summary>指定したキーワードに一致する状態をこの状態リストの所有キャラクターから全て削除します。</summary>
+      <param name="bufType">削除する状態のキーワード。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll(BufPositiveType)">
-      <summary>指定したポジティブ タイプに一致するバフをこのバフ リスト所有キャラクターから全て削除します。</summary>
-      <param name="bufPositiveType">削除するバフのポジティブ タイプ。</param>
+      <summary>指定したポジティブ タイプに一致する状態をこの状態リストの所有キャラクターから全て削除します。</summary>
+      <param name="bufPositiveType">削除する状態のポジティブ タイプ。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.RemoveBufAll">
       <summary></summary>
@@ -2646,7 +2646,7 @@
       <summary>混乱耐性の詳細</summary>
     </member>
     <member name="F:BattleUnitModel.bufListDetail">
-      <summary>付与されたバフ一覧の詳細</summary>
+      <summary>付与された状態リストの詳細</summary>
     </member>
     <member name="F:BattleUnitModel.cardHistory">
       <summary></summary>
@@ -3022,9 +3022,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.IsImmune(KeywordBuf)">
-      <summary>指定したバフに対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各バフの実装で呼び出されます。</summary>
-      <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各状態の実装で呼び出されます。</summary>
+      <param name="buf">耐性情報を取得する状態。</param>
+      <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitModel.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -4603,7 +4603,7 @@
       <summary></summary>
     </member>
     <member name="T:BufPositiveType">
-      <summary>バフのポジティブ タイプを表します。</summary>
+      <summary>状態のポジティブ タイプを表します。</summary>
     </member>
     <member name="F:BufPositiveType.Negative">
       <summary>ネガティブ (状態異常)</summary>
@@ -4630,11 +4630,11 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardAbilityBase.BeforeGiveDamage">
-      <summary></summary>
+      <summary>ダメージを与える直前に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardAbilityBase.BeforeGiveDamage(BattleUnitModel)">
-      <summary></summary>
-      <param name="target"></param>
+      <summary>ダメージを与える直前に呼び出されます。</summary>
+      <param name="target">ダメージを与える対象キャラクター。</param>
     </member>
     <member name="M:DiceCardAbilityBase.BeforeRollDice_Target(BattleDiceBehavior)">
       <summary></summary>
@@ -4738,8 +4738,8 @@
       <returns></returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.BeforeGiveDamage(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダメージを与える直前に呼び出されます。</summary>
+      <param name="behavior">ダメージを与えようとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.BeforeRollDice(BattleDiceBehavior)">
       <summary>ダイス ロールの直前に呼び出されます。バトル ダイスに対するボーナス値の指定などはこのメソッドで行います。</summary>
@@ -5110,7 +5110,7 @@
       <summary></summary>
     </member>
     <member name="T:KeywordBuf">
-      <summary>キーワード定義されたバフを表します。</summary>
+      <summary>キーワード定義された状態を表します。</summary>
     </member>
     <member name="F:KeywordBuf.AllPowerUp">
       <summary>威力増加 (全てのダイスの威力を X 増加)</summary>
@@ -5263,7 +5263,7 @@
       <summary>標的 (攻撃で受けるダメージ・混乱ダメージ量が 50% 増加)</summary>
     </member>
     <member name="F:KeywordBuf.None">
-      <summary>キーワード指定なしのバフ (カスタム バフ)</summary>
+      <summary>キーワード指定なしの状態 (カスタム状態等)</summary>
     </member>
     <member name="F:KeywordBuf.NullifyPower">
       <summary>威力無効化 (今回の幕の間、威力の影響を受けない)</summary>
@@ -5554,8 +5554,8 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.BeforeGiveDamage(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダメージを与える直前に呼び出されます。</summary>
+      <param name="behavior">ダメージを与えようとしているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:PassiveAbilityBase.BeforeRollDice(BattleDiceBehavior)">
       <summary>ダイス ロールの直前に呼び出されます。バトル ダイスに対するボーナス値の指定などはこのメソッドで行います。</summary>
@@ -5575,8 +5575,8 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.CanAddBuf(BattleUnitBuf)">
-      <summary>指定したバフを付与できる事を判定します。</summary>
-      <param name="buf">付与できることを判定する対象のバフ。</param>
+      <summary>指定した状態を付与できる事を判定します。</summary>
+      <param name="buf">付与できることを判定する対象の状態。</param>
       <returns>付与できる場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:PassiveAbilityBase.CanTakeTargeting">
@@ -5721,9 +5721,9 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.IsImmune(KeywordBuf)">
-      <summary>指定したバフに対して耐性を持っている事を判定します。このメソッドは各バフの実装で呼び出します。</summary>
-      <param name="buf">耐性情報を取得するバフ。</param>
-      <returns>指定したバフに対して耐性である場合は true、そうでない場合は false を返します。</returns>
+      <summary>指定した状態に対して耐性を持っている事を判定します。このメソッドは各状態の実装で呼び出します。</summary>
+      <param name="buf">耐性情報を取得する状態。</param>
+      <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:PassiveAbilityBase.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -5759,10 +5759,10 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.OnAddKeywordBufByCard(BattleUnitBuf,System.Int32)">
-      <summary>このパッシブの所有キャラクターにバトル ページによってバフが付与された場合に呼び出されます。</summary>
-      <param name="buf">付与されたバフ。</param>
-      <param name="stack">付与されたバフのスタック数。</param>
-      <returns>付与されたバフに追加するスタック数の増分。</returns>
+      <summary>このパッシブの所有キャラクターにバトル ページによって状態が付与された場合に呼び出されます。</summary>
+      <param name="buf">付与された状態。</param>
+      <param name="stack">付与された状態のスタック数。</param>
+      <returns>付与された状態に追加するスタック数の増分。</returns>
     </member>
     <member name="M:PassiveAbilityBase.OnAddKeywordBufByCardForEvent(KeywordBuf,System.Int32,BufReadyType)">
       <summary></summary>
@@ -5935,7 +5935,7 @@
     </member>
     <member name="M:PassiveAbilityBase.OnStartParrying(BattlePlayingCardDataInUnitModel)">
       <summary>バトル ページによるマッチが発生する直前に呼び出されます。</summary>
-      <param name="card">このパッシブ所有キャラクターがマッチに使用するバトル ページ。</param>
+      <param name="card">このパッシブの所有キャラクターがマッチに使用するバトル ページ。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnStartTargetedByAreaAtk(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -5959,12 +5959,12 @@
       <param name="behavior"></param>
     </member>
     <member name="M:PassiveAbilityBase.OnTakeBreakDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary>攻撃により混乱ダメージを受け、このパッシブ所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <summary>攻撃により混乱ダメージを受け、このパッシブの所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
       <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
       <param name="breakdmg">被混乱ダメージ量。</param>
     </member>
     <member name="M:PassiveAbilityBase.OnTakeDamageByAttack(BattleDiceBehavior,System.Int32)">
-      <summary>攻撃によりダメージを受け、このパッシブ所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
+      <summary>攻撃によりダメージを受け、このパッシブの所有キャラクターが死亡しなかった場合に呼び出されます。</summary>
       <param name="atkDice">攻撃に使用されたバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
       <param name="dmg">被ダメージ量。</param>
     </member>
