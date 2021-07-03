@@ -900,8 +900,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleDiceCardModel.GetBufList">
-      <summary></summary>
-      <returns></returns>
+      <summary>付与されたバトル ページ状態リストを取得します。</summary>
+      <returns>バトル ページ状態リスト。</returns>
     </member>
     <member name="M:BattleDiceCardModel.GetBufWithMostPriority">
       <summary></summary>
@@ -1323,6 +1323,9 @@
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.earlyTargetOrder">
+      <summary></summary>
+    </member>
+    <member name="F:BattlePlayingCardDataInUnitModel.emotionMultiplier">
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.ignorePower">
