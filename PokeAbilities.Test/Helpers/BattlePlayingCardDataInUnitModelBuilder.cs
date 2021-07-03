@@ -23,6 +23,11 @@ namespace PokeAbilities.Test.Helpers
         public BattleDiceBehavior CurrentBehavior { get; set; }
 
         /// <summary>
+        /// 生成元となるバトル ページを取得または設定します。
+        /// </summary>
+        public BattleDiceCardModel Card { get; set; }
+
+        /// <summary>
         /// <see cref="BattlePlayingCardDataInUnitModelBuilder"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattlePlayingCardDataInUnitModelBuilder() { }
@@ -39,6 +44,7 @@ namespace PokeAbilities.Test.Helpers
                 owner = Owner,
                 target = Target,
                 currentBehavior = CurrentBehavior,
+                card = Card,
             };
 
             if (Owner != null)

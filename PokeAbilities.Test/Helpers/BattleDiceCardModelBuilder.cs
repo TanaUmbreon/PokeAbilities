@@ -12,6 +12,11 @@ namespace PokeAbilities.Test.Helpers
         private readonly List<DiceBehaviour> diceBehaviourList = new List<DiceBehaviour>();
 
         /// <summary>
+        /// バトル ページの所有キャラクターを取得または設定します。
+        /// </summary>
+        public BattleUnitModel Owner { get; set; }
+
+        /// <summary>
         /// <see cref="BattleDiceCardModelBuilder"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattleDiceCardModelBuilder() { }
@@ -36,7 +41,10 @@ namespace PokeAbilities.Test.Helpers
             {
                 DiceBehaviourList = diceBehaviourList,
             };
-            var model = new BattleDiceCardModel();
+            var model = new BattleDiceCardModel()
+            {
+                owner = Owner,
+            };
             PrivateAccess.SetField(model, "_xmlData", cardInfo.Copy(false));
             PrivateAccess.SetField(model, "_curCost", cardInfo.Spec.Cost);
             return model;
