@@ -21,31 +21,28 @@ namespace PokeAbilities.Test
             // BattleUnitModelBuilder.EquipBook を指定している状態でBattleUnitModelを生成する時に必須
             Singleton<DeckXmlList>.Instance.Init(new List<DeckXmlInfo>());
 
-            const BindingFlags PublicStaticBinding = BindingFlags.Public | BindingFlags.Static;
-            const BindingFlags PublicBinding = BindingFlags.Public | BindingFlags.Instance;
-
             // SecurityException (ECall メソッドをシステム モジュールにパッケージ化しなければなりません) の回避
-            {
-                Type type = typeof(UnityEngine.Random);
-                Type[] argumentTypes = new[] { typeof(int), typeof(int) };
-                OverwriteMethod(
-                    target: type.GetMethod("Range", PublicStaticBinding, null, argumentTypes, null),
-                    replacement: GetType().GetMethod(nameof(Range), PublicStaticBinding, null, argumentTypes, null));
-            }
-            {
-                Type type = typeof(Debug);
-                Type[] argumentTypes = new[] { typeof(object) };
-                OverwriteMethod(
-                    target: type.GetMethod("LogError", PublicStaticBinding, null, argumentTypes, null),
-                    replacement: GetType().GetMethod(nameof(LogError), PublicStaticBinding, null, argumentTypes, null));
-            }
-            // BattleUnitModel.RecoverHP(int) メソッドの内部で呼び出される
-            {
-                Type type = typeof(StageController);
-                OverwriteMethod(
-                    target: type.GetMethod("IsLogState", PublicBinding),
-                    replacement: GetType().GetMethod(nameof(IsLogState), PublicBinding));
-            }
+            OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
+            OverwriteMethod<Debug>(nameof(LogError), typeof(object));
+            OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
+
+            // ToDo: PlatformManager を参照して実績解除を行おうとするメソッドの呼び出しを回避する。ただし、ExecutionEngineExceptionがスローされて実装できない
+            //OverwriteMethod<BattleUnitBufListDetail>(nameof(CheckAchievements));
+        }
+
+        /// <summary>
+        /// 指定した型の指定した名前のメソッドの呼び出し先を、
+        /// このクラスに定義された同名のメソッドに上書きします。
+        /// </summary>
+        /// <typeparam name="TTarget">上書き対象の型。</typeparam>
+        /// <param name="methodName"><typeparamref name="TTarget"/> に含まれる上書き対象のメソッド名、およびこのクラスに含まれる上書き元のメソッド名。</param>
+        /// <param name="methodArgumentTypes">上書き対象のメソッドの引数の型リスト。</param>
+        private void OverwriteMethod<TTarget>(string methodName, params Type[] methodArgumentTypes)
+        {
+            BindingFlags flags = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic;
+            OverwriteMethod(
+                target: typeof(TTarget).GetMethod(methodName, flags, null, methodArgumentTypes, null),
+                replacement: GetType().GetMethod(methodName, flags, null, methodArgumentTypes, null));
         }
 
         /// <summary>
@@ -70,5 +67,7 @@ namespace PokeAbilities.Test
 
         public bool IsLogState()
             => true;
+
+        private void CheckAchievements() { }
     }
 }
