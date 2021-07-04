@@ -270,20 +270,6 @@ namespace PokeAbilities.Test
             Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(1));
         }
 
-        [Test(Description = "付与可能/効果無効化バフがこの幕に付与されている場合は付与できる")]
-        public void AddBufTest4()
-        {
-            bufListDetail.AddBuf(new BattleUnitBuf_CanAddDecayButDisabled());
-            Assert.That(bufListDetail.HasBuf<BattleUnitBuf_Decay>(), Is.False);
-            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(1));
-            Assert.That(bufListDetail.GetReadyBufList().Count, Is.Zero);
-
-            bufListDetail.AddBuf<BattleUnitBuf_Decay>(1);
-            Assert.That(bufListDetail.HasBuf<BattleUnitBuf_Decay>(), Is.True);
-            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(2));
-            Assert.That(bufListDetail.GetReadyBufList().Count, Is.Zero);
-        }
-
         [Test(Description = "付与不可能パッシブを所有している場合は付与できない")]
         public void AddBufTest5()
         {
@@ -462,22 +448,6 @@ namespace PokeAbilities.Test
             Assert.That(bufListDetail.GetReadyBuf(KeywordBuf.Decay), Is.Not.Null);
             Assert.That(bufListDetail.GetActivatedBufList().Count, Is.Zero);
             Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(2));
-        }
-
-        [Test(Description = "付与可能/効果無効化バフがこの幕に付与されている場合は付与できる")]
-        public void AddReadyBufTest4()
-        {
-            bufListDetail.AddBuf(new BattleUnitBuf_CanAddDecayButDisabled());
-            Assert.That(bufListDetail.GetActivatedBuf(KeywordBuf.Decay), Is.Null);
-            Assert.That(bufListDetail.GetReadyBuf(KeywordBuf.Decay), Is.Null);
-            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(1));
-            Assert.That(bufListDetail.GetReadyBufList().Count, Is.Zero);
-
-            bufListDetail.AddReadyBuf<BattleUnitBuf_Decay>(1);
-            Assert.That(bufListDetail.GetActivatedBuf(KeywordBuf.Decay), Is.Null);
-            Assert.That(bufListDetail.GetReadyBuf(KeywordBuf.Decay), Is.Not.Null);
-            Assert.That(bufListDetail.GetActivatedBufList().Count, Is.EqualTo(1));
-            Assert.That(bufListDetail.GetReadyBufList().Count, Is.EqualTo(1));
         }
 
         [Test(Description = "付与不可能パッシブを所有している場合は付与できない")]
@@ -675,15 +645,6 @@ namespace PokeAbilities.Test
     {
         public override bool IsImmune(BattleUnitBuf buf)
             => (buf.bufType == KeywordBuf.Decay) || base.IsImmune(buf);
-    }
-
-    /// <summary>
-    /// 腐食を付与できるが効果を発揮しないバフ。
-    /// </summary>
-    internal class BattleUnitBuf_CanAddDecayButDisabled : BattleUnitBuf
-    {
-        public override bool IsImmune(KeywordBuf buf)
-            => (buf == KeywordBuf.Decay) || base.IsImmune(buf);
     }
 
     /// <summary>
