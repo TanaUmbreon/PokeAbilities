@@ -85,6 +85,7 @@ namespace PokeAbilities.Passives
         {
             if (!behavior.card.card.HasType(Types)) { return; }
 
+            owner.battleCardResultLog?.SetPassiveAbility(this);
             behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1 });
         }
 
