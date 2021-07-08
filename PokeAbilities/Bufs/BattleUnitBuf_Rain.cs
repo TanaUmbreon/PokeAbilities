@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PokeAbilities.Bufs
 {
     /// <summary>
     /// 状態「あめ」。
-    /// 幕の開始時、手元のバトルページ2枚に「みずタイプ」をランダムに付与。
+    /// 幕の開始時、タイプ付与されていない手元のバトルページ2枚にみずタイプをランダムに付与。
     /// 幕の終了時、数値が1減少する(最大5)
     /// </summary>
     public class BattleUnitBuf_Rain : BattleUnitBufCustomBase
     {
+        /// <summary>
+        /// 使用する疑似乱数ジェネレーターを取得または設定します。
+        /// </summary>
+        public IRandomizer Randomizer { get; set; } = DefaultRandomizer.Instance;
+
         protected override string keywordId => "Rain";
 
         protected override string keywordIconId => "RainBuf";
@@ -26,20 +32,29 @@ namespace PokeAbilities.Bufs
         {
             try
             {
-                List<BattleDiceCardModel> hand = _owner.allyCardDetail.GetHand();
-                int num = 0;
-                while (num < 2 && hand.Count > 0)
-                {
-                    BattleDiceCardModel card = RandomUtil.SelectOne(hand);
-                    card.AddBuf(new BattleDiceCardBuf_Type(PokeType.Water));
-                    hand.Remove(card);
-                    num++;
-                }
+                AddTypeBufToHand();
             }
             catch (Exception ex)
             {
-                Log.Instance.ErrorWithCaller("Exception thrown.");
-                Log.Instance.Error(ex);
+                Log.Instance.ErrorOnExceptionThrown(ex);
+            }
+        }
+
+        private void AddTypeBufToHand()
+        {
+            const int MaxGivenCount = 2;
+            const PokeType GiveningType = PokeType.Water;
+
+            int count = 0;
+            var hand = new List<BattleDiceCardModel>(_owner.allyCardDetail.GetHand().Where(c => !c.HasBuf<BattleDiceCardBuf_Type>()));
+            while (count < MaxGivenCount && hand.Count > 0)
+            {
+                BattleDiceCardModel givenCard = Randomizer.SelectOne(hand);
+
+                givenCard.TryAddType(GiveningType);
+
+                hand.Remove(givenCard);
+                count++;
             }
         }
 

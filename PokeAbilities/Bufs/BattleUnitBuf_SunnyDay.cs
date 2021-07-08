@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PokeAbilities.Bufs
 {
@@ -10,8 +11,10 @@ namespace PokeAbilities.Bufs
     /// </summary>
     public class BattleUnitBuf_SunnyDay : BattleUnitBufCustomBase
     {
-        /// <summary>疑似乱数ジェネレーター</summary>
-        private readonly IRandomizer randomizer;
+        /// <summary>
+        /// 使用する疑似乱数ジェネレーターを取得または設定します。
+        /// </summary>
+        public IRandomizer Randomizer { get; set; } = DefaultRandomizer.Instance;
 
         protected override string keywordId => "SunnyDay";
 
@@ -20,41 +23,38 @@ namespace PokeAbilities.Bufs
         protected override int MaxStack => 5;
 
         /// <summary>
-        /// 既定の疑似乱数ジェネレーターを使用する、
         /// <see cref="BattleUnitBuf_SunnyDay"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattleUnitBuf_SunnyDay()
-            : this(DefaultRandomizer.Instance) { }
-
-        /// <summary>
-        /// 指定した疑似乱数ジェネレーターを使用する
-        /// <see cref="BattleUnitBuf_SunnyDay"/> の新しいインスタンスを生成します。
-        /// </summary>
-        /// <param name="randomizer">このオブジェクトで使用する疑似乱数ジェネレーター。</param>
-        public BattleUnitBuf_SunnyDay(IRandomizer randomizer)
-        {
-            this.randomizer = randomizer;
-            LoadIcon();
-        }
+            => LoadIcon();
 
         public override void OnRoundStartAfter()
         {
             try
             {
-                List<BattleDiceCardModel> hand = _owner.allyCardDetail.GetHand();
-                int num = 0;
-                while (num < 2 && hand.Count > 0)
-                {
-                    BattleDiceCardModel card = randomizer.SelectOne(hand);
-                    card.AddBuf(new BattleDiceCardBuf_Type(PokeType.Fire));
-                    hand.Remove(card);
-                    num++;
-                }
+                AddTypeBufToHand();
             }
             catch (Exception ex)
             {
-                Log.Instance.ErrorWithCaller("Exception thrown.");
-                Log.Instance.Error(ex);
+                Log.Instance.ErrorOnExceptionThrown(ex);
+            }
+        }
+
+        private void AddTypeBufToHand()
+        {
+            const int MaxGivenCount = 2;
+            const PokeType GiveningType = PokeType.Fire;
+
+            int count = 0;
+            var hand = new List<BattleDiceCardModel>(_owner.allyCardDetail.GetHand().Where(c => !c.HasBuf<BattleDiceCardBuf_Type>()));
+            while (count < MaxGivenCount && hand.Count > 0)
+            {
+                BattleDiceCardModel givenCard = Randomizer.SelectOne(hand);
+
+                givenCard.TryAddType(GiveningType);
+
+                hand.Remove(givenCard);
+                count++;
             }
         }
 

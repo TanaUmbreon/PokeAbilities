@@ -233,14 +233,14 @@ namespace PokeAbilities.Test.Passives
         {
             owner.allyCardDetail.DrawCards(1);
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(1));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type1)), Is.EqualTo(0));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type2)), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type1), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type2), Is.EqualTo(0));
 
             randomizer.SelectOneIndex = 0;
             passive.OnRoundStartAfter();
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(1));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type1)), Is.EqualTo(1));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type2)), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type1), Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type2), Is.EqualTo(0));
         }
 
         [Test(Description = "幕の開始時、手札が2枚の場合はその手札全てにタイプ1とタイプ2がそれぞれ付与される。")]
@@ -248,14 +248,14 @@ namespace PokeAbilities.Test.Passives
         {
             owner.allyCardDetail.DrawCards(2);
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(2));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type1)), Is.EqualTo(0));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type2)), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type1), Is.EqualTo(0));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type2), Is.EqualTo(0));
 
             randomizer.SelectOneIndex = 0;
             passive.OnRoundStartAfter();
             Assert.That(owner.allyCardDetail.GetHand().Count, Is.EqualTo(2));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type1)), Is.EqualTo(1));
-            Assert.That(owner.allyCardDetail.GetHand().Count(c => c.HasType(Type2)), Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type1), Is.EqualTo(1));
+            Assert.That(owner.allyCardDetail.GetHand().OfType<BattleDiceCardBuf_Type>().Count(b => b.Type == Type2), Is.EqualTo(1));
         }
 
         [Test(Description = "幕の開始時、手札が3枚の場合は手札2枚にタイプ1とタイプ2がそれぞれ付与される。")]

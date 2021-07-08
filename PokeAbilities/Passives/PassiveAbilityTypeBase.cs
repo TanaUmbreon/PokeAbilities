@@ -68,7 +68,7 @@ namespace PokeAbilities.Passives
                 BattleDiceCardModel givenCard = Randomizer.SelectOne(hand);
                 PokeType givingType = Randomizer.SelectOne(givingTypes);
 
-                givenCard.AddBuf(new BattleDiceCardBuf_Type(givingType));
+                givenCard.TryAddType(givingType);
 
                 hand.Remove(givenCard);
                 givingTypes.Remove(givingType);
