@@ -160,6 +160,9 @@
     <Content Include="Localize\jp\BattleCardAbilities\_BattleCardAbilities.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Localize\jp\EffectTexts\_EffectTexts_CardBuf.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc_Types.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
