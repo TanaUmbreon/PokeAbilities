@@ -101,6 +101,16 @@ namespace PokeAbilities
             => Error($"{ex.Message}\n{ex.StackTrace}");
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ex"></param>
+        public void ErrorOnExceptionThrown(Exception ex)
+        {
+            ErrorWithCaller($"Exception thrown.");
+            Error(ex);
+        }
+
+        /// <summary>
         /// タイムスタンプと、指定したレベルおよびメッセージをログに追加します。
         /// </summary>
         /// <param name="level"></param>
