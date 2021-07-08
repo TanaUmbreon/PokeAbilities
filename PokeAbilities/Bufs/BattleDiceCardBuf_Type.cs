@@ -11,6 +11,11 @@
         /// </summary>
         public PokeType Type { get; private set; }
 
+        /// <summary>
+        /// 幕をまたいでも永続的に状態が付与される事を示す値を取得します。
+        /// </summary>
+        public bool IsPermanent { get; private set; }
+
         protected override string keywordId => _keywordId;
         private readonly string _keywordId;
 
@@ -21,9 +26,11 @@
         /// <see cref="BattleDiceCardBuf_Type"/> の新しいインスタンスを生成します。
         /// </summary>
         /// <param name="type">付与するタイプ。</param>
-        public BattleDiceCardBuf_Type(PokeType type)
+        /// <param name="isPermanent">幕をまたいでも永続的に状態が付与される事を示す値。省略時はその幕限り。</param>
+        public BattleDiceCardBuf_Type(PokeType type, bool isPermanent = false)
         {
             Type = type;
+            IsPermanent = isPermanent;
 
             _keywordId = ToKeywordId(type);
             _keywordIconId = ToKeywordId(type) + "Buf";
@@ -81,6 +88,10 @@
         }
 
         public override void OnRoundEnd()
-            => Destroy();
+        {
+            if (IsPermanent) { return; }
+
+            Destroy();
+        }
     }
 }

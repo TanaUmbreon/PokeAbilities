@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BattleCardAbilityDescRoot>
   <BattleCardAbility ID="rain5all">
+    <Desc>このページはみずタイプ固定</Desc>
     <Desc>[使用時] 全てのキャラクターにあめ5を付与</Desc>
   </BattleCardAbility>
   <BattleCardAbility ID="sunny5all">
+    <Desc>このページはほのおタイプ固定</Desc>
     <Desc>[使用時] 全てのキャラクターににほんばれ5を付与</Desc>
   </BattleCardAbility>
   <BattleCardAbility ID="hail5all">
+    <Desc>このページはこおりタイプ固定</Desc>
     <Desc>[使用時] 全てのキャラクターにあられ5を付与</Desc>
   </BattleCardAbility>
 </BattleCardAbilityDescRoot>
