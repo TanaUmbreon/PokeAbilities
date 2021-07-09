@@ -1041,8 +1041,8 @@
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleDiceCardModel.OnRoundStart_inHand(BattleUnitModel)">
-      <summary></summary>
-      <param name="unit"></param>
+      <summary>幕の開始時、バトル ページが手札にある場合に呼び出されます。</summary>
+      <param name="unit">バトル ページを所有するキャラクター。</param>
     </member>
     <member name="M:BattleDiceCardModel.OnUseCard(BattleUnitModel,BattlePlayingCardDataInUnitModel)">
       <summary>バトル ページが使用される時に呼び出されます。</summary>
@@ -1687,9 +1687,9 @@
       <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitBuf.BeforeTakeDamage(BattleUnitModel,System.Int32)">
-      <summary></summary>
-      <param name="attacker"></param>
-      <param name="dmg"></param>
+      <summary>ダメージを受ける直前に呼び出されます。</summary>
+      <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
+      <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:BattleUnitBuf.BreakDmgFactor(System.Int32,DamageType,KeywordBuf)">
       <summary></summary>
@@ -1871,7 +1871,7 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.IsImmune(KeywordBuf)">
-      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各状態の実装で呼び出されます。</summary>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与できない事を判定します。また、キャラクターに付与されている場合は効果を発揮しない事を判定します。このメソッドは状態を付与する時に前者として呼び出され、各状態の実装で後者として呼び出されます。</summary>
       <param name="buf">耐性情報を取得する状態。</param>
       <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
@@ -2189,13 +2189,13 @@
       <param name="dmg"></param>
     </member>
     <member name="M:BattleUnitBufListDetail.BeforeRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダイス ロールの直前に呼び出されます。</summary>
+      <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.BeforeTakeDamage(BattleUnitModel,System.Int32)">
-      <summary></summary>
-      <param name="attacker"></param>
-      <param name="dmg"></param>
+      <summary>ダメージを受ける直前に呼び出されます。</summary>
+      <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
+      <param name="dmg">被ダメージ量。</param>
     </member>
     <member name="M:BattleUnitBufListDetail.BreakDmgFactor(System.Int32,DamageType,KeywordBuf)">
       <summary></summary>
@@ -2422,7 +2422,7 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBufListDetail.IsImmune(KeywordBuf)">
-      <summary>指定した状態に対して耐性を持っていて、状態リストの所有キャラクターに付与されていても効果を発揮しない事を判定します。</summary>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与できない事を判定します。また、キャラクターに付与されている場合は効果を発揮しない事を判定します。このメソッドは状態を付与する時に前者として呼び出され、各状態の実装で後者として呼び出されます。</summary>
       <param name="buf">耐性情報を取得する状態。</param>
       <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
@@ -2765,14 +2765,14 @@
       <param name="dmg"></param>
     </member>
     <member name="M:BattleUnitModel.BeforeRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダイス ロールの直前に呼び出されます。</summary>
+      <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitModel.BeforeTakeDamage(BattleUnitModel,System.Int32)">
-      <summary></summary>
-      <param name="attacker"></param>
-      <param name="dmg"></param>
-      <returns></returns>
+      <summary>ダメージを受ける直前に呼び出されます。</summary>
+      <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
+      <param name="dmg">被ダメージ量。</param>
+      <returns>被ダメージを無効化する場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:BattleUnitModel.BreakDmgFactor(System.Int32,DamageType,KeywordBuf)">
       <summary></summary>
@@ -3025,7 +3025,7 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitModel.IsImmune(KeywordBuf)">
-      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与されていても効果を発揮しない事を判定します。このメソッドは各状態の実装で呼び出されます。</summary>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与されている場合は効果を発揮しない事を判定します。このメソッドは各状態の実装で呼び出されます。</summary>
       <param name="buf">耐性情報を取得する状態。</param>
       <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
@@ -3517,14 +3517,14 @@
       <param name="behavior"></param>
     </member>
     <member name="M:BattleUnitPassiveDetail.BeforeRollDice(BattleDiceBehavior)">
-      <summary></summary>
-      <param name="behavior"></param>
+      <summary>ダイス ロールの直前に呼び出されます。</summary>
+      <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:BattleUnitPassiveDetail.BeforeTakeDamage(BattleUnitModel,System.Int32)">
-      <summary></summary>
-      <param name="attacker"></param>
-      <param name="dmg"></param>
-      <returns></returns>
+      <summary>ダメージを受ける直前に呼び出されます。</summary>
+      <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
+      <param name="dmg">被ダメージ量。</param>
+      <returns>被ダメージを無効化する場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:BattleUnitPassiveDetail.BreakDmgFactor(System.Int32,DamageType,KeywordBuf)">
       <summary></summary>
@@ -3701,9 +3701,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitPassiveDetail.IsImmune(KeywordBuf)">
-      <summary></summary>
-      <param name="buf"></param>
-      <returns></returns>
+      <summary>指定した状態に対して耐性を持っていて、キャラクターに付与されている場合は効果を発揮しない事を判定します。このメソッドは各パッシブの実装で呼び出されます。</summary>
+      <param name="buf">耐性情報を取得する状態。</param>
+      <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:BattleUnitPassiveDetail.IsImmuneBreakDmg(DamageType)">
       <summary></summary>
@@ -4872,9 +4872,9 @@
       <param name="self"></param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnRoundStart_inHand(BattleUnitModel,BattleDiceCardModel)">
-      <summary></summary>
-      <param name="unit"></param>
-      <param name="self"></param>
+      <summary>幕の開始時、バトル ページが手札にある場合に呼び出されます。</summary>
+      <param name="unit">バトル ページを所有するキャラクター。</param>
+      <param name="self">このバトル ページ効果が付与されたバトル ページ。</param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartBattle">
       <summary></summary>
@@ -5565,10 +5565,10 @@
       <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
     <member name="M:PassiveAbilityBase.BeforeTakeDamage(BattleUnitModel,System.Int32)">
-      <summary></summary>
-      <param name="attacker"></param>
-      <param name="dmg"></param>
-      <returns></returns>
+      <summary>ダメージを受ける直前に呼び出されます。</summary>
+      <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
+      <param name="dmg">被ダメージ量。</param>
+      <returns>被ダメージを無効化する場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:PassiveAbilityBase.BreakDmgFactor(System.Int32,DamageType,KeywordBuf)">
       <summary></summary>
@@ -5724,7 +5724,7 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.IsImmune(KeywordBuf)">
-      <summary>指定した状態に対して耐性を持っている事を判定します。このメソッドは各状態の実装で呼び出します。</summary>
+      <summary>指定した状態に対して耐性を持っている事を判定します。このメソッドは各パッシブの実装で呼び出します。</summary>
       <param name="buf">耐性情報を取得する状態。</param>
       <returns>指定した状態に対して耐性である場合は true、そうでない場合は false を返します。</returns>
     </member>
