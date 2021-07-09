@@ -101,12 +101,13 @@ namespace PokeAbilities
             => Error($"{ex.Message}\n{ex.StackTrace}");
 
         /// <summary>
-        /// 
+        /// 例外がスローされた時の規定のエラー レベルのログを追加します。
+        /// 指定した例外の説明メッセージとスタックトレースがログに追加されます。
         /// </summary>
         /// <param name="ex"></param>
         public void ErrorOnExceptionThrown(Exception ex)
         {
-            ErrorWithCaller($"Exception thrown.");
+            Error($"[{GetCallerInfo(new StackTrace())}] Exception thrown.");
             Error(ex);
         }
 
