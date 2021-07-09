@@ -12,7 +12,9 @@
     </BattleEffectText>
     <BattleEffectText ID="SunnyDay">
       <Name>にほんばれ</Name>
-      <Desc>幕の開始時、手元のバトルページ2枚にほのおタイプをランダムに付与。
+      <Desc>幕の開始時、タイプ付与されていない手元のバトルページ2枚にほのおタイプをランダムに付与。
+ほのおタイプが付与されたバトルページで受けるダメージ量+1
+みずタイプが付与されたバトルページで受けるダメージ量-1
 幕の終了時、数値が1減少する(最大5)</Desc>
     </BattleEffectText>
     <BattleEffectText ID="SunnyDay_Simple">

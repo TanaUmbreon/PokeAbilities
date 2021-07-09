@@ -7,10 +7,15 @@ namespace PokeAbilities.Bufs
     /// <summary>
     /// 状態「にほんばれ」。
     /// 幕の開始時、手元のバトルページ2枚に「ほのおタイプ」をランダムに付与。
+    /// 「ほのおタイプ」が付与されたバトルページで受けるダメージ量+1
+    /// 「みずタイプ」が付与されたバトルページで受けるダメージ量-1
     /// 幕の終了時、数値が1減少する(最大5)
     /// </summary>
     public class BattleUnitBuf_SunnyDay : BattleUnitBufCustomBase
     {
+        /// <summary>被ダメージ軽減量</summary>
+        private int dmgReduction;
+
         /// <summary>
         /// 使用する疑似乱数ジェネレーターを取得または設定します。
         /// </summary>
@@ -58,12 +63,37 @@ namespace PokeAbilities.Bufs
             }
         }
 
-        public override void BeforeGiveDamage(BattleDiceBehavior behavior)
+        public override void BeforeTakeDamage(BattleUnitModel attacker, int dmg)
         {
-            if (!behavior.card.card.HasType(PokeType.Fire)) { return; }
+            try
+            {
+                dmgReduction = 0;
 
-            behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1 });
+                BattleDiceCardModel attackerDiceAction = attacker?.currentDiceAction?.card;
+                BattleDiceBehavior attackerBehavior = attacker?.currentDiceAction?.currentBehavior;
+                if (attackerDiceAction == null || attackerBehavior == null) { return; }
+                if (!IsAttackDice(attackerBehavior.Detail)) { return; }
+
+                if (attackerDiceAction.HasType(PokeType.Fire))
+                {
+                    dmgReduction = -1;
+                    return;
+                }
+
+                if (attackerDiceAction.HasType(PokeType.Water))
+                {
+                    dmgReduction = 1;
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.ErrorOnExceptionThrown(ex);
+            }
         }
+
+        public override int GetDamageReductionAll()
+            => dmgReduction;
 
         public override void OnRoundEnd()
         {
