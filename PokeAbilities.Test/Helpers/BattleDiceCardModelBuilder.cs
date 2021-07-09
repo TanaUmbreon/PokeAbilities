@@ -17,6 +17,12 @@ namespace PokeAbilities.Test.Helpers
         public BattleUnitModel Owner { get; set; }
 
         /// <summary>
+        /// バトル ページが保有するバトル ページ状態のコレクションを取得または設定します。
+        /// nullの場合、バトル ページ状態を保有しません。
+        /// </summary>
+        public IEnumerable<BattleDiceCardBuf> Bufs { get; set; } = null;
+
+        /// <summary>
         /// <see cref="BattleDiceCardModelBuilder"/> の新しいインスタンスを生成します。
         /// </summary>
         public BattleDiceCardModelBuilder() { }
@@ -47,6 +53,13 @@ namespace PokeAbilities.Test.Helpers
             };
             PrivateAccess.SetField(model, "_xmlData", cardInfo.Copy(false));
             PrivateAccess.SetField(model, "_curCost", cardInfo.Spec.Cost);
+            if (Bufs != null)
+            {
+                foreach (var buf in Bufs)
+                {
+                    model.AddBuf(buf);
+                }
+            }
             return model;
         }
     }
