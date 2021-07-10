@@ -78,7 +78,9 @@
     <Compile Include="Helpers\BattleDiceCardModelBuilder.cs" />
     <Compile Include="BattleUnitBufListDetailExtensionTest.cs" />
     <Compile Include="Bufs\BattleUnitBuf_SunnyDayTest.cs" />
+    <Compile Include="Helpers\BattleInfo.cs" />
     <Compile Include="Helpers\BattleObjectManagerAccess.cs" />
+    <Compile Include="Helpers\BattleEmulator.cs" />
     <Compile Include="Helpers\BattleUnitModelBuilder.cs" />
     <Compile Include="Helpers\PrivateAccess.cs" />
     <Compile Include="Helpers\FixedRandomizer.cs" />
