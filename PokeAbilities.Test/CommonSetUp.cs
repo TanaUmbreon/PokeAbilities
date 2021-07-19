@@ -25,9 +25,10 @@ namespace PokeAbilities.Test
             OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
             OverwriteMethod<Debug>(nameof(LogError), typeof(object));
             OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
+            OverwriteMethod<BattleUnitModel>(nameof(CheckGiftOnTakeDamage), typeof(int), typeof(DamageType), typeof(BattleUnitModel), typeof(KeywordBuf)); // 呼び出し元: BattleUnitModel.TakeDamage(int)
 
-            // ToDo: PlatformManager を参照して実績解除を行おうとするメソッドの呼び出しを回避する。ただし、ExecutionEngineExceptionがスローされて実装できない
-            //OverwriteMethod<BattleUnitBufListDetail>(nameof(CheckAchievements));
+            // 実績解除を行おうとするメソッドの呼び出しを回避
+            OverwriteMethod<BattleUnitBufListDetail>(nameof(CheckAchievements));
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace PokeAbilities.Test
             void* targetPointer = target.MethodHandle.Value.ToPointer();
             void* replacementPointer = replacement.MethodHandle.Value.ToPointer();
 
-            *((long*)targetPointer + 1) = *((long*)replacementPointer + 1);
+            *((int*)targetPointer + 2) = *((int*)replacementPointer + 2);
         }
 
         public static int Range(int min, int max)
@@ -67,6 +68,9 @@ namespace PokeAbilities.Test
 
         public bool IsLogState()
             => true;
+
+        public void CheckGiftOnTakeDamage(int dmg, DamageType type, BattleUnitModel attacker, KeywordBuf keyword)
+            => Console.WriteLine(nameof(CheckGiftOnTakeDamage));
 
         private void CheckAchievements() { }
     }
