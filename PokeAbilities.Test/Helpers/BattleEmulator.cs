@@ -21,6 +21,17 @@ namespace PokeAbilities.Test.Helpers
         }
 
         /// <summary>
+        /// 指定したキャラクターに指定したパッシブを追加し、パッシブをアクティブ状態にします。
+        /// </summary>
+        /// <param name="target">パッシブを追加する対象のキャラクター。</param>
+        /// <param name="passive">追加するパッシブ。</param>
+        public static void AddPassive(BattleUnitModel target, PassiveAbilityBase passive)
+        {
+            target.passiveDetail.AddPassive(passive);
+            target.passiveDetail.OnCreated();
+        }
+
+        /// <summary>
         /// 指定したバトル ダイスの種類で指定したキャラクターに向かって使用する状態のキャラクターを生成します。
         /// </summary>
         /// <param name="currentBehaviourDetail">使用するバトル ダイスの種類。</param>

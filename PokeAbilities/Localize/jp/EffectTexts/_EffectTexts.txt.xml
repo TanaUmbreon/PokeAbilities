@@ -25,7 +25,8 @@
     </BattleEffectText>
     <BattleEffectText ID="Hail">
       <Name>あられ</Name>
-      <Desc>幕の終了時、最大体力の1/16だけダメージを受け(最大5ダメージ)、数値が1減少する(最大5)</Desc>
+      <Desc>幕の終了時、こおりタイプを持たないキャラクターは最大体力の1/16だけダメージを受ける(最大5ダメージ)
+幕の終了時、数値が1減少する(最大5)</Desc>
     </BattleEffectText>
 
     <BattleEffectText ID="FlashFire">

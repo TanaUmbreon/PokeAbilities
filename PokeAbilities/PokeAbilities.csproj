@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="BattleDiceCardModelExtension.cs" />
     <Compile Include="BattleUnitBufListDetailExtension.cs" />
+    <Compile Include="BattleUnitPassiveDetailExtension.cs" />
     <Compile Include="Bufs\BattleDiceCardBufCustomBase.cs" />
     <Compile Include="Bufs\BattleDiceCardBuf_Type.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />

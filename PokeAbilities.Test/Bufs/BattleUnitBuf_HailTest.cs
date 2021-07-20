@@ -24,54 +24,46 @@ namespace PokeAbilities.Test.Bufs
             }.ToBattleUnitModel();
         }
 
-        #region stack
+        #region 付与数のテスト
 
-        [Test(Description = "インスタンス生成直後はスタック数1")]
-        public void TestStack1()
+        [Test(Description = "付与数のデフォルト値は1。")]
+        public void TestStack_DefaultStack()
         {
             var buf = new BattleUnitBuf_Hail();
-            owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf(buf.stack);
+            Assert.That(buf.stack, Is.EqualTo(1));
 
+            BattleEmulator.AddBuf(owner, buf);
             Assert.That(buf.stack, Is.EqualTo(1));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);
         }
 
-        [Test(Description = "AddBufメソッドでは付与数0でも付与可能")]
-        public void TestStack2()
+        [Test(Description = "BattleUnitModel.bufListDetail.AddBuf(BattleUnitBuf)では付与数0でも付与可能。")]
+        public void TestStack_Stack0()
         {
             var buf = new BattleUnitBuf_Hail() { stack = 0 };
-            owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf(buf.stack);
-
+            Assert.That(buf.stack, Is.EqualTo(0));
+      
+            BattleEmulator.AddBuf(owner, buf);
             Assert.That(buf.stack, Is.EqualTo(0));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);
         }
 
-        [Test(Description = "付与数の上限は5")]
-        public void TestStack3()
+        [Test(Description = "付与数の上限は5。")]
+        public void TestStack_StackOver()
         {
             var buf = new BattleUnitBuf_Hail() { stack = 6 };
-            owner.bufListDetail.AddBuf(buf);
-            buf.OnAddBuf(buf.stack);
+            Assert.That(buf.stack, Is.EqualTo(6));
 
+            BattleEmulator.AddBuf(owner, buf);
             Assert.That(buf.stack, Is.EqualTo(5));
             Assert.That(owner.bufListDetail.HasBuf<BattleUnitBuf_Hail>(), Is.True);
         }
 
-        #endregion
-
-        #region OnRoundEnd
-
         [Test(Description = "幕の終了時、数値が1減る。")]
-        public void TestOnRoundEnd1()
+        public void TestStack_DecrementOnRoundEnd()
         {
-            // スリップダメージの回避
-            owner.passiveDetail.AddPassive(new PassiveAbility_2270016());
-            owner.passiveDetail.OnCreated();
-
             var buf = new BattleUnitBuf_Hail() { stack = 5 };
-            owner.bufListDetail.AddBuf(buf);
+            BattleEmulator.AddBuf(owner, buf);
             Assert.That(buf.stack, Is.EqualTo(5));
             Assert.That(buf.IsDestroyed, Is.False);
 
@@ -80,15 +72,11 @@ namespace PokeAbilities.Test.Bufs
             Assert.That(buf.IsDestroyed, Is.False);
         }
 
-        [Test(Description = "数値が0になると破棄される。")]
-        public void TestOnRoundEnd2()
+        [Test(Description = "幕の終了時、数値が0になると破棄される。")]
+        public void TestStack_DestroyedOnRoundEnd()
         {
-            // スリップダメージの回避
-            owner.passiveDetail.AddPassive(new PassiveAbility_2270016());
-            owner.passiveDetail.OnCreated();
-
             var buf = new BattleUnitBuf_Hail() { stack = 3 };
-            owner.bufListDetail.AddBuf(buf);
+            BattleEmulator.AddBuf(owner, buf);
             Assert.That(buf.stack, Is.EqualTo(3));
             Assert.That(buf.IsDestroyed, Is.False);
 
@@ -102,14 +90,40 @@ namespace PokeAbilities.Test.Bufs
             Assert.That(buf.IsDestroyed, Is.True);
         }
 
-        [Test(Description = "パッシブ「ゆきがくれ」を所有している場合はスリップダメージを受けない。")]
-        public void TestOnRoundEnd3()
-        {
-            owner.passiveDetail.AddPassive(new PassiveAbility_2270016());
-            owner.passiveDetail.OnCreated();
+        #endregion
 
+        #region スリップダメージのテスト
+
+        [Test(Description = "こおりタイプ持つキャラクターの場合はスリップダメージを受けない。")]
+        public void TestOnRoundEndDamage_HasIceType()
+        {
             var buf = new BattleUnitBuf_Hail() { stack = 5 };
-            owner.bufListDetail.AddBuf(buf);
+            BattleEmulator.AddBuf(owner, buf);
+            BattleEmulator.AddPassive(owner, new PassiveAbility_22700600());
+            Assert.That(owner.hp, Is.EqualTo(100f));
+
+            buf.OnRoundEnd();
+            Assert.That(owner.hp, Is.EqualTo(100f));
+        }
+
+        [Test(Description = "こおりタイプ以外のタイプを持つキャラクターの場合はスリップダメージを受ける。")]
+        public void TestOnRoundEndDamage_HasNotIceType()
+        {
+            var buf = new BattleUnitBuf_Hail() { stack = 5 };
+            BattleEmulator.AddBuf(owner, buf);
+            BattleEmulator.AddPassive(owner, new PassiveAbility_22700500());
+            Assert.That(owner.hp, Is.EqualTo(100f));
+
+            buf.OnRoundEnd();
+            Assert.That(owner.hp, Is.EqualTo(95f));
+        }
+
+        [Test(Description = "パッシブ「ゆきがくれ」を所有している場合はスリップダメージを受けない。")]
+        public void TestOnRoundEndDamage_Passive2270016()
+        {
+            var buf = new BattleUnitBuf_Hail() { stack = 5 };
+            BattleEmulator.AddBuf(owner, buf);
+            BattleEmulator.AddPassive(owner, new PassiveAbility_2270016());
             Assert.That(owner.hp, Is.EqualTo(100f));
 
             buf.OnRoundEnd();
@@ -117,13 +131,11 @@ namespace PokeAbilities.Test.Bufs
         }
 
         [Test(Description = "パッシブ「アイスボディ」を所有している場合はスリップダメージを受けない。")]
-        public void TestOnRoundEnd4()
+        public void TestOnRoundEndDamage_Passive2270017()
         {
-            owner.passiveDetail.AddPassive(new PassiveAbility_2270017());
-            owner.passiveDetail.OnCreated();
-
             var buf = new BattleUnitBuf_Hail() { stack = 5 };
-            owner.bufListDetail.AddBuf(buf);
+            BattleEmulator.AddBuf(owner, buf);
+            BattleEmulator.AddPassive(owner, new PassiveAbility_2270017());
             Assert.That(owner.hp, Is.EqualTo(100f));
 
             buf.OnRoundEnd();

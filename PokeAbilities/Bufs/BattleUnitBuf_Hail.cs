@@ -37,6 +37,9 @@ namespace PokeAbilities.Bufs
         /// </summary>
         private void TakeDamage()
         {
+            // こおりタイプを持つ場合はダメージを受けない
+            if (_owner.passiveDetail.HasType(PokeType.Ice)) { return; }
+
             // 特定のパッシブを保有している場合はダメージを受けない
             if (_owner.passiveDetail.HasPassive<PassiveAbility_2270016>()) { return; }
             if (_owner.passiveDetail.HasPassive<PassiveAbility_2270017>()) { return; }
