@@ -26,6 +26,7 @@ namespace PokeAbilities.Test
             OverwriteMethod<Debug>(nameof(LogError), typeof(object));
             OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
             OverwriteMethod<BattleUnitModel>(nameof(CheckGiftOnTakeDamage), typeof(int), typeof(DamageType), typeof(BattleUnitModel), typeof(KeywordBuf)); // 呼び出し元: BattleUnitModel.TakeDamage(int)
+            OverwriteMethod<BattleDiceCardModel>(nameof(CreateDiceCardSelfAbilityScript)); // 呼出元: BattleAllyCardDetail.DrawCards(int) 等
 
             // 実績解除を行おうとするメソッドの呼び出しを回避
             OverwriteMethod<BattleUnitBufListDetail>(nameof(CheckAchievements));
@@ -73,5 +74,8 @@ namespace PokeAbilities.Test
             => Console.WriteLine(nameof(CheckGiftOnTakeDamage));
 
         private void CheckAchievements() { }
+
+        public DiceCardSelfAbilityBase CreateDiceCardSelfAbilityScript()
+            => null;
     }
 }

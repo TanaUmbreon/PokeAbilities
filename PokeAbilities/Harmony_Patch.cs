@@ -15,7 +15,7 @@ namespace PokeAbilities
         {
             var harmony = new Harmony("PokeAbilities");
             MethodInfo method = typeof(Harmony_Patch).GetMethod(nameof(UISpriteDataManager_GetStoryIcon));
-            harmony.Patch(typeof(UISpriteDataManager).GetMethod("GetStoryIcon", AccessTools.all), new HarmonyMethod(method), null, null, null);
+            harmony.Patch(typeof(UISpriteDataManager).GetMethod("GetStoryIcon", AccessTools.all), prefix: new HarmonyMethod(method));
         }
 
 		public static bool UISpriteDataManager_GetStoryIcon(UISpriteDataManager __instance, ref UIIconManager.IconSet __result, string story)
