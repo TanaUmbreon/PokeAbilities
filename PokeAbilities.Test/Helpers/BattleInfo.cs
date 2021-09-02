@@ -43,5 +43,18 @@ namespace PokeAbilities.Test.Helpers
         public static int GetMultiTypesHandCount(BattleUnitModel target)
             => target.allyCardDetail.GetHand().Count(
                 h => h.GetBufList().OfType<BattleDiceCardBuf_Type>().Count() >= 2);
+
+        /// <summary>
+        /// 指定したキャラクターから、指定した位置にある手札のバトル ページを取得します。
+        /// </summary>
+        /// <param name="target">バトル ページを取得する対象のキャラクター。</param>
+        /// <param name="index">0 から始まる、手札のバトル ページ位置。</param>
+        /// <returns>指定した位置にある手札のバトル ページ。位置が範囲外の場合は null。</returns>
+        public static BattleDiceCardModel GetHandAt(BattleUnitModel target, int index)
+        {
+            var hand = target.allyCardDetail.GetHand();
+            if (index < 0 || index >= hand.Count) { return null; }
+            return hand[index];
+        }
     }
 }

@@ -32,6 +32,30 @@ namespace PokeAbilities.Test.Helpers
         }
 
         /// <summary>
+        /// 指定したバトル ページを指定した対象キャラクターに向かって使用する状態のバトル ダイスの振る舞いを生成します。
+        /// </summary>
+        /// <param name="card">使用するバトル ページ。</param>
+        /// <param name="target">使用するバトル ページの対象となるキャラクター。</param>
+        /// <param name="detail"></param>
+        /// <returns></returns>
+        public static BattleDiceBehavior CreateAttackingBehavior(BattleDiceCardModel card, BattleUnitModel target, BehaviourDetail detail = BehaviourDetail.None)
+        {
+            BattleDiceBehavior behavior = new BattleDiceBehaviorBuilder()
+            {
+                Detail = detail,
+            }.ToBattleDiceBehavior();
+            _ = new BattlePlayingCardDataInUnitModelBuilder()
+            {
+                Owner = card.owner,
+                Target = target,
+                CurrentBehavior = behavior,
+                Card = card,
+            }.ToBattlePlayingCardDataInUnitModel();
+
+            return behavior;
+        }
+
+        /// <summary>
         /// 指定したバトル ダイスの種類で指定したキャラクターに向かって使用する状態のキャラクターを生成します。
         /// </summary>
         /// <param name="currentBehaviourDetail">使用するバトル ダイスの種類。</param>
@@ -58,6 +82,30 @@ namespace PokeAbilities.Test.Helpers
             }.ToBattlePlayingCardDataInUnitModel();
 
             return attaker;
+        }
+
+        /// <summary>
+        /// 指定した最大体力と現在体力を持つキャラクターを生成します。
+        /// </summary>
+        /// <param name="maxHp">キャラクターの最大体力。</param>
+        /// <param name="currentHp">キャラクターの現在体力。</param>
+        /// <returns></returns>
+        public static BattleUnitModel CreateDamagedUnit(int maxHp, int currentHp)
+        {
+            BattleUnitModel owner = new BattleUnitModelBuilder()
+            {
+                EquipBook = new BookXmlInfoBuilder()
+                {
+                    Hp = maxHp,
+                }.ToBookXmlInfo(),
+            }.ToBattleUnitModel();
+
+            if (maxHp != currentHp)
+            {
+                owner.SetHp(currentHp);
+            }
+
+            return owner;
         }
     }
 }

@@ -112,7 +112,7 @@ namespace PokeAbilities.Test.Helpers
             };
 
             InitEquipBook(model);
-            model.allyCardDetail = CreateBattleAllyCardDetail(model);
+            model.allyCardDetail = ToBattleAllyCardDetail(model);
 
             if (IsDie)
             {
@@ -158,10 +158,15 @@ namespace PokeAbilities.Test.Helpers
             model.RecoverBreakLife(model.MaxBreakLife, true);
         }
 
-        private BattleAllyCardDetail CreateBattleAllyCardDetail(BattleUnitModel target)
+        /// <summary>
+        /// 現在設定さている情報から、デッキおよび手札の詳細のインスタンスを構築して返します。
+        /// </summary>
+        /// <param name="owner">生成するデッキおよび手札の詳細の所有キャラクター。</param>
+        /// <returns></returns>
+        private BattleAllyCardDetail ToBattleAllyCardDetail(BattleUnitModel owner)
         {
-            var c = new BattleAllyCardDetail(target);
-            PrivateAccess.SetField(c, "_cardInDeck", CreateDeck());
+            var c = new BattleAllyCardDetail(owner);
+            PrivateAccess.SetField(c, "_cardInDeck", ToCardInDeck(owner));
             PrivateAccess.SetField(c, "_cardInHand", new List<BattleDiceCardModel>());
             PrivateAccess.SetField(c, "_cardInUse", new List<BattleDiceCardModel>());
             PrivateAccess.SetField(c, "_cardInDiscarded", new List<BattleDiceCardModel>());
@@ -169,7 +174,12 @@ namespace PokeAbilities.Test.Helpers
             return c;
         }
 
-        private List<BattleDiceCardModel> CreateDeck()
+        /// <summary>
+        /// 現在設定さている情報から、デッキ用バトル ページのインスタンスを構築して返します。
+        /// </summary>
+        /// <param name="owner">生成するデッキ用バトル ページの所有キャラクター。</param>
+        /// <returns></returns>
+        private List<BattleDiceCardModel> ToCardInDeck(BattleUnitModel owner)
         {
             var deck = new[]
             {
@@ -184,23 +194,34 @@ namespace PokeAbilities.Test.Helpers
                 DeckCard9,
             };
 
-            var defaultCard = new BattleDiceCardModelBuilder();
-            defaultCard.AddDiceBehaviour();
-
-            var list = new List<BattleDiceCardModel>();
+            var result = new List<BattleDiceCardModel>();
             foreach (BattleDiceCardModel card in deck)
             {
-                list.Add(card ?? defaultCard.ToBattleDiceCardModel());
+                if (card == null)
+                {
+                    result.Add(CreateDefaultBattleDiceCardModel(owner));
+                    continue;
+                }
+
+                card.owner = owner;
+                result.Add(card);
             }
-            return list;
+            return result;
         }
 
-        private BookModel CreateBookModel()
+        /// <summary>
+        /// 規定のバトル ページを生成します。
+        /// </summary>
+        /// <param name="owner">生成するバトル ページの所有キャラクター。</param>
+        /// <returns></returns>
+        private BattleDiceCardModel CreateDefaultBattleDiceCardModel(BattleUnitModel owner)
         {
-            var bookXml = new BookXmlInfo();
-            var book = new BookModel();
-            PrivateAccess.SetField(book, "_classInfo", bookXml);
-            return book;
+            var card = new BattleDiceCardModelBuilder()
+            {
+                Owner = owner,
+            };
+            card.AddDiceBehaviour();
+            return card.ToBattleDiceCardModel();
         }
     }
 }
