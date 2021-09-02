@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PassiveXmlRoot>
+  <!--タイプ一致-->
+  <Passive ID="22710000">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+  <!--効果はバツグンだ！-->
+  <Passive ID="22710001">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+  <!--効果は今ひとつのようだ……-->
+  <Passive ID="22710002">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+  <!--効果がないようだ…-->
+  <Passive ID="22710003">
+    <Rarity>Common</Rarity>
+    <NeedLevel>1</NeedLevel>
+    <Cost>0</Cost>
+  </Passive>
+</PassiveXmlRoot>

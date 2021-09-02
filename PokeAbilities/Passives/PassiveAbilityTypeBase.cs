@@ -33,19 +33,6 @@ namespace PokeAbilities.Passives
             }
         }
 
-        public override void BeforeGiveDamage(BattleDiceBehavior behavior)
-        {
-            try
-            {
-                ApplyBonusIfTypeMatched(behavior);
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.ErrorWithCaller("Exception thrown.");
-                Log.Instance.Error(ex);
-            }
-        }
-
         /// <summary>
         /// 所有キャラクターの手元の、タイプ付与されていないバトルページ2枚にタイプをランダムに付与します。
         /// このタイプ系パッシブが単体タイプの場合はそのタイプを、
@@ -76,16 +63,29 @@ namespace PokeAbilities.Passives
             }
         }
 
+        public override void BeforeGiveDamage(BattleDiceBehavior behavior)
+        {
+            try
+            {
+                ApplyBonusIfTypeMatched(behavior);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
+            }
+        }
+
         /// <summary>
-        /// 指定したバトル ダイスを所有するバトル ページがタイプ一致の場合、
-        /// 指定したバトル ダイスに対してダメージ量 +1 のボーナスを付与します。
+        /// タイプ一致である場合、指定したバトル ダイスに対してボーナスを適用します。
         /// </summary>
-        /// <param name="behavior"></param>
+        /// <param name="behavior">ボーナスを適用させる対象のバトル ダイス。</param>
         private void ApplyBonusIfTypeMatched(BattleDiceBehavior behavior)
         {
+            if (!IsAttackDice(behavior.Detail)) { return; }
             if (!behavior.card.card.HasType(Types)) { return; }
 
-            owner.battleCardResultLog?.SetPassiveAbility(this);
+            owner.battleCardResultLog?.SetPassiveAbility(PassiveAbility_22710000.Instance);
             behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1 });
         }
 

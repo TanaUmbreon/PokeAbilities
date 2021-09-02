@@ -96,6 +96,7 @@
     <Compile Include="Passives\PassiveAbility_2270023.cs" />
     <Compile Include="Passives\PassiveAbilityTypeBase.cs" />
     <Compile Include="Passives\PassiveAbilityTypes.cs" />
+    <Compile Include="Passives\PassiveAbilityResultOnly.cs" />
     <Compile Include="PokeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,6 +168,9 @@
     <Content Include="Localize\jp\EffectTexts\_EffectTexts_CardBuf.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Localize\jp\PassiveDesc\_PassiveDesc_ResultOnly.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc_Types.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -183,6 +187,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localize\jp\PassiveDesc\_PassiveDesc.txt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\PassiveList\PassiveList_ResultOnly.txt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticInfo\PassiveList\PassiveList_Types.txt.xml">
