@@ -1,12 +1,10 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「シンクロ」。
-    /// 敵からバトルページで出血・麻痺・火傷が付与されたとき、相手にも同じ状態を付与。
+    /// パッシブ「シンクロ」
+    /// 敵からページで出血・麻痺・火傷が付与されたとき、相手にも同じ状態を付与
     /// </summary>
     public class PassiveAbility_2270000 : PassiveAbilityBase
     {

@@ -4,7 +4,7 @@ namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「うるおいボディ」
-    /// あめ状態のとき、幕の終了時に全ての状態異常を解除する。
+    /// あめ状態のとき、幕の終了時に全ての状態異常を解除する
     /// </summary>
     public class PassiveAbility_2270011 : PassiveAbilityBase
     {

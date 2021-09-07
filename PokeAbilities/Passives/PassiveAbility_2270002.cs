@@ -1,8 +1,8 @@
 ﻿namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「せいしんりょく」。
-    /// 行動不能・虚弱状態に対して免疫。
+    /// パッシブ「せいしんりょく」
+    /// 行動不能・虚弱状態に対して免疫
     /// </summary>
     public class PassiveAbility_2270002 : PassiveAbilityBase
     {

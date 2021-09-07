@@ -1,14 +1,12 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using System.Linq;
 using LOR_DiceSystem;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「てきおうりょく」。
-    /// 反撃を除く、全てのダイスが同じ種類のページを使用したとき、全てのダイス威力を+1。
+    /// パッシブ「てきおうりょく」
+    /// タイプ一致のとき、更に与えるダメージ・混乱ダメージ量+1
     /// </summary>
     public class PassiveAbility_2270004 : PassiveAbilityBase
     {

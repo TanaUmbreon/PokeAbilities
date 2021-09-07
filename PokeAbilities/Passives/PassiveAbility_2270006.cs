@@ -1,17 +1,15 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using PokeAbilities.Bufs;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「もらいび」。
-    /// 幕の終了時に火傷状態なら、火傷ダメージを受けず、50%の確率で攻撃ダイスの威力が1増加する「もらいび」状態になる。
+    /// パッシブ「もらいび
+    /// ほのおタイプ付きページの攻撃で受けるダメージ・混乱ダメージ量-2。火傷ダメージを受けない。
+    /// また、ほのおタイプ付きページの攻撃を受けるか火傷が付与されたとき、今回の舞台の間、ほのおタイプ付きページの攻撃ダイスの威力が1増加する「もらいび」状態になる
     /// </summary>
     public class PassiveAbility_2270006 : PassiveAbilityBase
     {
-
         public override void OnRoundEnd()
         {
             try

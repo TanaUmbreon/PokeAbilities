@@ -1,14 +1,12 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using System.Linq;
 using LOR_DiceSystem;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「きけんよち」。
-    /// 弱点や脆弱属性の攻撃を受けるとき、その相手のダイス威力を-1。
+    /// パッシブ「きけんよち」
+    /// 弱点や脆弱属性の攻撃を受けるとき、その相手のダイス威力を-1
     /// </summary>
     public class PassiveAbility_2270005 : PassiveAbilityBase
     {

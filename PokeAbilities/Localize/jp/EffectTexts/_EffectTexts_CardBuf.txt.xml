@@ -3,43 +3,43 @@
   <effectTextList>
     <BattleEffectText ID="CardBuf_NormalType">
       <Name>ノーマルタイプ</Name>
-      <Desc>ノーマルタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>ノーマルタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_FireType">
       <Name>ほのおタイプ</Name>
-      <Desc>ほのおタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>ほのおタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_WaterType">
       <Name>みずタイプ</Name>
-      <Desc>みずタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>みずタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_ElectricType">
       <Name>でんきタイプ</Name>
-      <Desc>でんきタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>でんきタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_GrassType">
       <Name>くさタイプ</Name>
-      <Desc>くさタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>くさタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_IceType">
       <Name>こおりタイプ</Name>
-      <Desc>こおりタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>こおりタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_FlyingType">
       <Name>ひこうタイプ</Name>
-      <Desc>ひこうタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>ひこうタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_PsychicType">
       <Name>エスパータイプ</Name>
-      <Desc>エスパータイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>エスパータイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_DarkType">
       <Name>あくタイプ</Name>
-      <Desc>あくタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>あくタイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
     <BattleEffectText ID="CardBuf_FairyType">
       <Name>フェアリータイプ</Name>
-      <Desc>フェアリータイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
+      <Desc>フェアリータイプを持つキャラクターが使用したとき、このページで与えるダメージ・混乱ダメージ量+1</Desc>
     </BattleEffectText>
   </effectTextList>
 </BattleEffectTextRoot>

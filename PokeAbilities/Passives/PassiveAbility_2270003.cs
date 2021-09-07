@@ -1,8 +1,8 @@
 ﻿namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「にげあし」。
-    /// 自分の体力が50%以下なら、幕の開始時にクイック2を得て、25%の確率で行動不能。
+    /// パッシブ「にげあし」
+    /// 自分の体力が50%以下なら、幕の開始時にクイック2を得て、25%の確率で行動不能
     /// </summary>
     public class PassiveAbility_2270003 : PassiveAbilityBase
     {

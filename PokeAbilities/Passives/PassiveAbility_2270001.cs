@@ -1,12 +1,10 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
-    /// パッシブ「マジックミラー」。
-    /// 敵からバトルページで付与される状態異常を無効化し、相手に跳ね返す。
+    /// パッシブ「マジックミラー」
+    /// 敵からページで付与される状態異常を無効化し、相手に跳ね返す
     /// </summary>
     public class PassiveAbility_2270001 : PassiveAbilityBase
     {

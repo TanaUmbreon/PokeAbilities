@@ -1,12 +1,10 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「はやあし」
-    /// 束縛状態の影響を受けない。幕の終了時に状態異常なら、次の幕にクイック1を得る。
+    /// 束縛状態の影響を受けない。幕の終了時に状態異常なら、次の幕にクイック1を得る
     /// </summary>
     public class PassiveAbility_2270009 : PassiveAbilityBase
     {

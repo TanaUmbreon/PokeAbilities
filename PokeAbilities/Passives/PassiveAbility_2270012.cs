@@ -6,7 +6,7 @@ namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「メロメロボディ」
-    /// 近接バトルページの攻撃を受けたとき、10%の確率で相手にメロメロ状態を付与。
+    /// 近接ページの攻撃を受けるとき、20%の確率で相手にメロメロを付与
     /// </summary>
     public class PassiveAbility_2270012 : PassiveAbilityBase
     {

@@ -5,7 +5,7 @@ namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「ちょすい」
-    /// 「みずタイプ」が付与されたバトルページでダメージを受けず、体力を2回復する。
+    /// みずタイプ付きページの攻撃を受けるとき、受けるダメージ・混乱ダメージ量が2減少し、体力を2回復する
     /// </summary>
     public class PassiveAbility_2270010 : PassiveAbilityBase
     {

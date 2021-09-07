@@ -2,98 +2,101 @@
 <PassiveDescRoot>
   <PassiveDesc ID="2270000">
     <Name>シンクロ</Name>
-    <Desc>敵からバトルページで出血・麻痺・火傷が付与されたとき、相手にも同じ状態を付与。</Desc>
+    <Desc>敵からページで出血・麻痺・火傷が付与されたとき、相手にも同じ状態を付与</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270001">
     <Name>マジックミラー</Name>
-    <Desc>敵からバトルページで付与される状態異常を無効化し、相手に跳ね返す。</Desc>
+    <Desc>敵からページで付与される状態異常を無効化し、相手に跳ね返す</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270002">
     <Name>せいしんりょく</Name>
-    <Desc>行動不能・虚弱状態に対して免疫。</Desc>
+    <Desc>行動不能・虚弱状態に対して免疫</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270003">
     <Name>にげあし</Name>
-    <Desc>自分の体力が50%以下なら、幕の開始時にクイック2を得て、25%の確率で行動不能。</Desc>
+    <Desc>自分の体力が50%以下なら、幕の開始時にクイック2を得て、25%の確率で行動不能</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270004">
     <Name>てきおうりょく</Name>
-    <Desc>反撃を除く、全てのダイスが同じ種類のページを使用したとき、全てのダイス威力を+1。</Desc>
+    <Desc>タイプ一致のとき、更に与えるダメージ・混乱ダメージ量+1</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270005">
     <Name>きけんよち</Name>
-    <Desc>弱点や脆弱属性の攻撃を受けるとき、その相手のダイス威力を-1。</Desc>
+    <Desc>弱点や脆弱属性の攻撃を受けるとき、その相手のダイス威力を-1</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270006">
     <Name>もらいび</Name>
-    <Desc>幕の終了時に火傷状態なら、今回の舞台の間、火傷ダメージを受けず、50%の確率で攻撃ダイスの威力が1増加する「もらいび」状態になる。</Desc>
+    <Desc>ほのおタイプ付きページの攻撃で受けるダメージ・混乱ダメージ量-2。火傷ダメージを受けない。
+また、ほのおタイプ付きページの攻撃を受けるか火傷が付与されたとき、今回の舞台の間、ほのおタイプ付きページの攻撃ダイスの威力が1増加する「もらいび」状態になる</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270007">
     <Name>こんじょう</Name>
-    <Desc>状態異常のとき、虚弱状態の影響を受けず、50%の確率で攻撃ダイスの威力+1。</Desc>
+    <Desc>状態異常のとき、虚弱状態の影響を受けず、攻撃ダイスの威力+1</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270008">
     <Name>ちくでん</Name>
-    <Desc>麻痺状態の影響を受けない。幕の終了時に「麻痺の値x5」体力が回復する。</Desc>
+    <Desc>でんきタイプ付きページの攻撃で受けるダメージ・混乱ダメージ量-2。麻痺状態の影響を受けない。
+また、でんきタイプ付きバトルページの攻撃を受けるか麻痺が付与されたとき、充電1を得る</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270009">
     <Name>はやあし</Name>
-    <Desc>束縛状態の影響を受けない。幕の終了時に状態異常なら、次の幕にクイック1を得る。</Desc>
+    <Desc>束縛状態の影響を受けない。幕の終了時に状態異常なら、次の幕にクイック1を得る</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270010">
     <Name>ちょすい</Name>
-    <Desc>「みずタイプ」が付与されたバトルページでダメージを受けず、体力を2回復する。</Desc>
+    <Desc>みずタイプ付きページの攻撃を受けるとき、受けるダメージ・混乱ダメージ量が2減少し、体力を2回復する</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270011">
     <Name>うるおいボディ</Name>
-    <Desc>あめ状態のとき、幕の終了時に全ての状態異常を解除する。</Desc>
+    <Desc>あめ状態のとき、幕の終了時に全ての状態異常を解除する</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270012">
     <Name>メロメロボディ</Name>
-    <Desc>近接バトルページの攻撃を受けたとき、10%の確率で相手にメロメロを付与。</Desc>
+    <Desc>近接ページの攻撃を受けるとき、20%の確率で相手にメロメロを付与</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270013">
     <Name>フェアリースキン</Name>
-    <Desc>効果を持たない攻撃ダイスでの攻撃的中時、妖精1を付与。</Desc>
+    <Desc>幕の開始時、手元のページ1枚に「ノーマルタイプ」をランダムに付与。
+ノーマルタイプ付きページ使用時、ページのタイプがフェアリータイプに変化し、ページの全攻撃ダイスに「[的中] 妖精1 付与」効果を追加</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270014">
     <Name>リーフガード</Name>
-    <Desc>にほんばれ状態のとき、状態異常に対して免疫。</Desc>
+    <Desc>にほんばれ状態のとき、状態異常に対して免疫</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270015">
     <Name>ようりょくそ</Name>
-    <Desc>にほんばれ状態のとき、幕の開始時にクイック2を得る。</Desc>
+    <Desc>にほんばれ状態のとき、幕の開始時にクイック2を得る</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270016">
     <Name>ゆきがくれ</Name>
-    <Desc>あられ状態のとき、20%の確率でバトルページによるダメージを受けない。あられダメージを受けない。</Desc>
+    <Desc>あられ状態のとき、20%の確率でページによるダメージを受けない。あられダメージを受けない</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270017">
     <Name>アイスボディ</Name>
-    <Desc>あられ状態のとき、幕の終了時にあられダメージを受けず、最大体力の1/16だけ体力が回復する。(最大5)</Desc>
+    <Desc>あられ状態のとき、幕の終了時にあられダメージを受けず、最大体力の1/16だけ体力が回復する(最大5)</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270018">
     <Name>するどいめ</Name>
-    <Desc>マッチ相手の回避ダイスは威力の影響を受けない。</Desc>
+    <Desc>マッチ相手の回避ダイスは威力の影響を受けない</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270019">
     <Name>あめうけざら</Name>
-    <Desc>あめ状態のとき、最大体力の1/16だけ体力が回復する。(最大5)</Desc>
+    <Desc>あめ状態のとき、最大体力の1/16だけ体力が回復する(最大5)</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270020">
     <Name>あめふらし</Name>
-    <Desc>舞台の開始時、全てのキャラクターにあめ5を付与。</Desc>
+    <Desc>舞台の開始時、全てのキャラクターにあめ5を付与</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270021">
     <Name>ゆきかき</Name>
-    <Desc>あられ状態のとき、幕の開始時にクイック2を得る。</Desc>
+    <Desc>あられ状態のとき、幕の開始時にクイック2を得る</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270022">
     <Name>びびり</Name>
-    <Desc>1幕で虚弱状態を受けるたびに今回の舞台の間、幕の開始時にクイック1を得る。(最大6)</Desc>
+    <Desc>1幕で虚弱状態を受けるたびに今回の舞台の間、幕の開始時にクイック1を得る(最大6)</Desc>
   </PassiveDesc>
   <PassiveDesc ID="2270023">
     <Name>すいすい</Name>
-    <Desc>あめ状態のとき、幕の開始時にクイック2を得る。</Desc>
+    <Desc>あめ状態のとき、幕の開始時にクイック2を得る</Desc>
   </PassiveDesc>
 </PassiveDescRoot>

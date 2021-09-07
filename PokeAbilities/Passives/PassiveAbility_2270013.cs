@@ -1,13 +1,12 @@
-﻿#pragma warning disable CA1031 // Do not catch general exception types
-
-using System;
+﻿using System;
 using System.Linq;
 
 namespace PokeAbilities.Passives
 {
     /// <summary>
     /// パッシブ「フェアリースキン」
-    /// 効果を持たない攻撃ダイスでの攻撃的中時、妖精1を付与。
+    /// 幕の開始時、手元のページ1枚に「ノーマルタイプ」をランダムに付与。
+    /// ノーマルタイプ付きページ使用時、ページのタイプがフェアリータイプに変化し、ページの全攻撃ダイスに「[的中] 妖精1 付与」効果を追加
     /// </summary>
     public class PassiveAbility_2270013 : PassiveAbilityBase
     {
