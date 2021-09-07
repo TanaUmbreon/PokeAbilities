@@ -2,18 +2,18 @@
 <PassiveDescRoot>
   <PassiveDesc ID="22710000">
     <Name>タイプ一致</Name>
-    <Desc>攻撃ダイスのバトルページと攻撃キャラクターのタイプが同じ場合、ダメージ量+1</Desc>
+    <Desc>ダメージ・混乱ダメージ量+1</Desc>
   </PassiveDesc>
   <PassiveDesc ID="22710001">
     <Name>効果はバツグンだ！</Name>
-    <Desc>攻撃ダイスのバトルページのタイプが相手キャラクターの弱点タイプである場合、ダメージ量+1</Desc>
+    <Desc>ダメージ・混乱ダメージ量+1</Desc>
   </PassiveDesc>
   <PassiveDesc ID="22710002">
     <Name>効果は今ひとつのようだ……</Name>
-    <Desc>攻撃ダイスのバトルページのタイプが相手キャラクターの抵抗タイプである場合、ダメージ量-1</Desc>
+    <Desc>ダメージ・混乱ダメージ量-1</Desc>
   </PassiveDesc>
   <PassiveDesc ID="22710003">
     <Name>効果がないようだ…</Name>
-    <Desc>攻撃ダイスのバトルページのタイプが相手キャラクターの耐性タイプである場合、ダメージ量-2</Desc>
+    <Desc>ダメージ・混乱ダメージ量-2</Desc>
   </PassiveDesc>
 </PassiveDescRoot>

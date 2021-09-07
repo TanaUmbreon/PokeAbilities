@@ -215,7 +215,7 @@ namespace PokeAbilities.Test.Passives
             Assert.That(behavior.GuardBreakMultiplier, Is.EqualTo(1));
         }
 
-        [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、攻撃ダイスの場合はダメージボーナス+1。")]
+        [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、攻撃ダイスの場合はダメージ・混乱ダメージボーナス+1。")]
         public void TestBeforeGiveDamage_TypeMatched1AndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
@@ -234,7 +234,7 @@ namespace PokeAbilities.Test.Passives
 
             passive.BeforeGiveDamage(behavior);
             Assert.That(behavior.DamageAdder, Is.EqualTo(1));
-            Assert.That(behavior.BreakAdder, Is.EqualTo(0));
+            Assert.That(behavior.BreakAdder, Is.EqualTo(1));
             Assert.That(behavior.PowerAdder, Is.EqualTo(0));
             Assert.That(behavior.DiceFaceAdder, Is.EqualTo(0));
             Assert.That(behavior.GetDiceMin(), Is.EqualTo(1));
@@ -500,7 +500,7 @@ namespace PokeAbilities.Test.Passives
             Assert.That(behavior.GuardBreakMultiplier, Is.EqualTo(1));
         }
 
-        [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、攻撃ダイスの場合はダメージボーナス+1。")]
+        [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、攻撃ダイスの場合はダメージ・混乱ダメージボーナス+1。")]
         public void TestBeforeGiveDamage_TypeMatched1AndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
@@ -519,7 +519,7 @@ namespace PokeAbilities.Test.Passives
 
             passive.BeforeGiveDamage(behavior);
             Assert.That(behavior.DamageAdder, Is.EqualTo(1));
-            Assert.That(behavior.BreakAdder, Is.EqualTo(0));
+            Assert.That(behavior.BreakAdder, Is.EqualTo(1));
             Assert.That(behavior.PowerAdder, Is.EqualTo(0));
             Assert.That(behavior.DiceFaceAdder, Is.EqualTo(0));
             Assert.That(behavior.GetDiceMin(), Is.EqualTo(1));
@@ -528,7 +528,7 @@ namespace PokeAbilities.Test.Passives
             Assert.That(behavior.GuardBreakMultiplier, Is.EqualTo(1));
         }
 
-        [Test(Description = "バトルページに付与されたタイプがタイプ2と一致するかつ、攻撃ダイスの場合はダメージボーナス+1。")]
+        [Test(Description = "バトルページに付与されたタイプがタイプ2と一致するかつ、攻撃ダイスの場合はダメージ・混乱ダメージボーナス+1。")]
         public void TestBeforeGiveDamage_TypeMatched2AndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
@@ -547,7 +547,7 @@ namespace PokeAbilities.Test.Passives
 
             passive.BeforeGiveDamage(behavior);
             Assert.That(behavior.DamageAdder, Is.EqualTo(1));
-            Assert.That(behavior.BreakAdder, Is.EqualTo(0));
+            Assert.That(behavior.BreakAdder, Is.EqualTo(1));
             Assert.That(behavior.PowerAdder, Is.EqualTo(0));
             Assert.That(behavior.DiceFaceAdder, Is.EqualTo(0));
             Assert.That(behavior.GetDiceMin(), Is.EqualTo(1));
