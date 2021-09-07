@@ -17,7 +17,7 @@
       <Name>でんきタイプ</Name>
       <Desc>でんきタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
     </BattleEffectText>
-    <BattleEffectText ID="CardBuf_GlassType">
+    <BattleEffectText ID="CardBuf_GrassType">
       <Name>くさタイプ</Name>
       <Desc>くさタイプを持つキャラクターが使用したとき、このページで与えるダメージ量+1</Desc>
     </BattleEffectText>
