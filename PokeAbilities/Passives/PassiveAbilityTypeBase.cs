@@ -82,8 +82,7 @@ namespace PokeAbilities.Passives
         /// <param name="behavior">ボーナスを適用させる対象のバトル ダイス。</param>
         private void ApplyBonusIfSameType(BattleDiceBehavior behavior)
         {
-            if (!IsAttackDice(behavior.Detail)) { return; }
-            if (!behavior.card.card.HasType(Types)) { return; }
+            if (!behavior.IsSameType()) { return; }
 
             owner.battleCardResultLog?.SetPassiveAbility(PassiveAbility_22710000.Instance);
             behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1, breakDmg = 1 });
