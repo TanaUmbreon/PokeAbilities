@@ -160,7 +160,7 @@ namespace PokeAbilities.Test.Passives
         #region タイプ一致ボーナスのテスト
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1に一致しないかつ、攻撃ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeUnmatchedAndAttackDice()
+        public void TestBeforeGiveDamage_DifferentTypeAndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -188,7 +188,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1に一致しないかつ、防御ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeUnmatchedAndDefenceDice()
+        public void TestBeforeGiveDamage_DifferentTypeAndDefenceDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -216,7 +216,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、攻撃ダイスの場合はダメージ・混乱ダメージボーナス+1。")]
-        public void TestBeforeGiveDamage_TypeMatched1AndAttackDice()
+        public void TestBeforeGiveDamage_SameType1AndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -244,7 +244,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、防御ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeMatched1AndDefenceDice()
+        public void TestBeforeGiveDamage_SameType1AndDefenceDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -445,7 +445,7 @@ namespace PokeAbilities.Test.Passives
         #region タイプ一致ボーナスのテスト
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1にもタイプ2にも一致しないかつ、攻撃ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeUnmatchedAndAttackDice()
+        public void TestBeforeGiveDamage_DifferentTypeAndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -473,7 +473,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1にもタイプ2にも一致しないかつ、防御ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeUnmatchedAndDefenceDice()
+        public void TestBeforeGiveDamage_DifferentTypeAndDefenceDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -501,7 +501,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、攻撃ダイスの場合はダメージ・混乱ダメージボーナス+1。")]
-        public void TestBeforeGiveDamage_TypeMatched1AndAttackDice()
+        public void TestBeforeGiveDamage_SameType1AndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -529,7 +529,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ2と一致するかつ、攻撃ダイスの場合はダメージ・混乱ダメージボーナス+1。")]
-        public void TestBeforeGiveDamage_TypeMatched2AndAttackDice()
+        public void TestBeforeGiveDamage_SameType2AndAttackDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -557,7 +557,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ1と一致するかつ、防御ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeMatched1AndDefenceDice()
+        public void TestBeforeGiveDamage_SameType1AndDefenceDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);
@@ -585,7 +585,7 @@ namespace PokeAbilities.Test.Passives
         }
 
         [Test(Description = "バトルページに付与されたタイプがタイプ2と一致するかつ、防御ダイスの場合はボーナスなし。")]
-        public void TestBeforeGiveDamage_TypeMatched2AndDefenceDice()
+        public void TestBeforeGiveDamage_SameType2AndDefenceDice()
         {
             owner.allyCardDetail.DrawCards(1);
             BattleDiceCardModel card = BattleInfo.GetHandAt(owner, 0);

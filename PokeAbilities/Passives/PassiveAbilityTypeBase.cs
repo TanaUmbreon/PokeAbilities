@@ -67,7 +67,7 @@ namespace PokeAbilities.Passives
         {
             try
             {
-                ApplyBonusIfTypeMatched(behavior);
+                ApplyBonusIfSameType(behavior);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace PokeAbilities.Passives
         /// タイプ一致である場合、指定したバトル ダイスに対してボーナスを適用します。
         /// </summary>
         /// <param name="behavior">ボーナスを適用させる対象のバトル ダイス。</param>
-        private void ApplyBonusIfTypeMatched(BattleDiceBehavior behavior)
+        private void ApplyBonusIfSameType(BattleDiceBehavior behavior)
         {
             if (!IsAttackDice(behavior.Detail)) { return; }
             if (!behavior.card.card.HasType(Types)) { return; }
