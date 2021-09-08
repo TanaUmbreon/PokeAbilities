@@ -10,26 +10,12 @@ namespace PokeAbilities.Passives
     /// </summary>
     public class PassiveAbility_2270004 : PassiveAbilityBase
     {
-        public override void OnUseCard(BattlePlayingCardDataInUnitModel curCard)
+        public override void BeforeGiveDamage(BattleDiceBehavior behavior)
         {
-            try
-            {
-                int detailCount = curCard.GetOriginalDiceBehaviorList()
-                    .Where(d => d.Type != BehaviourType.Standby)
-                    .GroupBy(d => d.Detail)
-                    .Count();
+            if (!behavior.IsSameType()) { return; }
 
-                if (detailCount == 1)
-                {
-                    owner.battleCardResultLog?.SetPassiveAbility(this);
-                    curCard.ApplyDiceStatBonus(DiceMatch.AllDice, new DiceStatBonus() { power = 1 });
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.ErrorWithCaller("Exception thrown.");
-                Log.Instance.Error(ex);
-            }
+            owner.battleCardResultLog?.SetPassiveAbility(this);
+            behavior.ApplyDiceStatBonus(new DiceStatBonus() { dmg = 1, breakDmg = 1 });
         }
     }
 }

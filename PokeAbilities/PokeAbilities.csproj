@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleDiceBehaviorExtension.cs" />
     <Compile Include="BattleDiceCardModelExtension.cs" />
     <Compile Include="BattleUnitBufListDetailExtension.cs" />
     <Compile Include="BattleUnitPassiveDetailExtension.cs" />
