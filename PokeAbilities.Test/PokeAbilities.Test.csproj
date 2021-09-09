@@ -91,6 +91,7 @@
     <Compile Include="Helpers\BookXmlInfoBuilder.cs" />
     <Compile Include="Passives\PassiveAbilityTypeBaseTest.cs" />
     <Compile Include="Passives\PassiveAbility_2270004Test.cs" />
+    <Compile Include="Passives\PassiveAbility_2270007Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270014Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270022Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270023Test.cs" />

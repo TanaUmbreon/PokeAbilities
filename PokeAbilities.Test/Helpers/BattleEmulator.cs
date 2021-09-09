@@ -37,12 +37,14 @@ namespace PokeAbilities.Test.Helpers
         /// <param name="card">使用するバトル ページ。</param>
         /// <param name="target">使用するバトル ページの対象となるキャラクター。</param>
         /// <param name="detail"></param>
+        /// <param name="diceVanillaValue">ロール ダイス後かつ、威力のボーナス値が適用される前のダイス値。</param>
         /// <returns></returns>
-        public static BattleDiceBehavior CreateAttackingBehavior(BattleDiceCardModel card, BattleUnitModel target, BehaviourDetail detail = BehaviourDetail.None)
+        public static BattleDiceBehavior CreateAttackingBehavior(BattleDiceCardModel card, BattleUnitModel target, BehaviourDetail detail = BehaviourDetail.None, int diceVanillaValue = 0)
         {
             BattleDiceBehavior behavior = new BattleDiceBehaviorBuilder()
             {
                 Detail = detail,
+                DiceVanillaValue = diceVanillaValue,
             }.ToBattleDiceBehavior();
             _ = new BattlePlayingCardDataInUnitModelBuilder()
             {

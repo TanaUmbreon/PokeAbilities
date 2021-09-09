@@ -17,7 +17,6 @@ namespace PokeAbilities.Passives
             {
                 if (!IsAttackDice(behavior.Detail)) { return; }
                 if (!owner.bufListDetail.HasBuf(BufPositiveType.Negative)) { return; }
-                if (RandomUtil.valueForProb >= 0.5f) { return; }
 
                 owner.battleCardResultLog?.SetPassiveAbility(this);
                 behavior.ApplyDiceStatBonus(new DiceStatBonus() { power = 1 });
