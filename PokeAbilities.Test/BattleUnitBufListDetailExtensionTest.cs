@@ -14,7 +14,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -63,7 +63,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -153,7 +153,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -224,7 +224,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
             bufListDetail = owner.bufListDetail;
         }
 
@@ -398,7 +398,7 @@ namespace PokeAbilities.Test
         [SetUp]
         public void InitializeFields()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
             bufListDetail = owner.bufListDetail;
         }
 

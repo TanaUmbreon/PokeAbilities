@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using LOR_DiceSystem;
+﻿using LOR_DiceSystem;
 using NUnit.Framework;
 using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
@@ -22,11 +19,11 @@ namespace PokeAbilities.Test.Passives
             owner = new BattleUnitModelBuilder()
             {
                 Passives = new PassiveAbilityBase[] { passive },
-            }.ToBattleUnitModel();
+            }.Build();
             enemy = new BattleUnitModelBuilder()
             {
                 Faction = Faction.Enemy,
-            }.ToBattleUnitModel();
+            }.Build();
         }
 
         [Test(Description = "バトルページのタイプが単体タイプ持ちキャラクターのタイプと一致しない場合はボーナスなし")]

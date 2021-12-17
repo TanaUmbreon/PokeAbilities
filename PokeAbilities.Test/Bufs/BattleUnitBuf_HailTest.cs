@@ -21,7 +21,7 @@ namespace PokeAbilities.Test.Bufs
             owner = new BattleUnitModelBuilder()
             {
                 EquipBook = equipBook,
-            }.ToBattleUnitModel();
+            }.Build();
         }
 
         #region 付与数のテスト

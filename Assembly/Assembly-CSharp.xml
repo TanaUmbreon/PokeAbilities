@@ -50,7 +50,19 @@
       <param name="front">手札の先頭に追加することを示す値。既定は false (手札の末尾) です。</param>
       <returns>追加したバトル ページ。</returns>
     </member>
+    <member name="M:BattleAllyCardDetail.AddNewCard(LorId,System.Boolean)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <param name="front"></param>
+      <returns></returns>
+    </member>
     <member name="M:BattleAllyCardDetail.AddNewCardToDeck(System.Int32,System.Boolean)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <param name="front"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddNewCardToDeck(LorId,System.Boolean)">
       <summary></summary>
       <param name="cardId"></param>
       <param name="front"></param>
@@ -61,11 +73,21 @@
       <param name="cardId"></param>
       <returns></returns>
     </member>
+    <member name="M:BattleAllyCardDetail.AddNewCardToDiscarded(LorId)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <returns></returns>
+    </member>
     <member name="M:BattleAllyCardDetail.AddSoulCard(System.Int32)">
       <summary></summary>
       <param name="emotionLevel"></param>
     </member>
     <member name="M:BattleAllyCardDetail.AddTempCard(System.Int32)">
+      <summary></summary>
+      <param name="cardId"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.AddTempCard(LorId)">
       <summary></summary>
       <param name="cardId"></param>
       <returns></returns>
@@ -105,12 +127,12 @@
       <summary></summary>
       <param name="count"></param>
     </member>
-    <member name="M:BattleAllyCardDetail.DrawCardsAllSpecific(System.Int32,BattleDiceCardModel)">
+    <member name="M:BattleAllyCardDetail.DrawCardsAllSpecific(LorId,BattleDiceCardModel)">
       <summary></summary>
       <param name="cardId"></param>
       <param name="exclude"></param>
     </member>
-    <member name="M:BattleAllyCardDetail.ExceptHighlanderID(System.Int32)">
+    <member name="M:BattleAllyCardDetail.ExceptHighlanderID(LorId)">
       <summary></summary>
       <param name="cardId"></param>
       <returns></returns>
@@ -133,12 +155,21 @@
       <summary></summary>
       <param name="id"></param>
     </member>
-    <member name="M:BattleAllyCardDetail.ExhaustCardInDeck(System.Int32)">
+    <member name="M:BattleAllyCardDetail.ExhaustCard(LorId)">
+      <summary></summary>
+      <param name="id"></param>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustCardInDeck(LorId)">
       <summary></summary>
       <param name="id"></param>
       <returns></returns>
     </member>
     <member name="M:BattleAllyCardDetail.ExhaustCardInHand(System.Int32)">
+      <summary></summary>
+      <param name="id"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattleAllyCardDetail.ExhaustCardInHand(LorId)">
       <summary></summary>
       <param name="id"></param>
       <returns></returns>
@@ -845,8 +876,8 @@
       <summary></summary>
     </member>
     <member name="M:BattleDiceCardModel.AddBuf(BattleDiceCardBuf)">
-      <summary>指定したバトル ページ状態をバトル ページに追加します。</summary>
-      <param name="buf">追加するバトル ページ状態。</param>
+      <summary>指定したバトル ページ状態をバトル ページに追加し、初期化処理を呼び出します。</summary>
+      <param name="buf">バトル ページに追加し、初期化処理を呼び出すバトル ページ状態。</param>
     </member>
     <member name="M:BattleDiceCardModel.AddBufWithoutDuplication(BattleDiceCardBuf)">
       <summary></summary>
@@ -882,9 +913,9 @@
       <returns></returns>
     </member>
     <member name="M:BattleDiceCardModel.CreatePlayingCard(LOR_DiceSystem.DiceCardXmlInfo)">
-      <summary></summary>
-      <param name="cardInfo"></param>
-      <returns></returns>
+      <summary>指定したバトル ページの XML 情報からバトル ページのインスタンスを生成します。</summary>
+      <param name="cardInfo">生成するバトル ページの XML 情報。</param>
+      <returns>バトル ページのインスタンス。</returns>
     </member>
     <member name="M:BattleDiceCardModel.GetAddedIcon(System.Int32)">
       <summary></summary>
@@ -1117,7 +1148,7 @@
       <summary></summary>
     </member>
     <member name="T:BattleObjectManager">
-      <summary>バトル キャラクターなどのオブジェクトを管理します。</summary>
+      <summary>キャラクターなどのオブジェクトを管理します。</summary>
     </member>
     <member name="M:BattleObjectManager.#ctor">
       <summary></summary>
@@ -1205,13 +1236,13 @@
       <returns></returns>
     </member>
     <member name="M:BattleObjectManager.GetList">
-      <summary></summary>
-      <returns></returns>
+      <summary>敵味方を含めたこの舞台での参加キャラクターを取得します。キャラクターの生存状態は問いません。</summary>
+      <returns>敵味方を含めたこの舞台での参加キャラクターのコレクション。</returns>
     </member>
     <member name="M:BattleObjectManager.GetList(Faction)">
-      <summary></summary>
-      <param name="faction"></param>
-      <returns></returns>
+      <summary>指定した派閥に所属するこの舞台での参加キャラクターを取得します。キャラクターの生存状態は問いません。</summary>
+      <param name="faction">取得する敵または味方の派閥。</param>
+      <returns>指定した派閥に所属するこの舞台での参加キャラクターのコレクション。</returns>
     </member>
     <member name="M:BattleObjectManager.GetList(System.Predicate{BattleUnitModel})">
       <summary></summary>
@@ -1308,10 +1339,10 @@
       <summary>バトル ページ</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.cardAbility">
-      <summary></summary>
+      <summary>バトル ページ効果</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.cardBehaviorQueue">
-      <summary></summary>
+      <summary>ストックされているバトル ダイスの振る舞いのキュー</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.currentBehavior">
       <summary>現在のバトル ダイスの振る舞い</summary>
@@ -1320,10 +1351,10 @@
       <summary></summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.earlyTarget">
-      <summary></summary>
+      <summary>初期選択されたバトル ページの対象キャラクター</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.earlyTargetOrder">
-      <summary></summary>
+      <summary>初期選択されたバトル ページの対象キャラクターの速度ダイス スロット番号</summary>
     </member>
     <member name="F:BattlePlayingCardDataInUnitModel.emotionMultiplier">
       <summary></summary>
@@ -1485,7 +1516,7 @@
       <returns></returns>
     </member>
     <member name="M:BattlePlayingCardDataInUnitModel.NextDice">
-      <summary></summary>
+      <summary>ストックされているバトル ダイスの振る舞いのキューから次に使用するバトル ダイスを <see cref="F:BattlePlayingCardDataInUnitModel.currentBehavior" /> に設定します。</summary>
     </member>
     <member name="M:BattlePlayingCardDataInUnitModel.OnActivateResonance">
       <summary></summary>
@@ -1575,6 +1606,131 @@
     <member name="P:BattlePlayingCardDataInUnitModel.isDestroyed">
       <summary></summary>
     </member>
+    <member name="T:BattlePlayingCardSlotDetail">
+      <summary>戦闘で使用するバトル ページ枠の詳細を表します。</summary>
+    </member>
+    <member name="F:BattlePlayingCardSlotDetail.cardAry">
+      <summary></summary>
+    </member>
+    <member name="F:BattlePlayingCardSlotDetail.cardQueue">
+      <summary></summary>
+    </member>
+    <member name="F:BattlePlayingCardSlotDetail.keepCard">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.#ctor(BattleUnitModel)">
+      <summary></summary>
+      <param name="self"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.AddCard(BattleDiceCardModel,BattleUnitModel,System.Int32,System.Boolean)">
+      <summary></summary>
+      <param name="card"></param>
+      <param name="target"></param>
+      <param name="targetSlot"></param>
+      <param name="isEnemyAuto"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.ArrangeCardOrder">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.ClearCardAbility">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.DestroyCard(System.Int32)">
+      <summary></summary>
+      <param name="count"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.DestroyCardAll">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.DestroyCardByIdx(System.Int32)">
+      <summary></summary>
+      <param name="idx"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.DestroyCardWithoutCurrentAction(System.Int32)">
+      <summary></summary>
+      <param name="count"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.GetMaxPlayPoint">
+      <summary>光の最大値を取得します。</summary>
+      <returns>キャラクターのパッシブや状態等によるボーナス値が加味された光の最大値。</returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.GetRecoverPlayPoint">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.GetStartingPlayPoint">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.InitCardSlots(System.Int32)">
+      <summary></summary>
+      <param name="slotSize"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.LosePlayPoint(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.LoseWhenStartRound(System.Int32)">
+      <summary></summary>
+      <param name="playPoint"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.OnApplyCard(BattleDiceCardModel)">
+      <summary></summary>
+      <param name="card"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.OnRoundStart">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.RecoverPlayPoint(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.RecoverPlayPointByCard(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.ReserveCost(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+      <returns></returns>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.ResetPlayPoint">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.SetDefaultRecoverPoint(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.SetNextRoundPlayPoint(System.Int32)">
+      <summary></summary>
+      <param name="pp"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.SetPlayPoint(System.Int32)">
+      <summary>光の現在値を設定します。キャラクターの光の最大値や最小値に関係なく、指定した値そのままに設定します。</summary>
+      <param name="value">設定する光の現在値。</param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.SetRecoverPoint(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.SetRecoverPointDefault">
+      <summary></summary>
+    </member>
+    <member name="M:BattlePlayingCardSlotDetail.SpendCost(System.Int32)">
+      <summary></summary>
+      <param name="value"></param>
+      <returns></returns>
+    </member>
+    <member name="P:BattlePlayingCardSlotDetail.PlayPoint">
+      <summary>光の現在値を取得します。</summary>
+    </member>
+    <member name="P:BattlePlayingCardSlotDetail.ReservedPlayPoint">
+      <summary></summary>
+    </member>
     <member name="T:BattleUnitBreakDetail">
       <summary>混乱抵抗値の詳細を表します。</summary>
     </member>
@@ -1582,7 +1738,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitBreakDetail.breakGauge">
-      <summary></summary>
+      <summary>現在の混乱抵抗値</summary>
     </member>
     <member name="F:BattleUnitBreakDetail.breakLife">
       <summary></summary>
@@ -1594,23 +1750,25 @@
       <summary></summary>
       <param name="self"></param>
     </member>
-    <member name="M:BattleUnitBreakDetail.DestroyBreakPoint">
+    <member name="M:BattleUnitBreakDetail.DestroyBreakPoint(BattleUnitModel)">
       <summary></summary>
+      <param name="attacker"></param>
     </member>
     <member name="M:BattleUnitBreakDetail.GetDefaultBreakGauge">
-      <summary>現在の最大混乱抵抗値を取得します。</summary>
+      <summary>最大混乱抵抗値を取得します。</summary>
       <returns>キャラクターのパッシブや状態等によるボーナス値や補正率が加味された最大混乱抵抗値。</returns>
     </member>
     <member name="M:BattleUnitBreakDetail.IsBreakLifeZero">
-      <summary>現在の混乱抵抗値が 0 であることを判定します。</summary>
+      <summary>現在の混乱抵抗値が 0 である事を判定します。</summary>
       <returns>現在の混乱抵抗値が 0 の場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:BattleUnitBreakDetail.LoseBreakGauge(System.Int32)">
       <summary></summary>
       <param name="value"></param>
     </member>
-    <member name="M:BattleUnitBreakDetail.LoseBreakLife">
+    <member name="M:BattleUnitBreakDetail.LoseBreakLife(BattleUnitModel)">
       <summary></summary>
+      <param name="attacker"></param>
     </member>
     <member name="M:BattleUnitBreakDetail.OnRecoverBreakByEvaision(System.Int32)">
       <summary></summary>
@@ -1766,8 +1924,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.GetBufIcon">
-      <summary></summary>
-      <returns></returns>
+      <summary>状態アイコンのスプライトを取得します。初回呼び出しでは状態アイコンの読み込みも行います。</summary>
+      <returns>状態アイコンのスプライト。 <see cref="P:BattleUnitBuf.Hide" /> プロパティが true の場合は null、状態アイコンの読み込みができなかった場合も null を返します。</returns>
     </member>
     <member name="M:BattleUnitBuf.GetCardCostAdder(BattleDiceCardModel)">
       <summary></summary>
@@ -1828,8 +1986,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.GetStatBonus">
-      <summary></summary>
-      <returns></returns>
+      <summary>能力値ボーナスを取得します。</summary>
+      <returns>能力値ボーナス。</returns>
     </member>
     <member name="M:BattleUnitBuf.GetUIData">
       <summary></summary>
@@ -1932,8 +2090,8 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.MaxPlayPointAdder">
-      <summary></summary>
-      <returns></returns>
+      <summary>光の最大値の増加量を取得します。</summary>
+      <returns>光の最大値の増加量。</returns>
     </member>
     <member name="M:BattleUnitBuf.NullifyNotTargetable">
       <summary></summary>
@@ -1954,6 +2112,9 @@
       <param name="card"></param>
     </member>
     <member name="M:BattleUnitBuf.OnDie">
+      <summary></summary>
+    </member>
+    <member name="M:BattleUnitBuf.OnDieForReadybuf">
       <summary></summary>
     </member>
     <member name="M:BattleUnitBuf.OnDieOtherUnit(BattleUnitModel)">
@@ -2030,13 +2191,13 @@
       <summary>幕の終了時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBuf.OnRoundEndTheLast">
-      <summary>幕の終了時、 <see cref="OnRoundEnd" /> の後に呼び出されます。</summary>
+      <summary>幕の終了時、 <see cref="M:BattleUnitBuf.OnRoundEnd" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBuf.OnRoundStart">
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBuf.OnRoundStartAfter">
-      <summary>幕の開始時、 <see cref="OnRoundStart" /> の後に呼び出されます。</summary>
+      <summary>幕の開始時、 <see cref="M:BattleUnitBuf.OnRoundStart" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBuf.OnStartOneSideAction(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -2080,19 +2241,20 @@
       <returns></returns>
     </member>
     <member name="P:BattleUnitBuf.bufActivatedName">
-      <summary></summary>
+      <summary>ローカライズされた効果名を取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.bufActivatedNameWithStack">
-      <summary></summary>
+      <summary>ローカライズされた効果名をスタック数付きで取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.bufActivatedText">
-      <summary></summary>
+      <summary>ローカライズされた効果の説明を取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.bufKeywordText">
       <summary></summary>
     </member>
     <member name="P:BattleUnitBuf.bufType">
-      <summary></summary>
+      <summary>
+        <see cref="T:KeywordBuf" /> での値を取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.Hide">
       <summary>状態アイコンを非表示にする事を示す値を取得します。</summary>
@@ -2101,7 +2263,7 @@
       <summary></summary>
     </member>
     <member name="P:BattleUnitBuf.isAssimilation">
-      <summary></summary>
+      <summary>同化状態である事を示す値を取得します。</summary>
     </member>
     <member name="P:BattleUnitBuf.IsControllable">
       <summary></summary>
@@ -2206,7 +2368,7 @@
     </member>
     <member name="M:BattleUnitBufListDetail.CanAddBuf(BattleUnitBuf)">
       <summary>指定した状態を付与できる事を判定します。</summary>
-      <param name="buf">付与できることを判定する対象の状態。</param>
+      <param name="buf">付与できる事を判定する対象の状態。</param>
       <returns>付与できる場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:BattleUnitBufListDetail.CanRecoverBreak(System.Int32)">
@@ -2565,13 +2727,13 @@
       <summary>幕の終了時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundEndTheLast">
-      <summary>幕の終了時、 <see cref="OnRoundEnd" /> の後に呼び出されます。</summary>
+      <summary>幕の終了時、 <see cref="M:BattleUnitBufListDetail.OnRoundEnd" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundStart">
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnRoundStartAfter">
-      <summary>幕の開始時、 <see cref="OnRoundStart" /> の後に呼び出されます。</summary>
+      <summary>幕の開始時、 <see cref="M:BattleUnitBufListDetail.OnRoundStart" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitBufListDetail.OnStartOneSideAction(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -2621,6 +2783,10 @@
     <member name="M:BattleUnitBufListDetail.RemoveBufAll">
       <summary></summary>
     </member>
+    <member name="M:BattleUnitBufListDetail.RemoveReadyBuf(BattleUnitBuf)">
+      <summary></summary>
+      <param name="buf"></param>
+    </member>
     <member name="M:BattleUnitBufListDetail.SpeedDiceBreakAdder">
       <summary></summary>
       <returns></returns>
@@ -2634,7 +2800,7 @@
       <returns></returns>
     </member>
     <member name="T:BattleUnitModel">
-      <summary>バトル キャラクターを表します。</summary>
+      <summary>キャラクターを表します。</summary>
     </member>
     <member name="F:BattleUnitModel.aggroDetail">
       <summary></summary>
@@ -2658,7 +2824,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.cardSlotDetail">
-      <summary></summary>
+      <summary>戦闘で使用するバトル ページ枠の詳細</summary>
     </member>
     <member name="F:BattleUnitModel.currentDiceAction">
       <summary>現在使用しているバトル ページのデータ</summary>
@@ -2691,7 +2857,7 @@
       <summary></summary>
     </member>
     <member name="F:BattleUnitModel.index">
-      <summary></summary>
+      <summary>所属する派閥に配置されているキャラクターの順番</summary>
     </member>
     <member name="F:BattleUnitModel.isRegister">
       <summary></summary>
@@ -2768,6 +2934,12 @@
       <summary>ダイス ロールの直前に呼び出されます。</summary>
       <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
+    <member name="M:BattleUnitModel.BeforeTakeBreakDamage(BattleUnitModel,System.Int32)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <param name="dmg"></param>
+      <returns></returns>
+    </member>
     <member name="M:BattleUnitModel.BeforeTakeDamage(BattleUnitModel,System.Int32)">
       <summary>ダメージを受ける直前に呼び出されます。</summary>
       <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
@@ -2828,10 +3000,10 @@
       <param name="teamkill"></param>
       <returns></returns>
     </member>
-    <member name="M:BattleUnitModel.ChangeTemporaryDeck(System.Collections.Generic.List{System.Int32},System.Int32)">
-      <summary>指定したデッキ情報で構成され、指定した枚数だけ手札を引いた状態の一時デッキに切り替えます。</summary>
-      <param name="cardIdList">バトル ページの ID のリストで表される、使用する一時デッキの情報。</param>
-      <param name="drawNum">一時デッキから手札を引く枚数。</param>
+    <member name="M:BattleUnitModel.ChangeTemporaryDeck(System.Collections.Generic.List{LorId},System.Int32)">
+      <summary></summary>
+      <param name="cardIdList"></param>
+      <param name="drawNum"></param>
     </member>
     <member name="M:BattleUnitModel.CheckCardAvailable(BattleDiceCardModel)">
       <summary></summary>
@@ -3131,6 +3303,9 @@
       <param name="librarianExists"></param>
       <param name="enemyExists"></param>
     </member>
+    <member name="M:BattleUnitModel.OnCreated">
+      <summary></summary>
+    </member>
     <member name="M:BattleUnitModel.OnDestroyCard(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
       <param name="card"></param>
@@ -3146,9 +3321,6 @@
     <member name="M:BattleUnitModel.OnDiscardByAbility(System.Collections.Generic.List{BattleDiceCardModel})">
       <summary></summary>
       <param name="cards"></param>
-    </member>
-    <member name="M:BattleUnitModel.OnDispose">
-      <summary></summary>
     </member>
     <member name="M:BattleUnitModel.OnDrawCard">
       <summary></summary>
@@ -3261,7 +3433,7 @@
       <summary></summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundEndTheLast">
-      <summary>幕の終了時、 <see cref="OnRoundEnd" /> の後に呼び出されます。</summary>
+      <summary>幕の終了時、 <see cref="M:BattleUnitModel.OnRoundEnd" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:BattleUnitModel.OnRoundEndTheLast_ignoreDead">
       <summary></summary>
@@ -3382,8 +3554,8 @@
       <param name="b"></param>
     </member>
     <member name="M:BattleUnitModel.SetHp(System.Int32)">
-      <summary></summary>
-      <param name="newHp"></param>
+      <summary>現在の体力を設定します。キャラクターの最大体力や最小体力に関係なく、指定した値そのままに設定します。</summary>
+      <param name="newHp">設定する体力。</param>
     </member>
     <member name="M:BattleUnitModel.SetRole">
       <summary></summary>
@@ -3444,7 +3616,7 @@
       <summary></summary>
     </member>
     <member name="P:BattleUnitModel.Book">
-      <summary></summary>
+      <summary>装着しているコア ページを取得します。</summary>
     </member>
     <member name="P:BattleUnitModel.customBook">
       <summary></summary>
@@ -3456,10 +3628,10 @@
       <summary></summary>
     </member>
     <member name="P:BattleUnitModel.hp">
-      <summary></summary>
+      <summary>現在の体力を取得します。</summary>
     </member>
     <member name="P:BattleUnitModel.id">
-      <summary></summary>
+      <summary>キャラクター ID を取得します。</summary>
     </member>
     <member name="P:BattleUnitModel.IsDeadSceneBlock">
       <summary></summary>
@@ -3486,16 +3658,21 @@
       <summary></summary>
     </member>
     <member name="T:BattleUnitPassiveDetail">
-      <summary>バトル キャラクターが所有するパッシブの詳細を表します。</summary>
+      <summary>キャラクターが所有するパッシブの詳細を表します。</summary>
     </member>
     <member name="M:BattleUnitPassiveDetail.#ctor(BattleUnitModel)">
       <summary></summary>
       <param name="self"></param>
     </member>
     <member name="M:BattleUnitPassiveDetail.AddPassive(PassiveAbilityBase)">
-      <summary>指定したパッシブを待機状態で追加し、 <see cref="PassiveAbilityBase.Init(BattleUnitModel)" /> を呼び出します。</summary>
+      <summary>指定したパッシブを待機状態で追加し、 <see cref="M:PassiveAbilityBase.Init(BattleUnitModel)" /> を呼び出します。</summary>
       <param name="passive">追加するパッシブ。</param>
       <returns>追加したパッシブ。</returns>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.AddPassive(LorId)">
+      <summary></summary>
+      <param name="id"></param>
+      <returns></returns>
     </member>
     <member name="M:BattleUnitPassiveDetail.AfterGiveDamage(System.Int32)">
       <summary></summary>
@@ -3519,6 +3696,12 @@
     <member name="M:BattleUnitPassiveDetail.BeforeRollDice(BattleDiceBehavior)">
       <summary>ダイス ロールの直前に呼び出されます。</summary>
       <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
+    </member>
+    <member name="M:BattleUnitPassiveDetail.BeforeTakeBreakDamage(BattleUnitModel,System.Int32)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <param name="dmg"></param>
+      <returns></returns>
     </member>
     <member name="M:BattleUnitPassiveDetail.BeforeTakeDamage(BattleUnitModel,System.Int32)">
       <summary>ダメージを受ける直前に呼び出されます。</summary>
@@ -3799,7 +3982,7 @@
       <param name="enemyExists"></param>
     </member>
     <member name="M:BattleUnitPassiveDetail.OnCreated">
-      <summary>待機状態のパッシブ全てに対して、アクティブ状態に変更し、 <see cref="PassiveAbilityBase.OnCreated()" /> を呼び出します。</summary>
+      <summary>待機状態のパッシブ全てに対して、アクティブ状態に変更し、 <see cref="M:PassiveAbilityBase.OnCreated()" /> を呼び出します。</summary>
     </member>
     <member name="M:BattleUnitPassiveDetail.OnDestroyCard(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -4003,6 +4186,75 @@
     <member name="P:BattleUnitPassiveDetail.ReadyPassiveList">
       <summary></summary>
     </member>
+    <member name="T:BookEquipEffect">
+      <summary>コア ページ装着時にキャラクターへ適応するステータス等の効果を格納します。このオブジェクトは StaticInfo/EquipPage の EquipEffect 要素 をモデル化したものです。</summary>
+    </member>
+    <member name="F:BookEquipEffect._PassiveList">
+      <summary>所有するパッシブのリスト (Passive 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.AddedStartDraw">
+      <summary>初期手札の追加ドロー数 (AddedStartDraw 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.Break">
+      <summary>最大混乱抵抗値 (Break 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.CardList">
+      <summary></summary>
+    </member>
+    <member name="F:BookEquipEffect.DeadLine">
+      <summary>死亡扱いとなる体力。現在体力がこの数値以下となった場合、死亡扱い (DeadLine 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.HBResist">
+      <summary>打撃混乱耐性 (HBResist 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.Hp">
+      <summary>最大体力 (HP 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.HpReduction">
+      <summary>開始体力の減少量 (HpReduction 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.HResist">
+      <summary>打撃耐性 (HResist 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.MaxPlayPoint">
+      <summary>光の初期最大値 (MaxPlayPoint 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.OnlyCard">
+      <summary>このコア ページの専用バトル ページの数値 ID を格納したリスト (OnlyCard 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.PassiveCost">
+      <summary>(マッピングなし)</summary>
+    </member>
+    <member name="F:BookEquipEffect.PassiveList">
+      <summary>所有するパッシブ LorID のリスト (マッピングなし)</summary>
+    </member>
+    <member name="F:BookEquipEffect.PBResist">
+      <summary>貫通混乱耐性 (PBResist 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.PResist">
+      <summary>貫通耐性 (PResist 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.SBResist">
+      <summary>斬撃混乱耐性 (SBResist 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.Speed">
+      <summary>速度ダイスの最大値 (Speed 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.SpeedDiceNum">
+      <summary>未使用フィールド。初期速度ダイス数は <see cref="F:BookXmlInfo.speedDiceNumber" /> を使用しています (SpeedDiceNum 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.SpeedMin">
+      <summary>速度ダイスの最小値 (SpeedMin 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.SResist">
+      <summary>斬撃耐性 (SResist 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookEquipEffect.StartPlayPoint">
+      <summary>光の初期現在値 (StartPlayPoint 要素とマッピング)</summary>
+    </member>
+    <member name="M:BookEquipEffect.#ctor">
+      <summary></summary>
+    </member>
     <member name="T:BookModel">
       <summary>キャラクターが装着するコア ページを表します。</summary>
     </member>
@@ -4088,7 +4340,7 @@
       <summary></summary>
       <param name="classInfo"></param>
     </member>
-    <member name="M:BookModel.AddCardFromInventoryToCurrentDeck(System.Int32)">
+    <member name="M:BookModel.AddCardFromInventoryToCurrentDeck(LorId)">
       <summary></summary>
       <param name="cardId"></param>
       <returns></returns>
@@ -4134,6 +4386,9 @@
     <member name="M:BookModel.CheckDeletePassiveOtherBook">
       <summary></summary>
     </member>
+    <member name="M:BookModel.CheckExistCurrentPassive">
+      <summary></summary>
+    </member>
     <member name="M:BookModel.CheckExistPassiveBook">
       <summary></summary>
     </member>
@@ -4157,9 +4412,8 @@
       <summary></summary>
       <returns></returns>
     </member>
-    <member name="M:BookModel.CreateDeckByDeckInfo(System.Boolean)">
+    <member name="M:BookModel.CreateDeckByDeckInfo">
       <summary></summary>
-      <param name="isInventoryDeck"></param>
     </member>
     <member name="M:BookModel.CreatePassiveList">
       <summary></summary>
@@ -4185,10 +4439,6 @@
       <summary></summary>
       <returns></returns>
     </member>
-    <member name="M:BookModel.FillDeckFromInventory(System.Int32)">
-      <summary></summary>
-      <param name="deckid"></param>
-    </member>
     <member name="M:BookModel.GetBookCategories">
       <summary></summary>
       <returns></returns>
@@ -4201,7 +4451,7 @@
       <summary></summary>
       <returns></returns>
     </member>
-    <member name="M:BookModel.GetCardCount(System.Int32)">
+    <member name="M:BookModel.GetCardCount(LorId)">
       <summary></summary>
       <param name="cardId"></param>
       <returns></returns>
@@ -4291,7 +4541,7 @@
     </member>
     <member name="M:BookModel.GetPassiveInfoList(System.Boolean)">
       <summary>装備中のパッシブ情報のリストを取得します。</summary>
-      <param name="onlyActivated">(未使用パラメータ)</param>
+      <param name="onlyActivated">未使用引数</param>
       <returns>パッシブ情報のリスト。</returns>
     </member>
     <member name="M:BookModel.GetPassiveModelList">
@@ -4380,7 +4630,7 @@
       <param name="origin"></param>
       <returns></returns>
     </member>
-    <member name="M:BookModel.GetThumbPath">
+    <member name="M:BookModel.GetThumbSprite">
       <summary></summary>
       <returns></returns>
     </member>
@@ -4444,7 +4694,7 @@
       <summary></summary>
       <param name="data"></param>
     </member>
-    <member name="M:BookModel.MoveCardFromCurrentDeckToInventory(System.Int32)">
+    <member name="M:BookModel.MoveCardFromCurrentDeckToInventory(LorId)">
       <summary></summary>
       <param name="cardId"></param>
       <returns></returns>
@@ -4457,6 +4707,9 @@
       <summary></summary>
       <param name="passive"></param>
       <param name="origin"></param>
+    </member>
+    <member name="M:BookModel.ReleasePassiveAll">
+      <summary></summary>
     </member>
     <member name="M:BookModel.ResisterBookMark(System.Boolean)">
       <summary></summary>
@@ -4573,7 +4826,7 @@
       <summary>StaticInfo (EquipPage.txt) に定義されたページ情報を取得します。</summary>
     </member>
     <member name="P:BookModel.DeadLine">
-      <summary></summary>
+      <summary>死亡扱いとなる体力を取得します。現在体力がこの数値以下となった場合、死亡扱いとなります。</summary>
     </member>
     <member name="P:BookModel.EmotionLevel">
       <summary></summary>
@@ -4590,6 +4843,9 @@
     <member name="P:BookModel.IsRandomFace">
       <summary></summary>
     </member>
+    <member name="P:BookModel.IsWorkshop">
+      <summary></summary>
+    </member>
     <member name="P:BookModel.Name">
       <summary>ページ名を取得します。</summary>
     </member>
@@ -4604,6 +4860,108 @@
     </member>
     <member name="P:BookModel.SpeedMin">
       <summary></summary>
+    </member>
+    <member name="T:BookXmlInfo">
+      <summary>コア ページの XML 情報を格納します。このオブジェクトは StaticInfo/EquipPage の Book 要素 をモデル化したものです。</summary>
+    </member>
+    <member name="F:BookXmlInfo._bookIcon">
+      <summary>アイコン名 (BookIcon 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo._id">
+      <summary>コア ページ数値 ID (ID 属性とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.canNotEquip">
+      <summary>キャラクターに装着できないことを示すフラグ (NotEquip 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.categoryList">
+      <summary>(Category 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.Chapter">
+      <summary>所属するチャプター (Chapter 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.CharacterSkin">
+      <summary>装着時に適応するキャラクター スキン名のリスト (CharacterSkin 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.episode">
+      <summary>シナリオのエピソード番号 (Episode 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.EquipEffect">
+      <summary>装着時に適応するステータス効果 (EquipEffect 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.gender">
+      <summary>使用するキャラクター スキンの性別 (SkinGender 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.InnerName">
+      <summary>内部名 (Name とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.isError">
+      <summary>(マッピングなし)</summary>
+    </member>
+    <member name="F:BookXmlInfo.motionSoundList">
+      <summary></summary>
+    </member>
+    <member name="F:BookXmlInfo.optionList">
+      <summary></summary>
+    </member>
+    <member name="F:BookXmlInfo.RandomFace">
+      <summary></summary>
+    </member>
+    <member name="F:BookXmlInfo.RangeType">
+      <summary>使用できるバトル ページの攻撃距離 (RangeType 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.Rarity">
+      <summary>レアリティ (Rarity 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.remainRewardValue">
+      <summary>(マッピングなし)</summary>
+    </member>
+    <member name="F:BookXmlInfo.skinType">
+      <summary></summary>
+    </member>
+    <member name="F:BookXmlInfo.speedDiceNumber">
+      <summary>初期速度ダイス数 (SpeedDiceNum 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.SuccessionPossibleNumber">
+      <summary></summary>
+    </member>
+    <member name="F:BookXmlInfo.TextId">
+      <summary>テキスト ID。ローカライズされたコア ページ名を取得するために使用します (TextId 要素とマッピング)</summary>
+    </member>
+    <member name="F:BookXmlInfo.workshopID">
+      <summary>ワークショップ ID (マッピングなし)</summary>
+    </member>
+    <member name="M:BookXmlInfo.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:BookXmlInfo.Copy">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BookXmlInfo.GetCharacterSkin">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:BookXmlInfo.GetThumbSprite">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="P:BookXmlInfo.BookIcon">
+      <summary>アイコン名を取得します。</summary>
+    </member>
+    <member name="P:BookXmlInfo.DeckId">
+      <summary></summary>
+    </member>
+    <member name="P:BookXmlInfo.Desc">
+      <summary></summary>
+    </member>
+    <member name="P:BookXmlInfo.id">
+      <summary></summary>
+    </member>
+    <member name="P:BookXmlInfo.Limit">
+      <summary>コア ページの入手可能上限を取得します。普及の場合は 5、恒久の場合は 4、限定の場合は 3、それ以外の場合は 1 を返します。</summary>
+    </member>
+    <member name="P:BookXmlInfo.Name">
+      <summary>ローカライズされたコア ページ名を取得します。</summary>
     </member>
     <member name="T:BufPositiveType">
       <summary>状態のポジティブ タイプを表します。</summary>
@@ -4639,12 +4997,12 @@
       <summary>ダメージを与える直前に呼び出されます。</summary>
       <param name="target">ダメージを与える対象キャラクター。</param>
     </member>
+    <member name="M:DiceCardAbilityBase.BeforeRollDice">
+      <summary></summary>
+    </member>
     <member name="M:DiceCardAbilityBase.BeforeRollDice_Target(BattleDiceBehavior)">
       <summary></summary>
       <param name="targetDice"></param>
-    </member>
-    <member name="M:DiceCardAbilityBase.BeforRollDice">
-      <summary></summary>
     </member>
     <member name="M:DiceCardAbilityBase.GetKeywords">
       <summary></summary>
@@ -4776,16 +5134,16 @@
       <returns></returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsOnlyAllyUnit">
-      <summary></summary>
-      <returns></returns>
+      <summary>味方キャラクターのみターゲット可能なバトル ページである事を判定します。自分自身も含まれるかどうかは <see cref="M:DiceCardSelfAbilityBase.IsTargetableSelf" /> に依存します。</summary>
+      <returns>ターゲット可能な場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsTargetableAllUnit">
-      <summary></summary>
-      <returns></returns>
+      <summary>全てのキャラクターをターゲット可能なバトル ページである事を判定します。自分自身も含まれるかどうかは <see cref="M:DiceCardSelfAbilityBase.IsTargetableSelf" /> に依存します。</summary>
+      <returns>ターゲット可能な場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsTargetableSelf">
-      <summary></summary>
-      <returns></returns>
+      <summary>自分自身もターゲット可能なバトル ページである事を判定します。</summary>
+      <returns>ターゲット可能な場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsTargetChangable(BattleUnitModel)">
       <summary></summary>
@@ -4797,11 +5155,11 @@
       <returns></returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.IsValidTarget(BattleUnitModel,BattleDiceCardModel,BattleUnitModel)">
-      <summary></summary>
-      <param name="unit"></param>
-      <param name="self"></param>
-      <param name="targetUnit"></param>
-      <returns></returns>
+      <summary>指定したキャラクターをターゲット可能なバトル ページである事を判定します。<see cref="M:DiceCardSelfAbilityBase.IsTargetableSelf" />, <see cref="M:DiceCardSelfAbilityBase.IsOnlyAllyUnit" />, <see cref="M:DiceCardSelfAbilityBase.IsTargetableAllUnit" /> の条件を全て満たした場合に判定を行います。</summary>
+      <param name="unit">バトル ページの所有キャラクター。</param>
+      <param name="self">選択中のバトル ページ。</param>
+      <param name="targetUnit">ターゲットとして選択したキャラクター。</param>
+      <returns>ターゲット可能な場合は true、そうでない場合は false を返します。</returns>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnActivateResonance">
       <summary></summary>
@@ -4811,7 +5169,7 @@
       <param name="owner"></param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnApplyCard">
-      <summary></summary>
+      <summary>装着時に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnBreakState_inHand(BattleUnitModel,BattleDiceCardModel)">
       <summary></summary>
@@ -4915,10 +5273,10 @@
       <summary></summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnUseInstance(BattleUnitModel,BattleDiceCardModel,BattleUnitModel)">
-      <summary></summary>
-      <param name="unit"></param>
-      <param name="self"></param>
-      <param name="targetUnit"></param>
+      <summary>バトル ページが装着された時に呼び出されます。</summary>
+      <param name="unit">バトル ページの所有キャラクター。</param>
+      <param name="self">装着したバトル ページ。</param>
+      <param name="targetUnit">バトル ページの対象キャラクター。</param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnUseOtherCard_inHand(BattleUnitModel,BattleDiceCardModel,BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -4985,7 +5343,7 @@
     </member>
     <member name="M:DiceStatBonus.#ctor">
       <summary>
-        <see cref="DiceStatBonus" /> の新しいインスタンスを生成します。</summary>
+        <see cref="T:DiceStatBonus" /> の新しいインスタンスを生成します。</summary>
     </member>
     <member name="M:DiceStatBonus.Copy">
       <summary>このインスタンスのディープ コピーを作成して返します。</summary>
@@ -4999,6 +5357,81 @@
     </member>
     <member name="F:Direction.RIGHT">
       <summary>右向き</summary>
+    </member>
+    <member name="T:EnemyUnitClassInfo">
+      <summary>敵キャラクターの XML 情報を格納します。このオブジェクトは StaticInfo/EnemyUnitInfo の Enemy 要素 をモデル化したものです。</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo._id">
+      <summary>敵キャラクター数値 ID (ID 属性とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.AiScript">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.bodyId">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.bookId">
+      <summary>装備するコア ページ ID のリスト。要素が複数定義されている場合はランダムに 1 つの要素を選択して装備します (BookId 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.dropBonus">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.dropTableList">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.emotionCardList">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.exp">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.faceType">
+      <summary>(FaceType 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.gender">
+      <summary>(Gender 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.height">
+      <summary>(マッピングなし)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.isUnknown">
+      <summary>(Unknown 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.maxHeight">
+      <summary>(MaxHeight 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.minHeight">
+      <summary>(MinHeight 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.name">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.nameId">
+      <summary>(NameID 要素とマッピング)</summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.retreat">
+      <summary></summary>
+    </member>
+    <member name="F:EnemyUnitClassInfo.workshopID">
+      <summary>ワークショップ ID (マッピングなし)</summary>
+    </member>
+    <member name="M:EnemyUnitClassInfo.#ctor">
+      <summary></summary>
+    </member>
+    <member name="P:EnemyUnitClassInfo.id">
+      <summary>敵キャラクター LOR ID を取得します。</summary>
+    </member>
+    <member name="T:EquipRangeType">
+      <summary>使用できるバトル ページの攻撃範囲を表します。</summary>
+    </member>
+    <member name="F:EquipRangeType.Hybrid">
+      <summary>近距離バトル ページ・遠距離バトル ページ両方可能</summary>
+    </member>
+    <member name="F:EquipRangeType.Melee">
+      <summary>近距離バトル ページのみ</summary>
+    </member>
+    <member name="F:EquipRangeType.Range">
+      <summary>遠距離バトル ページのみ</summary>
     </member>
     <member name="T:Faction">
       <summary>敵または味方の派閥を表します。</summary>
@@ -5430,6 +5863,24 @@
     <member name="F:LOR_DiceSystem.BehaviourType.Standby">
       <summary>待機 (反撃)</summary>
     </member>
+    <member name="T:LOR_DiceSystem.CardAffection">
+      <summary>バトル ページの使用対象を表します。</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.CardAffection.All">
+      <summary>敵味方全員</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.CardAffection.One">
+      <summary>一人</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.CardAffection.Passive">
+      <summary>パッシブ依存? (帰り道の「みんな！家に帰ろう～！」など)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.CardAffection.Team">
+      <summary>敵全員</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.CardAffection.TeamNear">
+      <summary>敵全員に1回ずつ? (ターニャの「殴打」ページ)</summary>
+    </member>
     <member name="T:LOR_DiceSystem.CardRange">
       <summary>バトル ページの攻撃範囲を表します。</summary>
     </member>
@@ -5443,7 +5894,7 @@
       <summary>個別広域攻撃</summary>
     </member>
     <member name="F:LOR_DiceSystem.CardRange.Instance">
-      <summary></summary>
+      <summary>装着時発動</summary>
     </member>
     <member name="F:LOR_DiceSystem.CardRange.Near">
       <summary>近接攻撃</summary>
@@ -5452,10 +5903,10 @@
       <summary>特殊攻撃</summary>
     </member>
     <member name="T:LOR_DiceSystem.DiceBehaviour">
-      <summary>バトル ダイスの振る舞いを操作する機能を提供します。</summary>
+      <summary>バトル ダイスの XML 情報を格納します。このオブジェクトは StaticInfo/Card の Behaviour 要素 をモデル化したものです。</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.ActionScript">
-      <summary></summary>
+      <summary>バトル ダイス使用時のキャラクターおよびエフェクトの動作スクリプト名 (BehaviourAction_xxx の xxx 部分)</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Desc">
       <summary></summary>
@@ -5464,25 +5915,25 @@
       <summary>振る舞いの詳細</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Dice">
-      <summary></summary>
+      <summary>バトル ダイスの最大値</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.EffectRes">
-      <summary></summary>
+      <summary>バトル ダイス使用時のエフェクト名</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.KnockbackPower">
       <summary></summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Min">
-      <summary></summary>
+      <summary>バトル ダイスの最小値</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.MotionDetail">
-      <summary></summary>
+      <summary>バトル ダイス使用時のキャラクターのモーション</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.MotionDetailDefault">
       <summary></summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Script">
-      <summary></summary>
+      <summary>バトル ダイス効果の名前 (DiceCardAbility_xxx の xxx 部分)</summary>
     </member>
     <member name="F:LOR_DiceSystem.DiceBehaviour.Type">
       <summary>振る舞いの種類</summary>
@@ -5505,8 +5956,170 @@
     <member name="P:LOR_DiceSystem.DiceBehaviour.Rwbp">
       <summary></summary>
     </member>
+    <member name="T:LOR_DiceSystem.DiceCardSpec">
+      <summary>バトル ページの性能の XML 情報を格納します。このオブジェクトは StaticInfo/Card の Spec 要素 をモデル化したものです。</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardSpec.affection">
+      <summary>使用対象</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardSpec.Cost">
+      <summary>コスト</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardSpec.emotionLimit">
+      <summary></summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardSpec.Ranged">
+      <summary>攻撃範囲</summary>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardSpec.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardSpec.Copy">
+      <summary>インスタンスのコピーを作成します。</summary>
+      <returns></returns>
+    </member>
+    <member name="T:LOR_DiceSystem.DiceCardXmlInfo">
+      <summary>バトル ページの XML 情報を格納します。このオブジェクトは StaticInfo/Card の Card 要素 をモデル化したものです。</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo._id">
+      <summary>バトル ページ数値 ID (ID 属性とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo._textId">
+      <summary>テキスト ID (TextId 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Artwork">
+      <summary>アートワーク名 (Artwork 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.category">
+      <summary></summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Chapter">
+      <summary>所属するチャプター (Chapter 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.DiceBehaviourList">
+      <summary>バトル ダイスの振る舞いのリスト (BehaviourList 要素内の Behaviour 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.EgoMaxCooltimeValue">
+      <summary>使用した E.G.O ページが再使用できるようになるまでの最大クールタイム値 (MaxCooltimeForEgo 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.isError">
+      <summary>(マッピングなし)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Keywords">
+      <summary>ヘルプ メッセージ用のキーワードのリスト (Keyword 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.MapChange">
+      <summary>バトル ページ使用中、一時的に変更する背景マップの名前 (MapChange 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.MaxNum">
+      <summary></summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.optionList">
+      <summary>バトルページのオプションのリスト (Option 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Priority">
+      <summary>バトル ページの使用優先度。数値が高いほど優先的に使用する (Priority 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.PriorityScript">
+      <summary>バトル ページの使用優先度を動的に決定するスクリプトの名前。DiceCardPriority_xxx の xxx 部分 (PriorityScript 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Rarity">
+      <summary>レアリティ (Rarity 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Script">
+      <summary>バトル ページ効果の名前。DiceCardSelfAbility_xxx の xxx 部分 (Script 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.ScriptDesc">
+      <summary>バトル ページ効果の説明 (ScriptDesc 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.SkinChange">
+      <summary>バトル ページ使用中、一時的に変更するバトル ページ使用キャラクターのスキン名 (SkinChange 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.SkinChangeType">
+      <summary></summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.SkinHeight">
+      <summary></summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.Spec">
+      <summary>バトル ページの性能 (Spec 要素とマッピング)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.SpecialEffect">
+      <summary></summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.workshopID">
+      <summary>ワークショップ ID (マッピングなし)</summary>
+    </member>
+    <member name="F:LOR_DiceSystem.DiceCardXmlInfo.workshopName">
+      <summary>バトル ページ名。接待 MOD で作成された場合に使用され、本家や BaseMod では使用されない (マッピングなし)</summary>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.#ctor(LorId)">
+      <summary></summary>
+      <param name="id"></param>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.Copy(System.Boolean)">
+      <summary></summary>
+      <param name="deepCopy"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.GetCardLimit(Rarity)">
+      <summary>指定したレアリティに対する、デッキの使用枚数上限を取得します。</summary>
+      <param name="rarity">デッキの使用枚数上限を取得するレアリティ。</param>
+      <returns>指定したレアリティが芸術の場合 1、それ以外の場合 3 を返します。</returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.GetFloorLimit(Rarity)">
+      <summary></summary>
+      <param name="rarity"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.IsAssimilation">
+      <summary>同化ページである事を判定します。</summary>
+      <returns>同化ページである場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.IsEgo">
+      <summary>E.G.O ページである事を判定します。</summary>
+      <returns>E.G.O ページである場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.IsExhaustOnUse">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.IsFloorEgo">
+      <summary>階層共通の E.G.O ページである事を判定します。</summary>
+      <returns>階層共通の E.G.O ページである場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.isLockInBattle">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.IsOnlyPage">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:LOR_DiceSystem.DiceCardXmlInfo.IsPersonal">
+      <summary>特殊バトル ページである事を判定します。</summary>
+      <returns>特殊バトル ページである場合は true、そうでない場合は false。</returns>
+    </member>
+    <member name="P:LOR_DiceSystem.DiceCardXmlInfo.FloorLimit">
+      <summary></summary>
+    </member>
+    <member name="P:LOR_DiceSystem.DiceCardXmlInfo.id">
+      <summary>バトル ページ LOR ID を取得します。</summary>
+    </member>
+    <member name="P:LOR_DiceSystem.DiceCardXmlInfo.Limit">
+      <summary>デッキの使用枚数上限を取得します。</summary>
+    </member>
+    <member name="P:LOR_DiceSystem.DiceCardXmlInfo.Name">
+      <summary>バトル ページ名を取得します。</summary>
+    </member>
+    <member name="P:LOR_DiceSystem.DiceCardXmlInfo.TextId">
+      <summary>テキスト ID を取得します。内部のテキスト ID が -1 の場合、バトル ページ ID を返します。</summary>
+    </member>
     <member name="T:PassiveAbilityBase">
-      <summary>パッシブの基底クラスです。全てのパッシブはこのクラスを派生して実装されます。</summary>
+      <summary>パッシブの基底クラスです。全てのパッシブと戦闘表象パッシブはこのクラスを派生して実装されます。</summary>
     </member>
     <member name="F:PassiveAbilityBase._bHide">
       <summary></summary>
@@ -5520,13 +6133,13 @@
     <member name="F:PassiveAbilityBase.disabled">
       <summary></summary>
     </member>
+    <member name="F:PassiveAbilityBase.id">
+      <summary></summary>
+    </member>
     <member name="F:PassiveAbilityBase.InnerTypeId">
       <summary></summary>
     </member>
     <member name="F:PassiveAbilityBase.isNegative">
-      <summary></summary>
-    </member>
-    <member name="F:PassiveAbilityBase.level">
       <summary></summary>
     </member>
     <member name="F:PassiveAbilityBase.name">
@@ -5564,6 +6177,12 @@
       <summary>ダイス ロールの直前に呼び出されます。バトル ダイスに対するボーナス値の指定などはこのメソッドで行います。</summary>
       <param name="behavior">ロールに使用されているバトル ダイスに対するビヘイビア (振る舞いを操作するオブジェクト)。</param>
     </member>
+    <member name="M:PassiveAbilityBase.BeforeTakeBreakDamage(BattleUnitModel,System.Int32)">
+      <summary></summary>
+      <param name="attacker"></param>
+      <param name="dmg"></param>
+      <returns></returns>
+    </member>
     <member name="M:PassiveAbilityBase.BeforeTakeDamage(BattleUnitModel,System.Int32)">
       <summary>ダメージを受ける直前に呼び出されます。</summary>
       <param name="attacker">攻撃キャラクター。攻撃キャラクター以外からのダメージの場合は null。</param>
@@ -5579,7 +6198,7 @@
     </member>
     <member name="M:PassiveAbilityBase.CanAddBuf(BattleUnitBuf)">
       <summary>指定した状態を付与できる事を判定します。</summary>
-      <param name="buf">付与できることを判定する対象の状態。</param>
+      <param name="buf">付与できる事を判定する対象の状態。</param>
       <returns>付与できる場合は true、そうでない場合は false。</returns>
     </member>
     <member name="M:PassiveAbilityBase.CanTakeTargeting">
@@ -5710,8 +6329,8 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.Init(BattleUnitModel)">
-      <summary></summary>
-      <param name="self"></param>
+      <summary>このパッシブを初期化します。このメソッドは待機状態やアクティブ状態に関係なくパッシブ リストに追加された時に呼び出されます。</summary>
+      <param name="owner">パッシブの所有キャラクター。</param>
     </member>
     <member name="M:PassiveAbilityBase.IsAttackDice(LOR_DiceSystem.BehaviourDetail)">
       <summary>指定したバトル ダイスが攻撃ダイスである事を判定します。</summary>
@@ -5799,7 +6418,7 @@
       <param name="enemyExists"></param>
     </member>
     <member name="M:PassiveAbilityBase.OnCreated">
-      <summary>このパッシブが待機状態からアクティブ状態に変更された場合に呼び出されます。</summary>
+      <summary>このパッシブが待機状態からアクティブ状態に変更された場合に呼び出されます。このメソッドは <see cref="M:BattleUnitPassiveDetail.AddPassive(PassiveAbilityBase)" /> または <see cref="M:BattleUnitPassiveDetail.AddPassive(LorId)" /> メソッドにより動的に追加された時、次の幕の開始直前に呼び出されます。コアページや戦闘表象で最初から所有しているパッシブは最初からアクティブ状態なので呼び出されません。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnDestroyCard(BattlePlayingCardDataInUnitModel)">
       <summary></summary>
@@ -5912,7 +6531,7 @@
       <summary></summary>
     </member>
     <member name="M:PassiveAbilityBase.OnRoundEndTheLast">
-      <summary>幕の終了時、 <see cref="OnRoundEnd" /> の後に呼び出されます。</summary>
+      <summary>幕の終了時、 <see cref="M:PassiveAbilityBase.OnRoundEnd" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnRoundEndTheLast_ignoreDead">
       <summary></summary>
@@ -5921,7 +6540,7 @@
       <summary>幕の開始時に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnRoundStartAfter">
-      <summary>幕の開始時、 <see cref="OnRoundStart" /> の後に呼び出されます。</summary>
+      <summary>幕の開始時、 <see cref="M:PassiveAbilityBase.OnRoundStart" /> の後に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnSelectCardAuto(BattleDiceCardModel,System.Int32)">
       <summary></summary>
@@ -6077,18 +6696,17 @@
     </member>
     <member name="M:PassiveModel.#ctor">
       <summary>
-        <see cref="PassiveModel" /> の新しいインスタンスを生成します。</summary>
+        <see cref="T:PassiveModel" /> の新しいインスタンスを生成します。</summary>
     </member>
-    <member name="M:PassiveModel.#ctor(System.Int32,System.Int32,System.Int32)">
-      <summary>
-        <see cref="PassiveModel" /> の新しいインスタンスを生成します。</summary>
-      <param name="id">パッシブ ID。</param>
-      <param name="bookinstanceid">このパッシブを保有するページ ID。</param>
-      <param name="isaddedpassive">0 の場合は有効なパッシブ、0 以外の場合は空きスロットとして追加されたダミー パッシブ (ID が 9999999 のパッシブ) として認識させます。</param>
+    <member name="M:PassiveModel.#ctor(LorId,System.Int32,System.Int32)">
+      <summary></summary>
+      <param name="id"></param>
+      <param name="bookinstanceid"></param>
+      <param name="isaddedpassive"></param>
     </member>
     <member name="M:PassiveModel.#ctor(System.Int32)">
       <summary>
-        <see cref="PassiveModel" /> の新しいインスタンスを生成します。</summary>
+        <see cref="T:PassiveModel" /> の新しいインスタンスを生成します。</summary>
       <param name="bookinstanceid">このパッシブを保有するページ ID。</param>
     </member>
     <member name="M:PassiveModel.ApplyReserved">
@@ -6097,10 +6715,6 @@
     <member name="M:PassiveModel.DeepCopy(PassiveXmlInfo)">
       <summary></summary>
       <param name="passive"></param>
-      <returns></returns>
-    </member>
-    <member name="M:PassiveModel.GetReleaseLevel">
-      <summary></summary>
       <returns></returns>
     </member>
     <member name="M:PassiveModel.GetSaveData">
@@ -6201,6 +6815,55 @@
     </member>
     <member name="P:RandomUtil.valueForRange">
       <summary></summary>
+    </member>
+    <member name="T:Rarity">
+      <summary>レアリティを表します。</summary>
+    </member>
+    <member name="F:Rarity.Common">
+      <summary>普及</summary>
+    </member>
+    <member name="F:Rarity.Rare">
+      <summary>限定</summary>
+    </member>
+    <member name="F:Rarity.Special">
+      <summary></summary>
+    </member>
+    <member name="F:Rarity.Uncommon">
+      <summary>高級</summary>
+    </member>
+    <member name="F:Rarity.Unique">
+      <summary>芸術</summary>
+    </member>
+    <member name="T:StatBonus">
+      <summary>能力値に付与するボーナス値を表します。</summary>
+    </member>
+    <member name="F:StatBonus.breakAdder">
+      <summary>被混乱ダメージの増加量。</summary>
+    </member>
+    <member name="F:StatBonus.breakGageAdder">
+      <summary>混乱抵抗値の増加量</summary>
+    </member>
+    <member name="F:StatBonus.breakRate">
+      <summary>パーセンテージ単位の混乱抵抗値の増加率</summary>
+    </member>
+    <member name="F:StatBonus.dmgAdder">
+      <summary>被ダメージの増加量</summary>
+    </member>
+    <member name="F:StatBonus.guardTakenBreakRate">
+      <summary></summary>
+    </member>
+    <member name="F:StatBonus.hpAdder">
+      <summary>体力の増加量</summary>
+    </member>
+    <member name="F:StatBonus.hpRate">
+      <summary>パーセンテージ単位の体力の増加率</summary>
+    </member>
+    <member name="M:StatBonus.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:StatBonus.AddStatBonus(StatBonus)">
+      <summary></summary>
+      <param name="b"></param>
     </member>
   </members>
 </doc>

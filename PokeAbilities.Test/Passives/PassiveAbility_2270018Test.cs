@@ -15,7 +15,7 @@ namespace PokeAbilities.Test.Passives
         {
             passive = new PassiveAbility_2270018();
 
-            BattleUnitModel owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            BattleUnitModel owner = new BattleUnitModelBuilder().Build();
             passive.Init(owner);
         }
 
@@ -27,7 +27,7 @@ namespace PokeAbilities.Test.Passives
             {
                 Owner = passive.Owner,
                 Target = null,
-                CurrentBehavior = ownerDice,
+                //CurrentBehavior = ownerDice,
             }.ToBattlePlayingCardDataInUnitModel();
 
             Assert.That(() => { passive.BeforeRollDice(ownerDice); }, Throws.Nothing);
@@ -36,13 +36,13 @@ namespace PokeAbilities.Test.Passives
         [Test(Description = "マッチ対象にバトルページがない場合は何も起こらない。")]
         public void TestBeforeRollDice2()
         {
-            BattleUnitModel target = new BattleUnitModelBuilder().ToBattleUnitModel();
+            BattleUnitModel target = new BattleUnitModelBuilder().Build();
             BattleDiceBehavior ownerDice = new BattleDiceBehaviorBuilder().ToBattleDiceBehavior();
             BattlePlayingCardDataInUnitModel ownerCard = new BattlePlayingCardDataInUnitModelBuilder()
             {
                 Owner = passive.Owner,
                 Target = target,
-                CurrentBehavior = ownerDice,
+                //CurrentBehavior = ownerDice,
             }.ToBattlePlayingCardDataInUnitModel();
 
             Assert.That(() => { passive.BeforeRollDice(ownerDice); }, Throws.Nothing);
@@ -151,7 +151,7 @@ namespace PokeAbilities.Test.Passives
             int targetDiceVanillaValue,
             int targetDicePowerStatBonus)
         {
-            BattleUnitModel target = new BattleUnitModelBuilder().ToBattleUnitModel();
+            BattleUnitModel target = new BattleUnitModelBuilder().Build();
             BattleDiceBehavior targetDice = new BattleDiceBehaviorBuilder()
             {
                 Detail = targetDiceDetail,
@@ -162,7 +162,7 @@ namespace PokeAbilities.Test.Passives
             {
                 Owner = target,
                 Target = passive.Owner,
-                CurrentBehavior = targetDice,
+                //CurrentBehavior = targetDice,
             }.ToBattlePlayingCardDataInUnitModel();
 
             BattleDiceBehavior ownerDice = new BattleDiceBehaviorBuilder().ToBattleDiceBehavior();
@@ -170,7 +170,7 @@ namespace PokeAbilities.Test.Passives
             {
                 Owner = passive.Owner,
                 Target = target,
-                CurrentBehavior = ownerDice,
+                //CurrentBehavior = ownerDice,
             }.ToBattlePlayingCardDataInUnitModel();
 
             return ownerDice;

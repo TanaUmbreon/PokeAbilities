@@ -7,7 +7,24 @@
     public abstract class PassiveAbilityResultOnly : PassiveAbilityBase
     {
         public PassiveAbilityResultOnly()
+#if OLD_MODDING
             => OnCreated(); // パッシブ名、パッシブ説明のテキストを設定するために必要
+#else
+        {
+            string[] array = GetType().ToString().Split(new[] { '_' });
+
+            if (array != null && array.Length != 0)
+            {
+                int id = -1;
+                if (int.TryParse(array[array.Length - 1], out id))
+                {
+                    name = Singleton<PassiveDescXmlList>.Instance.GetName(id);
+                    desc = Singleton<PassiveDescXmlList>.Instance.GetDesc(id);
+                }
+            }
+
+        }
+#endif
     }
 
     /// <summary>

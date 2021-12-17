@@ -13,7 +13,7 @@ namespace PokeAbilities.Test.Passives
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
         }
 
         [Test(Description = "にほんばれ状態でない時、何も付与されない。")]

@@ -11,11 +11,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PokeAbilities.Test</RootNamespace>
     <AssemblyName>PokeAbilities.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +44,21 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Assembly\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="BongBongEnterprises">
+      <HintPath>..\Assembly\BongBongEnterprises.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.4.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\Assembly\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\Assembly\MonoMod.RuntimeDetour.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\Assembly\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.16.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.16.1\lib\net45\Moq.dll</HintPath>
@@ -64,9 +78,6 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\Assembly\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Assembly\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
@@ -84,12 +95,30 @@
     <Compile Include="Helpers\BattleObjectManagerAccess.cs" />
     <Compile Include="Helpers\BattleEmulator.cs" />
     <Compile Include="Helpers\BattleUnitModelBuilder.cs" />
+    <Compile Include="Helpers\BattleUnitModelExtension.cs" />
+    <Compile Include="Helpers\Builders\BattleDiceBehaviorBuilder.cs" />
+    <Compile Include="Helpers\Builders\BookXmlInfoBuilder.cs" />
+    <Compile Include="Helpers\Builders\BattleDiceCardModelBuilder.cs" />
+    <Compile Include="Helpers\Builders\EnemyBattleUnitModelBuilder.cs" />
+    <Compile Include="Helpers\Builders\BattleUnitModelBuilder.cs" />
+    <Compile Include="Helpers\Builders\UnitBattleDataModelBuilder.cs" />
+    <Compile Include="Helpers\RelativeFaction.cs" />
+    <Compile Include="Helpers\Imitators\BattleAllyCardDetailImitator.cs" />
+    <Compile Include="Helpers\Imitators\BattleDiceCardModelImitator.cs" />
+    <Compile Include="Helpers\Imitators\BattleObjectManagerImitator.cs" />
+    <Compile Include="Helpers\Imitators\BattleUnitModelImitator.cs" />
+    <Compile Include="Helpers\Imitators\StageControllerImitator.cs" />
     <Compile Include="Helpers\PrivateAccess.cs" />
     <Compile Include="Helpers\FixedRandomizer.cs" />
     <Compile Include="Helpers\BattlePlayingCardDataInUnitModelBuilder.cs" />
     <Compile Include="Helpers\BattleDiceBehaviorBuilder.cs" />
     <Compile Include="Helpers\BookXmlInfoBuilder.cs" />
+    <Compile Include="Helpers\StaticInfo\EquipPage.cs" />
+    <Compile Include="Helpers\StaticInfo\FormationInfo.cs" />
+    <Compile Include="Helpers\Thrower.cs" />
+    <Compile Include="Passives\PassiveAbility_2270000Test.cs" />
     <Compile Include="Passives\PassiveAbilityTypeBaseTest.cs" />
+    <Compile Include="Passives\PassiveAbility_2270001Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270004Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270007Test.cs" />
     <Compile Include="Passives\PassiveAbility_2270014Test.cs" />
@@ -104,6 +133,7 @@
     <Compile Include="Passives\PassiveAbility_2270019Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\SystemRandomizer.cs" />
+    <Compile Include="Helpers\StaticInfo\EnemyUnitInfo.cs" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

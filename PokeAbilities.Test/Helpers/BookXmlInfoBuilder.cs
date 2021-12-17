@@ -45,7 +45,7 @@ namespace PokeAbilities.Test.Helpers
 
             return new BookXmlInfo()
             {
-                id = Id,
+                _id = Id,
                 EquipEffect = equipEffect,
                 CharacterSkin = new List<string>() { "KetherLibrarian", "KetherLibrarian" },
             };

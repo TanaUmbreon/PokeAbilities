@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PokeAbilities</RootNamespace>
     <AssemblyName>PokeAbilities</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -39,6 +39,10 @@
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Assembly\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BongBongEnterprises">
+      <HintPath>..\Assembly\BongBongEnterprises.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -106,61 +110,61 @@
       <Link>README%28ja%29.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\DarkTypeBuf.png">
+    <Content Include="ArtWork\Book\Pokemon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\ElectricTypeBuf.png">
+    <Content Include="ArtWork\Buf\DarkTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\FairyTypeBuf.png">
+    <Content Include="ArtWork\Buf\ElectricTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\FireTypeBuf.png">
+    <Content Include="ArtWork\Buf\FairyTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\FlashFireBuf.png">
+    <Content Include="ArtWork\Buf\FireTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\FlyingTypeBuf.png">
+    <Content Include="ArtWork\Buf\FlashFireBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\GrassTypeBuf.png">
+    <Content Include="ArtWork\Buf\FlyingTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\Hail.png">
+    <Content Include="ArtWork\Buf\GrassTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\HailBuf.png">
+    <Content Include="ArtWork\Buf\HailBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\IceTypeBuf.png">
+    <Content Include="ArtWork\Buf\IceTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\InfatuationBuf.png">
+    <Content Include="ArtWork\Buf\InfatuationBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\NormalTypeBuf.png">
+    <Content Include="ArtWork\Buf\NormalTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\Pokemon.png">
+    <Content Include="ArtWork\Buf\PsychicTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\PsychicTypeBuf.png">
+    <Content Include="ArtWork\Buf\RainBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\RainBuf.png">
+    <Content Include="ArtWork\Buf\SunnyDayBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\RainDance.png">
+    <Content Include="ArtWork\Buf\WaterTypeBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\SunnyDay.png">
+    <Content Include="ArtWork\Card\Hail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\SunnyDayBuf.png">
+    <Content Include="ArtWork\Card\RainDance.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\WaterTypeBuf.png">
+    <Content Include="ArtWork\Card\SunnyDay.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Info\jp\Info.xml">

@@ -14,7 +14,7 @@ namespace PokeAbilities.Test.Bufs
         [SetUp]
         public void SetUp()
         {
-            owner = new BattleUnitModelBuilder().ToBattleUnitModel();
+            owner = new BattleUnitModelBuilder().Build();
         }
 
         #region 付与数のテスト

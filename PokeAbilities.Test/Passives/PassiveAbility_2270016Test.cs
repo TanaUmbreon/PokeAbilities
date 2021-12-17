@@ -1,6 +1,9 @@
 ﻿using NUnit.Framework;
 using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
+using BattleDiceCardModelBuilder = PokeAbilities.Test.Helpers.Builders.BattleDiceCardModelBuilder;
+using BattleUnitModelBuilder = PokeAbilities.Test.Helpers.Builders.BattleUnitModelBuilder;
+using BookXmlInfoBuilder = PokeAbilities.Test.Helpers.Builders.BookXmlInfoBuilder;
 
 namespace PokeAbilities.Test.Passives
 {
@@ -12,15 +15,13 @@ namespace PokeAbilities.Test.Passives
         [SetUp]
         public void SetUp()
         {
-            BookXmlInfo equipBook = new BookXmlInfoBuilder()
-            {
-                Hp = 100,
-            }.ToBookXmlInfo();
-
             owner = new BattleUnitModelBuilder()
             {
-                EquipBook = equipBook,
-            }.ToBattleUnitModel();
+                EquipBook = new BookXmlInfoBuilder()
+                {
+                    Hp = 100,
+                },
+            }.Build();
         }
 
         #region OnCreated
@@ -44,7 +45,7 @@ namespace PokeAbilities.Test.Passives
             BattleUnitModel attaker = new BattleUnitModelBuilder()
             {
                 Faction = Faction.Enemy,
-            }.ToBattleUnitModel();
+            }.Build();
 
             var passive = new PassiveAbility_2270016();
             owner.passiveDetail.AddPassive(passive);
@@ -60,16 +61,16 @@ namespace PokeAbilities.Test.Passives
         [Test(Description = "20%の確率に外れた場合はダメージ軽減数0。")]
         public void TestBeforeTakeDamage2()
         {
-            BattleDiceCardModel card = new BattleDiceCardModelBuilder().ToBattleDiceCardModel();
+            BattleUnitModel attaker = new BattleUnitModelBuilder()
+            {
+                Faction = Faction.Enemy,
+                //CurrentDiceAction = cardData,
+            }.Build();
+            BattleDiceCardModel card = new BattleDiceCardModelBuilder().Build(attaker);
             var cardData = new BattlePlayingCardDataInUnitModel()
             {
                 card = card,
             };
-            BattleUnitModel attaker = new BattleUnitModelBuilder()
-            {
-                Faction = Faction.Enemy,
-                CurrentDiceAction = cardData,
-            }.ToBattleUnitModel();
 
             var randomizer = new FixedRandomizer();
             var passive = new PassiveAbility_2270016(randomizer);
@@ -87,16 +88,15 @@ namespace PokeAbilities.Test.Passives
         [Test(Description = "20%の確率に当たった場合はダメージ軽減数9999。")]
         public void TestBeforeTakeDamage3()
         {
-            BattleDiceCardModel card = new BattleDiceCardModelBuilder().ToBattleDiceCardModel();
+            BattleUnitModel attaker = new BattleUnitModelBuilder()
+            {
+                Faction = Faction.Enemy,
+            }.Build();
+            BattleDiceCardModel card = new BattleDiceCardModelBuilder().Build(attaker);
             var cardData = new BattlePlayingCardDataInUnitModel()
             {
                 card = card,
             };
-            BattleUnitModel attaker = new BattleUnitModelBuilder()
-            {
-                Faction = Faction.Enemy,
-                CurrentDiceAction = cardData,
-            }.ToBattleUnitModel();
 
             var randomizer = new FixedRandomizer();
             var passive = new PassiveAbility_2270016(randomizer);

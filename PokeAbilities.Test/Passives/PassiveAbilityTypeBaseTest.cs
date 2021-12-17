@@ -35,11 +35,11 @@ namespace PokeAbilities.Test.Passives
             owner = new BattleUnitModelBuilder()
             {
                 Passives = new[] { passive },
-            }.ToBattleUnitModel();
+            }.Build();
             enemy = new BattleUnitModelBuilder()
             {
                 Faction = Faction.Enemy,
-            }.ToBattleUnitModel();
+            }.Build();
         }
 
         #region 所有するタイプのテスト
@@ -307,11 +307,11 @@ namespace PokeAbilities.Test.Passives
             owner = new BattleUnitModelBuilder()
             {
                 Passives = new[] { passive },
-            }.ToBattleUnitModel();
+            }.Build();
             enemy = new BattleUnitModelBuilder()
             {
                 Faction = Faction.Enemy,
-            }.ToBattleUnitModel();
+            }.Build();
         }
 
         #region 所有するタイプのテスト

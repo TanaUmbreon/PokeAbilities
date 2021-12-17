@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using PokeAbilities.Bufs;
 
 namespace PokeAbilities.Test.Helpers
@@ -55,6 +56,39 @@ namespace PokeAbilities.Test.Helpers
             var hand = target.allyCardDetail.GetHand();
             if (index < 0 || index >= hand.Count) { return null; }
             return hand[index];
+        }
+
+        /// <summary>
+        /// 指定したキャラクターに、指定した状態が現在の幕、次の幕、または2幕後のいずれかに付与されていることを判定します。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="buf"></param>
+        /// <returns></returns>
+        public static bool HasBufAny(BattleUnitModel target, BattleUnitBuf buf)
+        {
+            if (target == null) { throw new ArgumentNullException(nameof(target)); }
+            if (buf == null) { throw new ArgumentNullException(nameof(buf)); }
+
+            Type bufType = buf.GetType();
+            return target.bufListDetail.GetActivatedBufList().Any(b => b.GetType() == bufType) ||
+                target.bufListDetail.GetReadyBufList().Any(b => b.GetType() == bufType) ||
+                target.bufListDetail.GetReadyReadyBufList().Any(b => b.GetType() == bufType);
+        }
+
+        /// <summary>
+        /// 指定したキャラクターに、指定した状態が現在の幕、次の幕、または2幕後のいずれかに付与されていることを判定します。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="bufType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool HasBufAny(BattleUnitModel target, KeywordBuf bufType)
+        {
+            if (target == null) { throw new ArgumentNullException(nameof(target)); }
+
+            return target.bufListDetail.GetActivatedBufList().Any(b => b.bufType == bufType) ||
+                target.bufListDetail.GetReadyBufList().Any(b => b.bufType == bufType) ||
+                target.bufListDetail.GetReadyReadyBufList().Any(b => b.bufType == bufType);
         }
     }
 }

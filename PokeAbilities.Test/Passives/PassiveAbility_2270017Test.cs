@@ -29,7 +29,7 @@ namespace PokeAbilities.Test.Passives
             {
                 EquipBook = equipBook,
                 Passives = new[] { passive },
-            }.ToBattleUnitModel();
+            }.Build();
             Assert.That(owner.hp, Is.EqualTo(100));
 
             passive.OnRoundEnd();

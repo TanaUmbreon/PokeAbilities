@@ -1,5 +1,4 @@
-﻿using BaseMod;
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 
 namespace PokeAbilities.Bufs
@@ -31,5 +30,5 @@ namespace PokeAbilities.Bufs
             typeof(BattleDiceCardBuf).GetField("_bufIcon", AccessTools.all).SetValue(this, sprite);
             typeof(BattleDiceCardBuf).GetField("_iconInit", AccessTools.all).SetValue(this, true);
         }
-    }
+	}
 }

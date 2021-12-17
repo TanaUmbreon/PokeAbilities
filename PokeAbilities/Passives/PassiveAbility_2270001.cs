@@ -8,8 +8,33 @@ namespace PokeAbilities.Passives
     /// </summary>
     public class PassiveAbility_2270001 : PassiveAbilityBase
     {
-        /// <summary>攻撃を行った敵キャラクター</summary>
+        /// <summary>攻撃を行った敵キャラクター。敵キャラクターでない場合は null</summary>
         private BattleUnitModel attacker = null;
+
+        public override bool CanAddBuf(BattleUnitBuf buf)
+        {
+
+            try
+            {
+                // ToDo: 以下の条件を満たすとき、MODで付与されたカスタムバフの状態異常であると判断する
+                // 以下のメソッドのいずれかからこのメソッドを呼び出されている、
+                //   - BattleUnitBufListDetail.AddBuf(BattleUnitBuf)
+                //   - BattleUnitBufListDetail.AddBufWithoutDuplication(BattleUnitBuf)
+                //   - BattleUnitBufListDetail.AddReadyBuf(BattleUnitBuf)
+                //   - BattleUnitBufListDetail.AddReadyReadyBuf(BattleUnitBuf)
+                // かつ、buf.bufType == KeywordBuf.None (MODによって追加されたカスタムバフの可能性)
+                // かつ、buf.positiveType == BufPositiveType.Negative
+                // かつ、attacker != null
+
+                return base.CanAddBuf(buf);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.ErrorWithCaller("Exception thrown.");
+                Log.Instance.Error(ex);
+                return base.CanAddBuf(buf);
+            }
+        }
 
         public override int OnAddKeywordBufByCard(BattleUnitBuf buf, int stack)
         {
@@ -19,7 +44,7 @@ namespace PokeAbilities.Passives
                 {
                     return base.OnAddKeywordBufByCard(buf, stack);
                 }
-
+        
                 owner.battleCardResultLog?.SetPassiveAbility(this);
                 attacker.bufListDetail.AddKeywordBufByEtc(buf.bufType, stack);
                 buf.stack -= stack;
@@ -38,7 +63,8 @@ namespace PokeAbilities.Passives
                 return base.OnAddKeywordBufByCard(buf, stack);
             }
         }
-
+     
+        
         /// <summary>
         /// 指定したバフがこのパッシブの効果対象である事を判定します。
         /// </summary>

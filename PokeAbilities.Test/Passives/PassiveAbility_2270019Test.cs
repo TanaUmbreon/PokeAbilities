@@ -164,7 +164,7 @@ namespace PokeAbilities.Test.Passives
             {
                 EquipBook = equipBook,
                 Passives = new[] { passive },
-            }.ToBattleUnitModel();
+            }.Build();
 
             if (maxHp != currentHp)
             {

@@ -48,7 +48,7 @@ namespace PokeAbilities.Test.CardAbilities
                 Id = id,
                 Faction = faction,
                 IsDie = isDie,
-            }.ToBattleUnitModel();
+            }.Build();
             BattleObjectManagerAccess.RegisterUnit(unit);
             return unit;
         }

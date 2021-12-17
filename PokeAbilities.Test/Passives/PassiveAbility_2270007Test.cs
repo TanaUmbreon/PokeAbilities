@@ -2,6 +2,8 @@
 using NUnit.Framework;
 using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
+using PokeAbilities.Test.Helpers.Builders;
+using BattleUnitModelBuilder = PokeAbilities.Test.Helpers.Builders.BattleUnitModelBuilder;
 
 namespace PokeAbilities.Test.Passives
 {
@@ -23,11 +25,11 @@ namespace PokeAbilities.Test.Passives
             owner = new BattleUnitModelBuilder()
             {
                 Passives = new PassiveAbilityBase[] { passive },
-            }.ToBattleUnitModel();
+            }.Build();
             enemy = new BattleUnitModelBuilder()
             {
                 Faction = Faction.Enemy,
-            }.ToBattleUnitModel();
+            }.Build();
         }
 
         #region 虚弱状態に対する耐性のテスト

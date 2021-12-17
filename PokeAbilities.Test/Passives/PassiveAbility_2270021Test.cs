@@ -18,7 +18,7 @@ namespace PokeAbilities.Test.Passives
             owner = new BattleUnitModelBuilder() 
             {
                 Passives = new[] { passive }
-            }.ToBattleUnitModel();
+            }.Build();
         }
 
         [Test(Description = "あられ状態でない時、何も付与されない。")]

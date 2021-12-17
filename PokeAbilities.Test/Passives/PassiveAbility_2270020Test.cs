@@ -53,7 +53,7 @@ namespace PokeAbilities.Test.Passives
                 Faction = faction,
                 IsDie = isDie,
                 Passives = passives,
-            }.ToBattleUnitModel();
+            }.Build();
             BattleObjectManagerAccess.RegisterUnit(unit);
             return unit;
         }
