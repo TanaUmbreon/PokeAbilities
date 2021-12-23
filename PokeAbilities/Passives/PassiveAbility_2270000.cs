@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace PokeAbilities.Passives
 {
@@ -40,21 +41,36 @@ namespace PokeAbilities.Passives
             => buf.bufType == KeywordBuf.Burn || buf.bufType == KeywordBuf.Bleeding || buf.bufType == KeywordBuf.Paralysis;
 
         public override void OnStartTargetedOneSide(BattlePlayingCardDataInUnitModel attackerCard)
-            => attacker = (attackerCard.owner.faction != owner.faction) ? attackerCard.owner : null;
+        {
+            Log.Instance.InfomationWithCaller(new StackTrace().ToString());
+            attacker = (attackerCard.owner.faction != owner.faction) ? attackerCard.owner : null;
+        }
 
         public override void OnEndOneSideVictim(BattlePlayingCardDataInUnitModel attackerCard)
-            => attacker = null;
+        {
+            Log.Instance.InfomationWithCaller(new StackTrace().ToString());
+            attacker = null;
+        }
 
         public override void OnStartParrying(BattlePlayingCardDataInUnitModel card)
-            => attacker = (card.target.faction != owner.faction) ? card.target : null;
+        {
+            Log.Instance.InfomationWithCaller(new StackTrace().ToString());
+            attacker = (card.target.faction != owner.faction) ? card.target : null;
+        }
 
         public override void OnEndParrying()
-            => attacker = null;
+        {
+            Log.Instance.InfomationWithCaller(new StackTrace().ToString());
+            attacker = null;
+        }
 
         public override void OnEndParrying(BattlePlayingCardDataInUnitModel curCard)
-            => attacker = null;
+        {
+            Log.Instance.InfomationWithCaller(new StackTrace().ToString());
+            attacker = null;
+        }
 
-        public override void OnRoundStart() 
+        public override void OnRoundStart()
             => attacker = null;
 
         public override void OnRoundEnd()

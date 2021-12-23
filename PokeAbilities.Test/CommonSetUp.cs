@@ -54,7 +54,7 @@ namespace PokeAbilities.Test
             // (UnitBattleDataModel.CreateUnitBattleDataByEnemyUnitId で例外発生)
             Singleton<EnemyUnitClassInfoList>.Instance.Init(EnemyUnitInfo.GetEnemies());
 
-            LibraryModel.Instance.Init();
+            //LibraryModel.Instance.Init();
 
             //// SecurityException の回避 (Harmonyによる割り込みでも同様の例外が発生する場合にこの方法で回避)
             OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
@@ -174,37 +174,37 @@ namespace PokeAbilities.Test
             return false;
         }
 
-        [HarmonyPatch(typeof(LibraryModel), "Init")]
-        [HarmonyPrefix]
-        private static bool LibraryModel_Init_Prefix(LibraryModel __instance)
-        {
-            __instance._floorList = new List<LibraryFloorModel>();
-            __instance._openedSephirah = new HashSet<SephirahType>();
-            __instance._clearInfo = new StageClearInfoListModel();
-            __instance._playHistory = new PlayHistoryModel();
-            __instance.AddFloor(SephirahType.Malkuth);
-            __instance.AddFloor(SephirahType.Yesod);
-            __instance.AddFloor(SephirahType.Hod);
-            __instance.AddFloor(SephirahType.Netzach);
-            __instance.AddFloor(SephirahType.Tiphereth);
-            __instance.AddFloor(SephirahType.Gebura);
-            __instance.AddFloor(SephirahType.Chesed);
-            __instance.AddFloor(SephirahType.Binah);
-            __instance.AddFloor(SephirahType.Hokma);
-            __instance.AddFloor(SephirahType.Keter);
-            Singleton<CustomCoreBookInventoryModel>.Instance.Init();
-            Singleton<LibraryQuestManager>.Instance.Init();
-            __instance.OpenSephirah(SephirahType.Keter);
-            Singleton<InventoryModel>.Instance.Init();
-            Singleton<BookInventoryModel>.Instance.Init();
-            Singleton<DropBookInventoryModel>.Instance.Init();
-            __instance._clearInfo.Init();
-            __instance._currentChapter = 1;
-            Singleton<DropBoxListModel>.Instance.Init();
-            Singleton<DeckListModel>.Instance.Init();
-            __instance._storySeeInfo.Clear();
-            return false;
-        }
+        //[HarmonyPatch(typeof(LibraryModel), "Init")]
+        //[HarmonyPrefix]
+        //private static bool LibraryModel_Init_Prefix(LibraryModel __instance)
+        //{
+        //    __instance._floorList = new List<LibraryFloorModel>();
+        //    __instance._openedSephirah = new HashSet<SephirahType>();
+        //    __instance._clearInfo = new StageClearInfoListModel();
+        //    __instance._playHistory = new PlayHistoryModel();
+        //    __instance.AddFloor(SephirahType.Malkuth);
+        //    __instance.AddFloor(SephirahType.Yesod);
+        //    __instance.AddFloor(SephirahType.Hod);
+        //    __instance.AddFloor(SephirahType.Netzach);
+        //    __instance.AddFloor(SephirahType.Tiphereth);
+        //    __instance.AddFloor(SephirahType.Gebura);
+        //    __instance.AddFloor(SephirahType.Chesed);
+        //    __instance.AddFloor(SephirahType.Binah);
+        //    __instance.AddFloor(SephirahType.Hokma);
+        //    __instance.AddFloor(SephirahType.Keter);
+        //    Singleton<CustomCoreBookInventoryModel>.Instance.Init();
+        //    Singleton<LibraryQuestManager>.Instance.Init();
+        //    __instance.OpenSephirah(SephirahType.Keter);
+        //    Singleton<InventoryModel>.Instance.Init();
+        //    Singleton<BookInventoryModel>.Instance.Init();
+        //    Singleton<DropBookInventoryModel>.Instance.Init();
+        //    __instance._clearInfo.Init();
+        //    __instance._currentChapter = 1;
+        //    Singleton<DropBoxListModel>.Instance.Init();
+        //    Singleton<DeckListModel>.Instance.Init();
+        //    __instance._storySeeInfo.Clear();
+        //    return false;
+        //}
 
         #endregion
 

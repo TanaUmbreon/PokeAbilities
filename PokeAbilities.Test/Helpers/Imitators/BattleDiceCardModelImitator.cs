@@ -15,6 +15,7 @@ namespace PokeAbilities.Test.Helpers.Imitators
         /// <param name="cardInfo"></param>
         /// <param name="script"></param>
         /// <returns></returns>
+        [Obsolete]
         public static BattleDiceCardModel ImitateCreatePlayingCard(DiceCardXmlInfo cardInfo)
         {
             if (cardInfo == null) { throw new ArgumentNullException(nameof(cardInfo)); }

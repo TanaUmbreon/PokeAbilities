@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using LOR_DiceSystem;
+using NUnit.Framework;
 using PokeAbilities.Test.Helpers.Builders;
 
 namespace PokeAbilities.Test.Helpers
@@ -161,48 +162,174 @@ namespace PokeAbilities.Test.Helpers
             return owner;
         }
 
+        ///// <summary>
+        ///// 指定した攻撃キャラクターが指定した対象キャラクターに対して一方攻撃を行う状態を構築します。
+        ///// 一方攻撃で使用するバトル ページおよびバトル ダイスは規定のものを使用します。
+        ///// </summary>
+        ///// <param name="attacker">攻撃キャラクター。</param>
+        ///// <param name="target">対象キャラクター。</param>
+        //public static void SetUpOneSidePlay(BattleUnitModel attacker, BattleUnitModel target)
+        //{
+        //    if (attacker == null) { throw new ArgumentNullException(nameof(attacker)); }
+        //    if (target == null) { throw new ArgumentNullException(nameof(target)); }
+
+        //    BattleDiceCardModel card = new BattleDiceCardModelBuilder().Build(attacker);
+
+        //    SetUpOneSidePlay(attacker, card, target);
+        //}
+
+        ///// <summary>
+        ///// 指定した攻撃キャラクターが指定した対象キャラクターに対して指定したバトル ページで一方攻撃を行う状態を構築します。
+        ///// </summary>
+        ///// <param name="attacker">攻撃キャラクター。</param>
+        ///// <param name="attackerCard">使用するバトル ページ。</param>
+        ///// <param name="target">対象キャラクター。</param>
+        //public static void SetUpOneSidePlay(BattleUnitModel attacker, BattleDiceCardModel attackerCard, BattleUnitModel target)
+        //{
+        //    if (attacker == null) { throw new ArgumentNullException(nameof(attacker)); }
+        //    if (target == null) { throw new ArgumentNullException(nameof(target)); }
+        //    if (attackerCard == null) { throw new ArgumentNullException(nameof(attackerCard)); }
+
+        //    SetUpOneSidePlay(new BattlePlayingCardDataInUnitModelBuilder()
+        //    {
+        //        Owner = attacker,
+        //        Target = target,
+        //        Card = attackerCard,
+        //    }.ToBattlePlayingCardDataInUnitModel());
+        //}
+
+        //public static void SetUpOneSidePlay(BattlePlayingCardDataInUnitModel card)
+        //{
+        //    if (card == null) { throw new ArgumentNullException(nameof(card)); }
+
+        //    // ToDo: BattleOneSidePlayManager.StartOneSidePlay(BattlePlayingCardDataInUnitModel) メソッドを模倣する
+        //    throw new NotImplementedException();
+        //}
+
         /// <summary>
-        /// 指定した攻撃キャラクターが指定した対象キャラクターに対して一方攻撃を行う状態を構築します。
-        /// 一方攻撃で使用するバトル ページおよびバトル ダイスは規定のものを使用します。
+        /// 指定したバトル ページで対象キャラクターを一方攻撃する状態を構築します。
         /// </summary>
-        /// <param name="attacker">攻撃キャラクター。</param>
-        /// <param name="target">対象キャラクター。</param>
-        public static void SetUpOneSidePlay(BattleUnitModel attacker, BattleUnitModel target)
+        /// <param name="attackerCard">攻撃に使用するバトル ページ。</param>
+        /// <param name="target">一方攻撃の対象キャラクター。</param>
+        public static (BattlePlayingCardDataInUnitModel attackerCurrentDiceAction, BattleDiceBehavior attackerCurrentBehavior) SetUpOneSidePlay(BattleDiceCardModel attackerCard, BattleUnitModel target)
         {
-            if (attacker == null) { throw new ArgumentNullException(nameof(attacker)); }
-            if (target == null) { throw new ArgumentNullException(nameof(target)); }
-
-            BattleDiceCardModel card = new BattleDiceCardModelBuilder().Build(attacker);
-
-            SetUpOneSidePlay(attacker, target, card);
-        }
-
-        /// <summary>
-        /// 指定した攻撃キャラクターが指定した対象キャラクターに対して指定したバトル ページで一方攻撃を行う状態を構築します。
-        /// </summary>
-        /// <param name="attacker">攻撃キャラクター。</param>
-        /// <param name="attackerCard">使用するバトル ページ。</param>
-        /// <param name="target">対象キャラクター。</param>
-        public static void SetUpOneSidePlay(BattleUnitModel attacker, BattleDiceCardModel attackerCard, BattleUnitModel target)
-        {
-            if (attacker == null) { throw new ArgumentNullException(nameof(attacker)); }
-            if (target == null) { throw new ArgumentNullException(nameof(target)); }
             if (attackerCard == null) { throw new ArgumentNullException(nameof(attackerCard)); }
-
-            SetUpOneSidePlay(new BattlePlayingCardDataInUnitModelBuilder()
+            if (target == null) { throw new ArgumentNullException(nameof(target)); }
+            if (attackerCard.owner == null)
             {
-                Owner = attacker,
-                Target = target,
-                Card = attackerCard,
-            }.ToBattlePlayingCardDataInUnitModel());
+                throw new ArgumentException("攻撃に使用するバトル ページの所有キャラクターを指定してください。", nameof(attackerCard));
+            }
+
+            BattlePlayingCardDataInUnitModel cardData = CreateBattlePlayingCardDataInUnitModel(attackerCard.owner, attackerCard, 0, target, 0);
+            StartOneSidePlay(cardData);
+
+            Assert.That(cardData.owner, Is.EqualTo(attackerCard.owner));
+            return (cardData.owner.currentDiceAction, cardData.currentBehavior);
         }
 
-        public static void SetUpOneSidePlay(BattlePlayingCardDataInUnitModel card)
+        private static BattlePlayingCardDataInUnitModel CreateBattlePlayingCardDataInUnitModel(BattleUnitModel attacker, BattleDiceCardModel attackerCard, int attackerSlotOrder, BattleUnitModel target, int targetSlotOrder)
+        {
+            if (attacker == null) { throw new ArgumentNullException(nameof(attacker)); }
+            if (attackerCard == null) { throw new ArgumentNullException(nameof(attackerCard)); }
+            if (target == null) { throw new ArgumentNullException(nameof(target)); }
+
+            // [参考] BattlePlayingCardSlotDetail.AddCard(BattleDiceCardModel, BattleUnitModel, int, bool)
+
+            // 参考側では装着時発動だと専用の処理を行っているが、ここでは現状不要なので例外とする
+            if (attackerCard.GetSpec().Ranged == CardRange.Instance)
+            {
+                throw new NotImplementedException("装着時発動バトル ページでの一方攻撃の構築はサポートされていません。");
+            }
+
+            var cardData = new BattlePlayingCardDataInUnitModel()
+            {
+                owner = attacker,
+                card = attackerCard,
+                target = target,
+            };
+
+            // 参考側では、広域攻撃バトル ページならば攻撃対象のキャラクターリストを取得し、
+            // 自分自身とメインで指定した対象キャラクター以外のキャラクターをサブ対象キャラクターとする処理を行っている。
+            // ここでは現状不要なので実装を省略している
+
+            cardData.earlyTarget = target;
+            cardData.earlyTargetOrder = targetSlotOrder;
+            cardData.cardAbility = attackerCard.CreateDiceCardSelfAbilityScript();
+            if (cardData.cardAbility != null)
+            {
+                cardData.cardAbility.card = cardData;
+                cardData.cardAbility.OnApplyCard();
+            }
+            cardData.ResetCardQueue();
+
+            // 参考側では、敵側が行う攻撃対象の選択状態(引数isEnemyAutoがtrue)ならば専用の処理をしている。
+            // ここでは現状不要なので実装を省略している
+
+            // またそれ以外で、攻撃キャラクターの速度ダイススロットが正しく選択されている状態ならば、
+            // その速度ダイススロットに攻撃で使用するバトルページのデータをセットしている。
+
+            // さらにその速度ダイススロットに既に別のバトルページのデータがセットされている場合、
+            // そのバトルページのデータを破棄して手札にバトルページを戻すようにしている。
+
+            // さらにその使用するバトルページによって攻撃対象のマッチが取れるならば、
+            // そのマッチ先となる相手のバトルページのデータを書き換えている。
+
+            // ここでは戦闘で使用するバトルページ枠(BattlePlayingCardSlotDetail)より
+            // バトルページのデータ(BattlePlayingCardDataInUnitModel)のインスタンス生成を優先しているので不要なものは実装を省略している
+
+            if (attackerCard.XmlData.IsFloorEgo())
+            {
+                Singleton<SpecialCardListModel>.Instance.UseCard(attackerCard);
+            }
+            else if (attackerCard.XmlData.IsPersonal())
+            {
+                attacker.personalEgoDetail.UseCard(attackerCard);
+            }
+            else
+            {
+                attacker.allyCardDetail.UseCard(attackerCard);
+            }
+            cardData.targetSlotOrder = targetSlotOrder;
+            cardData.speedDiceResultValue = attacker.GetSpeedDiceResult(attackerSlotOrder).value;
+            cardData.slotOrder = attackerSlotOrder;
+
+            return cardData;
+        }
+
+        /// <summary>
+        /// 指定したバトル ページのデータで一方攻撃を開始します。
+        /// 一方攻撃の開始に関わる一連のイベントを呼び出します。
+        /// </summary>
+        /// <param name="card">一方攻撃に使用するバトル ページのデータ。</param>
+        private static void StartOneSidePlay(BattlePlayingCardDataInUnitModel card)
         {
             if (card == null) { throw new ArgumentNullException(nameof(card)); }
+            if (card.owner == null)
+            {
+                throw new ArgumentException("バトル ページのデータの所有キャラクターを指定してください。", nameof(card)); 
+            }
+            if (card.target == null)
+            {
+                throw new ArgumentException("バトル ページのデータの対象キャラクターを指定してください。", nameof(card));
+            }
 
-            // ToDo: BattleOneSidePlayManager.StartOneSidePlay(BattlePlayingCardDataInUnitModel) メソッドを模倣する
-            throw new NotImplementedException();
+            // [参考] BattleOneSidePlayManager.StartOneSidePlay(BattlePlayingCardDataInUnitModel)
+            // イベント呼び出しを主目的としているため、参考元で実装していても現状不要なものはここでは省略している
+
+            card.owner.currentDiceAction = card;
+            card.owner.battleCardResultLog = new BattleCardTotalResult(card);
+            card.target.battleCardResultLog = new BattleCardTotalResult(card);
+
+            card.OnUseCard_before();
+            card.owner.OnUseCard(card);
+
+            card.owner.OnStartCardAction(card);
+
+            card.OnStartOneSideAction();
+            card.owner.OnStartOneSideAction(card);
+            card.target.OnStartTargetedOneSide(card);
+
+            card.NextDice();
         }
     }
 }

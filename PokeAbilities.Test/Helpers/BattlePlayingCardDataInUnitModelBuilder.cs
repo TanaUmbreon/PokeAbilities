@@ -6,6 +6,7 @@ namespace PokeAbilities.Test.Helpers
     /// <summary>
     /// <see cref="BattlePlayingCardDataInUnitModel"/> のインスタンスを構築します。
     /// </summary>
+    [Obsolete("一方攻撃の状態にする場合は BattleEmulator.SetUpOneSidePlay() メソッドを使用してください。")]
     public class BattlePlayingCardDataInUnitModelBuilder
     {
         /// <summary>

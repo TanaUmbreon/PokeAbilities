@@ -96,6 +96,7 @@
     <Compile Include="Helpers\BattleEmulator.cs" />
     <Compile Include="Helpers\BattleUnitModelBuilder.cs" />
     <Compile Include="Helpers\BattleUnitModelExtension.cs" />
+    <Compile Include="Helpers\Builders\DiceBehaviourBuilder.cs" />
     <Compile Include="Helpers\Builders\BattleDiceBehaviorBuilder.cs" />
     <Compile Include="Helpers\Builders\BookXmlInfoBuilder.cs" />
     <Compile Include="Helpers\Builders\BattleDiceCardModelBuilder.cs" />
@@ -145,6 +146,7 @@
       <Name>PokeAbilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
