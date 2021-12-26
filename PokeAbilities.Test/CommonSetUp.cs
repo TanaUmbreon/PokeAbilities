@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using System.Security;
 using HarmonyLib;
 using LOR_DiceSystem;
 using NUnit.Framework;
@@ -35,35 +36,9 @@ namespace PokeAbilities.Test
             InitializeStaticFields();
             new Harmony("PokeAbilities.Test").PatchAll();
 
-            // カスタムバフを生成する時に必須
-            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
+            InitializeSingleton();
 
-            // BattleUnitModelBuilder.EquipBook を指定している状態でBattleUnitModelを生成する時に必須
-            Singleton<DeckXmlList>.Instance.Init(new List<DeckXmlInfo>());
-
-            // BattleUnitModel の生成の内部処理でnull参照例外を回避する為に必須
-            // (BattleUnitModel.SetUnitData → UnitDataModel.SetUnitData → ItemXmlDataList.GetCardItem で例外発生)
-            ItemXmlDataList.instance.InitCardInfo(new List<DiceCardXmlInfo>());
-            // (BattleUnitEmotionDetail.Reset → BattleUnitModel.OnCreated で例外発生)
-            var stage = new StageModel();
-            PrivateAccess.SetField(stage, "_classInfo", new StageClassInfo());
-            PrivateAccess.SetField(Singleton<StageController>.Instance, "_stageModel", stage);
-
-            // UnitBattleDataModel の生成の内部処理でnull参照例外を回避する為に必須(敵キャラクター生成時のみ)
-            // 使用する敵キャラクターIDに一致するEnemyUnitClassInfoをリストに登録しておく必要がある
-            // (UnitBattleDataModel.CreateUnitBattleDataByEnemyUnitId で例外発生)
-            Singleton<EnemyUnitClassInfoList>.Instance.Init(EnemyUnitInfo.GetEnemies());
-
-            //LibraryModel.Instance.Init();
-
-            //// SecurityException の回避 (Harmonyによる割り込みでも同様の例外が発生する場合にこの方法で回避)
-            OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
-            
-            //OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
-            //OverwriteMethod<BattleUnitModel>(nameof(CheckGiftOnTakeDamage), typeof(int), typeof(DamageType), typeof(BattleUnitModel), typeof(KeywordBuf)); // 呼び出し元: BattleUnitModel.TakeDamage(int)
-
-            //// 実績解除を行おうとするメソッドの呼び出しを回避
-            //OverwriteMethod<BattleUnitBufListDetail>(nameof(CheckAchievements));
+            OverwriteMethods();
         }
 
         private void InitializeStaticFields()
@@ -82,6 +57,43 @@ namespace PokeAbilities.Test
             }
             if (ruinaAssembly == null) { throw new InvalidOperationException("Assembly-CSharp.dll がロードされていません。"); }
             if (modAssembly == null) { throw new InvalidOperationException("PokeAbilities.dll がロードされていません。"); }
+        }
+
+        private void InitializeSingleton()
+        {
+            // カスタムバフを生成する時に必須
+            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
+
+            // BattleUnitModelBuilder.EquipBook を指定している状態でBattleUnitModelを生成する時に必須
+            Singleton<DeckXmlList>.Instance.Init(new List<DeckXmlInfo>());
+
+            // BattleUnitModel の生成の内部処理でnull参照例外を回避する為に必須
+            // (BattleUnitModel.SetUnitData → UnitDataModel.SetUnitData → ItemXmlDataList.GetCardItem で例外発生)
+            ItemXmlDataList.instance.InitCardInfo(new List<DiceCardXmlInfo>());
+
+            // (BattleUnitEmotionDetail.Reset → BattleUnitModel.OnCreated で例外発生)
+            var stage = new StageModel();
+            PrivateAccess.SetField(stage, "_classInfo", new StageClassInfo());
+            PrivateAccess.SetField(Singleton<StageController>.Instance, "_stageModel", stage);
+
+            // UnitBattleDataModel の生成の内部処理でnull参照例外を回避する為に必須(敵キャラクター生成時のみ)
+            // 使用する敵キャラクターIDに一致するEnemyUnitClassInfoをリストに登録しておく必要がある
+            // (UnitBattleDataModel.CreateUnitBattleDataByEnemyUnitId で例外発生)
+            Singleton<EnemyUnitClassInfoList>.Instance.Init(EnemyUnitInfo.GetEnemies());
+
+            //LibraryModel.Instance.Init();
+        }
+
+        /// <summary>
+        /// UnityEngine の <see cref="SecurityException"/> 例外を回避する為にメソッドを上書きします。
+        /// <see cref="HarmonyPatch"/> による割り込みでも例外を回避できない場合に使用します。
+        /// </summary>
+        private void OverwriteMethods()
+        {
+            OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
+
+            //OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
+            //OverwriteMethod<BattleUnitModel>(nameof(CheckGiftOnTakeDamage), typeof(int), typeof(DamageType), typeof(BattleUnitModel), typeof(KeywordBuf)); // 呼び出し元: BattleUnitModel.TakeDamage(int)
         }
 
         #region Harmony による割込 (インスタンスの動的生成)
@@ -174,37 +186,93 @@ namespace PokeAbilities.Test
             return false;
         }
 
-        //[HarmonyPatch(typeof(LibraryModel), "Init")]
-        //[HarmonyPrefix]
-        //private static bool LibraryModel_Init_Prefix(LibraryModel __instance)
-        //{
-        //    __instance._floorList = new List<LibraryFloorModel>();
-        //    __instance._openedSephirah = new HashSet<SephirahType>();
-        //    __instance._clearInfo = new StageClearInfoListModel();
-        //    __instance._playHistory = new PlayHistoryModel();
-        //    __instance.AddFloor(SephirahType.Malkuth);
-        //    __instance.AddFloor(SephirahType.Yesod);
-        //    __instance.AddFloor(SephirahType.Hod);
-        //    __instance.AddFloor(SephirahType.Netzach);
-        //    __instance.AddFloor(SephirahType.Tiphereth);
-        //    __instance.AddFloor(SephirahType.Gebura);
-        //    __instance.AddFloor(SephirahType.Chesed);
-        //    __instance.AddFloor(SephirahType.Binah);
-        //    __instance.AddFloor(SephirahType.Hokma);
-        //    __instance.AddFloor(SephirahType.Keter);
-        //    Singleton<CustomCoreBookInventoryModel>.Instance.Init();
-        //    Singleton<LibraryQuestManager>.Instance.Init();
-        //    __instance.OpenSephirah(SephirahType.Keter);
-        //    Singleton<InventoryModel>.Instance.Init();
-        //    Singleton<BookInventoryModel>.Instance.Init();
-        //    Singleton<DropBookInventoryModel>.Instance.Init();
-        //    __instance._clearInfo.Init();
-        //    __instance._currentChapter = 1;
-        //    Singleton<DropBoxListModel>.Instance.Init();
-        //    Singleton<DeckListModel>.Instance.Init();
-        //    __instance._storySeeInfo.Clear();
-        //    return false;
-        //}
+        #endregion
+
+        #region Harmony による割込 (null 参照の回避)
+
+        [HarmonyPatch(typeof(LibraryModel), "GetFloor")]
+        [HarmonyPrefix]
+        private static bool LibraryModel_GetFloor_Prefix(ref LibraryFloorModel __result, SephirahType sephirah)
+        {
+            __result = new LibraryFloorModel();
+            __result.SetTemporaryLevel(__result.Maxlevel);
+            __result.SetLevel(__result.Maxlevel);
+
+            return false;
+        }
+
+        [HarmonyPatch(typeof(BattleUnitModel), "RollSpeedDice")]
+        [HarmonyPrefix]
+        private static bool BattleUnitModel_RollSpeedDice_Prefix(BattleUnitModel __instance, ref List<SpeedDice> __result)
+        {
+            __instance.currentSpeedDiceIdx = 0;
+            __instance.speedDiceResult = __instance.Book.GetSpeedDiceRule(__instance).Roll(__instance);
+            foreach (SpeedDice speedDice in __instance.speedDiceResult)
+            {
+                if (__instance.IsBreakLifeZero() || __instance.IsKnockout() || speedDice.breaked)
+                {
+                    speedDice.value = 0;
+                }
+                else
+                {
+                    int num = __instance.bufListDetail.GetSpeedDiceAdder(speedDice.value);
+                    num += __instance.emotionDetail.GetSpeedDiceAdder(speedDice.value);
+                    num += __instance.passiveDetail.GetSpeedDiceAdder(speedDice.value);
+                    speedDice.value = Mathf.Clamp(speedDice.value + num, 1, 999);
+                }
+            }
+            __instance.speedDiceResult.Sort(delegate (SpeedDice d1, SpeedDice d2)
+            {
+                if (d1.breaked && d2.breaked)
+                {
+                    if (d1.value > d2.value)
+                    {
+                        return -1;
+                    }
+                    if (d1.value < d2.value)
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+                else
+                {
+                    if (d1.breaked && !d2.breaked)
+                    {
+                        return -1;
+                    }
+                    if (!d1.breaked && d2.breaked)
+                    {
+                        return 1;
+                    }
+                    if (d1.value > d2.value)
+                    {
+                        return -1;
+                    }
+                    if (d1.value < d2.value)
+                    {
+                        return 1;
+                    }
+                    return 0;
+                }
+            });
+            __instance.passiveDetail.OnRollSpeedDice();
+            __instance.bufListDetail.OnRollSpeedDice();
+
+            // null参照を回避
+            //__instance.view.speedDiceSetterUI.SetSpeedDicesAfterRoll(th__instanceis.speedDiceResult);
+
+            __result = __instance.speedDiceResult;
+            return false;
+        }
+
+        [HarmonyPatch(typeof(BattleUnitBufListDetail), "CheckAchievements")]
+        [HarmonyPrefix]
+        private static bool BattleUnitBufListDetail_CheckAchievements_Prefix()
+        {
+            // 実績解除の処理は行わない
+            return false;
+        }
 
         #endregion
 

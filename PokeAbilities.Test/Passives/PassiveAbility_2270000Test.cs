@@ -1,12 +1,9 @@
 ﻿using System;
-using LOR_DiceSystem;
 using NUnit.Framework;
 using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
 using PokeAbilities.Test.Helpers.Builders;
-using BattleDiceBehaviorBuilder = PokeAbilities.Test.Helpers.Builders.BattleDiceBehaviorBuilder;
 using BattleUnitModelBuilder = PokeAbilities.Test.Helpers.Builders.BattleUnitModelBuilder;
-using BookXmlInfoBuilder = PokeAbilities.Test.Helpers.Builders.BookXmlInfoBuilder;
 
 namespace PokeAbilities.Test.Passives
 {
@@ -26,21 +23,6 @@ namespace PokeAbilities.Test.Passives
             FarArea,
         }
 
-        ///// <summary>
-        ///// 追加する状態を表します。
-        ///// </summary>
-        //public enum BufToAdd
-        //{
-        //    /// <summary>出血</summary>
-        //    Bleeding,
-        //    /// <summary>麻痺</summary>
-        //    Paralysis,
-        //    /// <summary>火傷</summary>
-        //    Burn,
-        //    /// <summary>その他</summary>
-        //    Other,
-        //}
-
         private BattleUnitModel owner;
         private PassiveAbility_2270000 passive;
 
@@ -53,51 +35,6 @@ namespace PokeAbilities.Test.Passives
                 Passives = new[] { passive },
             }.Build();
         }
-
-        ///// <summary>
-        ///// 状態を生成します。
-        ///// </summary>
-        ///// <param name="bufToAdd"></param>
-        //private static BattleUnitBuf CreateBuf(BufToAdd bufToAdd)
-        //{
-        //    switch (bufToAdd)
-        //    {
-        //        case BufToAdd.Bleeding:
-        //            return new BattleUnitBuf_bleeding() { stack = 1 };
-        //        case BufToAdd.Paralysis:
-        //            return new BattleUnitBuf_paralysis() { stack = 1 };
-        //        case BufToAdd.Burn:
-        //            return new BattleUnitBuf_burn() { stack = 1 };
-        //        case BufToAdd.Other:
-        //            return new BattleUnitBuf_smoke() { stack = 1 };
-        //    }
-
-        //    throw new ArgumentOutOfRangeException(nameof(bufToAdd));
-        //}
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="attacker"></param>
-        ///// <param name="victim"></param>
-        ///// <param name="attackBy"></param>
-        //private static void SetUpAttack(BattleUnitModel attacker, BattleUnitModel victim, AttackType attackBy)
-        //{
-        //    switch (attackBy)
-        //    {
-        //        case AttackType.OneSide:
-        //            BattleEmulator.SetUpOneSidePlay(attacker, victim);
-        //            return;
-        //        case AttackType.Parrying:
-        //            throw new NotImplementedException();
-        //        case AttackType.FarArea:
-        //            throw new NotImplementedException();
-        //    }
-
-        //    throw new ArgumentOutOfRangeException(nameof(attackBy));
-        //}
-
-        public void TestAddBuf() { }
 
         [Test]
         public void TestFromAddBuf() { }
@@ -153,6 +90,7 @@ namespace PokeAbilities.Test.Passives
             switch (attackBy)
             {
                 case AttackType.OneSide:
+                    BattleEmulator.SetUpRollSpeedDice(owner, attacker);
                     BattleEmulator.SetUpOneSidePlay(attackerCard: attackerCard, target: owner);
                     break;
                 default:

@@ -100,7 +100,6 @@
     <Compile Include="Helpers\Builders\BattleDiceBehaviorBuilder.cs" />
     <Compile Include="Helpers\Builders\BookXmlInfoBuilder.cs" />
     <Compile Include="Helpers\Builders\BattleDiceCardModelBuilder.cs" />
-    <Compile Include="Helpers\Builders\EnemyBattleUnitModelBuilder.cs" />
     <Compile Include="Helpers\Builders\BattleUnitModelBuilder.cs" />
     <Compile Include="Helpers\Builders\UnitBattleDataModelBuilder.cs" />
     <Compile Include="Helpers\RelativeFaction.cs" />

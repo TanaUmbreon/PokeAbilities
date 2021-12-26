@@ -207,6 +207,24 @@ namespace PokeAbilities.Test.Helpers
         //}
 
         /// <summary>
+        /// 指定したキャラクターが速度ダイスを振る状態を構築します。
+        /// </summary>
+        /// <param name="units">速度ダイスを振るキャラクターの配列。</param>
+        public static void SetUpRollSpeedDice(params BattleUnitModel[] units)
+        {
+            // [参考] StageController.SortUnitPhase()
+
+            foreach (BattleUnitModel unit in units)
+            {
+                unit.RollSpeedDice();
+            }
+            foreach (BattleUnitModel unit in units)
+            {
+                unit.AfterRollSpeedDice();
+            }
+        }
+
+        /// <summary>
         /// 指定したバトル ページで対象キャラクターを一方攻撃する状態を構築します。
         /// </summary>
         /// <param name="attackerCard">攻撃に使用するバトル ページ。</param>
