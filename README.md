@@ -1,6 +1,8 @@
 # Poke Abilities
 
-「[Library of Ruina](https://store.steampowered.com/app/1256670/Library_Of_Ruina/)」のMODです。ポ○モンの特性をモチーフにしたパッシブを追加します。
+「[Library of Ruina](https://store.steampowered.com/app/1256670/Library_Of_Ruina/)」のMOD旧第2弾です。ポ○モンの特性をモチーフにしたパッシブを追加します。
+
+***注意!! このバージョンは本体のアーリーアクセス時代のバージョンに対応していたMODです。正式リリース以降のバージョンでの使用はワークショップ対応版の [Poke Abilities](https://github.com/TanaUmbreon/RuinaPokeAbilities) を使用してください。***
 
 当MODで追加されるコアページやパッシブの詳細については [Wikiページ](https://github.com/TanaUmbreon/PokeAbilities/wiki) にまとめています。
 
