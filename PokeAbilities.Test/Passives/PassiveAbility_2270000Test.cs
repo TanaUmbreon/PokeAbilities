@@ -1,132 +1,155 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PokeAbilities.Passives;
 using PokeAbilities.Test.Helpers;
 using PokeAbilities.Test.Helpers.Builders;
-using BattleUnitModelBuilder = PokeAbilities.Test.Helpers.Builders.BattleUnitModelBuilder;
+using System.Collections.Generic;
 
 namespace PokeAbilities.Test.Passives
 {
     [TestFixture]
     public class PassiveAbility_2270000Test
     {
-        /// <summary>
-        /// 攻撃方法を表します。
-        /// </summary>
-        public enum AttackType
-        {
-            /// <summary>一方攻撃</summary>
-            OneSide,
-            /// <summary>マッチ攻撃</summary>
-            Parrying,
-            /// <summary>広域攻撃</summary>
-            FarArea,
-        }
-
-        private BattleUnitModel owner;
         private PassiveAbility_2270000 passive;
+
+        /// <summary>パッシブ効果の適用対象となる状態のコレクション</summary>
+        private IEnumerable<BattleUnitBuf> targetBufs;
+        /// <summary>パッシブ効果の適用対象とならない状態のコレクション</summary>
+        private IEnumerable<BattleUnitBuf> nonTargetBufs;
 
         [SetUp]
         public void SetUp()
         {
             passive = new PassiveAbility_2270000();
-            owner = new BattleUnitModelBuilder()
+
+            targetBufs = new BattleUnitBuf[]
             {
-                Passives = new[] { passive },
-            }.Build();
+                new BattleUnitBuf_bleeding() { stack = 1 },
+                new BattleUnitBuf_paralysis() { stack = 1 },
+                new BattleUnitBuf_burn() { stack = 1 },
+            };
+
+            nonTargetBufs = new BattleUnitBuf[]
+            {
+                new BattleUnitBuf_bleeding() { stack = 0 },
+                new BattleUnitBuf_paralysis() { stack = 0 },
+                new BattleUnitBuf_burn() { stack = 0 },
+                new BattleUnitBuf_smoke() { stack = 1 },
+                new BattleUnitBuf_weak() { stack = 1 },
+                new BattleUnitBuf_Decay() { stack = 1 },
+            };
         }
 
-        [Test]
-        public void TestFromAddBuf() { }
+        #region OnAddKeywordBufByCard
 
-        [Test]
-        public void TestFromAddBufWithoutDuplication() { }
+        [Test(Description = "attackerフィールドがnullの場合、何も起きない")]
+        public void TestOnAddKeywordBufByCard1()
+        {
+            SetUpPassiveOwner();
 
-        [Test]
-        public void TestFromAddReadyBuf() { }
+            BattleUnitModel attacker = null;
+            PrivateAccess.SetField(passive, "attacker", attacker);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
 
-        [Test]
-        public void TestFromAddReadyReadyBuf() { }
+            foreach (BattleUnitBuf givingBuf in targetBufs)
+            {
+                Assert.That(() => passive.OnAddKeywordBufByCard(givingBuf, givingBuf.stack), Throws.Nothing);
+                Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+            }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="attackerFaction">パッシブ所有キャラクターから見た、攻撃してくるキャラクターの相対的な派閥。</param>
-        /// <param name="attackBy">攻撃手段。</param>
-        /// <param name="bufType">攻撃によって付与する状態。</param>
-        /// <param name="expected">パッシブの効果により相手にも同じ状態が付与された事を示す、期待すべき結果。</param>
-        [TestCase(RelativeFaction.Opponent, AttackType.OneSide, KeywordBuf.Bleeding, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.OneSide, KeywordBuf.Paralysis, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.OneSide, KeywordBuf.Burn, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.OneSide, KeywordBuf.Decay, false)]
-        [TestCase(RelativeFaction.Opponent, AttackType.Parrying, KeywordBuf.Bleeding, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.Parrying, KeywordBuf.Paralysis, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.Parrying, KeywordBuf.Burn, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.Parrying, KeywordBuf.Decay, false)]
-        [TestCase(RelativeFaction.Opponent, AttackType.FarArea, KeywordBuf.Bleeding, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.FarArea, KeywordBuf.Paralysis, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.FarArea, KeywordBuf.Burn, true)]
-        [TestCase(RelativeFaction.Opponent, AttackType.FarArea, KeywordBuf.Decay, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.OneSide, KeywordBuf.Bleeding, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.OneSide, KeywordBuf.Paralysis, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.OneSide, KeywordBuf.Burn, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.OneSide, KeywordBuf.Decay, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.Parrying, KeywordBuf.Bleeding, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.Parrying, KeywordBuf.Paralysis, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.Parrying, KeywordBuf.Burn, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.Parrying, KeywordBuf.Decay, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.FarArea, KeywordBuf.Bleeding, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.FarArea, KeywordBuf.Paralysis, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.FarArea, KeywordBuf.Burn, false)]
-        [TestCase(RelativeFaction.Ally, AttackType.FarArea, KeywordBuf.Decay, false)]
-        public void TestFromAddKeywordBufByCard(RelativeFaction attackerFaction, AttackType attackBy, KeywordBuf bufType, bool expected)
+            foreach (BattleUnitBuf givingBuf in nonTargetBufs)
+            {
+                Assert.That(() => passive.OnAddKeywordBufByCard(givingBuf, givingBuf.stack), Throws.Nothing);
+                Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+            }
+        }
+
+        [Test(Description = "attackerフィールドが非nullで非対象の状態の場合、何も起きない")]
+        public void TestOnAddKeywordBufByCard2()
+        {
+            SetUpPassiveOwner();
+
+            BattleUnitModel attacker = new BattleUnitModelBuilder().Build();
+            PrivateAccess.SetField(passive, "attacker", attacker);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+
+            foreach (BattleUnitBuf givingBuf in nonTargetBufs)
+            {
+                attacker.bufListDetail.GetBufInfo()
+                Assert.That(BattleInfo.HasBufAny(attacker, givingBuf), Is.False);
+
+                passive.OnAddKeywordBufByCard(givingBuf, givingBuf.stack);
+                Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+                Assert.That(BattleInfo.HasBufAny(attacker, givingBuf), Is.False);
+            }
+        }
+
+        [Test(Description = "attackerフィールドが非nullで非対象の状態の場合、何も起きない")]
+        public void TestOnAddKeywordBufByCard2()
+        {
+            SetUpPassiveOwner();
+
+            BattleUnitModel attacker = new BattleUnitModelBuilder().Build();
+            PrivateAccess.SetField(passive, "attacker", attacker);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+
+            foreach (BattleUnitBuf givingBuf in targetBufs)
+            {
+                Assert.That(BattleInfo.HasBufAny(attacker, givingBuf), Is.False);
+
+                passive.OnAddKeywordBufByCard(givingBuf, givingBuf.stack);
+                Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+                Assert.That(BattleInfo.HasBufAny(attacker, givingBuf), Is.True);
+            }
+
+            foreach (BattleUnitBuf givingBuf in nonTargetBufs)
+            {
+                Assert.That(BattleInfo.HasBufAny(attacker, givingBuf), Is.False);
+
+                passive.OnAddKeywordBufByCard(givingBuf, givingBuf.stack);
+                Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+                Assert.That(BattleInfo.HasBufAny(attacker, givingBuf), Is.False);
+            }
+        }
+
+        #endregion
+
+        #region OnStartTargetedOneSide
+
+        [Test(Description = "引数がnullの場合、attackerフィールドがnullになる")]
+        public void TestOnStartTargetedOneSide1()
+        {
+            BattleUnitModel attacker = new BattleUnitModelBuilder().Build();
+            PrivateAccess.SetField(passive, "attacker", attacker);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+
+            passive.OnStartTargetedOneSide(null);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.Null);
+        }
+
+        [Test(Description = "味方からの一方攻撃の場合、attackerフィールドがnullになる")]
+        public void TestOnStartTargetedOneSide2()
         {
             BattleUnitModel attacker = new BattleUnitModelBuilder()
             {
-                Faction = RelativeFactionUtil.GetFaction(owner, attackerFaction),
+                Faction = RelativeFactionUtil.GetFaction(passive.Owner, RelativeFaction.Ally),
             }.Build();
+            PrivateAccess.SetField(passive, "attacker", attacker);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.EqualTo(attacker));
+
             BattleDiceCardModel attackerCard = new BattleDiceCardModelBuilder().Build(attacker);
+            passive.OnStartTargetedOneSide(attackerCard.CreateDiceCardBehaviorList);
+            Assert.That(PrivateAccess.GetField<BattleUnitModel>(passive, "attacker"), Is.Null);
+        }
 
-            switch (attackBy)
+        #endregion
+
+        private BattleUnitModel SetUpPassiveOwner(Faction faction = Faction.Player)
+        {
+            return new BattleUnitModelBuilder()
             {
-                case AttackType.OneSide:
-                    BattleEmulator.SetUpRollSpeedDice(owner, attacker);
-                    BattleEmulator.SetUpOneSidePlay(attackerCard: attackerCard, target: owner);
-                    break;
-                default:
-                    Thrower.ThrowNotImplementedCase(attackBy.ToString());
-                    break;
-            }
-            Assert.That(BattleInfo.HasBufAny(attacker, bufType), Is.False);
-            Assert.That(BattleInfo.HasBufAny(owner, bufType), Is.False);
-
-            owner.bufListDetail.AddKeywordBufByCard(bufType, 1, attacker);
-            Assert.That(BattleInfo.HasBufAny(owner, bufType), Is.True);
-            Assert.That(BattleInfo.HasBufAny(attacker, bufType), Is.EqualTo(expected));
-        }
-
-        [Test]
-        public void TestFromAddKeywordBufNextNextByCard()
-        {
-
-        }
-
-        [Test]
-        public void TestFromAddKeywordBufThisRoundByCard()
-        {
-
-        }
-
-        [Test]
-        public void TestFromAddKeywordBufByEtc()
-        {
-
-        }
-
-        [Test]
-        public void TestFromAddKeywordBufThisRoundByEtc()
-        {
-
+                Passives = new[] { passive },
+                Faction = faction,
+            }.Build();
         }
     }
 }

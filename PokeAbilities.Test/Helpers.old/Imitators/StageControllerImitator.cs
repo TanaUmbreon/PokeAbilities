@@ -17,7 +17,7 @@ namespace PokeAbilities.Test.Helpers.Imitators
         /// <param name="index"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static BattleUnitModel ImitateCreateEnemyUnit(UnitBattleDataModel unitBattleData, int index, int id)
+        public static BattleUnitModel CreateEnemyUnit(UnitBattleDataModel unitBattleData, int index, int id)
         {
             // unit.formationフィールドの設定で使われているが、既定値を代わりに設定するので不要
             // StageWaveModel currentWave = GetCurrentWaveModel();
@@ -52,7 +52,7 @@ namespace PokeAbilities.Test.Helpers.Imitators
         /// <param name="index"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static BattleUnitModel ImitateCreateLibrarianUnit(SephirahType sephirah, UnitBattleDataModel battleData, int index, int id)
+        public static BattleUnitModel CreateLibrarianUnit(SephirahType sephirah, UnitBattleDataModel battleData, int index, int id)
         {
             // unit.formationフィールドの設定で使われているが、既定値を代わりに設定するので不要
             // StageLibraryFloorModel floor = _stageModel.GetFloor(sephirah);

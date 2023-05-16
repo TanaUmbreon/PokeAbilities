@@ -83,57 +83,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bufs\BattleDiceCardBuf_TypeTest.cs" />
-    <Compile Include="Bufs\BattleUnitBuf_HailTest.cs" />
-    <Compile Include="Bufs\BattleUnitBuf_RainTest.cs" />
     <Compile Include="CommonSetUp.cs" />
-    <Compile Include="CardAbilities\DiceCardSelfAbility_hail5allTest.cs" />
-    <Compile Include="Helpers\BattleDiceCardModelBuilder.cs" />
-    <Compile Include="BattleUnitBufListDetailExtensionTest.cs" />
-    <Compile Include="Bufs\BattleUnitBuf_SunnyDayTest.cs" />
-    <Compile Include="Helpers\BattleInfo.cs" />
-    <Compile Include="Helpers\BattleObjectManagerAccess.cs" />
-    <Compile Include="Helpers\BattleEmulator.cs" />
-    <Compile Include="Helpers\BattleUnitModelBuilder.cs" />
-    <Compile Include="Helpers\BattleUnitModelExtension.cs" />
-    <Compile Include="Helpers\Builders\DiceBehaviourBuilder.cs" />
-    <Compile Include="Helpers\Builders\BattleDiceBehaviorBuilder.cs" />
-    <Compile Include="Helpers\Builders\BookXmlInfoBuilder.cs" />
-    <Compile Include="Helpers\Builders\BattleDiceCardModelBuilder.cs" />
-    <Compile Include="Helpers\Builders\BattleUnitModelBuilder.cs" />
-    <Compile Include="Helpers\Builders\UnitBattleDataModelBuilder.cs" />
-    <Compile Include="Helpers\RelativeFaction.cs" />
-    <Compile Include="Helpers\Imitators\BattleAllyCardDetailImitator.cs" />
-    <Compile Include="Helpers\Imitators\BattleDiceCardModelImitator.cs" />
-    <Compile Include="Helpers\Imitators\BattleObjectManagerImitator.cs" />
-    <Compile Include="Helpers\Imitators\BattleUnitModelImitator.cs" />
-    <Compile Include="Helpers\Imitators\StageControllerImitator.cs" />
+    <Compile Include="Helpers\Battles\BattleEmulator.cs" />
+    <Compile Include="Helpers\Battles\BattleUnitModelBuilder.cs" />
     <Compile Include="Helpers\PrivateAccess.cs" />
-    <Compile Include="Helpers\FixedRandomizer.cs" />
-    <Compile Include="Helpers\BattlePlayingCardDataInUnitModelBuilder.cs" />
-    <Compile Include="Helpers\BattleDiceBehaviorBuilder.cs" />
-    <Compile Include="Helpers\BookXmlInfoBuilder.cs" />
-    <Compile Include="Helpers\StaticInfo\EquipPage.cs" />
-    <Compile Include="Helpers\StaticInfo\FormationInfo.cs" />
     <Compile Include="Helpers\Thrower.cs" />
-    <Compile Include="Passives\PassiveAbility_2270000Test.cs" />
-    <Compile Include="Passives\PassiveAbilityTypeBaseTest.cs" />
-    <Compile Include="Passives\PassiveAbility_2270001Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270004Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270007Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270014Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270022Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270023Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270021Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270016Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270017Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270015Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270018Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270020Test.cs" />
-    <Compile Include="Passives\PassiveAbility_2270019Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\SystemRandomizer.cs" />
-    <Compile Include="Helpers\StaticInfo\EnemyUnitInfo.cs" />
+    <Compile Include="Test.cs" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

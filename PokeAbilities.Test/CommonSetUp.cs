@@ -7,7 +7,7 @@ using HarmonyLib;
 using LOR_DiceSystem;
 using NUnit.Framework;
 using PokeAbilities.Test.Helpers;
-using PokeAbilities.Test.Helpers.StaticInfo;
+using PokeAbilities.Test.Helpers.Battles;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -20,84 +20,105 @@ namespace PokeAbilities.Test
     [HarmonyPatch]
     public class CommonSetUp
     {
-        /// <summary>バトル ページ効果のキー名と、それに対応するバトル ページ効果の型情報のマップ</summary>
-        private static readonly Dictionary<string, DiceCardSelfAbilityBase> keyDiceCardSelfAbilityMap = new Dictionary<string, DiceCardSelfAbilityBase>();
-        /// <summary>バトル ダイス効果のキー名と、それに対応するバトル ダイス効果の型情報のマップ</summary>
-        private static readonly Dictionary<string, DiceCardAbilityBase> keyDiceCardAbilityMap = new Dictionary<string, DiceCardAbilityBase>();
+        ///// <summary>バトル ページ効果のキー名と、それに対応するバトル ページ効果の型情報のマップ</summary>
+        //private static readonly Dictionary<string, DiceCardSelfAbilityBase> keyDiceCardSelfAbilityMap = new Dictionary<string, DiceCardSelfAbilityBase>();
+        ///// <summary>バトル ダイス効果のキー名と、それに対応するバトル ダイス効果の型情報のマップ</summary>
+        //private static readonly Dictionary<string, DiceCardAbilityBase> keyDiceCardAbilityMap = new Dictionary<string, DiceCardAbilityBase>();
 
-        /// <summary>ゲーム本体 (Assembly-CSharp.dll) のアセンブリ参照</summary>
-        private static Assembly ruinaAssembly = null;
-        /// <summary>MOD 本体 (PokeAbilities.dll) のアセンブリ参照</summary>
-        private static Assembly modAssembly = null;
+        ///// <summary>ゲーム本体 (Assembly-CSharp.dll) のアセンブリ参照</summary>
+        //private static Assembly ruinaAssembly = null;
+        ///// <summary>MOD 本体 (PokeAbilities.dll) のアセンブリ参照</summary>
+        //private static Assembly modAssembly = null;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            InitializeStaticFields();
             new Harmony("PokeAbilities.Test").PatchAll();
-
+            InitializeFields();
             InitializeSingleton();
-
             OverwriteMethods();
         }
 
-        private void InitializeStaticFields()
+        #region HarmonyPatch による割込
+
+        // Memo:
+        //   ゲーム非起動時に Unity ライブラリのメソッドを呼び出すと
+        //   SecurityException (ECall メソッドをシステム モジュールにパッケージ化しなければなりません) が発生する。
+        //   これを回避する為、実装を置き換えて例外を回避している。
+
+        /// <remarks>
+        /// 呼び出し箇所:
+        /// <see cref="BattleEmulator.StartBattleRoutine"/> →
+        /// <see cref="BattleObjectManager.Clear"/>
+        /// </remarks>
+        [HarmonyPatch(typeof(BattleObjectLayer), "Clear")]
+        [HarmonyPrefix]
+        public static bool BattleObjectLayer_Clear_Prefix(BattleObjectLayer __instance)
         {
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                switch (assembly.GetName().Name)
-                {
-                    case "Assembly-CSharp":
-                        ruinaAssembly = assembly;
-                        break;
-                    case "PokeAbilities":
-                        modAssembly = assembly;
-                        break;
-                }
-            }
-            if (ruinaAssembly == null) { throw new InvalidOperationException("Assembly-CSharp.dll がロードされていません。"); }
-            if (modAssembly == null) { throw new InvalidOperationException("PokeAbilities.dll がロードされていません。"); }
+            // 処理全てを呼び出さないようにする
+            return false;
         }
 
-        private void InitializeSingleton()
+        /// <remarks>
+        /// 呼び出し箇所:
+        /// <see cref="BattleEmulator.StartBattleRoutine"/> →
+        /// <see cref="StageController.InitStageByInvitation(StageClassInfo, List{LorId})"/> →
+        /// <see cref="StageController.Clear"/>
+        /// </remarks>
+        [HarmonyPatch(typeof(StageController), "InitCommon")]
+        [HarmonyPrefix]
+        public static bool StageController_InitCommon_Prefix(StageController __instance, StageClassInfo stage, bool isRebattle)
         {
-            // カスタムバフを生成する時に必須
-            BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
+            __instance.battleState = StageController.BattleState.Setting;
+            PrivateAccess.SetField(__instance, "_isRebattle", isRebattle);
+            PrivateAccess.SetField(__instance, "_stageModel", new StageModel());
+            PrivateAccess.GetField<StageModel>(__instance, "_stageModel").Init(stage, LibraryModel.Instance, isRebattle);
+            PrivateAccess.SetField(__instance, "_alreadyStory", false);
+            PrivateAccess.SetField(__instance, "_roundendedforcely", false);
+            PrivateAccess.SetField(__instance, "_rewardInfo", new BattleRewardInfo());
+            __instance._droppedbookdatas = new List<DropBookDataForAddedReward>();
+            PrivateAccess.SetField(__instance, "_usedFloorList", new List<SephirahType>());
+            PrivateAccess.GetField<List<string>>(__instance, "_addedEgoMap").Clear();
+            PrivateAccess.GetField<List<LorId>>(__instance, "_usedBooks").Clear();
+            __instance.SetCurrentWave(1);
 
-            // BattleUnitModelBuilder.EquipBook を指定している状態でBattleUnitModelを生成する時に必須
-            Singleton<DeckXmlList>.Instance.Init(new List<DeckXmlInfo>());
+            // BattleManagerUIクラスを操作する処理は呼び出さないようにする
 
-            // BattleUnitModel の生成の内部処理でnull参照例外を回避する為に必須
-            // (BattleUnitModel.SetUnitData → UnitDataModel.SetUnitData → ItemXmlDataList.GetCardItem で例外発生)
-            ItemXmlDataList.instance.InitCardInfo(new List<DiceCardXmlInfo>());
+            Singleton<LibraryQuestManager>.Instance.OnStageStart();
 
-            // (BattleUnitEmotionDetail.Reset → BattleUnitModel.OnCreated で例外発生)
-            var stage = new StageModel();
-            PrivateAccess.SetField(stage, "_classInfo", new StageClassInfo());
-            PrivateAccess.SetField(Singleton<StageController>.Instance, "_stageModel", stage);
-
-            // UnitBattleDataModel の生成の内部処理でnull参照例外を回避する為に必須(敵キャラクター生成時のみ)
-            // 使用する敵キャラクターIDに一致するEnemyUnitClassInfoをリストに登録しておく必要がある
-            // (UnitBattleDataModel.CreateUnitBattleDataByEnemyUnitId で例外発生)
-            Singleton<EnemyUnitClassInfoList>.Instance.Init(EnemyUnitInfo.GetEnemies());
-
-            //LibraryModel.Instance.Init();
+            return false;
         }
 
-        /// <summary>
-        /// UnityEngine の <see cref="SecurityException"/> 例外を回避する為にメソッドを上書きします。
-        /// <see cref="HarmonyPatch"/> による割り込みでも例外を回避できない場合に使用します。
-        /// </summary>
-        private void OverwriteMethods()
+        /*
+        [HarmonyPatch(typeof(Log), "AddLog")]
+        [HarmonyPrefix]
+        public static bool Log_AddLog_Prefix(Log.LogLevel level, string message)
         {
-            OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
-
-            //OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
-            //OverwriteMethod<BattleUnitModel>(nameof(CheckGiftOnTakeDamage), typeof(int), typeof(DamageType), typeof(BattleUnitModel), typeof(KeywordBuf)); // 呼び出し元: BattleUnitModel.TakeDamage(int)
+            // ログはファイルではなく標準出力に出力する
+            Console.WriteLine($"[{level.Text,-5}] {message}");
+            return false;
         }
+
+        [HarmonyPatch(typeof(BattleUnitBufListDetail), "CheckGift")]
+        [HarmonyPrefix]
+        public static bool BattleUnitBufListDetail_CheckGift_Prefix()
+        {
+            // 戦闘表象入手の為の行動履歴の記録は行わない
+            return false;
+        }
+
+        [HarmonyPatch(typeof(BattleUnitBufListDetail), "CheckAchievements")]
+        [HarmonyPrefix]
+        private static bool BattleUnitBufListDetail_CheckAchievements_Prefix()
+        {
+            // 実績解除の処理は行わない
+            return false;
+        }
+        */
 
         #region Harmony による割込 (インスタンスの動的生成)
 
+        /*
         // Memo:
         //   Assembly-CSharp.dll から全ての型情報を取得 (Assembly.GetTypes()) しようとすると、多数の Unity ライブラリの参照が必要となり手間。
         //   型の完全名を指定してピンポイントで取得 (Assembly.GetType(string)) する場合はそれら参照が不要になるため、実装を置き換えている。
@@ -159,11 +180,12 @@ namespace PokeAbilities.Test
             ability = Activator.CreateInstance(t) as T;
             return ability != null;
         }
-
+        */
         #endregion
 
         #region Harmony による割込 (SecurityException の回避)
 
+        /*
         // Memo:
         //   ゲーム非起動時に Unity ライブラリのメソッドを呼び出すと
         //   SecurityException (ECall メソッドをシステム モジュールにパッケージ化しなければなりません) が発生する。
@@ -265,19 +287,90 @@ namespace PokeAbilities.Test
             __result = __instance.speedDiceResult;
             return false;
         }
+        */
 
-        [HarmonyPatch(typeof(BattleUnitBufListDetail), "CheckAchievements")]
-        [HarmonyPrefix]
-        private static bool BattleUnitBufListDetail_CheckAchievements_Prefix()
+        #endregion
+
+        #endregion
+
+        /// <summary>
+        /// <see cref="CommonSetUp"/> の静的フィールドを初期化します。
+        /// </summary>
+        private void InitializeFields()
         {
-            // 実績解除の処理は行わない
-            return false;
+            //foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            //{
+            //    switch (assembly.GetName().Name)
+            //    {
+            //        case "Assembly-CSharp":
+            //            ruinaAssembly = assembly;
+            //            break;
+            //        case "PokeAbilities":
+            //            modAssembly = assembly;
+            //            break;
+            //    }
+            //}
+            //if (ruinaAssembly == null) { throw new InvalidOperationException("Assembly-CSharp.dll がロードされていません。"); }
+            //if (modAssembly == null) { throw new InvalidOperationException("PokeAbilities.dll がロードされていません。"); }
+        }
+
+        #region InitializeSingleton
+
+        /// <summary>
+        /// シングルトン オブジェクトを初期化します。
+        /// </summary>
+        private void InitializeSingleton()
+        {
+            // 接待処理を初期化する時に必須
+            // BattleObjectManager.Clear()メソッドでBattleObjectLayerを参照している
+            // BattleObjectLayerはシングルトンだがMonoBehaviour(Unityによる依存性注入)のため手動でインスタンス生成する
+            if (BattleObjectLayer.instance == null)
+            {
+                var instance = new BattleObjectLayer();
+                PrivateAccess.SetField<BattleObjectLayer>("_instance", instance);
+                PrivateAccess.SetField(instance, "_unitList", new List<BattleUnitView>());
+                instance.unitViewportList = new List<BattleObjectLayer.UnitViewportPosInfo>();
+            }
+
+            //// カスタムバフを生成する時に必須
+            //BaseMod.Harmony_Patch.ArtWorks = new Dictionary<string, Sprite>();
+
+            //// BattleUnitModelBuilder.EquipBook を指定している状態でBattleUnitModelを生成する時に必須
+            //Singleton<DeckXmlList>.Instance.Init(new List<DeckXmlInfo>());
+
+            //// BattleUnitModel の生成の内部処理でnull参照例外を回避する為に必須
+            //// (BattleUnitModel.SetUnitData → UnitDataModel.SetUnitData → ItemXmlDataList.GetCardItem で例外発生)
+            //ItemXmlDataList.instance.InitCardInfo(new List<DiceCardXmlInfo>());
+
+            //// (BattleUnitEmotionDetail.Reset → BattleUnitModel.OnCreated で例外発生)
+            //var stage = new StageModel();
+            //PrivateAccess.SetField(stage, "_classInfo", new StageClassInfo());
+            //PrivateAccess.SetField(Singleton<StageController>.Instance, "_stageModel", stage);
+
+            //// UnitBattleDataModel の生成の内部処理でnull参照例外を回避する為に必須(敵キャラクター生成時のみ)
+            //// 使用する敵キャラクターIDに一致するEnemyUnitClassInfoをリストに登録しておく必要がある
+            //// (UnitBattleDataModel.CreateUnitBattleDataByEnemyUnitId で例外発生)
+            //Singleton<EnemyUnitClassInfoList>.Instance.Init(EnemyUnitInfo.GetEnemies());
+
+            //LibraryModel.Instance.Init();
         }
 
         #endregion
 
-        #region メソッドの呼び出し先を上書き
+        #region OverwriteMethods
 
+        /// <summary>
+        /// UnityEngine の <see cref="SecurityException"/> 例外を回避する為にメソッドを上書きします。
+        /// <see cref="HarmonyPatch"/> による割り込みでも例外を回避できない場合に使用します。
+        /// </summary>
+        private void OverwriteMethods()
+        {
+            //OverwriteMethod<UnityEngine.Random>(nameof(Range), typeof(int), typeof(int));
+            //OverwriteMethod<StageController>(nameof(IsLogState)); // 呼出元: BattleUnitModel.RecoverHP(int)
+            //OverwriteMethod<BattleUnitModel>(nameof(CheckGiftOnTakeDamage), typeof(int), typeof(DamageType), typeof(BattleUnitModel), typeof(KeywordBuf)); // 呼び出し元: BattleUnitModel.TakeDamage(int)
+        }
+
+        /*
         /// <summary>
         /// 指定した型の指定した名前のメソッドの呼び出し先を、
         /// このクラスに定義された同名のメソッドに上書きします。
@@ -320,6 +413,7 @@ namespace PokeAbilities.Test
             => Console.WriteLine(nameof(CheckGiftOnTakeDamage));
 
         private void CheckAchievements() { }
+        */
 
         #endregion
     }

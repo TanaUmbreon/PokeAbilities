@@ -1269,12 +1269,12 @@
       <returns></returns>
     </member>
     <member name="M:BattleObjectManager.GetTargetByCard(BattleUnitModel,BattleDiceCardModel,System.Int32,System.Boolean)">
-      <summary></summary>
-      <param name="actor"></param>
-      <param name="card"></param>
-      <param name="idx"></param>
-      <param name="teamkill"></param>
-      <returns></returns>
+      <summary>指定した行動キャラクターが使用する指定したバトル ページから対象キャラクターを取得します。</summary>
+      <param name="actor">行動キャラクター。</param>
+      <param name="card">行動キャラクターが使用するバトル ページ。</param>
+      <param name="idx">使用するバトル ページがセットされた速度ダイス スロット番号。</param>
+      <param name="teamkill">対象キャラクターの候補に</param>
+      <returns>使用するバトル ページの対象キャラクター。</returns>
     </member>
     <member name="M:BattleObjectManager.GetTargetByCardForPlayer(BattleUnitModel,BattleDiceCardModel,System.Int32,System.Boolean)">
       <summary></summary>
@@ -1867,10 +1867,10 @@
       <returns></returns>
     </member>
     <member name="M:BattleUnitBuf.ChangeAttackTarget(BattleDiceCardModel,System.Int32)">
-      <summary></summary>
-      <param name="card"></param>
-      <param name="currentSlot"></param>
-      <returns></returns>
+      <summary>指定したバトル ページの対象キャラクターを変更します。</summary>
+      <param name="card">対象キャラクターを変更するバトル ページ。</param>
+      <param name="currentSlot">バトル ページの速度ダイス スロット番号。</param>
+      <returns>変更後の対象キャラクター。対象キャラクターの変更が無い場合は null。</returns>
     </member>
     <member name="M:BattleUnitBuf.ChangeDamage(BattleUnitModel,System.Double)">
       <summary></summary>
@@ -4949,13 +4949,13 @@
       <summary>アイコン名を取得します。</summary>
     </member>
     <member name="P:BookXmlInfo.DeckId">
-      <summary></summary>
+      <summary>デッキ LOR ID を取得します。本家または BaseMod で、コア ページ数値 ID が 20 以下の場合は LorId(:1) を返します。それ以外は コア ページ LOR ID を返します。</summary>
     </member>
     <member name="P:BookXmlInfo.Desc">
       <summary></summary>
     </member>
     <member name="P:BookXmlInfo.id">
-      <summary></summary>
+      <summary>コア ページ LOR ID を取得します。</summary>
     </member>
     <member name="P:BookXmlInfo.Limit">
       <summary>コア ページの入手可能上限を取得します。普及の場合は 5、恒久の場合は 4、限定の場合は 3、それ以外の場合は 1 を返します。</summary>
@@ -5235,10 +5235,10 @@
       <param name="self">このバトル ページ効果が付与されたバトル ページ。</param>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartBattle">
-      <summary></summary>
+      <summary>戦闘開始時に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartBattleAfterCreateBehaviour">
-      <summary></summary>
+      <summary>戦闘開始時、使用するバトル ページからバトル ダイスの振る舞いが生成された時に呼び出されます。</summary>
     </member>
     <member name="M:DiceCardSelfAbilityBase.OnStartOneSideAction">
       <summary></summary>
@@ -5544,6 +5544,48 @@
     </member>
     <member name="M:GiftInventory.UnEquipAll">
       <summary></summary>
+    </member>
+    <member name="T:ItemXmlDataList">
+      <summary>読み込んだバトル ページの XML 情報のリストです。</summary>
+    </member>
+    <member name="M:ItemXmlDataList.#ctor">
+      <summary></summary>
+    </member>
+    <member name="M:ItemXmlDataList.AddCardInfoByMod(System.String,System.Collections.Generic.List{LOR_DiceSystem.DiceCardXmlInfo})">
+      <summary></summary>
+      <param name="workshopId"></param>
+      <param name="list"></param>
+    </member>
+    <member name="M:ItemXmlDataList.GetAllWorkshopData">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:ItemXmlDataList.GetBasicCardList">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:ItemXmlDataList.GetCardItem(System.Int32,System.Boolean)">
+      <summary></summary>
+      <param name="id"></param>
+      <param name="errNull"></param>
+      <returns></returns>
+    </member>
+    <member name="M:ItemXmlDataList.GetCardItem(LorId,System.Boolean)">
+      <summary>指定したバトル ページ LOR IDに一致するバトル ページの XML 情報を取得します。</summary>
+      <param name="id">バトル ページ LOR ID。</param>
+      <param name="errNull">バトル ページの XML 情報が見つからない場合に null を返す事を示す値。</param>
+      <returns>バトル ページ LOR IDに一致するバトル ページの XML 情報。</returns>
+    </member>
+    <member name="M:ItemXmlDataList.GetCardList">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:ItemXmlDataList.InitCardInfo(System.Collections.Generic.List{LOR_DiceSystem.DiceCardXmlInfo})">
+      <summary></summary>
+      <param name="list"></param>
+    </member>
+    <member name="P:ItemXmlDataList.instance">
+      <summary>このオブジェクトの既定のインスタンスを取得します。</summary>
     </member>
     <member name="T:KeywordBuf">
       <summary>キーワード定義された状態を表します。</summary>
@@ -6118,6 +6160,99 @@
     <member name="P:LOR_DiceSystem.DiceCardXmlInfo.TextId">
       <summary>テキスト ID を取得します。内部のテキスト ID が -1 の場合、バトル ページ ID を返します。</summary>
     </member>
+    <member name="T:LorId">
+      <summary>Library Of Ruina のオブジェクトを一意に特定する LOR ID を表します。</summary>
+    </member>
+    <member name="F:LorId.id">
+      <summary>数値 ID</summary>
+    </member>
+    <member name="F:LorId.None">
+      <summary>未定義の LOR ID</summary>
+    </member>
+    <member name="F:LorId.packageId">
+      <summary>パッケージ ID</summary>
+    </member>
+    <member name="M:LorId.#ctor(System.Int32)">
+      <summary></summary>
+      <param name="id"></param>
+    </member>
+    <member name="M:LorId.#ctor(System.String,System.Int32)">
+      <summary></summary>
+      <param name="packageId"></param>
+      <param name="id"></param>
+    </member>
+    <member name="M:LorId.CompareTo(LorId)">
+      <summary></summary>
+      <param name="other"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.Equals(System.Object)">
+      <summary></summary>
+      <param name="obj"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.Equals(LorId)">
+      <summary></summary>
+      <param name="other"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.Equals(System.Int32)">
+      <summary></summary>
+      <param name="other"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.GetHashCode">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.GetSaveData">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.InitializeLorIds``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{LorId},System.String)">
+      <summary></summary>
+      <typeparam name="T"></typeparam>
+      <param name="src"></param>
+      <param name="dst"></param>
+      <param name="defaultPid"></param>
+    </member>
+    <member name="M:LorId.IsBasic">
+      <summary>本家または BaseMod のものである事を判定します。</summary>
+      <returns>本家または BaseMod のものである場合は true、そうでない (接待 MOD の) 場合は false。</returns>
+    </member>
+    <member name="M:LorId.IsBasicId(System.String)">
+      <summary>指定したパッケージ ID が本家または BaseMod である事を判定します。</summary>
+      <param name="packageId">パッケージ ID。</param>
+      <returns>本家または BaseMod のパッケージ ID である場合は true、そうでない (接待 MOD の) 場合は false。</returns>
+    </member>
+    <member name="M:LorId.IsModId(System.String)">
+      <summary>指定したパッケージ ID が接待 MOD である事を判定します。</summary>
+      <param name="packageId">パッケージ ID。</param>
+      <returns>接待 MOD のパッケージ ID である場合は true、そうでない (本家または BaseMod の) 場合は false。</returns>
+    </member>
+    <member name="M:LorId.IsNone">
+      <summary></summary>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.IsWorkshop">
+      <summary>接待 MOD (ワークショップ) のものである事を判定します。</summary>
+      <returns>接待 MOD のものである場合は true、そうでない (本家または BaseMod の) 場合は false。</returns>
+    </member>
+    <member name="M:LorId.LoadFromSaveData(GameSave.SaveData)">
+      <summary></summary>
+      <param name="data"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.MakeLorId(ILorIdXml,System.String)">
+      <summary></summary>
+      <param name="src"></param>
+      <param name="defaultPid"></param>
+      <returns></returns>
+    </member>
+    <member name="M:LorId.ToString">
+      <summary></summary>
+      <returns></returns>
+    </member>
     <member name="T:PassiveAbilityBase">
       <summary>パッシブの基底クラスです。全てのパッシブと戦闘表象パッシブはこのクラスを派生して実装されます。</summary>
     </member>
@@ -6206,10 +6341,10 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.ChangeAttackTarget(BattleDiceCardModel,System.Int32)">
-      <summary></summary>
-      <param name="card"></param>
-      <param name="idx"></param>
-      <returns></returns>
+      <summary>指定したバトル ページの対象キャラクターを変更します。</summary>
+      <param name="card">対象キャラクターを変更するバトル ページ。</param>
+      <param name="idx">バトル ページの速度ダイス スロット番号。</param>
+      <returns>変更後の対象キャラクター。対象キャラクターの変更が無い場合は null。</returns>
     </member>
     <member name="M:PassiveAbilityBase.ChangeDamage(BattleUnitModel,System.Double)">
       <summary></summary>
@@ -6549,7 +6684,7 @@
       <returns></returns>
     </member>
     <member name="M:PassiveAbilityBase.OnStartBattle">
-      <summary></summary>
+      <summary>戦闘開始時に呼び出されます。</summary>
     </member>
     <member name="M:PassiveAbilityBase.OnStartOneSidePlay(BattlePlayingCardDataInUnitModel)">
       <summary></summary>

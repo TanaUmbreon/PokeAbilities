@@ -3,17 +3,6 @@
 namespace PokeAbilities.Test.Helpers
 {
     /// <summary>
-    /// 敵またはプレイヤーのどちらか任意の派閥を基準とした相対的な派閥を表します。
-    /// </summary>
-    public enum RelativeFaction
-    {
-        /// <summary>味方</summary>
-        Ally,
-        /// <summary>相手</summary>
-        Opponent,
-    }
-
-    /// <summary>
     /// <see cref="RelativeFaction"/> を使用したユーティリティ クラスです。
     /// </summary>
     public static class RelativeFactionUtil
@@ -31,17 +20,28 @@ namespace PokeAbilities.Test.Helpers
         /// <summary>
         /// 指定した派閥に対する派閥を取得します。
         /// </summary>
-        /// <param name="baseFaction"></param>
-        /// <param name="relativeFaction"></param>
+        /// <param name="baseFaction">基準となる派閥。</param>
+        /// <param name="relativeFaction"><paramref name="baseFaction"/> から見た相対的な派閥。</param>
         /// <returns></returns>
         public static Faction GetFaction(Faction baseFaction, RelativeFaction relativeFaction)
-            => relativeFaction == RelativeFaction.Ally ? AllySelector(baseFaction) : OpponentSelector(baseFaction);
+        {
+            switch (relativeFaction)
+            {
+                case RelativeFaction.Ally:
+                case RelativeFaction.Self:
+                    return AllySelector(baseFaction);
+                case RelativeFaction.Opponent:
+                    return OpponentSelector(baseFaction);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(relativeFaction));
+            }
+        }
 
         /// <summary>
         /// 指定したキャラクターの派閥に対する派閥を取得します。
         /// </summary>
-        /// <param name="baseUnit"></param>
-        /// <param name="relativeFaction"></param>
+        /// <param name="baseUnit">基準となるキャラクター。</param>
+        /// <param name="relativeFaction"><paramref name="baseUnit"/> から見た相対的な派閥。</param>
         /// <returns></returns>
         public static Faction GetFaction(BattleUnitModel baseUnit, RelativeFaction relativeFaction)
             => GetFaction(baseUnit.faction, relativeFaction);

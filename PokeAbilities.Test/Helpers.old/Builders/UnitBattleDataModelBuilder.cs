@@ -15,15 +15,16 @@ namespace PokeAbilities.Test.Helpers.Builders
 
         /// <summary>
         /// 所属階層を取得または設定します。
-        /// 既定値は <see cref="SephirahType.None"/> です。
-        /// また、 <see cref="Faction.Enemy"/> の場合は設定された値が無視されて <see cref="SephirahType.None"/> 固定となります。
+        /// 既定値は <see cref="SephirahType.None"/> (指定階層なし) です。
+        /// また、 <see cref="Faction"/> プロパティの値が <see cref="Faction.Enemy"/> (敵) の場合は使用されず
+        /// <see cref="SephirahType.None"/> (指定階層なし) 固定となります。
         /// </summary>
         public SephirahType SephirahType { get; set; } = SephirahType.None;
 
         /// <summary>
         /// 指定司書であることを示す値を取得または設定します。
-        /// 既定値は司書 (指定司書でない) です。
-        /// また、 <see cref="Faction.Enemy"/> の場合は使用されません。
+        /// 既定値は false (一般司書) です。
+        /// また、 <see cref="Faction.Enemy"/> (敵) の場合は使用されません。
         /// </summary>
         public bool IsSephirahChar { get; set; } = false;
 

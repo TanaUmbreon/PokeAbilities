@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
 using HarmonyLib;
 using UI;
 using UnityEngine;
 
 namespace PokeAbilities
 {
+    [Harmony]
     public class Harmony_Patch
     {
         /// <summary>
@@ -13,12 +14,19 @@ namespace PokeAbilities
         /// </summary>
         public Harmony_Patch()
         {
-            var harmony = new Harmony("PokeAbilities");
-            MethodInfo method = typeof(Harmony_Patch).GetMethod(nameof(UISpriteDataManager_GetStoryIcon));
-            harmony.Patch(typeof(UISpriteDataManager).GetMethod("GetStoryIcon", AccessTools.all), prefix: new HarmonyMethod(method));
+            try
+            {
+                new Harmony("PokeAbilities").PatchAll();
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.ErrorOnExceptionThrown(ex);
+            }
         }
 
-		public static bool UISpriteDataManager_GetStoryIcon(UISpriteDataManager __instance, ref UIIconManager.IconSet __result, string story)
+        [HarmonyPatch(typeof(UISpriteDataManager), "GetStoryIcon")]
+        [HarmonyPrefix]
+        public static bool UISpriteDataManager_GetStoryIcon(ref UIIconManager.IconSet __result, string story)
 		{
             if (story != "PokeAbilities") { return true; }
 

@@ -56,10 +56,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleDiceBehaviorExtension.cs" />
-    <Compile Include="BattleDiceCardModelExtension.cs" />
-    <Compile Include="BattleUnitBufListDetailExtension.cs" />
-    <Compile Include="BattleUnitPassiveDetailExtension.cs" />
+    <Compile Include="Common\BattleDiceBehaviorExtension.cs" />
+    <Compile Include="Common\BattleDiceCardModelExtension.cs" />
+    <Compile Include="Common\BattleUnitBufListDetailExtension.cs" />
+    <Compile Include="Common\BattleUnitPassiveDetailExtension.cs" />
     <Compile Include="Bufs\BattleDiceCardBufCustomBase.cs" />
     <Compile Include="Bufs\BattleDiceCardBuf_Type.cs" />
     <Compile Include="Bufs\BattleUnitBufCustomBase.cs" />
@@ -71,10 +71,10 @@
     <Compile Include="CardAbilities\DiceCardSelfAbility_hail5all.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_sunny5all.cs" />
     <Compile Include="CardAbilities\DiceCardSelfAbility_rain5all.cs" />
-    <Compile Include="DefaultRandomizer.cs" />
+    <Compile Include="Common\DefaultRandomizer.cs" />
     <Compile Include="Harmony_Patch.cs" />
-    <Compile Include="IRandomizer.cs" />
-    <Compile Include="Log.cs" />
+    <Compile Include="Common\IRandomizer.cs" />
+    <Compile Include="Common\Log.cs" />
     <Compile Include="Passives\PassiveAbility_2270000.cs" />
     <Compile Include="Passives\PassiveAbility_2270001.cs" />
     <Compile Include="Passives\PassiveAbility_2270002.cs" />

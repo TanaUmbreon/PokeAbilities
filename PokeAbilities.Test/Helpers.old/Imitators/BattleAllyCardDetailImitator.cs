@@ -18,7 +18,7 @@ namespace PokeAbilities.Test.Helpers.Imitators
 		/// <param name="cardDetail"></param>
 		/// <param name="deck">デッキを構成するバトル ページの構築オブジェクトのコレクション。</param>
 		/// <param name="owner">バトル ページを所有するキャラクター。</param>
-		public static void ImitateInit(this BattleAllyCardDetail cardDetail, IEnumerable<BattleDiceCardModelBuilder> deck, BattleUnitModel owner)
+		public static void Init(BattleAllyCardDetail cardDetail, IEnumerable<BattleDiceCardModelBuilder> deck, BattleUnitModel owner)
 		{
 			if (cardDetail == null) { throw new ArgumentNullException(nameof(cardDetail)); }
 			if (deck == null) { throw new ArgumentException(nameof(deck)); }
